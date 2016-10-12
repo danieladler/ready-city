@@ -35,6 +35,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
+  gem "better_errors"
 end
 
 group :development do

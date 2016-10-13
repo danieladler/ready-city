@@ -35,7 +35,7 @@ describe UsersController, type: :controller do
 
         it "returns a descriptive error message" do
           make_request!
-          expect(flash[:error]).to include "username: has already been taken", ""
+          expect(flash[:error]).to include "username: has already been taken"
         end
       end
   end

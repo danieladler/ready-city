@@ -19,9 +19,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_path flash[:error] = 'Record not found'
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
-
 end

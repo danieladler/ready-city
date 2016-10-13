@@ -19,10 +19,10 @@ describe UsersController, type: :controller do
           expect(response).to redirect_to root_path
         end
 
-        # it "returns a descriptive welcome message" do
-        #   make_request!
-        #   expect(flash[:success]).to eq "Account created. Welcome to Ready City!"
-        # end
+        it "returns a descriptive welcome message" do
+          make_request!
+          expect(flash[:success]).to eq "Account created. Welcome to Ready City!"
+        end
       end
 
       context "new User is invalid" do
@@ -32,11 +32,11 @@ describe UsersController, type: :controller do
           make_request!
           expect(response).to render_template :sign_up
         end
-      #
-      #   it "returns a descriptive error message" do
-      #     make_request!
-      #     expect(flash[:notice]).to eq "username and/or e-mail are already taken."
-      #   end
+
+        it "returns a descriptive error message" do
+          make_request!
+          expect(flash[:error]).to eq "username and/or e-mail are already taken."
+        end
       end
   end
 end

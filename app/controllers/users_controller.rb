@@ -7,14 +7,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # session[:user_id] = @user.id # TODO: add sessions!
-      redirect_to root_path #, success: "Account created. Welcome to Ready City!"
+      redirect_to root_path
+      flash[:success] = "Account created. Welcome to Ready City!"
     else
-      # @errors = []
-      # @user.errors.each do |column, message|
-      #   @errors << "#{column}: #{message}"
-      #   flash[:error] = @errors
-      # end
       render :sign_up
+      flash[:error] = "username and/or e-mail are already taken."
     end
   end
 

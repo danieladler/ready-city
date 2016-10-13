@@ -10,8 +10,8 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:success] = "Account created. Welcome to Ready City!"
     else
-      render :sign_up
       flash[:error] = "username and/or e-mail are already taken."
+      render :sign_up
     end
   end
 

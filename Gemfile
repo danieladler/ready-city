@@ -38,6 +38,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'better_errors'
   gem 'simplecov', require: false
+  gem 'rails-controller-testing'
 end
 
 group :development do

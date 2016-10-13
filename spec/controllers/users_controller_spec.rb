@@ -11,10 +11,10 @@ describe UsersController, type: :controller do
   end
 
   describe "POST #create" do
-    let(:make_request!) {post :create, params: {user: {username: "user_0", email:"user_0@user.com"}}}
+    let(:make_request!) {post :create, params: {user: {username: "user_0", email:"user_0@user.com", password: "pw", password_confirmation: "pw"}}}
 
       context "new User is valid" do
-        it "redirects to root" do # TODO: redirect to user account show page instead
+        it "redirects to root" do # TODO: redirect to new user's account show page instead
           make_request!
           expect(response).to redirect_to root_path
         end
@@ -28,7 +28,7 @@ describe UsersController, type: :controller do
       context "new User is invalid" do
         let(:make_request!) {post :create, params: { user: {username: "user_2", email:"user_2@user.com"} } }
 
-        it "renders /sign-up view" do
+        it "renders /sign-up template" do
           make_request!
           expect(response).to render_template :sign_up
         end

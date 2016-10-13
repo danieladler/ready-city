@@ -10,7 +10,11 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:success] = "Account created. Welcome to Ready City!"
     else
-      flash[:error] = "username and/or e-mail are already taken."
+      @errors = []
+      @user.errors.each do |column, message|
+        @errors << column.to_s + ": " + message.to_s
+      end
+      flash[:error] = @errors
       render :sign_up
     end
   end

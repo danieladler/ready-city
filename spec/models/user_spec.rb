@@ -1,46 +1,35 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  describe ".validates" do
-    context "when email is empty" do
-      it "is invalid" do
-        user = build_stubbed(:user, email: nil)
-        expect(user.valid?).to eq false
-      end
+  subject(:user) {create(:user)}
+
+  context "is invalid" do
+    it "when email is empty" do
+      user.email = nil
+      expect(user.valid?).to eq false
     end
 
-    context "when email not unique" do
-      it "is invalid" do
-        user_1 = create(:user) # use `create` here to save user_1 to db...
-        user_2 = build(:user)  # ...and `build` here so that user_2 is NOT saved...
-        user_2.save            # ...so that when we DO save it, validation errors occur
-        expect(user_2.valid?).to eq false
-        # if we use `create` for user_2 then validation errors occur before the test can catch it.
-      end
+    it "when email is not unique" do
+      new_user = build(:user, email: user.email)
+      expect(new_user.valid?).to eq false
     end
 
-    context "when email is missing '@'" do
-      it "is invalid" do
-        user = build(:user, email: "invalid email")
-        user.save
-        expect(user.valid?).to eq false
-      end
+    it "when email is missing '@'" do
+      user.email = "user at google dot com"
+      expect(user.valid?).to eq false
     end
 
-    context "when username is empty" do
-      it "is invalid" do
-        user = build(:user, username: nil)
-        user.save
-        puts user.errors.inspect
-        expect(user.valid?).to eq false
-      end
+    it "when username is empty" do
+      user.username = nil
+      expect(user.valid?).to eq false
     end
-  #
-  #   context "when username not unique" do
-  #     it "is invalid" do
-  #       user_2.update(username: "user_1")
-  #       expect(user_2.valid?).to eq false
-  #     end
-  #   end
+
+    it "when username not unique" do
+      new_user = build(:user, username: user.username)
+      new_user.valid?
+      expect(new_user.errors.messages[:username]).to include("has already been taken")
+      # TODO: figure out if there's a way to test for above error message in a
+      #       one-liner spec that is roughly: expect(new_user.valid?).to include([error message])
+    end
   end
 end

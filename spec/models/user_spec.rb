@@ -1,44 +1,40 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  fixtures :users
-  let!(:user_1) { users(:user_1)}
-  let!(:user_2) { users(:user_2)}
+  subject(:user) {create(:user)}
 
-  describe ".validates" do
-    context "when email is empty" do
-      it "is invalid" do
-        user_1.update(email: nil)
-        expect(user_1.valid?).to eq false
-      end
+  context "is invalid" do
+    # TODO: figure out if there's a way to test for error messages in a one-liner
+    #       spec that is roughly: expect(new_user.valid?).to include([error message])
+
+    it "when email is empty" do
+      user.email = nil
+      user.valid?
+      expect(user.errors.messages[:email]).to include("can't be blank")
     end
 
-    context "when email not unique" do
-      it "is invalid" do
-        user_2.update(email: user_1.email)
-        expect(user_2.valid?).to eq false
-      end
+    it "when email is not unique" do
+      new_user = build(:user, email: user.email)
+      new_user.valid?
+      expect(new_user.errors.messages[:email]).to include("has already been taken")
     end
 
-    context "when email is missing '@'" do
-      it "is invalid" do
-        user_2.update(email: 'myemail')
-        expect(user_2.valid?).to eq false
-      end
+    it "when email is missing '@'" do
+      user.email = "user at google dot com"
+      user.valid?
+      expect(user.errors.messages[:email]).to include("is invalid")
     end
 
-    context "when username is empty" do
-      it "is invalid" do
-        user_1.update(username: nil)
-        expect(user_1.valid?).to eq false
-      end
+    it "when username is empty" do
+      user.username = nil
+      user.valid?
+      expect(user.errors.messages[:username]).to include("can't be blank")
     end
 
-    context "when username not unique" do
-      it "is invalid" do
-        user_2.update(username: "user_1")
-        expect(user_2.valid?).to eq false
-      end
+    it "when username not unique" do
+      new_user = build(:user, username: user.username)
+      new_user.valid?
+      expect(new_user.errors.messages[:username]).to include("has already been taken")
     end
   end
 end

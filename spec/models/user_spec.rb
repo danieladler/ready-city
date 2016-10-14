@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  # describe ".validates" do
-  #   context "when email is empty" do
-  #     it "is invalid" do
-  #       user_1.update(email: nil)
-  #       expect(user_1.valid?).to eq false
-  #     end
-  #   end
+  describe ".validates" do
+    context "when email is empty" do
+      it "is invalid" do
+        user = build_stubbed(:user, email: nil)
+        expect(user.valid?).to eq false
+      end
+    end
   #
   #   context "when email not unique" do
   #     it "is invalid" do
@@ -36,5 +36,5 @@ describe User, type: :model do
   #       expect(user_2.valid?).to eq false
   #     end
   #   end
-  # end
+  end
 end

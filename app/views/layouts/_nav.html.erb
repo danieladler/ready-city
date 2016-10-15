@@ -4,16 +4,20 @@
        RC
     </div>
   </a>
-  <div class="nav-form-wrapper" style="float: right; width: 80px; height: 80px; padding: 10px">
-    <%= form_tag sign_in_path do %>
-      <input type="email", name="email", placeholder="email">
-      <input type="password", name="password", placeholder="password">
-      <input type="submit", value="Sign In">
-    <% end %>
-  </div>
-  <a href="./sign-up" style="float: right; width: 80px; height: 80px; padding: 10px">
-    <div class="link" style="text-align: center">
-      Sign Up
+  <% if logged_in? %>
+    <span style="float: right"> Hello, <%= current_user.username %></span>
+  <% else %>
+    <div class="nav-form-wrapper" style="float: right; width: 80px; height: 80px; padding: 10px">
+      <%= form_tag sign_in_path do %>
+        <input type="email", name="email", placeholder="email">
+        <input type="password", name="password", placeholder="password">
+        <input type="submit", value="Sign In">
+      <% end %>
     </div>
-  </a>
+    <a href="./sign-up" style="float: right; width: 80px; height: 80px; padding: 10px">
+      <div class="link" style="text-align: center">
+        Sign Up
+      </div>
+    </a>
+  <% end %>
 </header>

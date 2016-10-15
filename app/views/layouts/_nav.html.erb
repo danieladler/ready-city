@@ -5,7 +5,12 @@
     </div>
   </a>
   <% if logged_in? %>
-    <span style="float: right"> Hello, <%= current_user.username %></span>
+    <ul style="float: right; margin: 0; padding: 10px 10px 0 0">
+      <li> Hello, <%= current_user.username %></li>
+      <li>
+        <a href="/sign-out"> Sign Out </a>
+      </li>
+    </ul>
   <% else %>
     <div class="nav-form-wrapper" style="float: right; width: 80px; height: 80px; padding: 10px">
       <%= form_tag sign_in_path do %>

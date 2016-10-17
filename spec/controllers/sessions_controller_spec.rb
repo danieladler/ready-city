@@ -11,6 +11,12 @@ describe SessionsController, type: :controller do
     end
 
     context "attempts sign-in with invalid credentials" do
+      it "does not set a user_id in session" do
+        user = create(:user)
+        post :create, params: { email: user.email, password: "wrong password" }
+        expect(session[:user_id]).to eq nil
+      end
+
       it "displays a descriptive error message" do
         user = create(:user)
         post :create, params: { email: user.email, password: "wrong password" }
@@ -19,6 +25,12 @@ describe SessionsController, type: :controller do
     end
 
     context "attempts sign-in as non-existent user" do
+      it "does not set a user_id in session" do
+        user = create(:user)
+        post :create, params: { email: "fake user", password: "fake password" }
+        expect(session[:user_id]).to eq nil
+      end
+
       it "redirects to homepage" do
         post :create, params: { email: "fake user", password: "fake password" }
         expect(response).to redirect_to root_path

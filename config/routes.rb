@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   post    "/sign-in",    to: "sessions#create"
   get     "/sign-out",   to: "sessions#destroy", as: :sign_out
 
+  # PROFILE - ASSESSMENTS
+  post   "/update_home", to: "profile_home#update_home"
+
 end

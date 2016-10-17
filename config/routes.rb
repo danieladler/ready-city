@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   post "users",          to: "users#create",  as: :users
   get "/users/:id",      to: "users#show",    as: :user
 
+  # SESSIONS
+  get     "/sign-in",    to: "sessions#new",     as: :sign_in
+  post    "/sign-in",    to: "sessions#create"
+  get     "/sign-out",   to: "sessions#destroy", as: :sign_out
+
 end

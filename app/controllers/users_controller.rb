@@ -1,3 +1,5 @@
+require 'pry'
+
 class UsersController < ApplicationController
   def sign_up
     @user = User.new
@@ -21,10 +23,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_path flash[:error] = 'Record not found'
-    load_assessment_data
+    if current_user == nil
+       redirect_to root_path
+       flash[:error] = "Sign in to view your profile"
+    elsif params[:id].to_i != current_user.id
+    # if params[:id].to_i != current_user.id
+      redirect_to root_path
+      flash[:error] = "You may only view your own profile"
+    else
+      @user = current_user
+    end
+    # load_assessment_data
   end
 
   def load_assessment_data
@@ -34,8 +43,8 @@ class UsersController < ApplicationController
   def load_home
     if !Home.find_by(user_id: current_user.id)
       @home = Home.new(user_id: current_user.id)
-      raise
-      @home.save # delete and change line above to Home.create(...)
+      # raise
+      # @home.save # delete and change line above to Home.create(...)
     else
       @home = Home.find_by(user_id: current_user.id)
     end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProfileHomeController, type: :controller do
+describe HomeAssessmentController, type: :controller do
   describe "POST #update_home" do
     context "existing home with valid params" do
       it "responds" do

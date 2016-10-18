@@ -12,5 +12,7 @@ describe Home, type: :model do
     end
 
     # replace the above with context "is invalid" and TDD-out Home model validations
+    # add context: is house
+    # add context: is apartment
   end
 end

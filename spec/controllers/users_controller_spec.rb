@@ -43,27 +43,47 @@ describe UsersController, type: :controller do
         make_request
         expect(flash[:error]).to include "username: can't be blank"
       end
+
+      # TODO: add spec for ActiveRecord::RecordNotFound & redirect to root_path
     end
   end
 
   describe "GET #show" do
+    subject(:user) {create(:user)}
+
     context "with valid attributes" do
       it "returns 200" do
-        user = create(:user)
         get :show, params: { id: user.id }
         expect(response.status).to eq 200
       end
 
       it "renders the #show view" do
-        user = create(:user)
         get :show, params: { id: user.id }
         expect(response).to render_template :show
       end
 
       it "assigns the requested user to @user" do
-        user = create(:user)
         get :show, params: { id: user }
         expect(assigns(:user)).to eq(user)
+      end
+    end
+
+    context "associated Home has not yet been instantiated" do
+      it "creates a new Home belonging to the User" do
+        get :show, params: { id: user }
+        # DEBUG:
+        # puts user.inspect
+        # puts user.home.inspect
+
+        # expect(assigns(:home)).to eq("home")
+
+        #  GOAL: expect Home.count to increase by 1
+      end
+    end
+
+    context "associated Home exists" do
+      it "Home shown in the view belongs to the User" do
+        # GOAL: expect home's user id to match User.id
       end
     end
   end

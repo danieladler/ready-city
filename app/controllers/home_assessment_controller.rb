@@ -10,9 +10,9 @@ class HomeAssessmentController < ApplicationController
       flash[:error] = @errors
       render "users/show"
     else
-      # redirect or render? It's not currently showing the success flash message until reload.
       @home.save
       flash[:success] = "Home Updated"
+      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
     end
     # TODO: add assessment checks
   end

@@ -1,6 +1,7 @@
 require 'rails_helper'
 require 'pry'
 
+
 describe UsersController, type: :controller do
   describe "GET #sign-up" do
     it "returns 200" do
@@ -51,7 +52,9 @@ describe UsersController, type: :controller do
 
   describe "GET #show" do
     subject(:user) {create(:user)}
-    before { stub_current_user(user) }
+    before(:each) do
+      stub_current_user(user)
+    end
 
     # TODO: troubleshoot this context, as I can't get the code to run in the spec
     # even though it works in the browser. Something to do with setting current_user?
@@ -72,8 +75,6 @@ describe UsersController, type: :controller do
     end
 
     context "with valid attributes" do
-      # before { stub_current_user(user) }
-
       it "returns 200" do
         get :show, params: { id: user.id }
         expect(response.status).to eq 200
@@ -90,17 +91,12 @@ describe UsersController, type: :controller do
       end
     end
 
-    # context "associated Home has not yet been instantiated" do
+    # context "User's Home has not yet been instantiated" do
     #   it "creates a new Home belonging to the User" do
-    #     # get :show, params: { id: user }
-    #     # DEBUG:
-    #     # puts user.inspect
-    #     # puts user.home.inspect
-    #
-    #     # expect(assigns(:home)).to eq("home")
-    #
-    #     #  GOAL: expect Home.count to increase by 1
-    #   end
+    #     get :show, params: { id: user }
+        # expect(assigns(:home)).to eq("home") # Debug
+        #  GOAL: expect Home.count to increase by 1
+      # end
     # end
     #
     # context "associated Home exists" do

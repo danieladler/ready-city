@@ -30,19 +30,11 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
-    # load_assessment_data
+    load_assessment_data
   end
 
   def load_assessment_data
-    load_home
-  end
-
-  def load_home
-    if !Home.find_by(user_id: current_user.id)
-      @home = Home.new(user_id: current_user.id)
-    else
-      @home = Home.find_by(user_id: current_user.id)
-    end
+    @home = Home.load_home(current_user)
   end
 
   private

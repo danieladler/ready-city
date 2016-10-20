@@ -21,18 +21,17 @@ class Home < ApplicationRecord
     self.city                    = params[:city]
     self.state                   = params[:state]
     self.zip                     = params[:zip]
+    self.is_house                = params[:is_house]
     self.floor_count             = params[:floor_count].to_i
     self.year_built              = params[:year_built].to_i
     self.filter_house_specific_fields(params)
   end
 
   def filter_house_specific_fields(params)
-    if params[:is_house] == false
-      self.is_house           = false
+    if self.is_house == false
       self.fdn_bolted         = nil
       self.structure_material = nil
     else
-      self.is_house           = true
       self.fdn_bolted         = params[:fdn_bolted]
       self.structure_material = params[:structure_material]
     end

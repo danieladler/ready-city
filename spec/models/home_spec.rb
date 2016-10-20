@@ -31,11 +31,63 @@ describe Home, type: :model do
   end
 
   describe ".load_home" do
+    context "brand-new User" do
+      let(:current_user) { create(:user) }
+
+      it "User's home has not been instantiated" do
+        expect(current_user.home).to eq nil
+      end
+
+      it "creates a new instance of Home" do
+        # binding.pry
+        expect(Home.load_home(current_user)).to be_a_new(Home)
+      end
+
+
+    end
+
     context "a Home for current_user has already been instantiated" do
       it "returns that User's home" do
         current_user = create(:user)
         current_user.home = home
         expect(Home.load_home(current_user)).to eq(home) #user.home
+      end
+    end
+  end
+
+  describe "#update_db_values" do
+    let (:incomplete_home) {build_stubbed(:home, {
+        address: nil,
+        city: nil,
+        state: nil,
+      })}
+
+    context "User updates blank Home address fields" do
+      it "updates those fields in the database" do
+        incomplete_home.update_db_values({
+          address: "999 Fake St.",
+          city: "New York",
+          state: "NY"
+        })
+        expect(incomplete_home).to have_attributes({
+          city: "New York",
+          state: "NY"
+        })
+      end
+    end
+
+    context "Home is not a house" do
+      it "sets non-house-related attributes to nil" do
+        incomplete_home.update_db_values({
+            address: "999 Fake St.",
+            city: "New York",
+            state: "NY",
+            is_house: false
+        })
+        expect(incomplete_home).to have_attributes({
+          fdn_bolted: nil,
+          structure_material: nil
+        })
       end
     end
   end

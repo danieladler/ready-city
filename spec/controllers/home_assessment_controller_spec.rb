@@ -1,24 +1,45 @@
 require 'rails_helper'
 
+require 'pry'
+
 describe HomeAssessmentController, type: :controller do
   describe "POST #update_home" do
-    context "existing home with valid params" do
-      it "responds" do
-        # user = create(:user)
-        # expect(post :update_home, params: {user: user}).to eq "here"
+    let(:user) { create(:user) }
+    let(:home) { create(:home) }
+    before do
+      stub_current_user(user)
+    end
+
+    context "with valid params" do
+      let(:make_request) {
+        post :update_home, params: {
+          is_house: true,
+          floor_count: 3
+        }
+      }
+
+      it "returns 200" do
+        make_request
+        expect(response.status).to eq 200
       end
     end
 
-    context "existing home with invalid params" do
+    context "with invalid params" do
+      let(:make_request) {
+        post :update_home, params: {
+          zip: nil
+        }
+      }
 
-    end
+      it "returns a descriptive error message" do
+        make_request
+        expect(flash[:error]).to include "zip: can't be blank"
+      end
 
-    context "new home with valid params" do
-
-    end
-
-    context "new home with invalid params" do
-
+      it "renders the 'users/show' template" do
+        make_request
+        expect(response).to render_template "users/show"
+      end
     end
   end
 end

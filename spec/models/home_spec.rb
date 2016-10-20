@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 describe Home, type: :model do
   subject(:home) {create(:home)}
@@ -39,7 +38,6 @@ describe Home, type: :model do
       end
 
       it "creates a new instance of Home" do
-        # binding.pry
         expect(Home.load_home(current_user)).to be_a_new(Home)
       end
 

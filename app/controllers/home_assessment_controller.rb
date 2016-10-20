@@ -3,6 +3,7 @@ class HomeAssessmentController < ApplicationController
     @home ||= Home.load_home(current_user)
     @home.update_db_values(params)
     if @home.save
+      generate_home_preps(current_user)
       flash[:success] = "Home Updated"
       redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
     elsif @home.errors
@@ -25,6 +26,10 @@ class HomeAssessmentController < ApplicationController
     #   flash[:success] = "Home Updated"
     #   redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
     # end
-    # TODO: add assessment checks
+  end
+
+  def generate_home_preps(user)
+    @pb = PrepBuilder.new(user)
+    @pb.generate_home_preps
   end
 end

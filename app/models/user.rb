@@ -4,4 +4,5 @@ class User < ApplicationRecord
   validates :email, format: {with: /@/}
   has_secure_password
   has_one :home
+  has_many :user_preps
 end

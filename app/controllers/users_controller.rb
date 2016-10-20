@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # TODO: add sessions!
-      # session[:user_id] = @user.id 
+      # session[:user_id] = @user.id
       redirect_to user_path(id: @user.id)
       flash[:success] = "Account created. Welcome to Ready City!"
     else
@@ -21,9 +21,20 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_path flash[:error] = 'Record not found'
+    if current_user == nil
+       redirect_to root_path
+       flash[:error] = "Sign in to view your profile"
+    elsif params[:id].to_i != current_user.id
+      redirect_to root_path
+      flash[:error] = "You may only view your own profile"
+    else
+      @user = current_user
+    end
+    load_assessment_data
+  end
+
+  def load_assessment_data
+    @home = Home.load_home(current_user)
   end
 
   private

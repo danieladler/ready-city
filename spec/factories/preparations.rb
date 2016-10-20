@@ -1,8 +1,15 @@
 FactoryGirl.define do
   factory :preparation do
-    prep_type "MyString"
-    keyword "MyString"
-    instructions "MyString"
-    base_cost 1
+    prep_type "home"
+    keyword "keyword"
+    instructions "instructions"
+    base_cost 100
+
+    factory :home_prep do
+      prep_type "home"
+      keyword "foundation"
+      instructions "anchor home frame to foundation"
+      base_cost 400000
+    end
   end
 end

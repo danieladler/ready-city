@@ -1,5 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe UserPrep, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe UserPrep, type: :model do
+  let(:prep) { create(:user_prep)}
+
+  describe ".validates" do
+    context "is invalid" do
+      it "when ___" do
+      end
+    end
+  end
 end

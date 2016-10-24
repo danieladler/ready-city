@@ -14,7 +14,7 @@ describe Preparation, type: :model do
 
       it "when prep_type is missing" do
         new_prep = build(:preparation, prep_type: nil)
-          expect(new_prep.valid?).to eq false
+        expect(new_prep.valid?).to eq false
       end
 
       it "when instructions are missing" do

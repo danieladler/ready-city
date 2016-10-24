@@ -1,12 +1,18 @@
 FactoryGirl.define do
   factory :user_prep do
-    user_id 1
-    prep_id 1
-    prep_type "MyString"
-    keyword "MyString"
-    note "MyText"
+    user
+    # user_id 1
+    prep_type "plan"
     mult_cost 1
-    completed_at "2016-10-20 15:00:41"
     completed false
+    instructions "placeholder instructions"
+
+    trait :home_prep do
+    # factory :home_user_prep do
+      # user_id 1
+      prep_type "home"
+      keyword "foundation"
+      instructions "anchor home frame to foundation"
+    end
   end
 end

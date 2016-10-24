@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # TODO: add sessions!
-      # session[:user_id] = @user.id
+      session[:user_id] = @user.id
       redirect_to user_path(id: @user.id)
       flash[:success] = "Account created. Welcome to Ready City!"
     else

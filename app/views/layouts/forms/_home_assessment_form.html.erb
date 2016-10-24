@@ -24,11 +24,11 @@
   <div class="form-group">
     <label for="is_house">House or Apartment?</label>
     <label>
-      <input type="radio" class="radio" name="is_house" value="house" <%= 'checked' if @home.is_house %>>
+      <input type="radio" class="radio" name="is_house" value="true" <%= 'checked' if @home.is_house %>>
       House
     </label>
     <label>
-      <input type="radio" class="radio" name="is_house" value="apartment" <%= 'checked' unless @home.is_house %>>
+      <input type="radio" class="radio" name="is_house" value="false" <%= 'checked' unless @home.is_house %>>
       Apartment
     </label>
   </div>

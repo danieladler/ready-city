@@ -20,7 +20,4 @@ class PrepBuilder
       )
     end
   end
-
-  def generate_house_only_preps
-  end
 end

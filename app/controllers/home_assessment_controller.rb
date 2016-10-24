@@ -14,22 +14,11 @@ class HomeAssessmentController < ApplicationController
       flash[:error] = @errors
       render "users/show"
     end
-    # if @home.invalid?
-    #   @errors = []
-    #   @home.errors.each do |column, message|
-    #     @errors << column.to_s + ": " + message.to_s
-    #   end
-    #   flash[:error] = @errors
-    #   render "users/show"
-    # else
-    #   @home.save
-    #   flash[:success] = "Home Updated"
-    #   redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
-    # end
   end
 
   def generate_home_preps(user)
     @pb = PrepBuilder.new(user)
-    @pb.generate_home_preps
+    @pb.generate_preps("home") # generic home preps regardless of house/apt/etc.
+    @pb.generate_preps("house") if user.home.is_house
   end
 end

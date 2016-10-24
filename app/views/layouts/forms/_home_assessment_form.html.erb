@@ -22,13 +22,13 @@
     <input type="text" class="text_field" name="zip" value="<%= @home.zip %>">
   </div>
   <div class="form-group">
-    <label for="home_type">House or Apartment?</label>
+    <label for="is_house">House or Apartment?</label>
     <label>
-      <input type="radio" class="radio" name="home_type" value="house" <%= 'checked' if @home.is_house %>>
+      <input type="radio" class="radio" name="is_house" value="house" <%= 'checked' if @home.is_house %>>
       House
     </label>
     <label>
-      <input type="radio" class="radio" name="home_type" value="apartment" <%= 'checked' unless @home.is_house %>>
+      <input type="radio" class="radio" name="is_house" value="apartment" <%= 'checked' unless @home.is_house %>>
       Apartment
     </label>
   </div>

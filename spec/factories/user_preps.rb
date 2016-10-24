@@ -3,7 +3,7 @@ FactoryGirl.define do
     user
     # user_id 1
     prep_type "plan"
-    mult_cost 1
+    total_cost_in_cents 1
     completed false
     instructions "placeholder instructions"
 

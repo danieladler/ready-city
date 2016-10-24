@@ -8,7 +8,6 @@ class PrepBuilder
     @user_id = user.id
   end
 
-  # def generate_home_preps
   def generate_preps(prep_type)
     Preparation.where(prep_type: prep_type).each do |p|
       @prep = UserPrep.find_or_create_by(

@@ -88,18 +88,39 @@ describe Admin::PreparationsController, type: :controller do
         @preparation = create(:preparation)
       end
 
-      let(:make_request) {
-        patch :update, params: {id: @preparation, preparation: attributes_for(:preparation, keyword: "new")}
-      }
+      context "with valid attributes as update is submitted" do
+        let(:make_request) {
+          patch :update, params: {id: @preparation, preparation: attributes_for(:preparation, keyword: "new")}
+        }
 
-      it "updates the attributes" do
-        make_request
-        expect(assigns(:preparation).keyword).to eq("new")
+        it "updates the attributes" do
+          make_request
+          expect(assigns(:preparation).keyword).to eq("new")
+        end
+
+        it "redirects to admin/preparations view" do
+          make_request
+          expect(response).to redirect_to admin_preparations_path
+        end
       end
 
-      it "redirects to admin/preparations view" do
-        make_request
-        expect(response).to redirect_to admin_preparations_path
+      context "with invalid attributes as update is submitted" do
+        let(:make_request) {
+          patch :update, params: {
+            id: @preparation,
+            preparation: attributes_for(:preparation, instructions: nil)
+          }
+        }
+
+        it "renders /edit view" do
+          make_request
+          expect(response).to render_template :edit
+        end
+
+        it "returns a descriptive error message" do
+          make_request
+          expect(flash[:error]).to include "instructions: can't be blank"
+        end
       end
     end
 

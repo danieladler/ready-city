@@ -26,8 +26,18 @@ class Admin::PreparationsController < AdminController
 
   def update
     @preparation = Preparation.find(params[:id])
-    @preparation.update(preparation_params)
-    redirect_to admin_preparations_path
+    if @preparation.update(preparation_params)
+      flash[:success] = "Preparation Updated"
+      redirect_to admin_preparations_path
+    else
+      @errors = []
+      @preparation.errors.each do |column, message|
+        @errors << column.to_s + ": " + message.to_s
+      end
+      flash[:error] = @errors
+      @preparations = Preparation.all
+      render :edit
+    end
   end
 
   def destroy

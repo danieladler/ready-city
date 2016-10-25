@@ -20,7 +20,13 @@ class Admin::PreparationsController < AdminController
   def update
     @preparation = Preparation.find(params[:id])
     @preparation.update(preparation_params)
-    # @line_item.update(params.require(:line_item).permit(:quantity, :order_id))
+    redirect_to admin_preparations_path
+  end
+
+  def destroy
+    @preparation = Preparation.find(params[:id])
+    @preparation.destroy
+    redirect_to admin_preparations_path
   end
 
   private

@@ -70,10 +70,24 @@ describe Admin::PreparationsController, type: :controller do
         make_request
         expect(assigns(:preparation).keyword).to eq("new")
       end
+
+      it "redirects to admin/preparations view" do
+        make_request
+        expect(response).to redirect_to admin_preparations_path
+      end
     end
 
-    describe "DESTROY destroy" do
-      # specs for destroy
+    describe "DELETE destroy" do
+      before(:each) do
+        @preparation = create(:preparation)
+      end
+
+      let(:make_request) { delete :destroy, params: {id: @preparation} }
+
+      it "redirects to admin/preparations view" do
+        make_request
+        expect(response).to redirect_to admin_preparations_path
+      end
     end
   end
 end

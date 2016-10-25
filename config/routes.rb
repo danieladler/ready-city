@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get "/preparations", to: "preparations#preparations", as: :preparations
     post "new_prep",     to: "preparations#create", as: :new_prep
     put "update/:id",    to: "preparations#update"
+    delete "/destroy/:id", to: "preparations#destroy", as: :delete_prep
   end
 
 end

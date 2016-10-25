@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   post   "/update_home", to: "home_assessment#update_home"
 
   namespace :admin do
-    get "/preparations", to: "preparations#preparations", as: :preparations
-    post "new_prep",     to: "preparations#create", as: :new_prep
-    put "update/:id",    to: "preparations#update"
-    delete "/destroy/:id", to: "preparations#destroy", as: :delete_prep
+    get "/preparations",   to: "preparations#preparations", as: :preparations
+    post "new_prep",       to: "preparations#create",       as: :new_prep
+    get "/edit/:id",       to: "preparations#edit",         as: :edit_prep
+    patch "/update/:id",   to: "preparations#update",       as: :update_prep
+    delete "/destroy/:id", to: "preparations#destroy",      as: :delete_prep
   end
 
 end

@@ -63,13 +63,33 @@ describe Admin::PreparationsController, type: :controller do
       end
     end
 
+    describe "GET edit" do
+      before(:each) do
+        @preparation = create(:preparation)
+      end
+
+      let(:make_request) {
+        get :edit, params: {id: @preparation}
+      }
+
+      it "returns 200" do
+        make_request
+        expect(response.status).to eq(200)
+      end
+
+      it "displays the Preparation intended for editing" do
+        make_request
+        expect(assigns(:preparation).id).to eq(@preparation.id)
+      end
+    end
+
     describe "PATCH update" do
       before(:each) do
         @preparation = create(:preparation)
       end
 
       let(:make_request) {
-        put :update, params: {id: @preparation, preparation: attributes_for(:preparation, keyword: "new")}
+        patch :update, params: {id: @preparation, preparation: attributes_for(:preparation, keyword: "new")}
       }
 
       it "updates the attributes" do

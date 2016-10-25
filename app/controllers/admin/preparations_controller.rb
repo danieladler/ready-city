@@ -15,8 +15,13 @@ class Admin::PreparationsController < AdminController
         @errors << column.to_s + ": " + message.to_s
       end
       flash[:error] = @errors
+      @preparations = Preparation.all
       render :preparations
     end
+  end
+
+  def edit
+    @preparation = Preparation.find(params[:id])
   end
 
   def update

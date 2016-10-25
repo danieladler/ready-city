@@ -38,6 +38,12 @@ describe Admin::PreparationsController, type: :controller do
           make_request
           expect(flash[:success]).to include "New Preparation Created"
         end
+
+        # TODO: replace with AJAX
+        it "redirects back to /preparations" do
+          make_request
+          expect(response).to redirect_to admin_preparations_path
+        end
       end
 
       context "with invalid attributes" do

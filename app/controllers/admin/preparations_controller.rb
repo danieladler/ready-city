@@ -1,12 +1,14 @@
 class Admin::PreparationsController < AdminController
   def preparations
     @preparations = Preparation.all
+    @preparation = Preparation.new
   end
 
   def create
     @preparation = Preparation.new(preparation_params)
     if @preparation.save
       flash[:success] = "New Preparation Created"
+      redirect_to admin_preparations_path
     else
       @errors = []
       @preparation.errors.each do |column, message|

@@ -1,0 +1,17 @@
+<h1> Admin Dashboard </h1>
+<table>
+  <tr>
+    <th> Prep Type </th>
+    <th> Keyword </th>
+    <th> Instructions </th>
+    <th> Base Cost </th>
+  </tr>
+  <% @preparations.each do |p|  %>
+    <tr>
+      <td><%= p.prep_type %></td>
+      <td><%= p.keyword %></td>
+      <td><%= p.instructions %></td>
+      <td><%= p.base_cost_in_cents / 100 %></td>
+    </tr>
+  <% end %>
+</table>

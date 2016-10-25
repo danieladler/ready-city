@@ -43,6 +43,7 @@ class Admin::PreparationsController < AdminController
   def destroy
     @preparation = Preparation.find(params[:id])
     @preparation.destroy
+    flash[:notice] = "Preparation Deleted"
     redirect_to admin_preparations_path
   end
 

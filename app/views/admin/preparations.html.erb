@@ -7,6 +7,7 @@
     <th> Keyword </th>
     <th> Base Cost </th>
     <th></th>
+    <th></th>
   </tr>
   <% @preparations.each do |p|  %>
     <tr>
@@ -15,6 +16,7 @@
       <td><%= p.keyword %></td>
       <td><%= p.base_cost_in_cents / 100 %></td>
       <td><%= link_to "edit", admin_edit_prep_path(p) %></td>
+      <td><%= link_to "delete", admin_delete_prep_path(p) %></td>
     </tr>
   <% end %>
 </table>

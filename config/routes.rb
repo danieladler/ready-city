@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "preparations", to: "preparations#preparations", as: :admin_dashboard
+    resources :preparations, only: [:create, :update, :destroy]
   end
 
 end

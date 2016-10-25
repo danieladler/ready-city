@@ -6,6 +6,7 @@
     <th> Instructions </th>
     <th> Keyword </th>
     <th> Base Cost </th>
+    <th> Real Cost </th>
     <th></th>
     <th></th>
   </tr>
@@ -14,6 +15,7 @@
       <td><%= p.prep_type %></td>
       <td><%= p.instructions %></td>
       <td><%= p.keyword %></td>
+      <td><%= p.base_cost_in_cents       %></td>
       <td><%= p.base_cost_in_cents / 100 %></td>
       <td><%= link_to "edit", admin_edit_prep_path(p) %></td>
       <td><%= link_to "delete", admin_delete_prep_path(p) %></td>

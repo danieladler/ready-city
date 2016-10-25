@@ -17,6 +17,12 @@ class Admin::PreparationsController < AdminController
     end
   end
 
+  def update
+    @preparation = Preparation.find(params[:id])
+    @preparation.update(preparation_params)
+    # @line_item.update(params.require(:line_item).permit(:quantity, :order_id))
+  end
+
   private
   def preparation_params
     params.require(:preparation).permit(:prep_type, :keyword, :instructions, :base_cost_in_cents)

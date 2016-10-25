@@ -58,7 +58,18 @@ describe Admin::PreparationsController, type: :controller do
     end
 
     describe "PATCH update" do
-      # specs for update
+      before(:each) do
+        @preparation = create(:preparation)
+      end
+
+      let(:make_request) {
+        put :update, params: {id: @preparation, preparation: attributes_for(:preparation, keyword: "new")}
+      }
+
+      it "updates the attributes" do
+        make_request
+        expect(assigns(:preparation).keyword).to eq("new")
+      end
     end
 
     describe "DESTROY destroy" do

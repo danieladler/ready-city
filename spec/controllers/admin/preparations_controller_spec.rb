@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 describe Admin::PreparationsController, type: :controller do
   let(:user) { create(:user, :admin) }

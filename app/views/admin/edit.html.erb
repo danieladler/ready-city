@@ -2,7 +2,7 @@
 <%= form_for @preparation, url: admin_update_prep_path(@preparation) do |p| %>
   <div class="form-group">
     <%= p.label :prep_type, "Prep Type" %>
-    <%= p.text_field :prep_type %>
+    <%= p.select :prep_type, [['home'], ['house'], ['gear'], ['plan']]%>
   </div>
   <div class="form-group">
     <%= p.label :instructions, "Instructions" %>

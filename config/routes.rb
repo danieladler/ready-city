@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   # PROFILE - ASSESSMENTS
   post   "/update_home", to: "home_assessment#update_home"
 
+  namespace :admin do
+    get "preparations", to: "preparations#preparations", as: :admin_dashboard
+  end
+
 end

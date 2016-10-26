@@ -4,3 +4,24 @@
   responsible during an emergency (including spouse/partner). Pets are
   also considered dependents and can be added with the 'Add Pet' button.
 </p>
+<!-- list of dependents here -->
+<form action="/update_dependents" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+  <div class="form-field">
+    <label for="name">Name</label>
+    <input type="text" class="text_field" name="dep_name" id="name">
+  </div>
+  <div class="form-field" id="dep-type">
+    <label for="dep_type">Human or Pet?</label>
+    <label>
+      <input type="radio" class="radio" name="human" value="true">
+      Human
+    </label>
+    <label>
+      <input type="radio" class="radio" name="human" value="false">
+      Pet
+    </label>
+  </div>
+  <input type="submit" value="Save Dependent">
+</form>

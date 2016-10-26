@@ -1,5 +1,5 @@
 class DependentAssessmentController < ApplicationController
-  def new_dependent
+  def create
     @dependent = Dependent.new(dependent_params)
     @dependent.user_id = current_user.id
     if @dependent.save
@@ -15,7 +15,7 @@ class DependentAssessmentController < ApplicationController
     end
   end
 
-  def update_dependent
+  def update
     @dependent = Dependent.find(params[:id])
     @dependent.update_db_values(params)
     if @dependent.save
@@ -30,6 +30,13 @@ class DependentAssessmentController < ApplicationController
       flash[:error] = @errors
       render "users/show"
     end
+  end
+
+  def destroy
+    @dependent = Dependent.find(params[:id])
+    @dependent.destroy
+    flash[:notice] = "Dependent Deleted"
+    redirect_to user_path(current_user.id)
   end
 
   def generate_dependent_preps(user, dependent)

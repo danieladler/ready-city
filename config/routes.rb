@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   get "/users/:id",      to: "users#show",    as: :user # AKA Profile
 
   # PROFILE - ASSESSMENTS
-  post   "/update_home",          to: "home_assessment#update_home"
-  patch   "/update/:id", to: "dependent_assessment#update_dependent", as: :update_dependent
-  post   "/new_dependent",        to: "dependent_assessment#new_dependent", as: :new_dependent
+  post  "/update_home",            to: "home_assessment#update_home"
+  patch "/dependents/update/:id",  to: "dependent_assessment#update",  as: :update_dependent
+  post  "/dependents/create",      to: "dependent_assessment#create",  as: :create_dependent
+  get  "/dependents/destroy/:id",  to: "dependent_assessment#destroy", as: :destroy_dependent
 
   namespace :admin do
     get "/preparations",   to: "preparations#preparations", as: :preparations # AKA Admin Dashboard

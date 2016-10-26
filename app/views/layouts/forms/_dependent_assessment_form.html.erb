@@ -4,9 +4,9 @@
   responsible during an emergency (including spouse/partner). Pets are
   also considered dependents and can be added with the 'Add Pet' button.
 </p>
-<%  if current_user.has_dependents?  %>
+<% if current_user.has_dependents? %>
   <ul>
-    <% current_user.dependents.each do |d| %>
+    <% current_user.dependents.order(human: :desc).each do |d| %>
       <%= form_for d, url: update_dependent_path(d) do |f| %>
         <div class="form-group">
           <%= f.label :name, "Name" %>
@@ -20,11 +20,12 @@
         </div>
         <%= f.submit %>
       <% end %>
+      <a href= "<%= destroy_dependent_path(d.id)%>"> x </a>
     <% end %>
   </ul>
 <% end %>
 <h3 class="title"> Add a Dependent </h3>
-<form action="/new_dependent" method="post">
+<form action="/dependents/create" method="post">
   <input name="utf8" type="hidden" value="✓">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
   <div class="form-field">

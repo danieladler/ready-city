@@ -5,4 +5,9 @@ class User < ApplicationRecord
   has_secure_password
   has_one :home
   has_many :user_preps
+  has_many :dependents
+
+  def has_dependents?
+    true if self.dependents.count > 0
+  end
 end

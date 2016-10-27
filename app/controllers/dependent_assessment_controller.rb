@@ -3,6 +3,7 @@ class DependentAssessmentController < ApplicationController
     @dependent = Dependent.new(dependent_params)
     @dependent.user_id = current_user.id
     if @dependent.save
+      generate_dependent_preps(current_user)
       flash[:success] = "Dependent Added"
       redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
     elsif @dependent.errors
@@ -19,7 +20,6 @@ class DependentAssessmentController < ApplicationController
     @dependent = Dependent.find(params[:id])
     @dependent.update_db_values(params)
     if @dependent.save
-      # generate_dependent_preps(current_user, @dependent)
       generate_dependent_preps(current_user)
       flash[:success] = "Dependent Updated"
       redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
@@ -50,11 +50,9 @@ class DependentAssessmentController < ApplicationController
     # How will I handle updating preps that are updated based on qty of dependents? (i.e. food, water)
 
     @pb = PrepBuilder.new(user)
+    @pb.generate_preps("gear_pet", options={consumer_multiplier: user.pets_in_household}) if user.pets_in_household > 0
+    @pb.generate_preps("gear_human", options = {consumer_multiplier: user.people_in_household})
     # @pb.generate_preps("plan")
-    # @pb.generate_preps("pet") if user.pets_in_household > 0
-
-    @pb.generate_preps("gear", options = {people_multiplier: user.people_in_household})
-    # raise
   end
 
   private

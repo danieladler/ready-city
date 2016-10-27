@@ -1,6 +1,4 @@
 require 'rails_helper'
-require 'pry'
-
 
 describe UsersController, type: :controller do
   describe "GET #sign-up" do

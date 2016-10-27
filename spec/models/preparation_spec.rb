@@ -12,8 +12,8 @@ describe Preparation, type: :model do
         expect(prep.errors.messages[:keyword]).to include("has already been taken")
       end
 
-      it "when prep_type is missing" do
-        new_prep = build(:preparation, prep_type: nil)
+      it "when prep_maintype is missing" do
+        new_prep = build(:preparation, prep_maintype: nil)
         expect(new_prep.valid?).to eq false
       end
 

@@ -12,14 +12,17 @@ Rails.application.routes.draw do
   get "/users/:id",      to: "users#show",    as: :user # AKA Profile
 
   # PROFILE - ASSESSMENTS
-  post   "/update_home", to: "home_assessment#update_home"
+  post  "/update_home",            to: "home_assessment#update_home"
+  patch "/dependents/update/:id",  to: "dependent_assessment#update",  as: :update_dependent
+  post  "/dependents/create",      to: "dependent_assessment#create",  as: :create_dependent
+  get  "/dependents/destroy/:id",  to: "dependent_assessment#destroy", as: :destroy_dependent
 
   namespace :admin do
-    get "/preparations",   to: "preparations#preparations", as: :preparations
+    get "/preparations",   to: "preparations#preparations", as: :preparations # AKA Admin Dashboard
     post "new_prep",       to: "preparations#create",       as: :new_prep
     get "/edit/:id",       to: "preparations#edit",         as: :edit_prep
     patch "/update/:id",   to: "preparations#update",       as: :update_prep
-    get "/destroy/:id",    to: "preparations#destroy",         as: :delete_prep
+    get "/destroy/:id",    to: "preparations#destroy",      as: :delete_prep
   end
 
 end

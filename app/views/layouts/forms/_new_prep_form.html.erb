@@ -1,8 +1,12 @@
 <h2> Add a Preparation </h2>
 <%= form_for @preparation, url: admin_new_prep_path(@preparation) do |p| %>
   <div class="form-group">
-    <%= p.label :prep_type, "Prep Type" %>
-    <%= p.select :prep_type, [['home'], ['house'], ['gear'], ['plan']]%>
+    <%= p.label :prep_maintype, "Prep MainType" %>
+    <%= p.select :prep_maintype, [['home'], ['gear'], ['plan']]%>
+  </div>
+  <div class="form-group">
+    <%= p.label :prep_subtype, "Prep SubType" %>
+    <%= p.select :prep_subtype, [['home_interior'], ['home_structure'],['gear_human'], ['gear_pet']]%>
   </div>
   <div class="form-group">
     <%= p.label :instructions, "Instructions" %>
@@ -17,10 +21,16 @@
     <%= p.text_field :base_cost_in_cents %>
   </div>
   <div class="form-group">
-    <%= p.label :variable, 'Variable' %>
-    <%= p.radio_button :variable, true %>
-    <%= p.label :variable, 'Generic' %>
-    <%= p.radio_button :variable, false %>
+    <%= p.label :variable_quantity, 'Variable Quantity' %>
+    <%= p.radio_button :variable_quantity, true %>
+    <%= p.label :variable_quantity, 'N/A' %>
+    <%= p.radio_button :variable_quantity, false %>
+  </div>
+  <div class="form-group">
+    <%= p.label :variable_action, 'Variable Action' %>
+    <%= p.radio_button :variable_action, true %>
+    <%= p.label :variable_action, 'N/A' %>
+    <%= p.radio_button :variable_action, false %>
   </div>
   <div class="form-group">
     <%= p.label :priority, "Priority" %>

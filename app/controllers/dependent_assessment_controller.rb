@@ -20,6 +20,7 @@ class DependentAssessmentController < ApplicationController
     @dependent.update_db_values(params)
     if @dependent.save
       # generate_dependent_preps(current_user, @dependent)
+      generate_dependent_preps(current_user)
       flash[:success] = "Dependent Updated"
       redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
     elsif @dependent.errors
@@ -39,18 +40,21 @@ class DependentAssessmentController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
-  def generate_dependent_preps(user, dependent)
+  def generate_dependent_preps(user)
     # NB: need to think through how I'm going to dynamically create gear & plan
     # preps based on each create/update of a Dependent
 
     # Things to consider:
+    # Do I even need to pass in @dependent if variable GPs and PPs are based on TOTAL # of dependents?
     # Are there certain preps that'll be created for *each* new dependent added?
     # How will I handle updating preps that are updated based on qty of dependents? (i.e. food, water)
 
-    # @pb = PrepBuilder.new(user)
-
+    @pb = PrepBuilder.new(user)
     # @pb.generate_preps("plan")
-    # @pb.generate_preps("gear")
+    # @pb.generate_preps("pet") if user.pets_in_household > 0
+
+    @pb.generate_preps("gear", options = {people_multiplier: user.people_in_household})
+    # raise
   end
 
   private

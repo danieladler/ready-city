@@ -10,4 +10,12 @@ class User < ApplicationRecord
   def has_dependents?
     true if self.dependents.count > 0
   end
+
+  def people_in_household
+    self.dependents.where(human: true).count + 1 # add 1 to count current_user!
+  end
+
+  def pets_in_household
+    self.dependents.where(human: false).count
+  end
 end

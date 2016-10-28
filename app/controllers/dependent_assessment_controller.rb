@@ -41,14 +41,6 @@ class DependentAssessmentController < ApplicationController
   end
 
   def generate_dependent_preps(user)
-    # NB: need to think through how I'm going to dynamically create gear & plan
-    # preps based on each create/update of a Dependent
-
-    # Things to consider:
-    # Do I even need to pass in @dependent if variable GPs and PPs are based on TOTAL # of dependents?
-    # Are there certain preps that'll be created for *each* new dependent added?
-    # How will I handle updating preps that are updated based on qty of dependents? (i.e. food, water)
-
     @pb = PrepBuilder.new(user)
     @pb.generate_preps("gear_pet", options={consumer_multiplier: user.pets_in_household}) if user.pets_in_household > 0
     @pb.generate_preps("gear_human", options = {consumer_multiplier: user.people_in_household})

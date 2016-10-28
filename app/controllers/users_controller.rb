@@ -33,12 +33,18 @@ class UsersController < ApplicationController
     load_assessment_data
   end
 
+  def update
+    current_user.update(user_params)
+    flash[:success] = "User Updated"
+    redirect_to user_path(current_user)
+  end
+
   def load_assessment_data
     @home = Home.load_home(current_user)
   end
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :days_to_cover)
   end
 end

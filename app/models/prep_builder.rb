@@ -22,10 +22,12 @@ class PrepBuilder
 
       if p.variable_quantity
         @prep.update(
-          # total_quantity_needed: (@user.days_to_cover)
-          total_cost_in_cents: (p.base_cost_in_cents * options[:consumer_multiplier]) # *total_quantity_needed || # @user.days_to_cover || prep.user.days_to_cover
+          total_cost_in_cents: (
+            p.base_cost_in_cents *
+            options[:consumer_multiplier] *
+            @prep.user.days_to_cover
+          )
         )
-        # raise
       end
     end
   end

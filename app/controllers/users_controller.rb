@@ -35,6 +35,12 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(user_params)
+    d = DependentAssessmentController.new
+    d.generate_dependent_preps(current_user)
+    # re-run PrepBuilder (via DependentAssessmentController) for all of this
+    # user's UserPreps where total_cost varies based on user's # of days_to_cover
+    # TODO: run this same check but using a method on the user or user's
+    # UserPreps, not through DependentAssessmentController.
     flash[:success] = "User Updated"
     redirect_to user_path(current_user)
   end

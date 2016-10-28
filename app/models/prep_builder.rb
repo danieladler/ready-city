@@ -12,11 +12,12 @@ class PrepBuilder
 
   def generate_preps(prep_subtype, options)
     Preparation.where(prep_subtype: prep_subtype).each do |p|
-      @prep = UserPrep.find_or_create_by(
-        user_id: user_id,
+      @prep = UserPrep.where(user_id: user_id, keyword: p.keyword).first_or_create
+      @prep.update(
         prep_id: p.id,
         keyword: p.keyword,
-        prep_type: p.prep_maintype,
+        prep_maintype: p.prep_maintype,
+        prep_subtype: p.prep_subtype,
         instructions: p.instructions
       )
 

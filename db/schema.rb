@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028152838) do
+ActiveRecord::Schema.define(version: 20161028160734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20161028152838) do
   create_table "user_preps", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "prep_id"
-    t.string   "prep_type"
+    t.string   "prep_maintype"
     t.string   "keyword"
     t.text     "note"
     t.integer  "total_cost_in_cents"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20161028152838) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "instructions"
+    t.string   "prep_subtype"
   end
 
   create_table "users", force: :cascade do |t|

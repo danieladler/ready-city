@@ -28,9 +28,9 @@ describe UserPrep, type: :model do
       end
 
       it "is assigned a prep_type that is not one of home_/gear_/plan_prep" do
-        improperly_assigned_user_prep = build(:user_prep, prep_type: "food")
+        improperly_assigned_user_prep = build(:user_prep, prep_maintype: "food")
         improperly_assigned_user_prep.valid?
-        expect(improperly_assigned_user_prep.errors.messages[:prep_type]).to include("is not included in the list")
+        expect(improperly_assigned_user_prep.errors.messages[:prep_maintype]).to include("is not included in the list")
       end
     end
   end

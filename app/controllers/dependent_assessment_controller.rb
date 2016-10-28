@@ -36,6 +36,11 @@ class DependentAssessmentController < ApplicationController
   def destroy
     @dependent = Dependent.find(params[:id])
     @dependent.destroy
+    generate_dependent_preps(current_user)
+      # re-run this method so that user_preps with prep_subtype gear_pet and
+      # gear_human are updated with the new quantity of dependents. This has
+      # the effect of reducing these user_preps' total_cost_in_cents to the
+      # appropriate amount given # of dependents.
     flash[:notice] = "Dependent Deleted"
     redirect_to user_path(current_user.id)
   end

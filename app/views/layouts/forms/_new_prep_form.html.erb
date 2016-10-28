@@ -21,11 +21,8 @@
     <%= p.text_field :base_cost_in_cents %>
   </div>
   <div class="form-group">
-    <div class="title title-form-group"> Variable Quantity </div>
-    <%= p.label :variable_quantity, 'True' %>
-    <%= p.radio_button :variable_quantity, true %>
-    <%= p.label :variable_quantity, 'False' %>
-    <%= p.radio_button :variable_quantity, false %>
+    <%= p.label :variable_quantity_type, "Variable Quantity Type" %>
+    <%= p.select :variable_quantity_type, [['N/A'],['by_user'], ['by_dependent'], ['by_day']]%>
   </div>
   <div class="form-group">
     <div class="title title-form-group"> Variable Action </div>

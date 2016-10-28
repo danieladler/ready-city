@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027231707) do
+ActiveRecord::Schema.define(version: 20161028152838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20161027231707) do
     t.string   "keyword"
     t.string   "instructions"
     t.integer  "base_cost_in_cents"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.boolean  "variable_quantity"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "variable_quantity_type"
     t.integer  "priority"
     t.string   "prep_subtype"
     t.boolean  "variable_action"

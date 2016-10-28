@@ -55,8 +55,8 @@ class Admin::PreparationsController < AdminController
       :keyword,
       :instructions,
       :base_cost_in_cents,
-      :variable_quantity,
-      :variable_action, 
+      :variable_quantity_type,
+      :variable_action,
       :priority
     )
   end

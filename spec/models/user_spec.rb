@@ -47,5 +47,36 @@ describe User, type: :model do
         end
       end
     end
+
+    describe "#people_in_household" do
+      context "is single" do
+        it "returns 1" do
+          expect(user.people_in_household).to eq 1
+        end
+      end
+
+      context "has two human dependents" do
+        it "returns 3" do
+          dependent_spouse = create(:dependent, :human, name: "spouse", user_id: user.id)
+          dependent_child = create(:dependent, :human, name: "child", user_id: user.id)
+          expect(user.people_in_household).to eq 3
+        end
+      end
+    end
+
+    describe "#pets_in_household" do
+      context "owns no pets" do
+        it "returns nil" do
+          expect(user.pets_in_household).to eq 0
+        end
+      end
+
+      context "owns a single pet" do
+        it "returns 1" do
+          depenent_pet = create(:dependent, :pet, user_id: user.id)
+          expect(user.pets_in_household).to eq 1
+        end
+      end
+    end
   end
 end

@@ -6,6 +6,7 @@ FactoryGirl.define do
     email { "#{username}@rc.com" }
     password "secret"
     password_confirmation "secret"
+    days_to_cover 1
 
     trait :admin do
       admin true

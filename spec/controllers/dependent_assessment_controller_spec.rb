@@ -70,9 +70,19 @@ describe DependentAssessmentController, type: :controller do
     end
 
     context "with valid attributes; two PET Dependents" do # This context is to test that the total_cost_in_cents of a given user_prep is updated based on qty of dependents
+      let(:make_first_request) {
+        post :create, params: {dependent: attributes_for(:dependent, :pet)}
+      }
+      let(:make_second_request) {
+        post :create, params: {dependent: attributes_for(:dependent, :pet, name: "dog")}
+      }
       it "passes in correct # of Pets for consumer_multiplier as
       reflected in double quantities of gear_pet gear preps" do
-
+        gear_pet_base_preparation = create(:gear_pet) # instantiate the Preparation with the base cost data
+        make_first_request
+        make_second_request # create two dependents so that the total cost of the user_prep is doubled.
+        variable_qty_user_prep = user.user_preps.where(prep_subtype:'gear_pet').first # isolate the user_prep to be checked
+        expect(variable_qty_user_prep.total_cost_in_cents).to eq(gear_pet_base_preparation.base_cost_in_cents * user.dependents.count) # confirm the total_cost is double the base_cost
       end
     end
   end

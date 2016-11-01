@@ -33,12 +33,27 @@ class UsersController < ApplicationController
     load_assessment_data
   end
 
+  def update
+    current_user.update(user_params)
+    d = DependentAssessmentController.new
+    d.generate_dependent_preps(current_user)
+    # re-run PrepBuilder (via DependentAssessmentController) for all of this
+    # user's UserPreps where total_cost varies based on user's # of days_to_cover
+    # TODO: run this same check but using a method on the user or user's
+    # UserPreps, not through DependentAssessmentController.
+    flash[:success] = "User Updated"
+    redirect_to user_path(current_user)
+  end
+
   def load_assessment_data
     @home = Home.load_home(current_user)
+    @dependent = Dependent.new
+    # ^^ this pre-loads a Dependent instance for creating a new Dependent; the
+    # form_helper that requires it is in _depdendent_assessment_form template
   end
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :days_to_cover)
   end
 end

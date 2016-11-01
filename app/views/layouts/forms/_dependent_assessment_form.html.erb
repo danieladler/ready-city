@@ -25,23 +25,19 @@
   </ul>
 <% end %>
 <h3 class="title"> Add a Dependent </h3>
-<form action="/dependents/create" method="post">
-  <input name="utf8" type="hidden" value="✓">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
-  <div class="form-field">
-    <label for="name">Name</label>
-    <input type="text" class="text_field" name="name" id="name">
-  </div>
-  <div class="form-field" id="dep-type">
-    <label for="human">Human or Pet?</label>
-    <label>
-      <input type="radio" class="radio" name="human" id="human" value="true">
-      Human
-    </label>
-    <label>
-      <input type="radio" class="radio" name="human" id="human" value="false">
-      Pet
-    </label>
-  </div>
-  <input type="submit" value="Save Dependent">
-</form>
+<div class="create-dependent-form">
+  <%= form_for @dependent, url: create_dependent_path do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form-group">
+      <div class="title title-form-group"> Human or Pet? </div>
+      <%= f.label :human, 'Human' %>
+      <%= f.radio_button :human, true %>
+      <%= f.label :human, 'Pet' %>
+      <%= f.radio_button :human, false %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>

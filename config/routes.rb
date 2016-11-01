@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/sign-up",        to: "users#sign_up", as: :sign_up
   post "users",          to: "users#create",  as: :users
   get "/users/:id",      to: "users#show",    as: :user # AKA Profile
+  patch "/users/:id/update", to: "users#update", as: :update_user
 
   # PROFILE - ASSESSMENTS
   post  "/update_home",            to: "home_assessment#update_home"

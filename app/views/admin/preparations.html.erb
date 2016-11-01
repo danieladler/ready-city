@@ -1,24 +1,32 @@
 <h1> Admin Dashboard </h1>
 <%= render "layouts/forms/new_prep_form"%>
-<table>
+<table style="margin-top: 20px">
   <tr>
-    <th> Prep Type </th>
+    <th> Prep MainType </th>
+    <th> Prep SubType </th>
     <th> Instructions </th>
     <th> Keyword </th>
     <th> Base Cost </th>
     <th> Real Cost </th>
+    <th> Variable Qty Type </th>
+    <th> Variable Action? </th>
+    <th> Priority </th>
     <th></th>
     <th></th>
   </tr>
   <% @preparations.each do |p|  %>
     <tr>
-      <td><%= p.prep_type %></td>
+      <td><%= p.prep_maintype %></td>
+      <td><%= p.prep_subtype %></td>
       <td><%= p.instructions %></td>
       <td><%= p.keyword %></td>
       <td><%= p.base_cost_in_cents       %></td>
       <td><%= p.base_cost_in_cents / 100 %></td>
+      <td><%= p.variable_quantity_type %></td>
+      <td><%= p.variable_action %></td>
+      <td><%= p.priority %></td>
       <td><%= link_to "edit", admin_edit_prep_path(p) %></td>
-      <td><%= link_to "delete", admin_delete_prep_path(p) %></td>
+      <td><%= link_to "x", admin_delete_prep_path(p) %></td>
     </tr>
   <% end %>
 </table>

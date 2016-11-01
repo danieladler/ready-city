@@ -49,6 +49,15 @@ class Admin::PreparationsController < AdminController
 
   private
   def preparation_params
-    params.require(:preparation).permit(:prep_type, :keyword, :instructions, :base_cost_in_cents)
+    params.require(:preparation).permit(
+      :prep_maintype,
+      :prep_subtype,
+      :keyword,
+      :instructions,
+      :base_cost_in_cents,
+      :variable_quantity_type,
+      :variable_action,
+      :priority
+    )
   end
 end

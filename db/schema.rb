@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026193735) do
+ActiveRecord::Schema.define(version: 20161028160734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,18 +40,22 @@ ActiveRecord::Schema.define(version: 20161026193735) do
   end
 
   create_table "preparations", force: :cascade do |t|
-    t.string   "prep_type"
+    t.string   "prep_maintype"
     t.string   "keyword"
     t.string   "instructions"
     t.integer  "base_cost_in_cents"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "variable_quantity_type"
+    t.integer  "priority"
+    t.string   "prep_subtype"
+    t.boolean  "variable_action"
   end
 
   create_table "user_preps", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "prep_id"
-    t.string   "prep_type"
+    t.string   "prep_maintype"
     t.string   "keyword"
     t.text     "note"
     t.integer  "total_cost_in_cents"
@@ -60,6 +64,7 @@ ActiveRecord::Schema.define(version: 20161026193735) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "instructions"
+    t.string   "prep_subtype"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,6 +74,7 @@ ActiveRecord::Schema.define(version: 20161026193735) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.boolean  "admin"
+    t.integer  "days_to_cover"
   end
 
 end

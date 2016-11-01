@@ -1,5 +1,5 @@
 
-class PrepBuilder
+class UserPrepBuilder
   include ActiveModel::Model
   include ActiveModel::Validations
 

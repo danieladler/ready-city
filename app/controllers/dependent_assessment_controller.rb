@@ -46,7 +46,7 @@ class DependentAssessmentController < ApplicationController
   end
 
   def generate_dependent_preps(user)
-    @pb = PrepBuilder.new(user)
+    @pb = UserPrepBuilder.new(user)
     @pb.generate_preps("gear_pet", options={consumer_multiplier: user.pets_in_household}) if user.pets_in_household > 0
     @pb.generate_preps("gear_human", options = {consumer_multiplier: user.people_in_household})
     # @pb.generate_preps("plan")

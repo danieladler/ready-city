@@ -17,7 +17,7 @@ class HomeAssessmentController < ApplicationController
   end
 
   def generate_home_preps(user, home)
-    @pb = PrepBuilder.new(user)
+    @pb = UserPrepBuilder.new(user)
     @pb.generate_preps("home") # generic home preps regardless of house/apt/etc.
     @pb.generate_preps("house") if @home.is_house
   end

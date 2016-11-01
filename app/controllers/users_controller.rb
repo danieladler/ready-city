@@ -47,6 +47,9 @@ class UsersController < ApplicationController
 
   def load_assessment_data
     @home = Home.load_home(current_user)
+    @dependent = Dependent.new
+    # ^^ this pre-loads a Dependent instance for creating a new Dependent; the
+    # form_helper that requires it is in _depdendent_assessment_form template
   end
 
   private

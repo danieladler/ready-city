@@ -54,6 +54,6 @@ class DependentAssessmentController < ApplicationController
 
   private
   def dependent_params
-    params.permit(:id, :human, :name)
+    params.require(:dependent).permit(:id, :human, :name)
   end
 end

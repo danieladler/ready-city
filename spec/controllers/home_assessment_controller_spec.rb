@@ -9,9 +9,9 @@ describe HomeAssessmentController, type: :controller do
       stub_current_user(user)
     end
 
-    context "with valid params" do
+    context "with valid params, home is a HOUSE" do
       let(:make_request) {
-        post :update_home, params: attributes_for(:home)
+        post :update_home, params: attributes_for(:home, :house)
       }
 
       it "redirects to User's show/profile view" do
@@ -23,11 +23,23 @@ describe HomeAssessmentController, type: :controller do
         make_request
         expect(flash[:success]).to include "Home Updated"
       end
+
+      it "creates a new UserPrep with prep_subtype: home_structure" do
+        home_prep = create(:home_prep)
+        make_request
+        expect(UserPrep.last.prep_subtype).to eq("home_structure")
+      end
+
+      it "creates a new UserPrep that belongs to user" do
+        home_prep = create(:home_prep)
+        make_request
+        expect(UserPrep.last.user).to eq(user)
+      end
     end
 
     context "with invalid params" do
       let(:make_request) {
-        post :update_home, params: attributes_for(:home, zip: nil)
+        post :update_home, params: attributes_for(:home, :house, zip: nil)
       }
 
       it "displays a descriptive error message" do

@@ -5,6 +5,14 @@ FactoryGirl.define do
     instructions "instructions"
     base_cost_in_cents 100
 
+    factory :plan_prep do
+      prep_maintype "plan"
+      prep_subtype "plan"
+      keyword "meetup_neighborhood"
+      instructions "Identify a neighborhood meeting place"
+      variable_quantity_type "N/A"
+    end
+
     factory :home_prep do
       prep_maintype "home"
       prep_subtype "home_structure"

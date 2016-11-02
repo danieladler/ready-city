@@ -7,7 +7,6 @@ class UserPrepBuilder
 
   def initialize(user)
     @user_id = user.id
-    # @user = user
   end
 
   def generate_preps(prep_subtype, options)
@@ -21,7 +20,7 @@ class UserPrepBuilder
         instructions: p.instructions
       )
 
-      if p.variable_quantity_type == 'by_user' || p.variable_quantity_type == 'N/A'
+      if p.variable_quantity_type == 'by_user' || p.variable_quantity_type == 'N/A' # or nil
         @prep.update(total_cost_in_cents: (p.base_cost_in_cents))
       elsif p.variable_quantity_type == 'by_dependent'
         @prep.update(

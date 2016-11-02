@@ -7,7 +7,7 @@ FactoryGirl.define do
     zip 90000
     h20_strapped false # because both houses & apts have access to h20 heater
 
-    factory :house do
+    trait :house do
       is_house true
       floor_count 2
       year_built 1901
@@ -15,7 +15,7 @@ FactoryGirl.define do
       structure_material "post-and-beam"
     end
 
-    factory :apartment do
+    trait :apartment do
       is_house false
       floor_count 1
       h20_strapped false

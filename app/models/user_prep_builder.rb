@@ -9,7 +9,7 @@ class UserPrepBuilder
     @user_id = user.id
   end
 
-  def generate_preps(prep_subtype, options)
+  def generate_preps(prep_subtype, options = nil)
     Preparation.where(prep_subtype: prep_subtype).each do |p|
       @prep = UserPrep.where(user_id: user_id, keyword: p.keyword).first_or_create
       @prep.update(

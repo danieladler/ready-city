@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 describe DependentAssessmentController, type: :controller do
   let(:user) { create(:user) }
@@ -18,7 +17,6 @@ describe DependentAssessmentController, type: :controller do
         expect{ make_request }.to change(UserPrep, :count).by(1)
       end
 
-      # new UP belongs to user
       it "new UserPrep belongs to user" do
         preparation = create(:plan_prep)
         make_request

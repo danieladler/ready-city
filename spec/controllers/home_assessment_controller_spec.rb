@@ -19,28 +19,26 @@ describe HomeAssessmentController, type: :controller do
         expect(response).to redirect_to user_path(user.id)
       end
 
-      # it "displays a descriptive success message" do
-        # make_request
-        # expect(flash[:success]).to include "Home Updated!!"
-      # end
+      it "displays a descriptive success message" do
+        make_request
+        expect(flash[:success]).to include "Home Updated"
+      end
     end
 
-    # context "with invalid params" do
-    #   let(:make_request) {
-    #     post :update_home, params: {
-    #       zip: nil
-    #     }
-    #   }
-    #
-    #   it "displays a descriptive error message" do
-    #     make_request
-    #     expect(flash[:error]).to include "zip: can't be blank"
-    #   end
-    #
-    #   it "renders the 'users/show' template" do
-    #     make_request
-    #     expect(response).to render_template "users/show"
-    #   end
-    # end
+    context "with invalid params" do
+      let(:make_request) {
+        post :update_home, params: attributes_for(:home, zip: nil)
+      }
+
+      it "displays a descriptive error message" do
+        make_request
+        expect(flash[:error]).to include "zip: can't be blank"
+      end
+
+      it "renders the 'users/show' template" do
+        make_request
+        expect(response).to render_template "users/show"
+      end
+    end
   end
 end

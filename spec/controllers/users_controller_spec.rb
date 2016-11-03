@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe UsersController, type: :controller do
+  let(:user) { create(:user) }
+  before(:each) do
+    stub_current_user(user)
+  end
+
   describe "GET #sign-up" do
     it "returns 200" do
       get :sign_up
@@ -102,5 +107,26 @@ describe UsersController, type: :controller do
     #     # GOAL: expect home's user id to match User.id
     #   end
     # end
+  end
+
+  describe "PATCH #update" do
+    context "with valid attributes" do
+      let(:make_request) {
+        patch :update, params: {id: user, user: attributes_for(:user, days_to_cover: 2)}
+      }
+
+      it "changes the # of days to cover" do
+        expect { make_request }.to change { user.days_to_cover }.from(1).to(2)
+      end
+
+      it "total_cost_in_cents of by_day UserPrep is updated accurately" do
+        dependent = create(:dependent, :human, user_id: user.id)
+        gear_prep = create(:gear_human)
+        make_request
+        expect(UserPrep.last.total_cost_in_cents).to eq(
+          gear_prep.base_cost_in_cents * user.days_to_cover * user.dependents.count
+        )
+      end
+    end
   end
 end

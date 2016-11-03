@@ -1,5 +1,15 @@
 require 'rails_helper'
+require 'pry'
 
-RSpec.describe Zone, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Zone, type: :model do
+  subject(:zone) { create(:zone) }
+
+  describe ".validates" do
+    context "is invalid" do
+      it "test" do
+        zone = create(:zone, :meetup)
+        binding.pry
+      end
+    end
+  end
 end

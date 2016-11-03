@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 describe DependentAssessmentController, type: :controller do
 
@@ -83,6 +84,20 @@ describe DependentAssessmentController, type: :controller do
         variable_qty_user_prep = user.user_preps.where(prep_subtype:'gear_pet').first # isolate the user_prep to be checked
         expect(variable_qty_user_prep.total_cost_in_cents).to eq(gear_pet_base_preparation.base_cost_in_cents * user.dependents.count) # confirm the total_cost is double the base_cost
       end
+    end
+  end
+
+  describe "GET #destroy" do
+    let(:user) { create(:user) }
+    before(:each) do
+      stub_current_user(user)
+    end
+
+    it "reduces # of Dependents" do
+      dependent = create(:dependent, :pet, user_id: user.id)
+      expect{
+        post :destroy, params: {id: dependent, dependent: attributes_for(:dependent)}
+      }.to change(Dependent, :count).from(1).to(0)
     end
   end
 end

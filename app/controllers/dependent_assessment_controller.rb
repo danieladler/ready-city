@@ -12,7 +12,7 @@ class DependentAssessmentController < ApplicationController
         @errors << column.to_s + ": " + message.to_s
       end
       flash[:error] = @errors
-      render "users/show"
+      render "users/show", locals: {home: current_user.home}
     end
   end
 
@@ -50,6 +50,7 @@ class DependentAssessmentController < ApplicationController
     @pb.generate_preps("gear_pet", options={consumer_multiplier: user.pets_in_household}) if user.pets_in_household > 0
     @pb.generate_preps("gear_human", options = {consumer_multiplier: user.people_in_household})
     # @pb.generate_preps("plan")
+    # @pb.generate_preps("zone") ???
   end
 
   private

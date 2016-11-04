@@ -2,3 +2,40 @@
 <p class="description description-form">
   [zone description]
 </p>
+<h3 class="title"> Add a Zone </h3>
+<div class="create-zone-form">
+  <%= form_for @zone, url: create_zone_path do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form-group">
+      <%= f.label :zone_type, "What type of Zone is this?" %>
+      <%= f.select :zone_type, [['select'],['home'], ['work'], ['school']]%>
+    </div>
+    <div class="form-group">
+      <%= f.label :zone_type, "Who spends time here?" %>
+      <%= f.select :zone_type, [['Me'], ['Spouse'], ['Child']]%>
+      <!-- TODO: interpolate each dependent's name as an option in this form -->
+      <!-- try both select and radio -->
+      <!-- this is to assign a dependent_id to Zone (if applicable) -->
+    </div>
+    <div class="form-group">
+      <%= f.label :address, "Address" %>
+      <%= f.text_field :address %>
+    </div>
+    <div class="form-group">
+      <%= f.label :city, "City" %>
+      <%= f.text_field :city %>
+    </div>
+    <div class="form-group">
+      <%= f.label :state, "State" %>
+      <%= f.text_field :state %>
+    </div>
+    <div class="form-group">
+      <%= f.label :zip, "Zip" %>
+      <%= f.text_field :zip %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -9,6 +9,6 @@ class Dependent < ApplicationRecord
   end
 
   def zones
-    Zone.where(dependent_id: self.id)
+    Zone.where(dependent_id: self.id).map {|z| z }
   end
 end

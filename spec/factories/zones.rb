@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :zone do
     user
+    dependent_id nil
     name "placeholder name"
     address "placeholder address"
     city "placeholder city"
@@ -21,10 +22,9 @@ FactoryGirl.define do
   end
 
   trait :school do
-    # dependent_id 1
     name "depenent's school"
     zone_primary false
-    zone_type "zone_home"
+    zone_type "zone_school"
   end
 
   trait :meetup do

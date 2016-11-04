@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :dependent do
     user
+    name "placeholder name"
 
     trait :human do
       human true

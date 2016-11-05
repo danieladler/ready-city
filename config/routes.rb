@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   patch "/users/:id/update", to: "users#update", as: :update_user
 
   # PROFILE - ASSESSMENTS
-  post  "/update_home",            to: "home_assessment#update_home"
+  patch  "/update_home",            to: "home_assessment#update_home", as: :update_home
   patch "/dependents/update/:id",  to: "dependent_assessment#update",  as: :update_dependent
   post  "/dependents/create",      to: "dependent_assessment#create",  as: :create_dependent
   get  "/dependents/destroy/:id",  to: "dependent_assessment#destroy", as: :destroy_dependent

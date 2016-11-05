@@ -12,6 +12,10 @@ class HomeAssessmentController < ApplicationController
         @errors << column.to_s + ": " + message.to_s
       end
       flash[:error] = @errors
+      # @dependent = Dependent.new
+      # @zone = Zone.new
+      # NB: alternate way to get empty @dependent, @zone instances in render if @home.render fails
+      # ^^^ woudl have to replicate across the other assessment_controllers, swapping out @home
       render "users/show"
     end
   end

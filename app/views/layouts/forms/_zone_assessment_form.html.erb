@@ -14,11 +14,11 @@
         <!-- TODO: DRY up this repeated set of form-groups – it's in both CREATE and UPDATE sections, should be consolidated -->
         <div class="form-group">
           <%= f.label :zone_type, "What type of Zone is this?" %>
-          <%= f.select :zone_type, [['select'],['home'], ['work'], ['school']]%>
+          <%= f.select :zone_type, [['home', 'zone_home'], ['work', 'zone_work'], ['school', 'zone_school']]%>
         </div>
         <div class="form-group">
           <%= f.label :dependent_id, "Who spends time here?" %>
-          <%= f.select :dependent_id, [['Me'], ['Spouse'], ['Child']]%>
+          <%= f.select :dependent_id, @dependents %>
         </div>
         <div class="form-group">
           <%= f.label :address, "Address" %>
@@ -51,14 +51,11 @@
       </div>
       <div class="form-group">
         <%= f.label :zone_type, "What type of Zone is this?" %>
-        <%= f.select :zone_type, [['select'],['home'], ['work'], ['school']]%>
+        <%= f.select :zone_type, [['home', 'zone_home'], ['work', 'zone_work'], ['school', 'zone_school']]%>
       </div>
       <div class="form-group">
         <%= f.label :dependent_id, "Who spends time here?" %>
-        <%= f.select :dependent_id, [['Me'], ['Spouse'], ['Child']]%>
-        <!-- TODO: interpolate each dependent's name as an option in this form -->
-        <!-- try both select and radio -->
-        <!-- this is to assign a dependent_id to Zone (if applicable) -->
+        <%= f.select :dependent_id, @dependents %>
       </div>
       <div class="form-group">
         <%= f.label :address, "Address" %>

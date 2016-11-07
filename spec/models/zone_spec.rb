@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'pry'
 
 describe Zone, type: :model do
-  subject(:zone) { create(:zone) }
+  subject(:zone) { create(:zone, :home) }
 
   describe ".validates" do
     context "is invalid" do

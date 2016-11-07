@@ -19,4 +19,8 @@ class User < ApplicationRecord
   def pets_in_household
     self.dependents.where(human: false).count
   end
+
+  def has_zones?
+    true if self.zones.count > 0
+  end
 end

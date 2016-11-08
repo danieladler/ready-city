@@ -20,7 +20,14 @@ class UserPrepBuilder
         instructions: p.instructions
       )
 
-      if p.variable_quantity_type == 'by_user' || p.variable_quantity_type == 'N/A' # or nil
+      # First condition generates prep_maintype: Home & Plan UserPreps, where quantity doesn't matter.
+      if p.variable_quantity_type == 'N/A' # or nil
+        @prep.update(
+          total_cost_in_cents: 0
+          # LATER: plan_zone route instructions vary based on zones passed in via options?
+        )
+      # Following conditions generate prep_maintype: Gear UserPreps by how quantity should be multipled, based on dependents & type of gear.
+      elsif p.variable_quantity_type == 'by_user'
         @prep.update(total_cost_in_cents: (p.base_cost_in_cents))
       elsif p.variable_quantity_type == 'by_dependent'
         @prep.update(

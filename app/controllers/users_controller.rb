@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     # ^^ this pre-loads a Dependent instance for creating a new Dependent; the
     # form_helper that requires it is in _depdendent_assessment_form template
     @zone = Zone.new
-    # @contact = Contact.new
+    @contact = Contact.new
     # ^^ same as above comment, but for Zones & Contacts
   end
 

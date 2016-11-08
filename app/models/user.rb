@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :user_preps
   has_many :dependents
   has_many :zones
+  has_many :contacts
 
   def has_dependents?
     true if self.dependents.count > 0
@@ -22,5 +23,9 @@ class User < ApplicationRecord
 
   def has_zones?
     true if self.zones.count > 0
+  end
+
+  def has_contacts?
+    true if self.contacts.count > 0
   end
 end

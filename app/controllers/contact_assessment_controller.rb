@@ -34,7 +34,10 @@ class ContactAssessmentController < ApplicationController
   end
 
   def destroy
-    raise
+    @contact = Contact.find(params[:id])
+    @contact.destroy
+    flash[:notice] = "Contact Deleted"
+    redirect_to user_path(current_user.id)
   end
 
   private

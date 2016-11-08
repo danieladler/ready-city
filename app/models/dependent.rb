@@ -7,4 +7,8 @@ class Dependent < ApplicationRecord
     self.human = params[:dependent][:human]
     self.name  = params[:dependent][:name]
   end
+
+  def zones
+    Zone.where(dependent_id: self.id).map {|z| z }
+  end
 end

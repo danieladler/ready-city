@@ -11,8 +11,9 @@ describe HomeAssessmentController, type: :controller do
 
     context "with valid params, home is a HOUSE" do
       let(:make_request) {
-        post :update_home, params: attributes_for(:home, :house)
+        post :update_home, params: {home: attributes_for(:home, :house)}
       }
+      let(:attrs) { attributes_for(:home)}
 
       it "redirects to User's show/profile view" do
         make_request
@@ -39,7 +40,7 @@ describe HomeAssessmentController, type: :controller do
 
     context "with invalid params" do
       let(:make_request) {
-        post :update_home, params: attributes_for(:home, :house, zip: nil)
+        post :update_home, params: {home: attributes_for(:home, :house, zip: nil)}
       }
 
       it "displays a descriptive error message" do

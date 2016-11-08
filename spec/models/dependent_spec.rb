@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 describe Dependent, type: :model do
   subject(:dependent) { create(:dependent, :human) }
@@ -22,6 +23,15 @@ describe Dependent, type: :model do
       new_dependent = build(:dependent, :pet, name: "Flip", user: dependent.user)
       new_dependent.valid?
       expect(new_dependent.errors.messages[:name]).to include("has already been taken")
+    end
+  end
+
+  describe "#zones" do
+    context "a Zone has been given Dependent's dependent_id" do
+      it "returns that Zone when accessed via Dependent" do
+        zone = create(:zone, :school, dependent_id: dependent.id)
+        expect(dependent.zones).to include(zone)
+      end
     end
   end
 end

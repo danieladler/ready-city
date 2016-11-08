@@ -1,49 +1,40 @@
-<h2 class="title"> My Home </h2>
-<form action="/update_home" method="post">
-  <input name="utf8" type="hidden" value="✓">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+<% if @home %>
+  <h2 class="title" style="border-top: 1px solid black; padding-top: 10px"> My Home </h2>
   <p class="description description-form">
     Enter details about your home.
   </p>
-  <div class="form-group">
-    <label for="address">Street Address</label>
-    <input type="text" class="text_field" name="address" id="address" value="<%= @home.address %>">
-  </div>
-  <div class="form-group">
-    <label for="city">City</label>
-    <input type="text" class="text_field" name="city" id="city" value="<%= @home.city %>">
-  </div>
-  <div class="form-group">
-    <label for="state">State</label>
-    <input type="text" class="text_field" name="state" id="state" value="<%= @home.state %>">
-  </div>
-  <div class="form-group">
-    <label for="zip">Zip</label>
-    <input type="text" class="text_field" name="zip" id="zip" value="<%= @home.zip %>">
-  </div>
-  <div class="form-group">
-    <label for="is_house">House or Apartment?</label>
-    <label>
-      <input type="radio" class="radio" name="is_house" value="true" <%= 'checked' if @home.is_house %>>
-      House
-    </label>
-    <label>
-      <input type="radio" class="radio" name="is_house" value="false" <%= 'checked' unless @home.is_house %>>
-      Apartment
-    </label>
-  </div>
-  <div class="form-group">
-    <label for="florr_count">Number of Floors (including basement):</label>
-    <select name="floor_count" value="<%= @home.floor_count %>">
-      <option value="1" <%='selected' if @home.floor_count == 1 %>>1</option>
-      <option value="2" <%='selected' if @home.floor_count == 2 %>>2</option>
-      <option value="3" <%='selected' if @home.floor_count == 3 %>>3</option>
-      <option value="4" <%='selected' if @home.floor_count == 4 %>>4</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="year_built">Year Built</label>
-    <input type="text" class="text_field" name="year_built" value="<%= @home.year_built %>">
-  </div>
-  <input type="submit" value="Save Home">
-</form>
+  <%= form_for @home, url: update_home_path do |f| %>
+    <div class="form-group">
+      <%= f.label :address, "Street Address" %>
+      <%= f.text_field :address %>
+    </div>
+    <div class="form-group">
+      <%= f.label :city, "City" %>
+      <%= f.text_field :city %>
+    </div>
+    <div class="form-group">
+      <%= f.label :state, "State" %>
+      <%= f.text_field :state %>
+    </div>
+    <div class="form-group">
+      <%= f.label :zip, "Zip" %>
+      <%= f.text_field :zip %>
+    </div>
+    <div class="form-group">
+      <div class="title title-form-group"> House or Apartment? </div>
+      <%= f.label :is_house, "House" %>
+      <%= f.radio_button :is_house, true %>
+      <%= f.label :is_house, "Apartment" %>
+      <%= f.radio_button :is_house, false %>
+    </div>
+    <div class="form-group">
+      <%= f.label :floor_count %>
+      <%= f.select :floor_count, [['1'], ['2'], ['3'], ['4']] %>
+    </div>
+    <div class="form-group">
+      <%= f.label :year_built, "Year Built" %>
+      <%= f.text_field :year_built %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+<% end %>

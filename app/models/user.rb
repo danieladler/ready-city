@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one :home
   has_many :user_preps
   has_many :dependents
+  has_many :zones
 
   def has_dependents?
     true if self.dependents.count > 0
@@ -17,5 +18,9 @@ class User < ApplicationRecord
 
   def pets_in_household
     self.dependents.where(human: false).count
+  end
+
+  def has_zones?
+    true if self.zones.count > 0
   end
 end

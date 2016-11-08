@@ -62,7 +62,7 @@ describe Home, type: :model do
 
     context "User updates blank Home address fields" do
       it "updates those fields in the database" do
-        incomplete_home.update_db_values({
+        incomplete_home.update_db_values(home: {
           address: "999 Fake St.",
           city: "New York",
           state: "NY"
@@ -76,7 +76,7 @@ describe Home, type: :model do
 
     context "Home is not a house" do
       it "sets non-house-related attributes to nil" do
-        incomplete_home.update_db_values({
+        incomplete_home.update_db_values(home: {
             address: "999 Fake St.",
             city: "New York",
             state: "NY",

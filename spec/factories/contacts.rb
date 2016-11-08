@@ -1,9 +1,14 @@
 FactoryGirl.define do
   factory :contact do
-    user_id 1
-    name "MyString"
-    email "MyString"
-    phone "MyString"
-    out_of_area false
+    user
+    name "placeholder name"
+    email "placeholder@email"
+    phone "placeholder phone"
+    out_of_area true
+
+    trait :in_area do
+      name "in-area contact"
+      out_of_area false
+    end
   end
 end

@@ -35,6 +35,7 @@ class DependentAssessmentController < ApplicationController
 
   def destroy
     @dependent = Dependent.find(params[:id])
+    destroy_dependent_zones(@dependent.id)
     @dependent.destroy
     generate_dependent_preps(current_user)
       # re-run this method so that user_preps with prep_subtype gear_pet and
@@ -51,6 +52,10 @@ class DependentAssessmentController < ApplicationController
     @pb.generate_preps("gear_human", options = {consumer_multiplier: user.people_in_household})
     # @pb.generate_preps("plan")
     # @pb.generate_preps("zone") ???
+  end
+
+  def destroy_dependent_zones(dependent_id)
+    Zone.where(dependent_id: dependent_id).destroy_all
   end
 
   private

@@ -36,7 +36,7 @@ class ZoneAssessmentController < ApplicationController
   def destroy
     @zone = Zone.find(params[:id])
     @zone.destroy
-    # regenerate zone-related preps?
+    # generate_zone_preps(current_user) # NB: commented out for now because currently no plan_zone UserPreps vary based on # of zones.
     flash[:notice] = "Zone Deleted"
     redirect_to user_path(current_user.id)
   end
@@ -51,6 +51,8 @@ class ZoneAssessmentController < ApplicationController
         # options = route_calculator or zone_count: for each Zone, create a UserPrep to figure out the route between that Zone and Home
       # Goal of this approach: have just one plan_zone prep_subtype, so hoping
       # the options hash can carry the load of carrying & creating dynamic information.
+    # @pb.generate_preps("plan_zone_humans") if user.has_dependents?
+    # @pb.generate_preps("plan_zone_pets") if user.pets_in_household > 0
   end
 
   private

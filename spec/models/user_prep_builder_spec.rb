@@ -10,7 +10,7 @@ describe DependentAssessmentController, type: :controller do
 
   describe "#.generate_preps" do
     context "receives args for plan_prep, variable quantity is irrelevant" do
-      let(:make_request) { upb.generate_preps("plan", options = nil) }
+      let(:make_request) { upb.generate_preps("plan_check", options = nil) }
 
       it "creates a new UserPrep" do
         preparation = create(:plan_prep)

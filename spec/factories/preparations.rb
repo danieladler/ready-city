@@ -7,7 +7,7 @@ FactoryGirl.define do
 
     factory :plan_prep do
       prep_maintype "plan"
-      prep_subtype "plan"
+      prep_subtype "plan_check"
       keyword "meetup_neighborhood"
       instructions "Identify a neighborhood meeting place"
       variable_quantity_type "N/A"

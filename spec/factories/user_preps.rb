@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :user_prep do
     user
     prep_maintype "plan"
-    prep_subtype "plan"
+    prep_subtype "plan_check"
     total_cost_in_cents 1
     completed false
     instructions "placeholder instructions"

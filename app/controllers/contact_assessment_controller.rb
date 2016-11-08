@@ -17,7 +17,20 @@ class ContactAssessmentController < ApplicationController
   end
 
   def update
-    raise
+    @contact = Contact.find(params[:id])
+    @contact.update_db_values(params)
+    if @contact.save
+      # generate_contact_preps(current_user)
+      flash[:success] = "Contact Updated"
+      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+    elsif @contact.errors
+      @errors = []
+      @contact.errors.each do |column, message|
+        @errors << column.to_s + ": " + message.to_s
+      end
+      flash[:error] = @errors
+      render "users/show"
+    end
   end
 
   def destroy

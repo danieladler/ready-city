@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   post "/zones/create",            to: "zone_assessment#create",       as: :create_zone
   patch "/zones/update/:id",       to: "zone_assessment#update",       as: :update_zone
   get "/zones/destroy/:id",        to: "zone_assessment#destroy",      as: :destroy_zone
+  post "/contacts/create",            to: "contact_assessment#create",       as: :create_contact
+  patch "/contacts/update/:id",       to: "contact_assessment#update",       as: :update_contact
+  get "/contacts/destroy/:id",        to: "contact_assessment#destroy",      as: :destroy_contact
 
   namespace :admin do
     get "/preparations",   to: "preparations#preparations", as: :preparations # AKA Admin Dashboard

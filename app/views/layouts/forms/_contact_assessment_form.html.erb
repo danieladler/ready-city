@@ -1,0 +1,62 @@
+<% if @contact %>
+  <h2 class="title" style="border-top: 1px solid black; padding-top: 10px"> Contacts </h2>
+  <p class="description description-form">
+    Add a record for each person you will need to connect with after an earthquake
+    has taken place.
+  </p>
+  <% if current_user.has_contacts? %>
+    <ul>
+      <% current_user.contacts.each do |d| %>
+        <%= form_for d, url: update_contact_path(d) do |f| %>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </div>
+          <div class="form-group">
+            <%= f.label :phone %>
+            <%= f.text_field :phone %>
+          </div>
+          <div class="form-group">
+            <div class="title title-form-group"> Lives in your area or out-of-area? </div>
+            <%= f.label :out_of_area, 'Lives in my area' %>
+            <%= f.radio_button :out_of_area, false %>
+            <%= f.label :out_of_area, 'Lives out of town' %>
+            <%= f.radio_button :out_of_area, true %>
+          </div>
+          <%= f.submit %>
+        <% end %>
+        <a href= "<%= destroy_contact_path(d.id)%>"> x </a>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <h3 class="title"> Add a Contact </h3>
+  <div class="create-contact-form">
+    <%= form_for @contact, url: create_contact_path do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone %>
+        <%= f.text_field :phone %>
+      </div>
+      <div class="form-group">
+        <div class="title title-form-group"> Lives in your area or out-of-area? </div>
+        <%= f.label :out_of_area, 'Lives in my area' %>
+        <%= f.radio_button :out_of_area, false %>
+        <%= f.label :out_of_area, 'Lives out of town' %>
+        <%= f.radio_button :out_of_area, true %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+  </div>
+<% end %>

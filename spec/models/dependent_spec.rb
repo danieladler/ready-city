@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 describe Dependent, type: :model do
   subject(:dependent) { create(:dependent, :human) }

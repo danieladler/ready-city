@@ -28,4 +28,8 @@ class User < ApplicationRecord
   def has_contacts?
     true if self.contacts.count > 0
   end
+
+  def destroy_contacts
+    UserPrep.where(prep_subtype: "plan_contact", user_id: self.id).destroy_all
+  end
 end

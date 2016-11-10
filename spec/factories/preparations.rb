@@ -4,6 +4,7 @@ FactoryGirl.define do
     keyword "keyword"
     instructions "instructions"
     base_cost_in_cents 100
+    stage "before"
 
     factory :plan_prep do
       prep_maintype "plan"

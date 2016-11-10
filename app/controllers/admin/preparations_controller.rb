@@ -63,7 +63,8 @@ class Admin::PreparationsController < AdminController
       :base_cost_in_cents,
       :variable_quantity_type,
       :variable_action,
-      :priority
+      :priority,
+      :stage
     )
   end
 end

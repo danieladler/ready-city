@@ -6,6 +6,7 @@ FactoryGirl.define do
     total_cost_in_cents 1
     completed false
     instructions "placeholder instructions"
+    stage "before"
 
     trait :home_prep do
       prep_maintype "home"

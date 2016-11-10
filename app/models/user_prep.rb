@@ -7,5 +7,6 @@ class UserPrep < ApplicationRecord
     gear_human gear_pet gear_check
     plan_home plan_dependent plan_zone plan_contact plan_check
   )
+  validates_inclusion_of :stage, in: %w( before during after )
   belongs_to :user
 end

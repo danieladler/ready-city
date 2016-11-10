@@ -17,7 +17,8 @@ class UserPrepBuilder
         keyword: p.keyword,
         prep_maintype: p.prep_maintype,
         prep_subtype: p.prep_subtype,
-        instructions: p.instructions
+        instructions: p.instructions,
+        stage: p.stage
       )
 
       # First condition generates prep_maintype: Home & Plan UserPreps, where quantity doesn't matter.

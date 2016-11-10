@@ -20,7 +20,7 @@ describe Contact, type: :model do
       it "when out_of_area is not selected" do
         contact.out_of_area = nil
         contact.valid?
-        expect(contact.errors.messages[:out_of_area]).to include("can't be blank")
+        expect(contact.errors.messages[:out_of_area]).to include("is not included in the list")
       end
 
       it "when email is missing '@'" do

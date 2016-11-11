@@ -58,10 +58,12 @@ class PrepRecordManager
     # These UserPreps need to be kept because they'll still contain valuable information & user-specific notes
     # So how to find & correct them?
 
-    load_preparation_keywords(@preparation_keywords = []) # load Preparation keywords from DB
-    load_userprep_keywords(@user_prep_keywords = [])
-    compare_prep_to_user_prep_keywords(@preparation_keywords, @user_prep_keywords, @user_prep_keywords_to_fix = nil)
-    update_old_user_prep_keywords(@user_prep_keywords_to_fix)
+    load_preparation_keywords(@preparation_keywords = []) # create array of Preparation keywords from DB
+    load_userprep_keywords(@user_prep_keywords = [])      # create array of UserPrep keywords for all UserPreps in DB
+    compare_prep_to_user_prep_keywords(@preparation_keywords, @user_prep_keywords, @user_prep_keywords_to_fix = nil) # compare the two arrays from CSV & DB, returning modified user_prep_keywords_to_fix array
+    if @user_prep_keywords_to_fix != nil                  # if above method does NOT return nil, meaning there are actually UserPreps with outdated keywords...
+      update_old_user_prep_keywords(@user_prep_keywords_to_fix) # ...update them to match keywords (& content) from the latest Preparations in DB
+    end
   end
 
   def self.load_userprep_keywords(user_prep_keywords)
@@ -69,27 +71,23 @@ class PrepRecordManager
   end
 
   def self.compare_prep_to_user_prep_keywords(preparation_keywords, user_prep_keywords, user_prep_keywords_to_fix)
-    pk = @preparation_keywords
-    uk = @user_prep_keywords
-    if (@user_prep_keywords - @preparation_keywords).empty? == false # if there are UserPreps w/ keywords that don't match what's in db
-      @user_prep_keywords_to_fix = @user_prep_keywords - @preparation_keywords
+    if (@user_prep_keywords - @preparation_keywords).empty? == false # if there are UserPreps w/ keywords that don't match what's in db...
+      @user_prep_keywords_to_fix = @user_prep_keywords - @preparation_keywords # ...then they're put in a new array which is returned to the parent
     end
-    raise
   end
 
   def self.update_old_user_prep_keywords(user_prep_keywords_to_fix)
-    @user_prep_keywords_to_fix.each do |k|
-      UserPrep.where(keyword: k).each do |up|
-        p = Preparation.find_by(id: up.prep_id)
+    @user_prep_keywords_to_fix.each do |k|      # for each outdated keyword in the array...
+      UserPrep.where(keyword: k).each do |up|   # ...find all UserPrep records with that outdated keyword; for each of these...
+        p = Preparation.find_by(id: up.prep_id) # ...identify the Preparation record with the matching prep_id (since keyword will not be matching); this Preparation should contain the updated keyword & content.
         raise if Preparation.find_by(id: up.prep_id) == nil
-          # If this happens, it means a UserPrep's parent Preparation was destroyed.
+          # If this raise happens, it means a UserPrep's parent Preparation was destroyed.
           # In this case, just manually figure out if the Preparation has been recreated.
             # IF YES, then update the UserPrep's prep_id to match the Preparation
             # IF NO, then the UserPrep may not be needed since its parent Preparation was destroyed.
-          # NB: just handle this all manually since these cases should be rare.
-        up.update(keyword: p.keyword) # update all attributes?
+          # NB: for now, just handle this all manually since these cases should be rare.
+        up.update(keyword: p.keyword) # However, if a match IS found, then update the UserPrep's keyword to match the Preparation's keyword.
       end
-      # raise
     end
   end
 end

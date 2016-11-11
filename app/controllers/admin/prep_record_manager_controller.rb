@@ -1,4 +1,4 @@
-class PrepRecordManagerController < ApplicationController
+class Admin::PrepRecordManagerController < ApplicationController
   def import_preparations
     PrepRecordManager.import(params[:file])
     flash[:success] = "Preparations Updated"

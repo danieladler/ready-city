@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get "/edit/:id",       to: "preparations#edit",          as: :edit_prep
     patch "/update/:id",   to: "preparations#update",        as: :update_prep
     get "/destroy/:id",    to: "preparations#destroy",       as: :delete_prep
-    post "import_preps",   to: "prep_record_manager#import_preparations", as: :import_preps
+    post "import_preps",   to: "prep_record_manager#import_and_reconcile", as: :import_preps
   end
 
 end

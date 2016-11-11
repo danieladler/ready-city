@@ -1,7 +1,7 @@
 class Admin::PrepRecordManagerController < ApplicationController
   def import_and_reconcile
     import_preps_from_CSV
-    reconcile_user_preps
+    # reconcile_user_preps
     flash[:success] = "Preparations Updated"
     redirect_to admin_preparations_path
   end

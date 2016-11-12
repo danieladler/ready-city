@@ -9,4 +9,14 @@ class UserPrep < ApplicationRecord
   )
   validates_inclusion_of :stage, in: %w( before during after )
   belongs_to :user
+
+  def update_attrs_from_preparation(preparation_attributes)
+    self.update(
+      keyword: preparation_attributes["keyword"],
+      instructions:preparation_attributes["instructions"],
+      prep_maintype: preparation_attributes["prep_maintype"],
+      prep_subtype: preparation_attributes["prep_subtype"],
+      stage: preparation_attributes["stage"]
+    )
+  end
 end

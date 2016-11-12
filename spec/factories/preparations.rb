@@ -5,6 +5,7 @@ FactoryGirl.define do
     instructions "instructions"
     base_cost_in_cents 100
     stage "before"
+    tracker_id 1
 
     factory :plan_prep do
       prep_maintype "plan"

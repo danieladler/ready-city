@@ -58,7 +58,8 @@ class Admin::PreparationsController < AdminController
       :variable_quantity_type,
       :variable_action,
       :priority,
-      :stage
+      :stage,
+      :tracker_id
     )
   end
 end

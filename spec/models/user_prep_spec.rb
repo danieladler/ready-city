@@ -37,6 +37,12 @@ describe UserPrep, type: :model do
         improperly_assigned_user_prep.valid?
         expect(improperly_assigned_user_prep.errors.messages[:prep_subtype]).to include("is not included in the list")
       end
+
+      it "is assigned an invalid or missing stage" do
+        improperly_assigned_user_prep = build(:user_prep, stage: "wrong")
+        improperly_assigned_user_prep.valid?
+        expect(improperly_assigned_user_prep.errors.messages[:stage]).to include("is not included in the list")
+      end
     end
   end
 end

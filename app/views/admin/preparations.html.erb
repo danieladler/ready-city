@@ -12,6 +12,8 @@
     <th> Variable Qty Type </th>
     <th> Variable Action? </th>
     <th> Priority </th>
+    <th> Stage </th>
+    <th> Tracker_id </th>
     <th></th>
     <th></th>
   </tr>
@@ -26,8 +28,10 @@
       <td><%= p.variable_quantity_type %></td>
       <td><%= p.variable_action %></td>
       <td><%= p.priority %></td>
+      <td><%= p.stage %></td>
+      <td style="text-align: center"><%= p.tracker_id %></td>
       <td><%#= link_to "edit", admin_edit_prep_path(p) %></td>
-      <td><%#= link_to "x", admin_delete_prep_path(p) %></td>
+      <td><%= link_to "delete", admin_delete_prep_path(p) %></td>
     </tr>
   <% end %>
 </table>

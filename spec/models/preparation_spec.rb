@@ -21,6 +21,12 @@ describe Preparation, type: :model do
         new_prep = build(:preparation, instructions: nil)
         expect(new_prep.valid?).to eq false
       end
+
+      it "is assigned an invalid or missing stage" do
+        new_prep = build(:preparation, stage: nil)
+        new_prep.valid?
+        expect(new_prep.errors.messages[:stage]).to include("is not included in the list")
+      end
     end
   end
 end

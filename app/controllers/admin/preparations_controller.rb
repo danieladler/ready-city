@@ -1,10 +1,4 @@
 class Admin::PreparationsController < AdminController
-  def import
-    Preparation.import(params[:file])
-    flash[:success] = "Preparations Updated"
-    redirect_to admin_preparations_path
-  end
-
   def preparations
     @preparations = Preparation.all
     @preparation = Preparation.new
@@ -63,7 +57,9 @@ class Admin::PreparationsController < AdminController
       :base_cost_in_cents,
       :variable_quantity_type,
       :variable_action,
-      :priority
+      :priority,
+      :stage,
+      :tracker_id
     )
   end
 end

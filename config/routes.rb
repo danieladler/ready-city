@@ -25,12 +25,13 @@ Rails.application.routes.draw do
   get "/contacts/destroy/:id",        to: "contact_assessment#destroy",      as: :destroy_contact
 
   namespace :admin do
-    get "/preparations",   to: "preparations#preparations", as: :preparations # AKA Admin Dashboard
-    post "new_prep",       to: "preparations#create",       as: :new_prep
-    post "import_preps",   to: "preparations#import",       as: :import_preps
-    get "/edit/:id",       to: "preparations#edit",         as: :edit_prep
-    patch "/update/:id",   to: "preparations#update",       as: :update_prep
-    get "/destroy/:id",    to: "preparations#destroy",      as: :delete_prep
+    get "/preparations",   to: "preparations#preparations",  as: :preparations # AKA Admin Dashboard
+    post "new_prep",       to: "preparations#create",        as: :new_prep
+    # post "import_preps",   to: "preparations#import",        as: :import_preps
+    get "/edit/:id",       to: "preparations#edit",          as: :edit_prep
+    patch "/update/:id",   to: "preparations#update",        as: :update_prep
+    get "/destroy/:id",    to: "preparations#destroy",       as: :delete_prep
+    post "import_preps",   to: "prep_record_manager#import_and_reconcile", as: :import_preps
   end
 
 end

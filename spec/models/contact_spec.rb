@@ -38,4 +38,28 @@ describe Contact, type: :model do
       end
     end
   end
+
+  describe "#update_db_values" do
+    let (:incomplete_contact) {build_stubbed(:contact, {
+        name: nil,
+        email: nil,
+        phone: nil,
+        out_of_area: nil
+      })}
+
+    context "User updates blank fields, entering out_of_area contact" do
+      it "updates those fields in the database" do
+        incomplete_contact.update_db_values(contact: {
+          name: "dad",
+          email: "dad@family.com",
+          phone: "1234567890",
+          out_of_area: true
+        })
+        expect(incomplete_contact).to have_attributes({
+          name: "dad",
+          email: "dad@family.com"
+        })
+      end
+    end
+  end
 end

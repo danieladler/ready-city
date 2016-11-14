@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 describe Zone, type: :model do
   subject(:zone) { create(:zone, :home) }
@@ -37,6 +36,38 @@ describe Zone, type: :model do
         zone = create(:zone, :home, user_id: user.id)
         expect(zone.dependent).to eq(nil)
         expect(zone.user).to eq(user)
+      end
+    end
+  end
+
+  describe "#update_db_values" do
+    let (:incomplete_zone) {build_stubbed(:zone, {
+        name: nil,
+        address: nil,
+        city: nil,
+        state: nil,
+        zone_type: nil,
+        zip: nil
+      })}
+
+    context "User updates blank fields, entering work zone" do
+      it "updates those fields in the database" do
+        incomplete_zone.update_db_values(zone: {
+          name: "work",
+          address: "123 work street",
+          city: "city",
+          state: "CA",
+          zone_type: "zone_work",
+          zip: 90000,
+        })
+        expect(incomplete_zone).to have_attributes({
+          name: "work",
+          address: "123 work street",
+          city: "city",
+          state: "CA",
+          zone_type: "zone_work",
+          zip: 90000
+        })
       end
     end
   end

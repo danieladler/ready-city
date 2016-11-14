@@ -11,7 +11,8 @@ class Zone < ApplicationRecord
   end
 
   def update_db_values(params)
-    self.dependent_id = params[:zone][:dependent_id] # NB: TBD after figure out how to pass in dependents into <select> menu
+    self.name         = params[:zone][:name]
+    self.dependent_id = params[:zone][:dependent_id]
     self.address      = params[:zone][:address]
     self.city         = params[:zone][:city]
     self.state        = params[:zone][:state]

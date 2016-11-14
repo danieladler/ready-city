@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 describe HomeAssessmentController, type: :controller do
   describe "POST #update_home" do
@@ -13,8 +12,7 @@ describe HomeAssessmentController, type: :controller do
       let(:make_request) {
         post :update_home, params: {home: attributes_for(:home, :house)}
       }
-      let(:attrs) { attributes_for(:home)}
-
+      # let(:attrs) { attributes_for(:home)}
       it "redirects to User's show/profile view" do
         make_request
         expect(response).to redirect_to user_path(user.id)

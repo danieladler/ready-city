@@ -78,5 +78,37 @@ describe User, type: :model do
         end
       end
     end
+
+    describe "#has_zones?" do
+      context "has set up a zone" do
+        it "returns true" do
+          zone = create(:zone, :home, user_id: user.id)
+          expect(user.has_zones?).to eq true
+        end
+      end
+    end
+
+    describe "#has_contacts?" do
+      context "has one contact" do
+        it "returns true" do
+          contact = create(:contact, user_id: user.id)
+          expect(user.has_contacts?).to eq  true
+        end
+      end
+    end
+
+    describe "#destroy_contact_userpreps" do
+      context "has one contact" do
+        it "removes UserPreps with prep_subtype: 'plan_contact'" do
+          contact = create(:contact, user_id: user.id)
+          prep = create(:plan_prep, prep_subtype: "plan_contact")
+          upb = UserPrepBuilder.new(user)
+          upb.generate_preps('plan_contact')
+          expect(user.user_preps.count).to eq 1
+          user.destroy_contact_userpreps
+          expect(user.user_preps.count).to eq 0
+        end
+      end
+    end
   end
 end

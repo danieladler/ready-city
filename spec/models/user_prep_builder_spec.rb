@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe DependentAssessmentController, type: :controller do
+describe UserPrepBuilder, type: :model do
   let(:user) { create(:user) }
   let(:upb) { build(:user_prep_builder, user_id: user.id) }
 

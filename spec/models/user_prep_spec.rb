@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 describe UserPrep, type: :model do
   let(:generic_user_prep) { create(:user_prep) }

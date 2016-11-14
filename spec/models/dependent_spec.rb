@@ -33,4 +33,24 @@ describe Dependent, type: :model do
       end
     end
   end
+
+  describe "#update_db_values" do
+    let (:incomplete_dependent) {build_stubbed(:dependent, {
+        name: nil,
+        human: nil
+      })}
+
+    context "User updates blank fields, entering pet dog" do
+      it "updates those fields in the database" do
+        incomplete_dependent.update_db_values(dependent: {
+          name: "dog",
+          human: false
+        })
+        expect(incomplete_dependent).to have_attributes({
+          name: "dog",
+          human: false
+        })
+      end
+    end
+  end
 end

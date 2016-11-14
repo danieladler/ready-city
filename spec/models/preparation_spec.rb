@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Preparation, type: :model do
-  let(:home_prep) { create(:home_prep) }
   let(:prep) { create(:preparation) }
+  let(:home_prep) { create(:home_prep) }
 
   describe ".validates" do
     context "is invalid" do
@@ -26,6 +26,12 @@ describe Preparation, type: :model do
         new_prep = build(:preparation, stage: nil)
         new_prep.valid?
         expect(new_prep.errors.messages[:stage]).to include("is not included in the list")
+      end
+
+      it "uses a duplicate tracker_id" do
+        new_prep = build(:preparation, tracker_id: home_prep.tracker_id)
+        new_prep.valid?
+        expect(new_prep.errors.messages[:tracker_id]).to include("has already been taken")
       end
     end
   end

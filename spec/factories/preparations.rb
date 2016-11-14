@@ -13,6 +13,7 @@ FactoryGirl.define do
       keyword "meetup_neighborhood"
       instructions "Identify a neighborhood meeting place"
       variable_quantity_type "N/A"
+      tracker_id 2
     end
 
     factory :home_prep do
@@ -22,6 +23,7 @@ FactoryGirl.define do
       instructions "anchor home frame to foundation"
       base_cost_in_cents 400000
       variable_quantity_type "by_user"
+      tracker_id 3
     end
 
     factory :gear_human do
@@ -31,6 +33,7 @@ FactoryGirl.define do
       instructions "put a headlamp next to bedside of each person in home"
       base_cost_in_cents 1500
       variable_quantity_type "by_dependent"
+      tracker_id 4
     end
 
     factory :gear_pet do
@@ -40,6 +43,7 @@ FactoryGirl.define do
       instructions "nonperishable pet food"
       base_cost_in_cents 200
       variable_quantity_type "by_day"
+      tracker_id 5
     end
   end
 end

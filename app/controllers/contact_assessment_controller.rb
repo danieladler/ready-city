@@ -36,9 +36,13 @@ class ContactAssessmentController < ApplicationController
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy
-    current_user.destroy_contact_userpreps if !current_user.has_contacts? #clean out UserPreps for Contacts if there are no Contacts.
+    destroy_contact_userpreps if !current_user.has_contacts? #clean out UserPreps for Contacts if there are no Contacts.
     flash[:notice] = "Contact Deleted"
     redirect_to user_path(current_user.id)
+  end
+
+  def destroy_contact_userpreps
+    UserPrep.where(prep_subtype: "plan_contact", user_id: current_user.id).destroy_all
   end
 
   def generate_contact_preps(user)

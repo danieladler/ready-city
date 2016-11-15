@@ -3,7 +3,7 @@
   <p class="description description-form">
     Enter details about your home.
   </p>
-  <%= form_for @home, url: update_home_path do |f| %>
+  <%= form_for @home, url: update_home_path, method: :patch do |f| %>
     <div class="form-group">
       <%= f.label :address, "Street Address" %>
       <%= f.text_field :address %>

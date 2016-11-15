@@ -36,6 +36,7 @@ class ZoneAssessmentController < ApplicationController
   def destroy
     @zone = Zone.find(params[:id])
     @zone.destroy
+    destroy_zone_userpreps if !current_user.has_zones?
     # generate_zone_preps(current_user) # NB: commented out for now because currently no plan_zone UserPreps vary based on # of zones.
     flash[:notice] = "Zone Deleted"
     redirect_to user_path(current_user.id)
@@ -53,6 +54,10 @@ class ZoneAssessmentController < ApplicationController
       # the options hash can carry the load of carrying & creating dynamic information.
     # @pb.generate_preps("plan_zone_humans") if user.has_dependents?
     # @pb.generate_preps("plan_zone_pets") if user.pets_in_household > 0
+  end
+
+  def destroy_zone_userpreps
+    UserPrep.where(prep_subtype: "plan_zone", user_id: current_user.id).destroy_all
   end
 
   private

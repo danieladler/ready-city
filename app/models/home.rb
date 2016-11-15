@@ -27,6 +27,10 @@ class Home < ApplicationRecord
     # self.filter_house_specific_fields(params)
   end
 
+  def is_house?
+    self.is_house ? true : false
+  end
+
   # def filter_house_specific_fields(params)
   #   if self.is_house == false
   #     self.fdn_bolted         = nil

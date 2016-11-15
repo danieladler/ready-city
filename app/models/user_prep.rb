@@ -5,7 +5,7 @@ class UserPrep < ApplicationRecord
   validates_inclusion_of :prep_subtype, in: %w(
     home_structure home_interior home_check
     gear_human gear_pet gear_check
-    plan_home plan_dependent plan_zone plan_contact plan_check
+    plan_home plan_dependent_human plan_dependent_pet plan_zone plan_contact plan_check
   )
   validates_inclusion_of :stage, in: %w( before during after )
   belongs_to :user

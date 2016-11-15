@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.admin = false
+    @user.days_to_cover = 3 # default
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(id: @user.id)
@@ -30,17 +31,13 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
+    current_user.generate_all_user_preps
     load_assessment_data
   end
 
   def update
-    current_user.update(user_params)
-    d = DependentAssessmentController.new
-    d.generate_dependent_preps(current_user)
-    # re-run UserPrepBuilder (via DependentAssessmentController) for all of this
-    # user's UserPreps where total_cost varies based on user's # of days_to_cover
-    # TODO: run this same check but using a method on the user or user's
-    # UserPreps, not through DependentAssessmentController.
+    current_user.update(user_params) if user_params # update days_to_cover from users/show view, if this method was triggered from submitting that form.
+    current_user.generate_all_user_preps # regenerate all preps so that those with variable quantities impacted by changing days_to_cover are updated.
     flash[:success] = "User Updated"
     redirect_to user_path(current_user)
   end

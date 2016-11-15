@@ -56,11 +56,6 @@ class UsersController < ApplicationController
     # ^^ same as above comment, but for Zones & Contacts
   end
 
-  def generate_generic_user_preps(user)
-    @pb = UserPrepBuilder.new(user)
-    @pb.generate_preps("plan_check")
-  end
-
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :days_to_cover)

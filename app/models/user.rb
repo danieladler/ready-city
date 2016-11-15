@@ -32,4 +32,9 @@ class User < ApplicationRecord
   def destroy_contact_userpreps
     UserPrep.where(prep_subtype: "plan_contact", user_id: self.id).destroy_all
   end
+
+  def generate_all_user_preps
+    @pb = UserPrepBuilder.new(self)
+    @pb.generate_all_user_preps
+  end
 end

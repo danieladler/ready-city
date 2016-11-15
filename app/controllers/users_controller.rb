@@ -35,6 +35,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    current_user.generate_all_user_preps
+    
     current_user.update(user_params) if user_params # update days_to_cover from users/show view, if this method was triggered from submitting that form.
     generate_generic_user_preps(current_user)
     d = DependentAssessmentController.new

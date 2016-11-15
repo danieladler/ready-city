@@ -2,8 +2,8 @@ class HomeAssessmentController < ApplicationController
   def update_home
     @home ||= Home.load_home(current_user)
     @home.update_db_values(params)
+    destroy_house_preps if !@home.is_house # have to call this before @save in order to return a value from .changed method below
     if @home.save
-      generate_home_preps(current_user, @home)
       flash[:success] = "Home Updated"
       redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
     elsif @home.errors
@@ -26,5 +26,13 @@ class HomeAssessmentController < ApplicationController
     @pb.generate_preps("home_structure") if @home.is_house # home preps that a homeowner can work on but renter likely cannot.
     @pb.generate_preps("home_check")    # generic stage:after preps for all home types
     @pb.generate_preps("plan_home")
+    destroy_house_preps if !@home.is_house?
+  end
+
+  def destroy_house_preps
+    if @home.changed == ["is_house"]
+      up = UserPrep.where(user_id: current_user.id, prep_subtype: 'home_structure')
+      up.destroy_all
+    end
   end
 end

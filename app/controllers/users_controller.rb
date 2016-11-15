@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.admin = false
+    @user.days_to_cover = 3 # default
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(id: @user.id)
@@ -34,7 +35,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(user_params)
+    current_user.update(user_params) if user_params # update days_to_cover from users/show view, if this method was triggered from submitting that form.
+    generate_generic_user_preps(current_user)
     d = DependentAssessmentController.new
     d.generate_dependent_preps(current_user)
     # re-run UserPrepBuilder (via DependentAssessmentController) for all of this
@@ -57,6 +59,11 @@ class UsersController < ApplicationController
     @zone = Zone.new
     @contact = Contact.new
     # ^^ same as above comment, but for Zones & Contacts
+  end
+
+  def generate_generic_user_preps(user)
+    @pb = UserPrepBuilder.new(user)
+    @pb.generate_preps("plan_check")
   end
 
   private

@@ -22,7 +22,8 @@ class HomeAssessmentController < ApplicationController
 
   def generate_home_preps(user, home)
     @pb = UserPrepBuilder.new(user)
-    @pb.generate_preps("home_interior") # generic home preps regardless of house/apt/etc.
-    @pb.generate_preps("home_structure") if @home.is_house
+    @pb.generate_preps("home_interior") # generic stage:before home preps regardless of house/apt/etc.
+    @pb.generate_preps("home_structure") if @home.is_house # home preps that a homeowner can work on but renter likely cannot.
+    @pb.generate_preps("home_check")    # generic stage:after preps for all home types
   end
 end

@@ -38,6 +38,7 @@ class DependentAssessmentController < ApplicationController
     destroy_dependent_zones(@dependent.id)
     if @dependent.human == false
       UserPrep.where(user_id: current_user.id, prep_subtype: 'gear_pet').destroy_all
+      # TODO: make sure this captures all user_preps for pets (not just gear_pet)
     end
     @dependent.destroy
     generate_dependent_preps(current_user)

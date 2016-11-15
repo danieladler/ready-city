@@ -10,7 +10,8 @@
         <%= link_to "Admin Dashboard", admin_preparations_path %>
       <% end %>
       <li> Hello, <%= current_user.username %></li>
-      <li> <%= link_to "My Profile", user_path(current_user.id) %></li>
+      <li> <%= link_to "Profile", user_path(current_user.id) %></li>
+      <li> <%= link_to "Prepare", preparations_overview_path %></li>
       <li>
         <a href="/sign-out"> Sign Out </a>
       </li>

@@ -6,12 +6,13 @@
   </a>
   <% if logged_in? %>
     <ul style="float: right; margin: 0; padding: 10px 10px 0 0">
-      <% if current_user.admin %>
-        <%= link_to "Admin Dashboard", admin_preparations_path %>
-      <% end %>
       <li> Hello, <%= current_user.username %></li>
-      <li> <%= link_to "Profile", user_path(current_user.id) %></li>
-      <li> <%= link_to "Prepare", preparations_overview_path %></li>
+      <% if current_user.admin %>
+        <li> <%= link_to "Admin Dashboard", admin_preparations_path %> </li>
+      <% else %>
+        <li> <%= link_to "Profile", user_path(current_user.id) %></li>
+        <li> <%= link_to "Prepare", preparations_overview_path(current_user.id) %></li>
+      <% end %>
       <li>
         <a href="/sign-out"> Sign Out </a>
       </li>

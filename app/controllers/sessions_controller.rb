@@ -10,8 +10,12 @@ class SessionsController < ApplicationController
       flash[:error] = 'Account does not exist'
     elsif @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      @user.generate_all_user_preps
-      redirect_to root_path
+      if @user.admin == true
+        redirect_to admin_preparations_path
+      else
+        @user.generate_all_user_preps
+        redirect_to root_path
+      end
     else
       redirect_to root_path
       flash[:error] = "Wrong username or password"

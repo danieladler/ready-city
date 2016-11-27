@@ -9,6 +9,7 @@
       </div>
     <% end %>
   <% end %>
+  <%= react_component 'HomeAssessment' , { home: @home } %>
   <%= render "layouts/forms/home_assessment_form" %>
   <%= render "layouts/forms/dependent_assessment_form" %>
   <%= render "layouts/forms/zone_assessment_form" %>

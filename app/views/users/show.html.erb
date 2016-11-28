@@ -10,21 +10,7 @@
     <% end %>
   <% end %>
 
-  <%= react_component 'AssessmentContainer' , {
-        # home: @home,
-        # dependents: @dependents,
-        dependents: [],
-        # dependent: @dependent,
-        # zone: @zone,
-        # contact: @contact
-      }
-  %>
-
-  <%#= render "layouts/forms/home_assessment_form" %>
-  <!-- TODO: remove the render calls of these partials -->
-  <%#= render "layouts/forms/dependent_assessment_form" %>
-  <%#= render "layouts/forms/zone_assessment_form" %>
-  <%#= render "layouts/forms/contact_assessment_form" %>
+  <%= react_component 'AssessmentContainer' %>
 
 </div>
 <!-- <div class="profile-block">

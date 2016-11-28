@@ -11,25 +11,27 @@
   <% end %>
 
   <%= react_component 'AssessmentContainer' , {
-        home: @home,
-        dependents: @dependents,
-        dependent: @dependent,
-        zone: @zone,
-        contact: @contact
+        # home: @home,
+        # dependents: @dependents,
+        dependents: [],
+        # dependent: @dependent,
+        # zone: @zone,
+        # contact: @contact
       }
   %>
 
   <%#= render "layouts/forms/home_assessment_form" %>
-  <%= render "layouts/forms/dependent_assessment_form" %>
+  <!-- TODO: remove the render calls of these partials -->
+  <%#= render "layouts/forms/dependent_assessment_form" %>
   <%#= render "layouts/forms/zone_assessment_form" %>
   <%#= render "layouts/forms/contact_assessment_form" %>
 
 </div>
-<div class="profile-block">
+<!-- <div class="profile-block">
   <h2 class="title title-profile-block"> Account Details </h2>
   <ul>
     <li> username: <%= current_user.username %> </li>
     <li> email: <%= current_user.email %> </li>
     <li> member since: <%= current_user.created_at %> </li>
   </ul>
-</div>
+</div> -->

@@ -1,7 +1,7 @@
 class DependentAssessmentController < ApplicationController
   def dependents
-    @dependents = current_user.dependents.to_a
-    raise
+    @dependents = current_user.dependents
+    render :json => @dependents
   end
 
   def create

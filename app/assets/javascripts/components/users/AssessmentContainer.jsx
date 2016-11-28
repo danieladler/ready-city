@@ -1,12 +1,17 @@
 var AssessmentContainer = React.createClass({
-  // getInitialState: function() {
-  //   return {}
-  // },
+  getInitialState: function() {
+    return {
+      dependents: []
+    }
+  },
+  componentDidMount: function() {
+    $.get('/dependents', (response) => { this.setState({ dependents: response }) });
+  },
   render: function() {
     return (
       <div>
         <h1> AssessmentContainer visible! </h1>
-        <HomeAssessment home={this.props.home}/>
+        <DependentAssessment dependents = {this.state.dependents}/>
       </div>
     );
   }

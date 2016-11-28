@@ -1,4 +1,9 @@
 class DependentAssessmentController < ApplicationController
+  def dependents
+    @dependents = current_user.dependents.to_a
+    raise
+  end
+
   def create
     @dependent = Dependent.new(dependent_params)
     @dependent.user_id = current_user.id

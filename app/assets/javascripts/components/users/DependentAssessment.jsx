@@ -5,17 +5,15 @@ var DependentAssessment = React.createClass({
   render: function() {
     dependents = this.props.dependents.map( function(dependent) {
       return (
-         <li key={dependent.id}>
-           {dependent.name}
-         </li>
+        <DependentInstance dependent={dependent} key={dependent.id} name={dependent.name} human={dependent.human}/>
        );
      });
     return (
       <div>
         <h2> Dependents: </h2>
-        <ul>
+        <div>
           { dependents }
-        </ul>
+        </div>
       </div>
     );
   }

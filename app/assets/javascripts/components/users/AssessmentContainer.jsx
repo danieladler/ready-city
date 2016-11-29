@@ -22,7 +22,7 @@ var AssessmentContainer = React.createClass({
     var rootComponent = this;
     $.ajax({
       url: '/dependents/destroy/' + dependent.id,
-      type: 'GET',
+      type: 'DELETE',
       success: function(response) {
         rootComponent.componentDidMount();
       }

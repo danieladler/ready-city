@@ -34,11 +34,6 @@ describe DependentAssessmentController, type: :controller do
         expect(flash[:success]).to include "Dependent Added"
       end
 
-      it "redirects to current_user's profile" do
-        make_request
-        expect(response).to redirect_to user_path(user.id)
-      end
-
       it "generates gear_human gear preps" do
         preparation_gear_human = create(:gear_human)
         make_request
@@ -86,17 +81,25 @@ describe DependentAssessmentController, type: :controller do
     end
   end
 
-  describe "GET #destroy" do
+  describe "DELETE #destroy" do
     let(:user) { create(:user) }
     before(:each) do
       stub_current_user(user)
     end
 
-    it "reduces # of Dependents" do
-      dependent = create(:dependent, :pet, user_id: user.id)
-      expect{
-        post :destroy, params: {id: dependent, dependent: attributes_for(:dependent)}
-      }.to change(Dependent, :count).from(1).to(0)
+    context "dependent is a pet" do
+      it "reduces # of Dependents" do
+        dependent = create(:dependent, :pet, user_id: user.id)
+        expect{
+          delete :destroy, params: {id: dependent, dependent: attributes_for(:dependent)}
+        }.to change(Dependent, :count).from(1).to(0)
+      end
+
+      it "returns a 200" do
+        dependent = create(:dependent, :pet, user_id: user.id)
+        delete :destroy, params: {id: dependent, dependent: attributes_for(:dependent)}
+        expect(response.status).to eq(200)
+      end
     end
   end
 end

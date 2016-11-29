@@ -1,15 +1,10 @@
 var DependentAssessment = React.createClass({
-  // getInitialState: function() {
-  //   return {}
-  // },
   render: function() {
-    dependents = this.props.dependents.map( function(dependent) {
+    dependents = this.props.dependents.map(function(dependent) {
       return (
-        <div>
-          <DependentInstance dependent={dependent} key={dependent.id} name={dependent.name} human={dependent.human}/>
-        </div>
-       );
-     });
+        <DependentInstance dependent={dependent} key={dependent.id} name={dependent.name} human={dependent.human} />
+      );
+    });
     return (
       <div>
         <h3> Dependents: </h3>
@@ -17,7 +12,7 @@ var DependentAssessment = React.createClass({
           { dependents }
         </div>
         <h3> Add a Dependent </h3>
-        <DependentForm />
+        <DependentForm handleFormSubmit={this.props.handleFormSubmit}/>
       </div>
     );
   }

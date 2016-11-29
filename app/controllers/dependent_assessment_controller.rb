@@ -8,9 +8,9 @@ class DependentAssessmentController < ApplicationController
     @dependent = Dependent.new(dependent_params)
     @dependent.user_id = current_user.id
     if @dependent.save
-      generate_dependent_preps(current_user)
       flash[:success] = "Dependent Added"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      render json: @dependent
+      generate_dependent_preps(current_user)
     elsif @dependent.errors
       @errors = []
       @dependent.errors.each do |column, message|

@@ -1,23 +1,23 @@
 var DependentForm = React.createClass({
   getInitialState: function() {
     return {
-      dependentName: '',
-      dependentHuman: ''
+      name: '',
+      human: ''
     }
   },
   handleFormEntry: function(event) {
     this.setState({
-      dependentName: event.target.value
+      name: event.target.value
     });
   },
   handleOptionChange: function (changeEvent) {
     this.setState({
-      dependentHuman: changeEvent.target.value
+      human: changeEvent.target.value
     });
   },
   handleFormSubmit: function (formSubmitEvent) {
     formSubmitEvent.preventDefault();
-    console.log(this.state);;
+    this.props.handleFormSubmit(this.state);
   },
   render: function() {
     return (
@@ -31,9 +31,9 @@ var DependentForm = React.createClass({
         <div className="form-group">
           <label>
             Human or Pet?
-            <input ref='human' type="radio" value="true" onChange={this.handleOptionChange} checked={this.state.dependentHuman === 'true'}/>
+            <input ref='human' type="radio" value="true" onChange={this.handleOptionChange} checked={this.state.human === 'true'}/>
             Human
-            <input ref='human' type="radio" value="false" onChange={this.handleOptionChange} checked={this.state.dependentHuman === 'false'}/>
+            <input ref='human' type="radio" value="false" onChange={this.handleOptionChange} checked={this.state.human === 'false'}/>
             Pet
           </label>
         </div>

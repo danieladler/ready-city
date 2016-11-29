@@ -18,6 +18,7 @@ var DependentForm = React.createClass({
   handleFormSubmit: function (formSubmitEvent) {
     formSubmitEvent.preventDefault();
     this.props.handleFormSubmit(this.state);
+    this.refs.name.value = ''
   },
   render: function() {
     return (

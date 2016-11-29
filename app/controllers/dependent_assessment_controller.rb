@@ -51,8 +51,7 @@ class DependentAssessmentController < ApplicationController
       # gear_human are updated with the new quantity of dependents. This has
       # the effect of reducing these user_preps' total_cost_in_cents to the
       # appropriate amount given # of dependents.
-    flash[:notice] = "Dependent Deleted"
-    redirect_to user_path(current_user.id)
+    head :ok
   end
 
   def generate_dependent_preps(user)

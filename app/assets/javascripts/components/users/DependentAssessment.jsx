@@ -1,8 +1,15 @@
 var DependentAssessment = React.createClass({
   render: function() {
+    var _this = this
     dependents = this.props.dependents.map(function(dependent) {
       return (
-        <DependentInstance dependent={dependent} key={dependent.id} name={dependent.name} human={dependent.human} />
+        <DependentInstance
+          dependent={dependent}
+          key={dependent.id}
+          name={dependent.name}
+          human={dependent.human}
+          destroyInstance={_this.props.destroyInstance}
+        />
       );
     });
     return (

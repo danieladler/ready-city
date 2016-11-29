@@ -18,10 +18,24 @@ var AssessmentContainer = React.createClass({
       }
     });
   },
+  destroyInstance: function(dependent) {
+    var rootComponent = this;
+    $.ajax({
+      url: '/dependents/destroy/' + dependent.id,
+      type: 'GET',
+      success: function(response) {
+        rootComponent.componentDidMount();
+      }
+    })
+  },
   render: function() {
     return (
       <div>
-        <DependentAssessment dependents={this.state.dependents} handleFormSubmit={this.handleFormSubmit}/>
+        <DependentAssessment
+          dependents={this.state.dependents}
+          handleFormSubmit={this.handleFormSubmit}
+          destroyInstance={this.destroyInstance}
+        />
       </div>
     );
   }

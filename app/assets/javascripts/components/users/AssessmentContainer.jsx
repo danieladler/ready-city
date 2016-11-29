@@ -10,8 +10,7 @@ var AssessmentContainer = React.createClass({
   render: function() {
     return (
       <div>
-        <h1> AssessmentContainer visible! </h1>
-        <DependentAssessment dependents = {this.state.dependents}/>
+        <DependentAssessment dependents={this.state.dependents} />
       </div>
     );
   }

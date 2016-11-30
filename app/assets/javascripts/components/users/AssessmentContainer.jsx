@@ -18,6 +18,10 @@ var AssessmentContainer = React.createClass({
       }
     });
   },
+  handleUpdateForm: function(dependent) {
+    console.log('triggered in container');
+    console.log(dependent);
+  },
   destroyInstance: function(dependent) {
     var rootComponent = this;
     $.ajax({
@@ -34,6 +38,7 @@ var AssessmentContainer = React.createClass({
         <DependentAssessment
           dependents={this.state.dependents}
           handleFormSubmit={this.handleFormSubmit}
+          handleUpdateForm={this.handleUpdateForm}
           destroyInstance={this.destroyInstance}
         />
       </div>

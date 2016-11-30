@@ -25,9 +25,9 @@ class DependentAssessmentController < ApplicationController
     @dependent = Dependent.find(params[:id])
     @dependent.update_db_values(params)
     if @dependent.save
-      generate_dependent_preps(current_user)
       flash[:success] = "Dependent Updated"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      render json: @dependent
+      generate_dependent_preps(current_user)
     elsif @dependent.errors
       @errors = []
       @dependent.errors.each do |column, message|

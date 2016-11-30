@@ -9,7 +9,7 @@ var DependentAssessment = React.createClass({
           name={dependent.name}
           human={dependent.human}
           destroyInstance={_this.props.destroyInstance}
-          handleUpdateForm={_this.props.handleUpdateForm}
+          handleFormSubmit={_this.props.handleFormSubmit}
         />
       );
     });

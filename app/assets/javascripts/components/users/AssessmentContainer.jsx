@@ -7,22 +7,11 @@ var AssessmentContainer = React.createClass({
   componentDidMount: function() {
     $.get('/dependents', (response) => { this.setState({ dependents: response }) });
   },
-  handleFormSubmit: function(dependent) {
+  handleFormSubmit: function(dependent, controllerAction, httpRequest) {
     var rootComponent = this;
     $.ajax({
-      url: '/dependents/create',
-      type: 'POST',
-      data: {dependent: dependent},
-      success: function(data){
-        rootComponent.componentDidMount();
-      }
-    });
-  },
-  handleUpdateForm: function(dependent) {
-    var rootComponent = this;
-    $.ajax({
-      url: '/dependents/update/' + dependent.id,
-      type: 'PATCH',
+      url: '/dependents/' + controllerAction,
+      type: httpRequest,
       data: {dependent: dependent},
       success: function(data){
         rootComponent.componentDidMount();
@@ -45,7 +34,7 @@ var AssessmentContainer = React.createClass({
         <DependentAssessment
           dependents={this.state.dependents}
           handleFormSubmit={this.handleFormSubmit}
-          handleUpdateForm={this.handleUpdateForm}
+          handleFormSubmit={this.handleFormSubmit}
           destroyInstance={this.destroyInstance}
         />
       </div>

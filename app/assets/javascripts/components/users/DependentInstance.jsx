@@ -18,10 +18,11 @@ var DependentInstance = React.createClass({
   },
   handleFormSubmit: function(formSubmitEvent) {
     formSubmitEvent.preventDefault();
-    this.props.handleUpdateForm(this.state);
+    var controllerAction = 'update/' + this.state.id;
+    this.props.handleFormSubmit(this.state, controllerAction, 'PATCH');
   },
   handleOptionChange: function(changeEvent) {
-    this.setState({
+      this.setState({
       human: changeEvent.target.value
     });
   },

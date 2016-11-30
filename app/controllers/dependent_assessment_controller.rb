@@ -1,11 +1,16 @@
 class DependentAssessmentController < ApplicationController
+  def dependents
+    @dependents = current_user.dependents
+    render :json => @dependents
+  end
+
   def create
     @dependent = Dependent.new(dependent_params)
     @dependent.user_id = current_user.id
     if @dependent.save
-      generate_dependent_preps(current_user)
       flash[:success] = "Dependent Added"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      render json: @dependent
+      generate_dependent_preps(current_user)
     elsif @dependent.errors
       @errors = []
       @dependent.errors.each do |column, message|
@@ -46,8 +51,7 @@ class DependentAssessmentController < ApplicationController
       # gear_human are updated with the new quantity of dependents. This has
       # the effect of reducing these user_preps' total_cost_in_cents to the
       # appropriate amount given # of dependents.
-    flash[:notice] = "Dependent Deleted"
-    redirect_to user_path(current_user.id)
+    head :ok
   end
 
   def generate_dependent_preps(user)

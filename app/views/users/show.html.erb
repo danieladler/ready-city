@@ -9,17 +9,15 @@
       </div>
     <% end %>
   <% end %>
-  <%= react_component 'HomeAssessment' , { home: @home } %>
-  <%= render "layouts/forms/home_assessment_form" %>
-  <%= render "layouts/forms/dependent_assessment_form" %>
-  <%= render "layouts/forms/zone_assessment_form" %>
-  <%= render "layouts/forms/contact_assessment_form" %>
+
+  <%= react_component 'AssessmentContainer' %>
+
 </div>
-<div class="profile-block">
+<!-- <div class="profile-block">
   <h2 class="title title-profile-block"> Account Details </h2>
   <ul>
     <li> username: <%= current_user.username %> </li>
     <li> email: <%= current_user.email %> </li>
     <li> member since: <%= current_user.created_at %> </li>
   </ul>
-</div>
+</div> -->

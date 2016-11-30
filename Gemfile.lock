@@ -66,7 +66,11 @@ GEM
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    em-websocket (0.5.1)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
+    eventmachine (1.2.1)
     execjs (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -91,6 +95,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -169,6 +174,10 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
+    react-rails-hot-loader (0.7.0)
+      em-websocket
+      rails
+      react-rails
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -257,6 +266,7 @@ DEPENDENCIES
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-controller-testing
   react-rails
+  react-rails-hot-loader
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers (~> 3.1)

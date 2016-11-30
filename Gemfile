@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bumbler', require: false
 
 gem 'react-rails'
+gem 'react-rails-hot-loader'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

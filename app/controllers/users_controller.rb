@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       @user = current_user
     end
     current_user.generate_all_user_preps
-    load_assessment_data
+    # load_assessment_data
   end
 
   def update

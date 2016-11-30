@@ -2,6 +2,7 @@ var DependentInstance = React.createClass({
   getInitialState() {
      return {
        dependent: this.props.dependent,
+       id: this.props.dependent.id,
        name: this.props.dependent.name,
        human: this.props.dependent.human
      }

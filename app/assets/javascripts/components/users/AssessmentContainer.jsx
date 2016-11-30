@@ -19,8 +19,15 @@ var AssessmentContainer = React.createClass({
     });
   },
   handleUpdateForm: function(dependent) {
-    console.log('triggered in container');
-    console.log(dependent);
+    var rootComponent = this;
+    $.ajax({
+      url: '/dependents/update/' + dependent.id,
+      type: 'PATCH',
+      data: {dependent: dependent},
+      success: function(data){
+        rootComponent.componentDidMount();
+      }
+    });
   },
   destroyInstance: function(dependent) {
     var rootComponent = this;

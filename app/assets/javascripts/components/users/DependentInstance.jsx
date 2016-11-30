@@ -2,7 +2,8 @@ var DependentInstance = React.createClass({
   getInitialState() {
      return {
        dependent: this.props.dependent,
-       name: this.props.dependent.name
+       name: this.props.dependent.name,
+       human: this.props.dependent.human
      }
   },
   destroyInstance(event) {
@@ -16,25 +17,34 @@ var DependentInstance = React.createClass({
   },
   handleFormSubmit: function(formSubmitEvent) {
     formSubmitEvent.preventDefault();
-    this.props.handleUpdateForm(this.state.name);
+    this.props.handleUpdateForm(this.state);
+  },
+  handleOptionChange: function(changeEvent) {
+    this.setState({
+      human: changeEvent.target.value
+    });
   },
   render: function() {
     return (
-      <div>
-        <ul>
-          <li>Name:  {this.props.dependent.name}</li>
-          <li>Human: {String(this.props.dependent.human)}</li>
-          <li><a href="" onClick={this.destroyInstance}>Delete</a></li>
-        </ul>
-
       <form onSubmit={this.handleFormSubmit}>
-        <label>
-          Name
-          <input defaultValue={this.props.dependent.name} onChange={this.handleFormEntry}/>
-        </label>
+        <div className="form-group">
+          <label>
+            Name
+            <input defaultValue={this.props.dependent.name} onChange={this.handleFormEntry}/>
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Human or Pet?
+            <input ref='human' type="radio" value="true" onChange={this.handleOptionChange} checked={this.state.human === true}/>
+            Human
+            <input ref='human' type="radio" value="false" onChange={this.handleOptionChange} checked={this.state.human === false}/>
+            Pet
+          </label>
+        </div>
         <button> Update </button>
+        <button onClick={this.destroyInstance}>Delete</button>
       </form>
-      </div>
     );
   }
 });

@@ -21,6 +21,10 @@ class User < ApplicationRecord
     self.dependents.where(human: false).count
   end
 
+  def has_pets?
+    true if self.pets_in_household > 0
+  end
+
   def has_zones?
     true if self.zones.count > 0
   end

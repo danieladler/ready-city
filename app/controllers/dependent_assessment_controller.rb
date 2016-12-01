@@ -59,7 +59,7 @@ class DependentAssessmentController < ApplicationController
     @pb.generate_preps("gear_human", options = {consumer_multiplier: user.people_in_household})
     @pb.generate_preps("gear_check")
     @pb.generate_preps("plan_dependent_human")
-    if user.pets_in_household > 0
+    if user.has_pets?
       @pb.generate_preps("gear_pet", options = {consumer_multiplier: user.pets_in_household})
       @pb.generate_preps("plan_dependent_pet")
     end

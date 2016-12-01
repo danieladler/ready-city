@@ -7,11 +7,13 @@ var UserProfileContainer = React.createClass({
   componentDidMount: function() {
     $.get('/user', (response) => { this.setState({ user: response }) });
   },
+  handleFormSubmit: function(updatedState) {
+    var rootComponent = this;
+    console.log(updatedState);
+  },
   render: function() {
     return(
-      <div>
-        <h1> Profile Container </h1>
-      </div>
+      <UserProfileForm user={this.state.user} handleFormSubmit={this.handleFormSubmit}/>
     );
   }
 });

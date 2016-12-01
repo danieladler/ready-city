@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   def api
     @user = current_user
     @allowable_attrs = {
-      id: current_user.id,
       username: current_user.username,
       email: current_user.email,
       days_to_cover: current_user.days_to_cover

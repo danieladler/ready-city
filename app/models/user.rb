@@ -25,6 +25,10 @@ class User < ApplicationRecord
     true if self.pets_in_household > 0
   end
 
+  def has_obsolete_pet_user_preps?
+    !self.has_pets? && UserPrep.where(user_id: self.id, prep_subtype: 'gear_pet').count > 0
+  end
+
   def has_zones?
     true if self.zones.count > 0
   end

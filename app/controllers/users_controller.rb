@@ -42,16 +42,19 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
-    current_user.generate_all_user_preps
+    # current_user.generate_all_user_preps
     # load_assessment_data
   end
 
   def update
-    current_user.update(user_params)
-    current_user.generate_all_user_preps # regenerate all preps so that those with variable quantities impacted by changing days_to_cover are updated.
-    flash[:success] = "User Updated"
-    render json: current_user
-    # redirect_to user_path(current_user)
+    current_user.update_db_values(user_params)
+    if current_user.save
+      current_user.generate_all_user_preps
+      # ^^ regenerate all preps so that those with variable quantities impacted
+      #    by changing days_to_cover are updated.
+      flash[:success] = "User Updated"
+      render json: current_user
+    end
   end
 
   def load_assessment_data
@@ -60,7 +63,7 @@ class UsersController < ApplicationController
     @dependents.unshift(["Me", nil])
     # ^^ this puts all of current_user's human dependents into the right format
     # for displaying in a <select> dropdown, to assign dependent_id to a Zone
-    @dependent = Dependent.new
+    # @dependent = Dependent.new
     # ^^ this pre-loads a Dependent instance for creating a new Dependent; the
     # form_helper that requires it is in _depdendent_assessment_form template
     @zone = Zone.new

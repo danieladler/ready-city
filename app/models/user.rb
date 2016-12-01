@@ -26,7 +26,8 @@ class User < ApplicationRecord
   end
 
   def has_obsolete_pet_user_preps?
-    !self.has_pets? && UserPrep.where(user_id: self.id, prep_subtype: 'gear_pet').count > 0
+    !self.has_pets? && UserPrep.where(user_id: self.id, prep_subtype: 'gear_pet').count > 0 ||
+    !self.has_pets? && UserPrep.where(user_id: self.id, prep_subtype: 'plan_dependent_pet').count > 0
   end
 
   def has_zones?

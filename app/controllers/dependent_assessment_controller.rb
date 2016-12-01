@@ -44,6 +44,7 @@ class DependentAssessmentController < ApplicationController
     @dependent.destroy
     if current_user.has_obsolete_pet_user_preps?
       UserPrep.where(user_id: current_user.id, prep_subtype: 'gear_pet').destroy_all # delete UserPreps for pets if the user no longer has pets
+      UserPrep.where(user_id: current_user.id, prep_subtype: 'plan_dependent_pet').destroy_all # delete UserPreps for pets if the user no longer has pets
       # TODO: make sure this captures all user_preps for pets (not just gear_pet)
     end
     generate_dependent_preps(current_user)

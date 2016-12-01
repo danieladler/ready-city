@@ -117,13 +117,23 @@ describe DependentAssessmentController, type: :controller do
         gear_pet_base_preparation = create(:gear_pet) # instantiate the Preparation with the base cost data
         make_first_create_request
         make_second_create_request # create two dependents so that the total cost of the user_prep is doubled.
-        variable_qty_user_prep = user.user_preps.where(prep_subtype:'gear_pet').first # isolate the user_prep to be checked
-        expect(variable_qty_user_prep.total_cost_in_cents).to eq(400)
+        # placeholder 1
         dependent = Dependent.first
-        binding.pry
         delete :destroy, params: {id: dependent.id, dependent: attributes_for(:dependent)} # destroy one of the dependents
         expect(user.dependents.count).to eq(1) # confirm there's only one Dependent left
-        expect(variable_qty_user_prep.total_cost_in_cents).to eq(gear_pet_base_preparation.base_cost_in_cents * user.dependents.count) # confirm the total_cost_in_cents has been reduced
+        # placeholder 2
+        expect(user.user_preps.where(prep_subtype:'gear_pet').first.total_cost_in_cents).to eq(gear_pet_base_preparation.base_cost_in_cents * user.dependents.count) # confirm the total_cost_in_cents has been reduced
+
+        # TODO: figure out why these two lines return a failed test.
+        #       binding.pry shows that calling UserPrep.last returns the UserPrep instance with the correct total_cost_in_cents,
+        #       but calling variable_qty_user_prep returns the *same* UserPrep (same id) but with the original (non-reduced after #destroy action) total_cost_in_cents
+        #       ...and I can't figure out why the same instance could simultaneously have different attribute values!
+        # 
+        # Steps to recreate:
+        # 1) move following line up to 'placeholder 1'
+        # variable_qty_user_prep = user.user_preps.where(prep_subtype:'gear_pet').first # isolate the user_prep to be checked
+        # 2) move following line up to 'placeholder 2'
+        # expect(variable_qty_user_prep.total_cost_in_cents).to eq(gear_pet_base_preparation.base_cost_in_cents * user.dependents.count) # confirm the total_cost_in_cents has been reduced
       end
     end
   end

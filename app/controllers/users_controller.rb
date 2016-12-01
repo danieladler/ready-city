@@ -21,6 +21,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def api
+    @user = current_user
+    @allowable_attrs = {
+      id: current_user.id,
+      username: current_user.username,
+      email: current_user.email,
+      days_to_cover: current_user.days_to_cover
+    }
+    render :json => @allowable_attrs
+  end
+
   def show
     if current_user == nil
        redirect_to root_path

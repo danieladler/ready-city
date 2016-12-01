@@ -7,9 +7,16 @@ var UserProfileContainer = React.createClass({
   componentDidMount: function() {
     $.get('/user', (response) => { this.setState({ user: response }) });
   },
-  handleFormSubmit: function(updatedState) {
+  handleFormSubmit: function(user) {
     var rootComponent = this;
-    console.log(updatedState);
+    $.ajax({
+      url: '/users/' + this.state.user.id + '/update',
+      type: 'PATCH',
+      data: {user: user},
+      success: function(data){
+        rootComponent.componentDidMount();
+      }
+    });
   },
   render: function() {
     return(

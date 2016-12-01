@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   def api
     @user = current_user
     @allowable_attrs = {
+      id: current_user.id,
       username: current_user.username,
       email: current_user.email,
       days_to_cover: current_user.days_to_cover
@@ -46,10 +47,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(user_params) if user_params # update days_to_cover from users/show view, if this method was triggered from submitting that form.
+    current_user.update(user_params)
     current_user.generate_all_user_preps # regenerate all preps so that those with variable quantities impacted by changing days_to_cover are updated.
     flash[:success] = "User Updated"
-    redirect_to user_path(current_user)
+    render json: current_user
+    # redirect_to user_path(current_user)
   end
 
   def load_assessment_data

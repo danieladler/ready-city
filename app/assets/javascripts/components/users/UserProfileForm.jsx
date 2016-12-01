@@ -14,19 +14,19 @@ var UserProfileForm = React.createClass({
         <div className="form-group">
           <label>
             Username
-            <input name="username" onChange={this.handleFormEntry} defaultValue={this.props.user.username}/>
+            <input name="username" defaultValue={this.props.user.username} onChange={this.handleFormEntry} />
           </label>
         </div>
         <div className="form-group">
           <label>
             e-mail
-            <input name="email" onChange={this.handleFormEntry} defaultValue={this.props.user.email}/>
+            <input name="email" defaultValue={this.props.user.email} onChange={this.handleFormEntry}/>
           </label>
         </div>
         <div className="form-group">
           <label>
             Days to cover
-            <input name="days_to_cover" onChange={this.handleFormEntry} defaultValue={this.props.user.days_to_cover}/>
+            <input name="days_to_cover" defaultValue={this.props.user.days_to_cover} onChange={this.handleFormEntry}/>
           </label>
         </div>
         <button>Update</button>

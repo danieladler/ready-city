@@ -20,7 +20,10 @@ var UserProfileContainer = React.createClass({
   },
   render: function() {
     return(
-      <UserProfileForm user={this.state.user} handleFormSubmit={this.handleFormSubmit}/>
+      <div>
+        <h2> Profile </h2>
+        <UserProfileForm user={this.state.user} handleFormSubmit={this.handleFormSubmit}/>
+      </div>
     );
   }
 });

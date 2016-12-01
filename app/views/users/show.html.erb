@@ -1,23 +1,5 @@
 <h1> My Profile </h1>
 <div class="profile-block">
-  <% if !flash[:error] %> <!-- NB: this hides the days_to_cover form if there's a CRUD error with home/assessment/zone/contact forms -->
-    <%= form_for current_user, url: update_user_path(current_user) do |f| %>
-      <div class="form-group">
-        <%= f.label :days_to_cover, "# of days you want your gear to last" %>
-        <%= f.text_field :days_to_cover %>
-        <%= f.submit %>
-      </div>
-    <% end %>
-  <% end %>
-
   <%= react_component 'AssessmentContainer' %>
-
+  <%= react_component 'UserProfileContainer' %>
 </div>
-<!-- <div class="profile-block">
-  <h2 class="title title-profile-block"> Account Details </h2>
-  <ul>
-    <li> username: <%= current_user.username %> </li>
-    <li> email: <%= current_user.email %> </li>
-    <li> member since: <%= current_user.created_at %> </li>
-  </ul>
-</div> -->

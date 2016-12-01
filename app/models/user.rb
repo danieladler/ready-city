@@ -9,6 +9,12 @@ class User < ApplicationRecord
   has_many :zones
   has_many :contacts
 
+  def update_db_values(params)
+    self.username      = params[:username]
+    self.email         = params[:email]
+    self.days_to_cover = params[:days_to_cover]
+  end
+
   def has_dependents?
     true if self.dependents.count > 0
   end

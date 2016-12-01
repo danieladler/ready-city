@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # USERS
   get "/sign-up",            to: "users#sign_up", as: :sign_up
   post "users",              to: "users#create",  as: :users
+  get "/user",               to: "users#api",     as: :user_api
   get "/users/:id",          to: "users#show",    as: :user # AKA Profile
   patch "/users/:id/update", to: "users#update",  as: :update_user
 

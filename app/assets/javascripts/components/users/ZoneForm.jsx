@@ -25,8 +25,9 @@ var ZoneForm = React.createClass({
     })
   },
   handleZoneDependentSelectChange: function(event) {
+    var idAsNumber = Number(event.target.value);
     this.setState({
-      dependent_id: event.target.value
+      dependent_id: idAsNumber
     })
   },
   handleFormSubmit: function(formSubmitEvent) {

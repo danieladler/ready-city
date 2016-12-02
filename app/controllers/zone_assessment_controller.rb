@@ -77,6 +77,7 @@ class ZoneAssessmentController < ApplicationController
   private
   def zone_params
     params.require(:zone).permit(
+      :dependent_id,
       :name,
       :zone_type,
       :dependent,

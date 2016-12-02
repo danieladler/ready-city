@@ -1,11 +1,13 @@
 var AssessmentContainer = React.createClass({
   getInitialState: function() {
     return {
-      dependents: []
+      dependents: [],
+      contacts: []
     }
   },
   componentDidMount: function() {
     $.get('/dependents', (response) => { this.setState({ dependents: response }) });
+    $.get('/contacts', (response) => { this.setState({ contacts: response }) });
   },
   handleFormSubmit: function(dependent, controllerAction, httpRequest) {
     var rootComponent = this;
@@ -36,6 +38,9 @@ var AssessmentContainer = React.createClass({
           handleFormSubmit={this.handleFormSubmit}
           handleFormSubmit={this.handleFormSubmit}
           destroyInstance={this.destroyInstance}
+        />
+        <ContactAssessment
+          contacts={this.state.contacts}
         />
       </div>
     );

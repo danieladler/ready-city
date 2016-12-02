@@ -1,4 +1,9 @@
 class ContactAssessmentController < ApplicationController
+  def api
+    @contacts = current_user.contacts
+    render :json => @contacts
+  end
+
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id

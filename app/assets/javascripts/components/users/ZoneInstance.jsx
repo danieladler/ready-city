@@ -43,12 +43,7 @@ var ZoneInstance = React.createClass({
     this.props.handleFormSubmit('zones', 'zone', this.state, controllerAction, 'PATCH');
   },
   loadDependentsIntoSelect: function() {
-    var optionsAsString = "",
-        arr = this.props.dependentsForZoneAsmt;
-    for (var i=0; i< arr.length; i++) {
-      optionsAsString +=" <option value='" + (arr[i].id) + "'>" + (arr[i].name) + "</option>";
-    }
-    $('.select-zone-dependent').append(optionsAsString);
+    $('.select-zone-dependent').append(this.props.dependentsForZoneAsmt);
   },
   render: function() {
     return (

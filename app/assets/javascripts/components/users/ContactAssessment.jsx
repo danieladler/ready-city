@@ -5,7 +5,12 @@ var ContactAssessment = React.createClass({
       return (
         <ContactInstance
           key={contact.id}
+          id={contact.id}
           name={contact.name}
+          phone={contact.phone}
+          email={contact.email}
+          out_of_area={contact.out_of_area}
+          destroyInstance={_this.props.destroyInstance}
         />
       );
     });
@@ -16,7 +21,7 @@ var ContactAssessment = React.createClass({
           { contacts }
         </div>
         <h3> Add a Contact </h3>
-        <h4> [ contact form ] </h4>
+        <ContactForm handleFormSubmit={this.props.handleFormSubmit}/>
       </div>
     );
   }

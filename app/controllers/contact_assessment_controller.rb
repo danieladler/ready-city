@@ -10,7 +10,7 @@ class ContactAssessmentController < ApplicationController
     if @contact.save
       generate_contact_preps(current_user)
       flash[:success] = "Contact Added"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      render json: @contact
     elsif @contact.errors
       @errors = []
       @contact.errors.each do |column, message|
@@ -43,7 +43,7 @@ class ContactAssessmentController < ApplicationController
     @contact.destroy
     destroy_contact_userpreps if !current_user.has_contacts? #clean out UserPreps for Contacts if there are no Contacts.
     flash[:notice] = "Contact Deleted"
-    redirect_to user_path(current_user.id)
+    head :ok
   end
 
   def destroy_contact_userpreps

@@ -1,15 +1,20 @@
 var ContactInstance = React.createClass({
   getInitialState() {
      return {
-       id: this.props.key,
        name: this.props.name
      }
   },
+  destroyInstance(event) {
+    event.preventDefault();
+    this.props.destroyInstance('contacts', this.props.id);
+  },
   render: function() {
     return (
-      <div>
-        <h3> Name: {this.props.name} </h3>
-      </div>
+      <form onSubmit={this.handleFormSubmit}>
+        <h3> Contact: {this.props.name} </h3>
+          <button> Update </button>
+          <button onClick={this.destroyInstance}>Delete</button>
+      </form>
     );
   }
 });

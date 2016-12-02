@@ -9,7 +9,7 @@ var DependentInstance = React.createClass({
   },
   destroyInstance(event) {
     event.preventDefault();
-    this.props.destroyInstance(this.state.dependent);
+    this.props.destroyInstance('dependents', this.state.id);
   },
   handleFormEntry: function(event) {
     this.setState({

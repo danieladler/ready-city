@@ -9,21 +9,23 @@ var AssessmentContainer = React.createClass({
     $.get('/dependents', (response) => { this.setState({ dependents: response }) });
     $.get('/contacts', (response) => { this.setState({ contacts: response }) });
   },
-  handleFormSubmit: function(dependent, controllerAction, httpRequest) {
+  handleFormSubmit: function(route, modelName, model, controllerAction, httpRequest) {
     var rootComponent = this;
+    var dataValues = {};
+    dataValues[modelName] = model
     $.ajax({
-      url: '/dependents/' + controllerAction,
+      url: '/' + route + '/' + controllerAction,
       type: httpRequest,
-      data: {dependent: dependent},
+      data: dataValues,
       success: function(data){
         rootComponent.componentDidMount();
       }
     });
   },
-  destroyInstance: function(dependent) {
+  destroyInstance: function(route, id) {
     var rootComponent = this;
     $.ajax({
-      url: '/dependents/destroy/' + dependent.id,
+      url: '/' + route + '/destroy/' + id,
       type: 'DELETE',
       success: function(response) {
         rootComponent.componentDidMount();
@@ -36,11 +38,12 @@ var AssessmentContainer = React.createClass({
         <DependentAssessment
           dependents={this.state.dependents}
           handleFormSubmit={this.handleFormSubmit}
-          handleFormSubmit={this.handleFormSubmit}
           destroyInstance={this.destroyInstance}
         />
         <ContactAssessment
           contacts={this.state.contacts}
+          handleFormSubmit={this.handleFormSubmit}
+          destroyInstance={this.destroyInstance}
         />
       </div>
     );

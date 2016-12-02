@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get   "/contacts",               to: "contact_assessment#api",       as: :contact_api
   post "/contacts/create",         to: "contact_assessment#create",    as: :create_contact
   patch "/contacts/update/:id",    to: "contact_assessment#update",    as: :update_contact
-  get "/contacts/destroy/:id",     to: "contact_assessment#destroy",   as: :destroy_contact
+  delete "/contacts/destroy/:id",     to: "contact_assessment#destroy",   as: :destroy_contact
 
   # PREPARATIONS - VIEW AS USER
   get "/preparations/:id", to: "preparations#overview", as: :preparations_overview

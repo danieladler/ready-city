@@ -8,8 +8,8 @@ class DependentAssessmentController < ApplicationController
     @dependent = Dependent.new(dependent_params)
     @dependent.user_id = current_user.id
     if @dependent.save
-      flash[:success] = "Dependent Added"
       generate_dependent_preps(current_user)
+      flash[:success] = "Dependent Added"
       render json: @dependent
     elsif @dependent.errors
       @errors = []

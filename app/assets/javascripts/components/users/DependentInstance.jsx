@@ -19,7 +19,8 @@ var DependentInstance = React.createClass({
   handleFormSubmit: function(formSubmitEvent) {
     formSubmitEvent.preventDefault();
     var controllerAction = 'update/' + this.state.id;
-    this.props.handleFormSubmit(this.state, controllerAction, 'PATCH');
+    // args must be in this order: route, modelName, model, controllerAction, httpRequest
+    this.props.handleFormSubmit('dependents', 'dependent', this.state, controllerAction, 'PATCH');
   },
   handleOptionChange: function(changeEvent) {
       this.setState({

@@ -12,7 +12,7 @@ var AssessmentContainer = React.createClass({
   handleFormSubmit: function(route, modelName, model, controllerAction, httpRequest) {
     var rootComponent = this;
     var dataValues = {};
-    dataValues[modelName] = model
+    dataValues[modelName] = model;
     $.ajax({
       url: '/' + route + '/' + controllerAction,
       type: httpRequest,

@@ -45,7 +45,6 @@ var ZoneForm = React.createClass({
   render: function() {
     return (
       <form onSubmit={this.handleFormSubmit}>
-        <div> {this.test} </div>
         <div className="form-group">
           <label>
             Name

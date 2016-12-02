@@ -14,6 +14,7 @@ var ZoneAssessment = React.createClass({
           zip={zone.zip}
           zone_type={zone.zone_type}
           zone_primary={zone.zone_primary}
+          dependentsForZoneAsmt={_this.props.dependentsForZoneAsmt}
           destroyInstance={_this.props.destroyInstance}
           handleFormSubmit={_this.props.handleFormSubmit}
         />

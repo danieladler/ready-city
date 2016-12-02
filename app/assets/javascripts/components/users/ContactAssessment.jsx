@@ -11,6 +11,7 @@ var ContactAssessment = React.createClass({
           email={contact.email}
           out_of_area={contact.out_of_area}
           destroyInstance={_this.props.destroyInstance}
+          handleFormSubmit={_this.props.handleFormSubmit}
         />
       );
     });

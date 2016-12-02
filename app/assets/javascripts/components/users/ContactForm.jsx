@@ -49,7 +49,7 @@ var ContactForm = React.createClass({
           <label>
             In your local area or out of area?
             <input ref='out_of_area' name='out_of_area' type="radio" value="false" onChange={this.handleOptionChange} checked={this.state.out_of_area === 'false'}/>
-            Local Area
+            Local 
             <input ref='out_of_area' name='out_of_area' type="radio" value="true" onChange={this.handleOptionChange} checked={this.state.out_of_area === 'true'}/>
             Out-of-area
           </label>

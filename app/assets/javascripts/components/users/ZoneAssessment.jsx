@@ -6,6 +6,7 @@ var ZoneAssessment = React.createClass({
         <ZoneInstance
           key={zone.id}
           id={zone.id}
+          dependent_id={zone.dependent_name}
           dependent_id={zone.dependent_id}
           name={zone.name}
           address={zone.address}

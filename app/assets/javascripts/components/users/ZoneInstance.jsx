@@ -3,6 +3,7 @@ var ZoneInstance = React.createClass({
      return {
        id: this.props.id,
        dependent_id: this.props.dependent_id,
+       dependent_name: this.props.dependent_name,
        name: this.props.name,
        address: this.props.address,
        city: this.props.city,
@@ -61,7 +62,7 @@ var ZoneInstance = React.createClass({
         <div className="form-group">
           <label>
             What type of Zone is this?
-            <select onChange={this.handleZoneTypeSelectChange}>
+            <select onChange={this.handleZoneTypeSelectChange} value={this.state.zone_type}>
               <option value=""          name="zone_type">[select]</option>
               <option value="zone_home" name="zone_type">Home</option>
               <option value="zone_work" name="zone_type">Work</option>

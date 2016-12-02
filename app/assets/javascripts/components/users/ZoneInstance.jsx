@@ -1,6 +1,7 @@
 var ZoneInstance = React.createClass({
   getInitialState() {
      return {
+       dependent_id: this.props.dependent_id,
        name: this.props.name,
        address: this.props.address,
        city: this.props.city,

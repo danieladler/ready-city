@@ -6,6 +6,7 @@ var ZoneAssessment = React.createClass({
         <ZoneInstance
           key={zone.id}
           id={zone.id}
+          dependent_id={zone.dependent_id}
           name={zone.name}
           address={zone.address}
           city={zone.city}
@@ -25,7 +26,10 @@ var ZoneAssessment = React.createClass({
           { zones }
         </div>
         <h3> Add a Zone </h3>
-        <ZoneForm handleFormSubmit={this.props.handleFormSubmit}/>
+        <ZoneForm
+          handleFormSubmit={this.props.handleFormSubmit}
+          dependentsForZoneAsmt={this.props.dependentsForZoneAsmt}
+        />
       </div>
     );
   }

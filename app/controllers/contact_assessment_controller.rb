@@ -1,11 +1,16 @@
 class ContactAssessmentController < ApplicationController
+  def api
+    @contacts = current_user.contacts
+    render :json => @contacts
+  end
+
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
       generate_contact_preps(current_user)
       flash[:success] = "Contact Added"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      render json: @contact
     elsif @contact.errors
       @errors = []
       @contact.errors.each do |column, message|
@@ -20,9 +25,9 @@ class ContactAssessmentController < ApplicationController
     @contact = Contact.find(params[:id])
     @contact.update_db_values(params)
     if @contact.save
-      generate_contact_preps(current_user)
       flash[:success] = "Contact Updated"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      generate_contact_preps(current_user)
+      render json: @contact
     elsif @contact.errors
       @errors = []
       @contact.errors.each do |column, message|
@@ -38,7 +43,7 @@ class ContactAssessmentController < ApplicationController
     @contact.destroy
     destroy_contact_userpreps if !current_user.has_contacts? #clean out UserPreps for Contacts if there are no Contacts.
     flash[:notice] = "Contact Deleted"
-    redirect_to user_path(current_user.id)
+    head :ok
   end
 
   def destroy_contact_userpreps

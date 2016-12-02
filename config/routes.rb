@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   patch "/dependents/update/:id",  to: "dependent_assessment#update",  as: :update_dependent
   post  "/dependents/create",      to: "dependent_assessment#create",  as: :create_dependent
   delete  "/dependents/destroy/:id",  to: "dependent_assessment#destroy", as: :destroy_dependent
+  get "/zones",                    to: "zone_assessment#api",          as: :zone_api
   post "/zones/create",            to: "zone_assessment#create",       as: :create_zone
   patch "/zones/update/:id",       to: "zone_assessment#update",       as: :update_zone
   get "/zones/destroy/:id",        to: "zone_assessment#destroy",      as: :destroy_zone

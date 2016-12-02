@@ -1,4 +1,9 @@
 class ZoneAssessmentController < ApplicationController
+  def api
+    @zones = current_user.zones
+    render :json => @zones
+  end
+
   def create
     @zone = Zone.new(zone_params)
     @zone.user_id = current_user.id

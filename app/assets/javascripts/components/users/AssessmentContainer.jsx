@@ -2,11 +2,13 @@ var AssessmentContainer = React.createClass({
   getInitialState: function() {
     return {
       dependents: [],
+      zones: [],
       contacts: []
     }
   },
   componentDidMount: function() {
     $.get('/dependents', (response) => { this.setState({ dependents: response }) });
+    $.get('/zones', (response) => { this.setState({ zones: response }) });
     $.get('/contacts', (response) => { this.setState({ contacts: response }) });
   },
   handleFormSubmit: function(route, modelName, model, controllerAction, httpRequest) {
@@ -39,6 +41,9 @@ var AssessmentContainer = React.createClass({
           dependents={this.state.dependents}
           handleFormSubmit={this.handleFormSubmit}
           destroyInstance={this.destroyInstance}
+        />
+        <ZoneAssessment
+          zones={this.state.zones}
         />
         <ContactAssessment
           contacts={this.state.contacts}

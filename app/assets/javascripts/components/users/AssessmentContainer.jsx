@@ -47,6 +47,7 @@ var AssessmentContainer = React.createClass({
           zones={this.state.zones}
           dependentsForZoneAsmt={this.state.dependentsForZoneAsmt}
           handleFormSubmit={this.handleFormSubmit}
+          destroyInstance={this.destroyInstance}
         />
         <ContactAssessment
           contacts={this.state.contacts}

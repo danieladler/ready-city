@@ -53,7 +53,7 @@ class ZoneAssessmentController < ApplicationController
     destroy_zone_userpreps if !current_user.has_zones?
     # generate_zone_preps(current_user) # NB: commented out for now because currently no plan_zone UserPreps vary based on # of zones.
     flash[:notice] = "Zone Deleted"
-    redirect_to user_path(current_user.id)
+    head :ok
   end
 
   def generate_zone_preps(user)

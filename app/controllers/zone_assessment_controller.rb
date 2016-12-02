@@ -19,7 +19,7 @@ class ZoneAssessmentController < ApplicationController
     if @zone.save
       # generate_zone_preps(current_user)
       flash[:success] = "Zone Added"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      render json: @zone
     elsif @zone.errors
       @errors = []
       @zone.errors.each do |column, message|

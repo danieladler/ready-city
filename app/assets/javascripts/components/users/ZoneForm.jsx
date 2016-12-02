@@ -11,6 +11,9 @@ var ZoneForm = React.createClass({
       zone_primary: ''
     }
   },
+  componentDidMount: function() {
+    this.loadDependentsIntoSelect();
+  },
   handleFormEntry: function(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -22,14 +25,21 @@ var ZoneForm = React.createClass({
     })
   },
   handleZoneDependentSelectChange: function(event) {
-    console.log(event.target.value);
-    // this.setState({
-    //   dependent_id: event.target.value
-    // })
+    this.setState({
+      dependent_id: event.target.value
+    })
   },
   handleFormSubmit: function(formSubmitEvent) {
     formSubmitEvent.preventDefault();
     this.props.handleFormSubmit('zones', 'zone', this.state, 'create', 'POST');
+  },
+  loadDependentsIntoSelect: function() {
+    var optionsAsString = "",
+        arr = this.props.dependentsForZoneAsmt;
+    for (var i=0; i< arr.length; i++) {
+      optionsAsString +=" <option value='" + (arr[i].id) + "'>" + (arr[i].name) + "</option>";
+    }
+    $('.select-zone-dependent').append(optionsAsString);
   },
   render: function() {
     return (
@@ -54,7 +64,7 @@ var ZoneForm = React.createClass({
         <div className="form-group">
           <label>
             Who spends time here?
-            <select onChange={this.handleZoneDependentSelectChange}>
+            <select onChange={this.handleZoneDependentSelectChange} className="select-zone-dependent">
               <option value="" name="zone_type">[select]</option>
             </select>
           </label>

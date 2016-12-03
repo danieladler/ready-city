@@ -1,12 +1,17 @@
 class HomeAssessmentController < ApplicationController
-  def update_home
+  def api
     @home ||= Home.load_home(current_user)
+    render :json => @home
+  end
+
+  def update_home
+    @home = Home.find(params[:id])
     @home.update_db_values(params)
     destroy_house_preps if !@home.is_house # have to call this before @save in order to return a value from .changed method below
     if @home.save
       generate_home_preps(current_user, @home)
       flash[:success] = "Home Updated"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      render json: @home
     elsif @home.errors
       @errors = []
       @home.errors.each do |column, message|

@@ -23,7 +23,7 @@ var DependentInstance = React.createClass({
     this.props.handleFormSubmit('dependents', 'dependent', this.state, controllerAction, 'PATCH');
   },
   handleOptionChange: function(changeEvent) {
-      this.setState({
+    this.setState({
       human: changeEvent.target.value
     });
   },

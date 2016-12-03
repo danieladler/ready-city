@@ -42,8 +42,6 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
-    # current_user.generate_all_user_preps
-    # load_assessment_data
   end
 
   def update
@@ -55,20 +53,6 @@ class UsersController < ApplicationController
       flash[:success] = "User Updated"
       render json: current_user
     end
-  end
-
-  def load_assessment_data
-    @home = Home.load_home(current_user)
-    @dependents = current_user.dependents.where(human: true).map {|d| ["#{d.name}", d.id]}
-    @dependents.unshift(["Me", nil])
-    # ^^ this puts all of current_user's human dependents into the right format
-    # for displaying in a <select> dropdown, to assign dependent_id to a Zone
-    # @dependent = Dependent.new
-    # ^^ this pre-loads a Dependent instance for creating a new Dependent; the
-    # form_helper that requires it is in _depdendent_assessment_form template
-    @zone = Zone.new
-    @contact = Contact.new
-    # ^^ same as above comment, but for Zones & Contacts
   end
 
   private

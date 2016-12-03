@@ -16,10 +16,16 @@ var HomeAssessment = React.createClass({
     console.log(this.state);
   },
   handleOptionChange: function(event) {
-    console.log(this.state);
+    var isHouseAsBoolean = Boolean(event.target.value);
+    this.setState({
+      is_house: isHouseAsBoolean
+    });
   },
   handleSelectChange: function(event) {
-    console.log(this.state);
+    var countAsNumber = Number(event.target.value);
+    this.setState({
+      floor_count: countAsNumber
+    })
   },
   render: function() {
     return (

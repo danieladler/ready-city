@@ -42,6 +42,7 @@ var AssessmentContainer = React.createClass({
       <div>
         <HomeAssessment
           home={this.state.home}
+          handleFormSubmit={this.handleFormSubmit}
         />
         <DependentAssessment
           dependents={this.state.dependents}

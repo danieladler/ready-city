@@ -5,8 +5,8 @@ var HomeAssessment = React.createClass({
   render: function() {
     return (
       <div>
-        <h1> HomeAssessment Visible! </h1>
-        <h2> Data: {this.props.home.address} </h2>
+        <h2> My home: </h2>
+        <h3> Address: {this.props.home.address} </h3>
       </div>
     );
   }

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   patch "/users/:id/update", to: "users#update",  as: :update_user
 
   # PROFILE - ASSESSMENTS
+  get   "/home",                   to: "home_assessment#api", as: :home_api
   patch  "/update_home",           to: "home_assessment#update_home",  as: :update_home
   get   "/dependents",             to: "dependent_assessment#dependents", as: :dependents
   patch "/dependents/update/:id",  to: "dependent_assessment#update",  as: :update_dependent

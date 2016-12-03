@@ -1,4 +1,9 @@
 class HomeAssessmentController < ApplicationController
+  def api
+    @home ||= Home.load_home(current_user)
+    render :json => @home
+  end
+
   def update_home
     @home ||= Home.load_home(current_user)
     @home.update_db_values(params)

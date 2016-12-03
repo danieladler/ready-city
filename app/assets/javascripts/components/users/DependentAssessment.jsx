@@ -15,7 +15,7 @@ var DependentAssessment = React.createClass({
     });
     return (
       <div>
-        <h3> Dependents: </h3>
+        <h2> Dependents: </h2>
         <div>
           { dependents }
         </div>

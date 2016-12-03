@@ -1,6 +1,7 @@
 var AssessmentContainer = React.createClass({
   getInitialState: function() {
     return {
+      home: [],
       dependents: [],
       zones: [],
       dependentsForZoneAsmt: [],
@@ -8,6 +9,7 @@ var AssessmentContainer = React.createClass({
     }
   },
   componentDidMount: function() {
+    $.get('/home', (response) => { this.setState({ home: response }) });
     $.get('/dependents', (response) => { this.setState({ dependents: response }) });
     $.get('/zones', (response) => { this.setState({ zones: response.zones, dependentsForZoneAsmt: response.dependents }) });
     $.get('/contacts', (response) => { this.setState({ contacts: response }) });
@@ -38,6 +40,9 @@ var AssessmentContainer = React.createClass({
   render: function() {
     return (
       <div>
+        <HomeAssessment
+          home={this.state.home}
+        />
         <DependentAssessment
           dependents={this.state.dependents}
           handleFormSubmit={this.handleFormSubmit}

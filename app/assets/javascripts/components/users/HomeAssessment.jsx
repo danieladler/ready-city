@@ -11,14 +11,14 @@ var HomeAssessment = React.createClass({
       year_built: this.props.home.year_built
     }
   },
-  handleFormSubmit: function(event) {
-    event.preventDefault();
-    console.log(this.state);
+  handleFormEntry: function(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   },
   handleOptionChange: function(event) {
-    var isHouseAsBoolean = Boolean(event.target.value);
     this.setState({
-      is_house: isHouseAsBoolean
+      is_house: event.target.value
     });
   },
   handleSelectChange: function(event) {
@@ -26,6 +26,13 @@ var HomeAssessment = React.createClass({
     this.setState({
       floor_count: countAsNumber
     })
+  },
+  handleFormSubmit: function(event) {
+    event.preventDefault();
+    var controllerAction = 'update/' + this.state.id;
+    // args must be in this order: route, modelName, model, controllerAction, httpRequest
+    this.props.handleFormSubmit('homes', 'home', this.state, controllerAction, 'PATCH');
+    console.log("submitted");
   },
   render: function() {
     return (

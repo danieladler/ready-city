@@ -1,0 +1,79 @@
+<% if @zone %>
+  <h2 class="title" style="border-top: 1px solid black; padding-top: 10px"> Zones </h2>
+  <p class="description description-form">
+    A Zone is a place where you and your dependents spend time, such as home, work and school. Add your Zones below:
+  </p>
+  <% if current_user.has_zones? %>
+    <ul>
+      <% current_user.zones.each do |z| %>
+        <%= form_for z, url: update_zone_path(z) do |f| %>
+        <div class="form-group">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name %>
+        </div>
+        <!-- TODO: DRY up this repeated set of form-groups – it's in both CREATE and UPDATE sections, should be consolidated -->
+        <div class="form-group">
+          <%= f.label :zone_type, "What type of Zone is this?" %>
+          <%= f.select :zone_type, [['home', 'zone_home'], ['work', 'zone_work'], ['school', 'zone_school']]%>
+        </div>
+        <div class="form-group">
+          <%= f.label :dependent_id, "Who spends time here?" %>
+          <%= f.select :dependent_id, @dependents %>
+        </div>
+        <div class="form-group">
+          <%= f.label :address, "Address" %>
+          <%= f.text_field :address %>
+        </div>
+        <div class="form-group">
+          <%= f.label :city, "City" %>
+          <%= f.text_field :city %>
+        </div>
+        <div class="form-group">
+          <%= f.label :state, "State" %>
+          <%= f.text_field :state %>
+        </div>
+        <div class="form-group">
+          <%= f.label :zip, "Zip" %>
+          <%= f.text_field :zip %>
+        </div>
+        <%= f.submit %>
+        <% end %>
+        <a href=" <%= destroy_zone_path(z.id) %>"> x </a>
+      <% end %>
+    </ul>
+  <% end %>
+  <h3 class="title"> Add a Zone </h3>
+  <div class="create-zone-form">
+    <%= form_for @zone, url: create_zone_path do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="form-group">
+        <%= f.label :zone_type, "What type of Zone is this?" %>
+        <%= f.select :zone_type, [['home', 'zone_home'], ['work', 'zone_work'], ['school', 'zone_school']]%>
+      </div>
+      <div class="form-group">
+        <%= f.label :dependent_id, "Who spends time here?" %>
+        <%= f.select :dependent_id, @dependents %>
+      </div>
+      <div class="form-group">
+        <%= f.label :address, "Address" %>
+        <%= f.text_field :address %>
+      </div>
+      <div class="form-group">
+        <%= f.label :city, "City" %>
+        <%= f.text_field :city %>
+      </div>
+      <div class="form-group">
+        <%= f.label :state, "State" %>
+        <%= f.text_field :state %>
+      </div>
+      <div class="form-group">
+        <%= f.label :zip, "Zip" %>
+        <%= f.text_field :zip %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+  </div>
+<% end %>

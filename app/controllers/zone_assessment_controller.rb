@@ -1,11 +1,25 @@
 class ZoneAssessmentController < ApplicationController
+  def api
+    @dependents = current_user.dependents.where(human: true).map do |d|
+      ["name", "#{d.name}","id", d.id]
+    end
+    @dependents.unshift(["name", "Me","id", nil])
+    @dependents = @dependents.map {|d| Hash[d.each_slice(2).to_a]}
+    # NB: the above is some ugly stuff to create a special hash of dependents
+    # and their ids, for display in a select menu in ZoneForm, so that
+    # when new Zones are created they can be given a dependent_id and thus
+    # associated with a specific dependent
+    @zones = current_user.zones
+    render :json => {:zones => @zones, :dependents => @dependents}
+  end
+
   def create
     @zone = Zone.new(zone_params)
     @zone.user_id = current_user.id
     if @zone.save
       # generate_zone_preps(current_user)
       flash[:success] = "Zone Added"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      render json: @zone
     elsif @zone.errors
       @errors = []
       @zone.errors.each do |column, message|
@@ -22,7 +36,7 @@ class ZoneAssessmentController < ApplicationController
     if @zone.save
       generate_zone_preps(current_user)
       flash[:success] = "Zone Updated"
-      redirect_to user_path(current_user.id) # TODO: replace redirect w/ AJAX
+      render json: @zone
     elsif @zone.errors
       @errors = []
       @zone.errors.each do |column, message|
@@ -39,7 +53,7 @@ class ZoneAssessmentController < ApplicationController
     destroy_zone_userpreps if !current_user.has_zones?
     # generate_zone_preps(current_user) # NB: commented out for now because currently no plan_zone UserPreps vary based on # of zones.
     flash[:notice] = "Zone Deleted"
-    redirect_to user_path(current_user.id)
+    head :ok
   end
 
   def generate_zone_preps(user)
@@ -63,6 +77,7 @@ class ZoneAssessmentController < ApplicationController
   private
   def zone_params
     params.require(:zone).permit(
+      :dependent_id,
       :name,
       :zone_type,
       :dependent,

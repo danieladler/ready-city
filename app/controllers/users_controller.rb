@@ -21,6 +21,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def api
+    @user = current_user
+    @allowable_attrs = {
+      id: current_user.id,
+      username: current_user.username,
+      email: current_user.email,
+      days_to_cover: current_user.days_to_cover
+    }
+    render :json => @allowable_attrs
+  end
+
   def show
     if current_user == nil
        redirect_to root_path
@@ -31,29 +42,17 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
-    current_user.generate_all_user_preps
-    load_assessment_data
   end
 
   def update
-    current_user.update(user_params) if user_params # update days_to_cover from users/show view, if this method was triggered from submitting that form.
-    current_user.generate_all_user_preps # regenerate all preps so that those with variable quantities impacted by changing days_to_cover are updated.
-    flash[:success] = "User Updated"
-    redirect_to user_path(current_user)
-  end
-
-  def load_assessment_data
-    @home = Home.load_home(current_user)
-    @dependents = current_user.dependents.where(human: true).map {|d| ["#{d.name}", d.id]}
-    @dependents.unshift(["Me", nil])
-    # ^^ this puts all of current_user's human dependents into the right format
-    # for displaying in a <select> dropdown, to assign dependent_id to a Zone
-    @dependent = Dependent.new
-    # ^^ this pre-loads a Dependent instance for creating a new Dependent; the
-    # form_helper that requires it is in _depdendent_assessment_form template
-    @zone = Zone.new
-    @contact = Contact.new
-    # ^^ same as above comment, but for Zones & Contacts
+    current_user.update_db_values(user_params)
+    if current_user.save
+      current_user.generate_all_user_preps
+      # ^^ regenerate all preps so that those with variable quantities impacted
+      #    by changing days_to_cover are updated.
+      flash[:success] = "User Updated"
+      render json: current_user
+    end
   end
 
   private

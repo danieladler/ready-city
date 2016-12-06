@@ -9,6 +9,12 @@ class User < ApplicationRecord
   has_many :zones
   has_many :contacts
 
+  def update_db_values(params)
+    self.username      = params[:username]
+    self.email         = params[:email]
+    self.days_to_cover = params[:days_to_cover]
+  end
+
   def has_dependents?
     true if self.dependents.count > 0
   end
@@ -19,6 +25,15 @@ class User < ApplicationRecord
 
   def pets_in_household
     self.dependents.where(human: false).count
+  end
+
+  def has_pets?
+    true if self.pets_in_household > 0
+  end
+
+  def has_obsolete_pet_user_preps?
+    !self.has_pets? && UserPrep.where(user_id: self.id, prep_subtype: 'gear_pet').count > 0 ||
+    !self.has_pets? && UserPrep.where(user_id: self.id, prep_subtype: 'plan_dependent_pet').count > 0
   end
 
   def has_zones?

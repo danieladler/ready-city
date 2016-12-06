@@ -9,14 +9,13 @@ describe HomeAssessmentController, type: :controller do
     end
 
     context "with valid params, home is a HOUSE" do
-      let(:make_request) {
-        post :update_home, params: {home: attributes_for(:home, :house)}
-      }
-      # let(:attrs) { attributes_for(:home)}
-      it "redirects to User's show/profile view" do
-        make_request
-        expect(response).to redirect_to user_path(user.id)
+      before(:each) do
+        @home = create(:home, :house)
       end
+
+      let(:make_request) {
+        post :update_home, params: {id: @home, home: attributes_for(:home, :house)}
+      }
 
       it "displays a descriptive success message" do
         make_request
@@ -37,8 +36,12 @@ describe HomeAssessmentController, type: :controller do
     end
 
     context "with invalid params" do
+      before(:each) do
+        @home = create(:home, :house)
+      end
+
       let(:make_request) {
-        post :update_home, params: {home: attributes_for(:home, :house, zip: nil)}
+        post :update_home, params: {id: @home.id, home: attributes_for(:home, :house, zip: nil)}
       }
 
       it "displays a descriptive error message" do

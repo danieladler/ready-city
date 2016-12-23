@@ -12,3 +12,8 @@
 
 # Ignore simplecov coverage report
 /coverage
+
+# npm modules & generated js bundles
+node_modules
+npm-debug.log*
+/app/assets/webpack/*

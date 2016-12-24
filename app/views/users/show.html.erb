@@ -1,5 +1,5 @@
-<h1> My Profile </h1>
-<div class="profile-block">
-  <%#= react_component 'AssessmentContainer' %>
-  <%#= react_component 'UserProfileContainer' %>
-</div>
+<body>
+  <h1> My Profile </h1>
+  <div id="root-assessment"></div>
+  <%= javascript_include_tag *webpack_asset_paths("index") %>
+</body>

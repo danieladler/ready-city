@@ -1,11 +1,15 @@
 // dependencies
 import React from 'react';
 import ReactDOM from "react-dom";
-// components
-import App from './startup/App';
+import { Provider } from 'react-redux';
+// components & modules’
+import AssessmentContainer from './containers/AssessmentContainer.jsx';
+import store from './store/AssessmentStore.jsx';
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <AssessmentContainer />
+  </Provider>,
   document.getElementById('root-assessment')
 );
 

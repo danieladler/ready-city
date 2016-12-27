@@ -1,15 +1,16 @@
 // import constants
 import { LOAD_HOME } from '../constants/HomeConstants.jsx';
+
 // functions for more complicated state updates
 // ~ TBD ~
 
-const home = (state = [], action) => {
+const INITIAL_STATE = { home: null };
+
+const home = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "LOAD_HOME":
+    case LOAD_HOME:
       console.log('load_home triggered');
-      // return [
-      //   ...state, home: action.payload.data
-      // ];
+      return { ...state, home: action.payload.data } ;
     default:
       return state;
   }

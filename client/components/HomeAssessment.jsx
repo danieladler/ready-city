@@ -5,9 +5,9 @@ class HomeAssessment extends React.Component {
     const home = this.props.homes.home;
     return (
       <div>
-        <h1> Home Assessment visible! </h1>
-        <h4> { home.city } </h4>
-    </div>
+        <h4> Address: { home.address } </h4>
+        <h4> City: { home.city } </h4>
+      </div>
     )
   }
 }

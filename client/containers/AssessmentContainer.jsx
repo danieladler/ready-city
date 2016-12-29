@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions/HomeAssessmentActionCreators.jsx';
 
 // selectively map parts of Redux global state to component's props
-const mapStateToProps = (state) => ({ home: state.home });
+// const mapStateToProps = (state) => ({ homes: state.homes });
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators(actions, dispatch)
 );
 
-const AssessmentContainer = connect(mapStateToProps, mapDispatchToProps)(AssessmentWrapper);
+// const AssessmentContainer = connect(mapStateToProps, mapDispatchToProps)(AssessmentWrapper);
+const AssessmentContainer = connect(null, mapDispatchToProps)(AssessmentWrapper);
 
 export default AssessmentContainer;

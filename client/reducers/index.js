@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import home from "./home";
+import homes from "./home";
 // import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
-  home
+  homes
   // form: formReducer
 });
 

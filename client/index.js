@@ -12,5 +12,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root-assessment')
 );
-
-console.log("Hello world!");

@@ -1,17 +1,13 @@
 import React, { PropTypes } from 'react';
 
 class HomeAssessment extends React.Component {
-  handleTestSubmit() {
-    this.props.loadHome();
-  }
   render() {
-    const { home } = this.props
+    const home = this.props.homes.home;
     return (
       <div>
         <h1> Home Assessment visible! </h1>
-        <button onClick={this.handleTestSubmit.bind(this)}> Load Home </button>
-        <h2> TestAddress: </h2>
-      </div>
+        <h4> { home.city } </h4>
+    </div>
     )
   }
 }

@@ -1,1 +1,1 @@
-export const LOAD_HOME = 'LOAD_HOME';
+export const LOAD_HOMES = 'LOAD_HOMES';

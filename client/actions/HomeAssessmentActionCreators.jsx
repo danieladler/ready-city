@@ -1,12 +1,12 @@
-import { LOAD_HOME } from '../constants/HomeConstants.jsx';
+import { LOAD_HOMES } from '../constants/HomeConstants.jsx';
 import axios from 'axios';
 
 const API_URL = "http://localhost:5000";
 
-export function loadHome() {
+export function loadHomes() {
   const request = axios.get(`${API_URL}/home`);
   return {
-    type: LOAD_HOME,
+    type: LOAD_HOMES,
     payload: request
   }
 };

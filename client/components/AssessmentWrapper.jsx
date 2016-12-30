@@ -4,7 +4,7 @@ import HomeAssessment from './HomeAssessment.jsx';
 
 class AssessmentWrapper extends React.Component {
   componentDidMount() {
-    this.props.loadHome();
+    this.props.loadHomes();
   }
 
   render() {

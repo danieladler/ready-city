@@ -16,17 +16,6 @@ class Home < ApplicationRecord
     end
   end
 
-  def update_db_values(params)
-    self.address                 = params[:home][:address]
-    self.city                    = params[:home][:city]
-    self.state                   = params[:home][:state]
-    self.zip                     = params[:home][:zip]
-    self.is_house                = params[:home][:is_house]
-    self.floor_count             = params[:home][:floor_count].to_i
-    self.year_built              = params[:home][:year_built].to_i
-    # self.filter_house_specific_fields(params)
-  end
-
   def is_house?
     self.is_house ? true : false
   end

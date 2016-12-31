@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import HomeInstance from './HomeInstance.jsx';
 
 class HomeAssessment extends React.Component {
-  debugger
   render() {
     var _this = this,
         homes = this.props.homes.all.map(function(home, index) {

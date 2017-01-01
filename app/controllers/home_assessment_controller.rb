@@ -1,8 +1,7 @@
 class HomeAssessmentController < ApplicationController
   def api
-    @home ||= Home.load_home(current_user)
-    render :json => [@home]
-    # TODO: fix Home.load_home so that API returns array of homes
+    @homes ||= Home.load_homes(current_user)
+    render :json => @homes
   end
 
   def update_home

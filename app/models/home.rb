@@ -8,11 +8,16 @@ class Home < ApplicationRecord
       # share zip code so that app can provide information relevant to their
       # general vicinity.
 
-  def self.load_home(current_user)
+  def self.load_homes(current_user)
     if current_user.home
-      @home = self.find_by(user_id: current_user.id)
+      @homes = self.where(user_id: current_user.id)
+      # NB: this returns an activeRecord association which the API consumes
+      # as an array – which is what we want, so that it can be rendered correctly
+      # via Redux as a redux-form with initialValues.
     else
-      @home = Home.new(user_id: current_user.id)
+      @homes = [ Home.new(user_id: current_user.id) ]
+      # NB: this is wrapped in an array so that it can be rendered correctly
+      # per above. 
     end
   end
 

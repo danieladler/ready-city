@@ -57,12 +57,12 @@ class HomeForm extends React.Component {
             {home.state}
           </div>
           <div>
-            <label> State: </label>
+            <label> Zip: </label>
             <Field ref="Zip" name="zip" type="text" component="input"/>
             {home.zip}
           </div>
           <div>
-            <label> State: </label>
+            <label> Year Built: </label>
             <Field ref="YearBuilt" name="year_built" type="text" component="input"/>
             {home.year_built}
           </div>

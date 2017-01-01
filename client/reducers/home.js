@@ -12,14 +12,12 @@ const homes = (state = INITIAL_STATE, action) => {
     case UPDATE_HOME:
       const home = action.payload.data;
       const index = action.index;
-      // debugger 
       return { all: [
           ...state.all.slice(0, index),
           { ...home },
           ...state.all.slice(index + 1)
         ]
       }
-
     default:
       return state;
   }

@@ -6,7 +6,11 @@ class HomeAssessmentController < ApplicationController
   end
 
   def update_home
-    @home = Home.find(params[:id])
+    if current_user.home && params[:id] == current_user.id
+      @home = Home.find(params[:id])
+    else
+      @home = Home.new(user_id: current_user.id)
+    end
     @home.assign_attributes(home_assessment_params)
     destroy_house_preps if !@home.is_house # have to call this before @save in order to return a value from .changed method below
     if @home.save

@@ -12,11 +12,13 @@ export function loadHomes() {
 };
 
 export function updateHome(id, params, index) {
-  const request = axios.patch(`${API_URL}/homes/update/${id}`, params);
-  debugger
-  // return {
-  //   type: UPDATE_HOME,
-  //   payload: request,
-  //   index
-  // }
+  return function(dispatch) {
+    axios.patch(`${API_URL}/homes/update/${id}`, params).then((response) => {
+      dispatch({
+        type: UPDATE_HOME,
+        payload: response,
+        index
+      });
+    });
+  }
 };

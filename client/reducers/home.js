@@ -10,15 +10,15 @@ const homes = (state = INITIAL_STATE, action) => {
     case LOAD_HOMES:
       return { ...state, all: action.payload.data } ;
     case UPDATE_HOME:
-      // debugger
-      // const home = action.payload.data;
-      // const index = action.index;
-      // return { all: [
-      //     ...state.all.slice(0,index), // before the one we are updating
-      //     {...state.all[index], home},
-      //     ...state.all.slice(index + 1), // after the one we are updating
-      //   ]
-      // };
+      const home = action.payload.data;
+      const index = action.index;
+      return { all: [
+          ...state.all.slice(0, index),
+          { ...home },
+          ...state.all.slice(index + 1)
+        ]
+      }
+
     default:
       return state;
   }

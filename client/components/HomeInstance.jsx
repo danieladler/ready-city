@@ -18,6 +18,8 @@ class HomeForm extends React.Component {
     const state = this.refs.State.value;
     const zip = this.refs.Zip.value;
     const year_built = this.refs.YearBuilt.value;
+    const floor_count = this.refs.Floor_count.value;
+    const is_house = this.refs.Is_house.value;
     const {home, index} = this.props;
     const id = home.id;
     const params = {
@@ -26,8 +28,8 @@ class HomeForm extends React.Component {
       state,
       zip,
       year_built,
-      // is_house
-      // floor_count
+      floor_count,
+      is_house
     }
     this.props.updateHome(id, params, index);
   }
@@ -63,6 +65,22 @@ class HomeForm extends React.Component {
             <label> State: </label>
             <Field ref="YearBuilt" name="year_built" type="text" component="input"/>
             {home.year_built}
+          </div>
+          <div>
+            <label>Floor Count</label>
+            <Field ref="Floor_count" name="floor_count" component="select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </Field>
+          </div>
+          <div>
+            <label>House or Apartment?</label>
+            <Field ref="Is_house" name="is_house" component="select">
+              <option value="true">House</option>
+              <option value="false">Apartment</option>
+            </Field>
           </div>
           <button action="submit">Save changes</button>
         </form>

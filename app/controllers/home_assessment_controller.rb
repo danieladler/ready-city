@@ -5,7 +5,7 @@ class HomeAssessmentController < ApplicationController
   end
 
   def update_home
-    if current_user.home && params[:id] == current_user.id
+    if current_user.home
       @home = Home.find(params[:id])
     else
       @home = Home.new(user_id: current_user.id)
@@ -13,8 +13,7 @@ class HomeAssessmentController < ApplicationController
     @home.assign_attributes(home_assessment_params)
     destroy_house_preps if !@home.is_house # have to call this before @save in order to return a value from .changed method below
     if @home.save
-      # generate_home_preps(current_user, @home)
-      # flash[:success] = "Home Updated"
+      generate_home_preps(current_user, @home)
       render json: @home
     elsif @home.errors
       # TODO: figure out whether to handle validation & errors on client or server

@@ -12,3 +12,12 @@
 
 # Ignore simplecov coverage report
 /coverage
+
+# npm modules & generated js bundles
+node_modules
+npm-debug.log*
+/app/assets/webpack/*
+
+# Added by webpack-rails
+/node_modules
+/public/webpack

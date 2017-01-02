@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { reduxForm, Field, initialize } from 'redux-form';
 import { connect } from 'react-redux';
-import { UPDATE_HOME } from '../constants/HomeConstants.jsx';
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/HomeAssessmentActionCreators.jsx';
 
@@ -37,10 +36,12 @@ class HomeForm extends React.Component {
   render() {
     const { home, handleSubmit } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
+    const errors = null;
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
           <input type="hidden" name="authenticity_token" value={token} readOnly={true} />
+
           <div>
             <label> Address: </label>
             <Field ref="Address" name="address" type="text" component="input"/>
@@ -81,6 +82,9 @@ class HomeForm extends React.Component {
               <option value="true">House</option>
               <option value="false">Apartment</option>
             </Field>
+          </div>
+          <div>
+            { home.errors }
           </div>
           <button action="submit">Save changes</button>
         </form>

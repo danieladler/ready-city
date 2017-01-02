@@ -16,13 +16,7 @@ class HomeAssessmentController < ApplicationController
       generate_home_preps(current_user, @home)
       render json: @home
     elsif @home.errors
-      # TODO: figure out whether to handle validation & errors on client or server
-      puts @home.errors.inspect
-    #   @errors = []
-    #   @home.errors.each do |column, message|
-    #     @errors << column.to_s + ": " + message.to_s
-    #   end
-    #   flash[:error] = @errors
+      render json: { errors: @home.errors.full_messages, home: @home }, status: 422
     end
   end
 

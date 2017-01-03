@@ -34,17 +34,30 @@ class HomeForm extends React.Component {
   }
 
   render() {
+    const renderField = ({ input, label, type }) => (
+      <div>
+        <label>{label}</label>
+        <div>
+          <input {...input} placeholder={label} type={type}/>
+        </div>
+      </div>
+    )
+
+    const renderErrors = (errors) => {
+      const mapped = errors.map(function(e) {
+        return(<p><strong>{e}</strong></p>);
+      });
+      return(mapped);
+    }
+
     const { home, handleSubmit } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
-    const errors = null;
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
           <input type="hidden" name="authenticity_token" value={token} readOnly={true} />
-
           <div>
-            <label> Address: </label>
-            <Field ref="Address" name="address" type="text" component="input"/>
+            <Field ref="Address" name="address" type="text" component={renderField} label="Address"/>
             {home.address}
           </div>
           <div>
@@ -58,8 +71,7 @@ class HomeForm extends React.Component {
             {home.state}
           </div>
           <div>
-            <label> Zip: </label>
-            <Field ref="Zip" name="zip" type="text" component="input"/>
+            <Field ref="Zip" name="zip" type="text" component={renderField} label="Zip"/>
             {home.zip}
           </div>
           <div>
@@ -84,7 +96,7 @@ class HomeForm extends React.Component {
             </Field>
           </div>
           <div>
-            { home.errors }
+            { home.errors ? renderErrors(home.errors) : null }
           </div>
           <button action="submit">Save changes</button>
         </form>

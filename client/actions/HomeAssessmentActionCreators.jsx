@@ -34,6 +34,9 @@ export function updateHome(id, params, index) {
       dispatch(updateHomeSuccess(response))
     })
     .catch((err) => {
+      // TODO: refactor error handling to work as-is but not return a
+      // 422 error in the console when the PATCH request fails because
+      // of a validation error.
       dispatch(updateHomeError(err))
     })
   }

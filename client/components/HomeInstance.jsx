@@ -44,8 +44,8 @@ class HomeForm extends React.Component {
     )
 
     const renderErrors = (errors) => {
-      const mapped = errors.map(function(e) {
-        return(<p><strong>{e}</strong></p>);
+      const mapped = errors.map(function(error, index) {
+        return(<p key={index}><strong>{error}</strong></p>);
       });
       return(mapped);
     }

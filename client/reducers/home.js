@@ -4,24 +4,27 @@ import { LOAD_HOMES, UPDATE_HOME_SUCCESS, UPDATE_HOME_ERROR } from '../constants
 // functions for more complicated state updates, and to work around Webpack
 // compile error when doing duplicate declarations of const index, home, etc.
 const updateHomeSuccess = (state, action) => {
-  const home = action.payload.data;
+  const home = action.payload.data.home;
   const index = action.index;
+  const success = action.payload.data.success;
+  const errors = null;
   return { all: [
       ...state.all.slice(0, index),
-      { ...home },
+      { ...home, success, errors },
       ...state.all.slice(index + 1)
     ]
   }
 }
 
 const updateHomeError = (state, action) => {
-  const index = action.index;
-  const errors = action.payload.data.errors;
   const home = action.payload.data.home;
+  const index = action.index;
+  const success = null;
+  const errors = action.payload.data.errors;
   const all = state.all
   return { all: [
       ...state.all.slice(0, index),
-      {  ...all[index], errors },
+      {  ...all[index], errors, success },
       ...state.all.slice(index + 1)
     ]
   }

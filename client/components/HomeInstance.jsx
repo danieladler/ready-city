@@ -50,6 +50,21 @@ class HomeForm extends React.Component {
       return(mapped);
     }
 
+    const renderSuccess = (success) => {
+      var successMessage = (
+        '<p class="success-message"><strong> ' + success + '</strong></p>'
+      );
+
+      $('.message-container').append(
+        successMessage
+      );
+
+      setTimeout(function(){
+        $('.success-message').remove()
+      }, 2000);
+
+    }
+
     const { home, handleSubmit } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
@@ -95,8 +110,9 @@ class HomeForm extends React.Component {
               <option value="false">Apartment</option>
             </Field>
           </div>
-          <div>
+          <div className="message-container">
             { home.errors ? renderErrors(home.errors) : null }
+            { home.success ? renderSuccess(home.success) : null }
           </div>
           <button action="submit">Save changes</button>
         </form>

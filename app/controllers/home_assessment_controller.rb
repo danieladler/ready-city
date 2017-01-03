@@ -14,9 +14,9 @@ class HomeAssessmentController < ApplicationController
     destroy_house_preps if !@home.is_house # have to call this before @save in order to return a value from .changed method below
     if @home.save
       generate_home_preps(current_user, @home)
-      render json: @home
+      render json: { home: @home, success: "Home Updated" }
     elsif @home.errors
-      render json: { errors: @home.errors.full_messages, home: @home }, status: 422
+      render json: { home: @home, errors: @home.errors.full_messages }, status: 422
     end
   end
 

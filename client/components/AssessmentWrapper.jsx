@@ -6,6 +6,7 @@ import DependentAssessment from './DependentAssessment.jsx';
 class AssessmentWrapper extends React.Component {
   componentDidMount() {
     this.props.loadHomes();
+    this.props.loadDependents();
   }
 
   render() {

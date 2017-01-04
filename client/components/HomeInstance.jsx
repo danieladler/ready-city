@@ -50,14 +50,13 @@ class HomeForm extends React.Component {
       return(mapped);
     }
 
-    const renderSuccess = (success) => {
+    const renderSuccess = (success, id) => {
       var successMessage = (
         '<p class="success-message"><strong> ' + success + '</strong></p>'
       );
 
-      $('.message-container').append(
-        successMessage
-      );
+      var renderTarget = "div[data-home-id=" + id +"]"
+      $(renderTarget).append(successMessage);
 
       setTimeout(function(){
         $('.success-message').remove()
@@ -110,9 +109,9 @@ class HomeForm extends React.Component {
               <option value="false">Apartment</option>
             </Field>
           </div>
-          <div className="message-container">
+          <div className="message-container" data-home-id={home.id}>
             { home.errors ? renderErrors(home.errors) : null }
-            { home.success ? renderSuccess(home.success) : null }
+            { home.success ? renderSuccess(home.success, home.id) : null }
           </div>
           <button action="submit">Save changes</button>
         </form>

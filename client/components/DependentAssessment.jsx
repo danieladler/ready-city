@@ -9,21 +9,20 @@ class DependentAssessment extends React.Component {
   }
 
   handleSubmit(params) {
-    debugger
     this.props.createDependent(params);
   }
 
   render() {
-    var _this = this,
-        dependents = this.props.dependents.all.map(function(dependent, index) {
-          return (
-            <div key={index}>
-              <DependentInstance
-                index={index}
-                dependent={dependent} />
-            </div>
-          )
-        })
+    var dependents = this.props.dependents.all.map(function(dependent, index) {
+      return (
+        <div key={index}>
+          <DependentInstance
+            index={index}
+            dependent={dependent} />
+        </div>
+      )
+    })
+    
     return (
       <div id="dependent-assessment-wrapper">
         <h2> Dependents: </h2>

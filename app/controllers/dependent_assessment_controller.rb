@@ -8,16 +8,16 @@ class DependentAssessmentController < ApplicationController
     @dependent = Dependent.new(dependent_params)
     @dependent.user_id = current_user.id
     if @dependent.save
-      generate_dependent_preps(current_user)
-      flash[:success] = "Dependent Added"
-      render json: @dependent
+      # generate_dependent_preps(current_user)
+      render json: { dependent: @dependent, success: "Dependent Added" }
     elsif @dependent.errors
-      @errors = []
-      @dependent.errors.each do |column, message|
-        @errors << column.to_s + ": " + message.to_s
-      end
-      flash[:error] = @errors
-      render "users/show", locals: {home: current_user.home}
+      puts @dependent.errors.inspect;
+      # @errors = []
+      # @dependent.errors.each do |column, message|
+      #   @errors << column.to_s + ": " + message.to_s
+      # end
+      # flash[:error] = @errors
+      # render "users/show", locals: {home: current_user.home}
     end
   end
 
@@ -46,6 +46,7 @@ class DependentAssessmentController < ApplicationController
       # gear_human are updated with the new quantity of dependents. This has
       # the effect of reducing these user_preps' total_cost_in_cents to the
       # appropriate amount given # of dependents.
+    head :ok
   end
 
   def generate_dependent_preps(user)

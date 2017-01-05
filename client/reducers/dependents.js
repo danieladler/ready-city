@@ -1,10 +1,14 @@
 // import constants
-import { LOAD_DEPENDENTS, UPDATE_DEPENDENT_SUCCESS, UPDATE_DEPENDENT_ERROR } from '../constants/DependentConstants.jsx';
+import {
+  LOAD_DEPENDENTS,
+  UPDATE_DEPENDENT_SUCCESS,
+  UPDATE_DEPENDENT_ERROR,
+  DESTROY_DEPENDENT
+} from '../constants/DependentConstants.jsx';
 
 // functions for more complicated state updates, and to work around Webpack
 // compile error when doing duplicate declarations of const index, model, etc.
 const updateDependentSuccess = (state, action) => {
-  // debugger
   const dependent = action.payload.data.dependent;
   const index = action.index;
   const success = action.payload.data.success;
@@ -18,7 +22,6 @@ const updateDependentSuccess = (state, action) => {
 }
 
 const updateDependentError = (state, action) => {
-  // debugger
   const dependent = action.payload.data.dependent;
   const index = action.index;
   const success = null;
@@ -27,6 +30,15 @@ const updateDependentError = (state, action) => {
   return { all: [
       ...state.all.slice(0, index),
       {  ...all[index], errors, success },
+      ...state.all.slice(index + 1)
+    ]
+  }
+}
+
+const destroyDependentSuccess = (state, action) => {
+  const index = action.index;
+  return { all: [
+      ...state.all.slice(0, index),
       ...state.all.slice(index + 1)
     ]
   }
@@ -42,6 +54,8 @@ const dependents = (state = INITIAL_STATE, action) => {
       return updateDependentSuccess(state, action);
     case UPDATE_DEPENDENT_ERROR:
       return updateDependentError(state, action);
+    case DESTROY_DEPENDENT:
+      return destroyDependentSuccess(state, action);
     default:
       return state;
   }

@@ -1,4 +1,9 @@
-import { LOAD_DEPENDENTS, UPDATE_DEPENDENT_SUCCESS, UPDATE_DEPENDENT_ERROR } from '../constants/DependentConstants.jsx';
+import {
+  LOAD_DEPENDENTS,
+  UPDATE_DEPENDENT_SUCCESS,
+  UPDATE_DEPENDENT_ERROR,
+  DESTROY_DEPENDENT
+} from '../constants/DependentConstants.jsx';
 import axios from 'axios';
 
 const API_URL = "http://localhost:5000";
@@ -39,5 +44,21 @@ export function updateDependent(id, params, index) {
       // of a validation error.
       dispatch(updateDependentError(err))
     })
+  }
+};
+
+export function destroyDependent(id, index) {
+  const destroyDependentSuccess = (index) => {
+    return {
+      type: DESTROY_DEPENDENT,
+      index
+    }
+  }
+
+  return function(dispatch) {
+    axios.delete(`${API_URL}/dependents/destroy/${id}`)
+    .then(() => {
+      dispatch(destroyDependentSuccess(index));
+    });
   }
 };

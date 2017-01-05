@@ -8,6 +8,7 @@ class DependentForm extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleDestroyDependent = this.handleDestroyDependent.bind(this);
   }
 
   handleFormSubmit(event) {
@@ -21,6 +22,13 @@ class DependentForm extends React.Component {
       human
     }
     this.props.updateDependent(id, params, index);
+  }
+
+  handleDestroyDependent(event) {
+    event.preventDefault();
+    const {dependent, index} = this.props;
+    const id = dependent.id
+    this.props.destroyDependent(id, index);
   }
 
   render() {
@@ -77,6 +85,7 @@ class DependentForm extends React.Component {
           </div>
           <button action="submit">Save changes</button>
         </form>
+        <button onClick={this.handleDestroyDependent}> Delete </button>
       </div>
     )
   }

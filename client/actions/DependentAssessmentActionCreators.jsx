@@ -38,6 +38,7 @@ export function createDependent(params) {
   return function(dispatch) {
     axios.post(`${API_URL}/dependents/create`, params)
     .then((response) => {
+      dispatch(reset('CreateDependentForm'));
       dispatch(createDependentSuccess(response));
     })
     // .catch((err) => {

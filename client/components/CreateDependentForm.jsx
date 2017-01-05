@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-class createDependentForm extends React.Component {
+class CreateDependentForm extends React.Component {
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -16,6 +16,7 @@ class createDependentForm extends React.Component {
           <div>
             <label>Human or Pet?</label>
             <Field ref="Human" name="human" component="select">
+              <option value="">[Select]</option>
               <option value="true">Human</option>
               <option value="false">Pet</option>
             </Field>
@@ -30,5 +31,5 @@ class createDependentForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'createDependentForm'
-})(createDependentForm)
+  form: 'CreateDependentForm'
+})(CreateDependentForm)

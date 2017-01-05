@@ -22,7 +22,7 @@ class DependentAssessment extends React.Component {
         </div>
       )
     })
-    
+
     return (
       <div id="dependent-assessment-wrapper">
         <h2> Dependents: </h2>

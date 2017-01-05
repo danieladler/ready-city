@@ -1,6 +1,8 @@
 // import constants
 import {
   LOAD_DEPENDENTS,
+  CREATE_DEPENDENT_SUCCESS,
+  CREATE_DEPENDENT_ERROR,
   UPDATE_DEPENDENT_SUCCESS,
   UPDATE_DEPENDENT_ERROR,
   DESTROY_DEPENDENT
@@ -49,6 +51,10 @@ const dependents = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOAD_DEPENDENTS:
       return { ...state, all: action.payload.data } ;
+    case CREATE_DEPENDENT_SUCCESS:
+      debugger
+    case CREATE_DEPENDENT_ERROR:
+      debugger
     case UPDATE_DEPENDENT_SUCCESS:
       return updateDependentSuccess(state, action);
     case UPDATE_DEPENDENT_ERROR:

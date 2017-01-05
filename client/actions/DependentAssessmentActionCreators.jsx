@@ -1,8 +1,10 @@
 import {
   LOAD_DEPENDENTS,
+  CREATE_DEPENDENT_SUCCESS,
+  CREATE_DEPENDENT_ERROR,
   UPDATE_DEPENDENT_SUCCESS,
   UPDATE_DEPENDENT_ERROR,
-  DESTROY_DEPENDENT
+  DESTROY_DEPENDENT,
 } from '../constants/DependentConstants.jsx';
 import axios from 'axios';
 import {reset} from 'redux-form';
@@ -16,6 +18,32 @@ export function loadDependents() {
     payload: request
   }
 };
+
+export function createDependent(params) {
+  const createDependentSuccess = (response) => {
+    return {
+      type: CREATE_DEPENDENT_SUCCESS,
+      payload: response
+    }
+  }
+
+  const createDependentError = (err) => {
+    return {
+      type: CREATE_DEPENDENT_ERROR,
+      payload: err
+    }
+  }
+
+  return function(dispatch) {
+    axios.post(`${API_URL}/dependents/create`, params)
+    .then((response) => {
+      dispatch(createDependentSuccess(response));
+    })
+    .catch((err) => {
+      dispatch(createDependentError(err));
+    })
+  }
+}
 
 export function updateDependent(id, params, index) {
   const updateDependentSuccess = (response) => {

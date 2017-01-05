@@ -1,11 +1,16 @@
 import React, { PropTypes } from 'react';
 import DependentInstance from './DependentInstance.jsx';
-import AddDependentForm from './AddDependentForm.jsx';
+import CreateDependentForm from './CreateDependentForm.jsx';
 
 class DependentAssessment extends React.Component {
-  handleSubmit(values) {
-    console.log(values);
-    // this.props.AddDependent(values);
+  constructor(props, context) {
+    super(props, context)
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(params) {
+    debugger
+    this.props.createDependent(params);
   }
 
   render() {
@@ -23,7 +28,7 @@ class DependentAssessment extends React.Component {
       <div id="dependent-assessment-wrapper">
         <h2> Dependents: </h2>
         { dependents }
-        <AddDependentForm {...this.props} onSubmit={this.handleSubmit}/>
+        <CreateDependentForm {...this.props} onSubmit={this.handleSubmit}/>
       </div>
     )
   }

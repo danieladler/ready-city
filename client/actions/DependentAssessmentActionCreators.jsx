@@ -5,6 +5,7 @@ import {
   DESTROY_DEPENDENT
 } from '../constants/DependentConstants.jsx';
 import axios from 'axios';
+import {reset} from 'redux-form';
 
 const API_URL = "http://localhost:5000";
 

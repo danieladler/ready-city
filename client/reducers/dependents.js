@@ -36,10 +36,9 @@ const updateDependentError = (state, action) => {
 }
 
 const destroyDependentSuccess = (state, action) => {
-  const index = action.index;
   return { all: [
-      ...state.all.slice(0, index),
-      ...state.all.slice(index + 1)
+      ...state.all.slice(0, action.index),
+      ...state.all.slice(action.index + 1)
     ]
   }
 }

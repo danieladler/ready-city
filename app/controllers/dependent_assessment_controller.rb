@@ -46,7 +46,6 @@ class DependentAssessmentController < ApplicationController
       # gear_human are updated with the new quantity of dependents. This has
       # the effect of reducing these user_preps' total_cost_in_cents to the
       # appropriate amount given # of dependents.
-    head :ok
   end
 
   def generate_dependent_preps(user)
@@ -66,7 +65,11 @@ class DependentAssessmentController < ApplicationController
 
   private
   def dependent_params
+    # TODO: troubleshoot strong params interaction w/ Redux – why does the
+    # reducer apply the ENTIRE @dependent to the returned new state, instead
+    # of just the attributes permitted in params?
     # params.require(:dependent).permit(:id, :human, :name)
+    # ~*~*~*~*~*~*~*~*~
     params.permit(:id, :human, :name)
   end
 end

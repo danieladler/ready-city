@@ -98,6 +98,7 @@ const ConnectedDependentInstance = connect((state, props) => {
     initialValues: props.dependent,
     index: props.index,
     form: `dependent-${props.index}`,
+    enableReinitialize: true
   };
 })(DependentReduxForm);
 

@@ -11,13 +11,7 @@ class DependentAssessmentController < ApplicationController
       # generate_dependent_preps(current_user)
       render json: { dependent: @dependent, success: "Dependent Added" }
     elsif @dependent.errors
-      puts @dependent.errors.inspect;
-      # @errors = []
-      # @dependent.errors.each do |column, message|
-      #   @errors << column.to_s + ": " + message.to_s
-      # end
-      # flash[:error] = @errors
-      # render "users/show", locals: {home: current_user.home}
+      render json: { dependent: @dependent, errors: @dependent.errors.full_messages }, status: 422
     end
   end
 
@@ -28,7 +22,7 @@ class DependentAssessmentController < ApplicationController
       # generate_dependent_preps(current_user)
       render json: { dependent: @dependent, success: "Dependent Updated" }
     elsif @dependent.errors
-      render json: { home: @dependent, errors: @dependent.errors.full_messages }, status: 422
+      render json: { dependent: @dependent, errors: @dependent.errors.full_messages }, status: 422
     end
   end
 

@@ -86,7 +86,9 @@ class DependentForm extends React.Component {
           <button action="submit">Save changes</button>
         </form>
         <button onClick={this.handleDestroyDependent}> Delete </button>
-      </div>
+        <br/>
+        <br/>
+    </div>
     )
   }
 }

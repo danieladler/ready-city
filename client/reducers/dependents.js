@@ -13,8 +13,6 @@ import {
 const createDependentSuccess = (state, action) => {
   const all = state.all
   const newDependent = action.payload.data.dependent;
-  console.log(newDependent);
-  console.log(all);
   return { all: [
       ...state.all, {
         id: newDependent.id,
@@ -25,9 +23,10 @@ const createDependentSuccess = (state, action) => {
   }
 }
 
-// const createDependentError = (state, action) => {
-//   debugger
-// }
+const createDependentError = (state, action) => {
+  const errors = action.payload.data.errors;
+  return { ...state, errors: errors }
+}
 
 const updateDependentSuccess = (state, action) => {
   const dependent = action.payload.data.dependent;
@@ -73,11 +72,11 @@ const dependents = (state = INITIAL_STATE, action) => {
     case CREATE_DEPENDENT_SUCCESS:
       return createDependentSuccess(state, action);
     case CREATE_DEPENDENT_ERROR:
-      debugger
+      return createDependentError(state, action);
     case UPDATE_DEPENDENT_SUCCESS:
       return updateDependentSuccess(state, action);
-    // case UPDATE_DEPENDENT_ERROR:
-    //   return updateDependentError(state, action);
+    case UPDATE_DEPENDENT_ERROR:
+      return updateDependentError(state, action);
     case DESTROY_DEPENDENT:
       return destroyDependentSuccess(state, action);
     default:

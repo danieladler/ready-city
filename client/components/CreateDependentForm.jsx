@@ -3,7 +3,15 @@ import { Field, reduxForm } from 'redux-form'
 
 class CreateDependentForm extends React.Component {
   render() {
-    const { handleSubmit } = this.props;
+    const renderErrors = (errors) => {
+      const mapped = errors.map(function(error, index) {
+        return(<p key={index}><strong>{error}</strong></p>);
+      });
+      return(mapped);
+    }
+
+    const { handleSubmit, dependents } = this.props;
+
     return (
       <div>
         <form onSubmit={handleSubmit}>
@@ -21,7 +29,10 @@ class CreateDependentForm extends React.Component {
               <option value="false">Pet</option>
             </Field>
           </div>
-          <div>
+          <div className='message-container' data-dependent-id='create-dependent-error'>
+            { dependents.errors ? renderErrors(dependents.errors) : null }
+          </div>
+          <div> 
             <button type="submit">Submit</button>
           </div>
         </form>

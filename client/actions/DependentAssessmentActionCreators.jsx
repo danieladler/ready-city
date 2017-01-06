@@ -27,13 +27,12 @@ export function createDependent(params) {
     }
   }
 
-  // const createDependentError = (err) => {
-  //   debugger
-  //   return {
-  //     type: CREATE_DEPENDENT_ERROR,
-  //     payload: err
-  //   }
-  // }
+  const createDependentError = (err) => {
+    return {
+      type: CREATE_DEPENDENT_ERROR,
+      payload: err
+    }
+  }
 
   return function(dispatch) {
     axios.post(`${API_URL}/dependents/create`, params)
@@ -41,9 +40,9 @@ export function createDependent(params) {
       dispatch(reset('CreateDependentForm'));
       dispatch(createDependentSuccess(response));
     })
-    // .catch((err) => {
-    //   dispatch(createDependentError(err));
-    // })
+    .catch((err) => {
+      dispatch(createDependentError(err));
+    })
   }
 }
 

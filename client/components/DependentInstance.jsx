@@ -49,16 +49,17 @@ class DependentForm extends React.Component {
     }
 
     const renderSuccess = (success, id) => {
-      var successMessage = (
-        '<p class="success-message"><strong> ' + success + '</strong></p>'
-      );
-
-      var renderTarget = "div[data-dependent-id=" + id +"]"
-      $(renderTarget).append(successMessage);
-
-      setTimeout(function(){
-        $('.success-message').remove()
-      }, 2000);
+      console.log("Dependent success messages to be implemented in a future branch");
+      // var successMessage = (
+      //   '<p class="success-message"><strong> ' + success + '</strong></p>'
+      // );
+      //
+      // var renderTarget = "div[data-dependent-id=" + id +"]"
+      // $(renderTarget).append(successMessage);
+      //
+      // setTimeout(function(){
+      //   $('.success-message').remove()
+      // }, 2000);
 
     }
 

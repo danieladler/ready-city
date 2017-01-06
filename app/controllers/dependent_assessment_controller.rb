@@ -8,7 +8,7 @@ class DependentAssessmentController < ApplicationController
     @dependent = Dependent.new(dependent_params)
     @dependent.user_id = current_user.id
     if @dependent.save
-      # generate_dependent_preps(current_user)
+      generate_dependent_preps(current_user)
       render json: { dependent: @dependent, success: "Dependent Added" }
     elsif @dependent.errors
       render json: { dependent: @dependent, errors: @dependent.errors.full_messages }, status: 422
@@ -19,7 +19,7 @@ class DependentAssessmentController < ApplicationController
     @dependent = Dependent.find(params[:id])
     @dependent.assign_attributes(dependent_params)
     if @dependent.save
-      # generate_dependent_preps(current_user)
+      generate_dependent_preps(current_user)
       render json: { dependent: @dependent, success: "Dependent Updated" }
     elsif @dependent.errors
       render json: { dependent: @dependent, errors: @dependent.errors.full_messages }, status: 422

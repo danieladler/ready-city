@@ -30,7 +30,6 @@ class ContactAssessmentController < ApplicationController
     @contact = Contact.find(params[:id])
     @contact.destroy
     destroy_contact_userpreps if !current_user.has_contacts? #clean out UserPreps for Contacts if there are no Contacts.
-    flash[:notice] = "Contact Deleted"
     head :ok
   end
 

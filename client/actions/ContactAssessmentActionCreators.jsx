@@ -3,7 +3,8 @@ import {
   CREATE_CONTACT_SUCCESS,
   CREATE_CONTACT_ERROR,
   UPDATE_CONTACT_SUCCESS,
-  UPDATE_CONTACT_ERROR
+  UPDATE_CONTACT_ERROR,
+  DESTROY_CONTACT
 } from '../constants/ContactConstants.jsx';
 import axios from 'axios';
 import {reset} from 'redux-form';
@@ -73,5 +74,21 @@ export function updateContact(id, params, index) {
       // of a validation error.
       dispatch(updateContactError(err))
     })
+  }
+};
+
+export function destroyContact(id, index) {
+  const destroyContactSuccess = (index) => {
+    return {
+      type: DESTROY_CONTACT,
+      index
+    }
+  }
+
+  return function(dispatch) {
+    axios.delete(`${API_URL}/contacts/destroy/${id}`)
+    .then(() => {
+      dispatch(destroyContactSuccess(index));
+    });
   }
 };

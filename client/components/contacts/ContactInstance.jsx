@@ -8,6 +8,7 @@ class ContactForm extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleDestroyContact = this.handleDestroyContact.bind(this);
   }
 
   handleFormSubmit(event) {
@@ -25,6 +26,13 @@ class ContactForm extends React.Component {
       out_of_area
     }
     this.props.updateContact(id, params, index);
+  }
+
+  handleDestroyContact(event) {
+    event.preventDefault();
+    const {contact, index} = this.props;
+    const id = contact.id
+    this.props.destroyContact(id, index);
   }
 
   render() {
@@ -79,6 +87,7 @@ class ContactForm extends React.Component {
           </div>
           <button action="submit">Save changes</button>
         </form>
+        <button onClick={this.handleDestroyContact}> Delete </button>
         <br/>
         <br/>
     </div>

@@ -3,7 +3,8 @@ import {
   CREATE_CONTACT_SUCCESS,
   CREATE_CONTACT_ERROR,
   UPDATE_CONTACT_SUCCESS,
-  UPDATE_CONTACT_ERROR
+  UPDATE_CONTACT_ERROR,
+  DESTROY_CONTACT
 } from '../constants/ContactConstants.jsx';
 
 // functions for more complicated state updates, and to work around Webpack
@@ -56,6 +57,14 @@ const updateContactError = (state, action) => {
   }
 }
 
+const destroyContactSuccess = (state, action) => {
+  return { all: [
+      ...state.all.slice(0, action.index),
+      ...state.all.slice(action.index + 1)
+    ]
+  }
+}
+
 const INITIAL_STATE = { all: [], errors: [] };
 
 const contacts = (state = INITIAL_STATE, action) => {
@@ -70,6 +79,8 @@ const contacts = (state = INITIAL_STATE, action) => {
       return updateContactSuccess(state, action);
     case UPDATE_CONTACT_ERROR:
       return updateContactError(state, action);
+    case DESTROY_CONTACT:
+      return destroyContactSuccess(state, action);
     default:
       return state;
   }

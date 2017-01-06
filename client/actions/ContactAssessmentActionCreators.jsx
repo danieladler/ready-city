@@ -38,11 +38,11 @@ export function updateContact(id, params, index) {
     .then((response) => {
       dispatch(updateContactSuccess(response))
     })
-    // .catch((err) => {
-    //   // TODO: refactor error handling to work as-is but not return a
-    //   // 422 error in the console when the PATCH request fails because
-    //   // of a validation error.
-    //   dispatch(updateContactError(err))
-    // })
+    .catch((err) => {
+      // TODO: refactor error handling to work as-is but not return a
+      // 422 error in the console when the PATCH request fails because
+      // of a validation error.
+      dispatch(updateContactError(err))
+    })
   }
 };

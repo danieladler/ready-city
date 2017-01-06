@@ -2,7 +2,7 @@
 import {
   LOAD_CONTACTS,
   UPDATE_CONTACT_SUCCESS,
-  // UPDATE_CONTACT_ERROR
+  UPDATE_CONTACT_ERROR
 } from '../constants/ContactConstants.jsx';
 
 // functions for more complicated state updates, and to work around Webpack
@@ -20,20 +20,19 @@ const updateContactSuccess = (state, action) => {
   }
 }
 
-// const updateContactError = (state, action) => {
-//   debugger
-//   const contact = action.payload.data.contact;
-//   const index = action.index;
-//   const success = null;
-//   const errors = action.payload.data.errors;
-//   const all = state.all
-//   return { all: [
-//       ...state.all.slice(0, index),
-//       {  ...all[index], errors, success },
-//       ...state.all.slice(index + 1)
-//     ]
-//   }
-// }
+const updateContactError = (state, action) => {
+  const contact = action.payload.data.contact;
+  const index = action.index;
+  const success = null;
+  const errors = action.payload.data.errors;
+  const all = state.all
+  return { all: [
+      ...state.all.slice(0, index),
+      {  ...all[index], errors, success },
+      ...state.all.slice(index + 1)
+    ]
+  }
+}
 
 const INITIAL_STATE = { all: [], errors: [] };
 
@@ -43,8 +42,8 @@ const contacts = (state = INITIAL_STATE, action) => {
       return { ...state, all: action.payload.data } ;
     case UPDATE_CONTACT_SUCCESS:
       return updateContactSuccess(state, action);
-    // case UPDATE_CONTACT_ERROR:
-    //   return updateContactError(state, action);
+    case UPDATE_CONTACT_ERROR:
+      return updateContactError(state, action);
     default:
       return state;
   }

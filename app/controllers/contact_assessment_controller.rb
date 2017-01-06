@@ -28,7 +28,7 @@ class ContactAssessmentController < ApplicationController
       generate_contact_preps(current_user)
       render json: { contact: @contact, success: "Contact Updated" }
     elsif @contact.errors
-      render json: { dependent: @dependent, errors: @dependent.errors.full_messages }, status: 422
+      render json: { contact: @contact, errors: @contact.errors.full_messages }, status: 422
     end
   end
 

@@ -1,5 +1,7 @@
 import {
   LOAD_CONTACTS,
+  CREATE_CONTACT_SUCCESS,
+  CREATE_CONTACT_ERROR,
   UPDATE_CONTACT_SUCCESS,
   UPDATE_CONTACT_ERROR
 } from '../constants/ContactConstants.jsx';
@@ -15,6 +17,33 @@ export function loadContacts() {
     payload: request
   }
 };
+
+export function createContact(params) {
+  const createContactSuccess = (response) => {
+    return {
+      type: CREATE_CONTACT_SUCCESS,
+      payload: response
+    }
+  }
+
+  const createContactError = (err) => {
+    return {
+      type: CREATE_CONTACT_ERROR,
+      payload: err
+    }
+  }
+
+  return function(dispatch) {
+    axios.post(`${API_URL}/contacts/create`, params)
+    .then((response) => {
+      dispatch(reset('CreateContactForm'));
+      dispatch(createContactSuccess(response));
+    })
+    .catch((err) => {
+      dispatch(createContactError(err));
+    })
+  }
+}
 
 export function updateContact(id, params, index) {
   const updateContactSuccess = (response) => {

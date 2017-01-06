@@ -9,8 +9,6 @@ class ContactAssessment extends React.Component {
   }
 
   handleSubmit(params) {
-    console.log(params);
-    debugger
     this.props.createContact(params);
   }
 

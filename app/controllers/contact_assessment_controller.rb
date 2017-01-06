@@ -8,7 +8,7 @@ class ContactAssessmentController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
-      # generate_contact_preps(current_user)
+      generate_contact_preps(current_user)
       render json: { contact: @contact, success: "Contact Added" }
     elsif @contact.errors
       render json: { contact: @contact, errors: @contact.errors.full_messages }, status: 422

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import HomeAssessment from './HomeAssessment.jsx';
-import DependentAssessment from './DependentAssessment.jsx';
+import HomeAssessment from './homes/HomeAssessment.jsx';
+import DependentAssessment from './dependents/DependentAssessment.jsx';
 
 class AssessmentWrapper extends React.Component {
   componentDidMount() {

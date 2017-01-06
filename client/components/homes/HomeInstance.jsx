@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { reduxForm, Field, initialize } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import * as actions from '../actions/HomeAssessmentActionCreators.jsx';
+import * as actions from '../../actions/HomeAssessmentActionCreators.jsx';
 
 class HomeForm extends React.Component {
   constructor(props, context) {

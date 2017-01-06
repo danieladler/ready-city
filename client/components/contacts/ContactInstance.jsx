@@ -24,8 +24,7 @@ class ContactForm extends React.Component {
       phone,
       out_of_area
     }
-    console.log(id, params, index);
-    // this.props.updateContact(id, params, index);
+    this.props.updateContact(id, params, index);
   }
 
   render() {

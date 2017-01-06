@@ -23,18 +23,12 @@ class ContactAssessmentController < ApplicationController
 
   def update
     @contact = Contact.find(params[:id])
-    @contact.update_db_values(params)
+    @contact.assign_attributes(contact_params)
     if @contact.save
-      flash[:success] = "Contact Updated"
       generate_contact_preps(current_user)
-      render json: @contact
+      render json: { contact: @contact, success: "Contact Updated" }
     elsif @contact.errors
-      @errors = []
-      @contact.errors.each do |column, message|
-        @errors << column.to_s + ": " + message.to_s
-      end
-      flash[:error] = @errors
-      render "users/show"
+      render json: { dependent: @dependent, errors: @dependent.errors.full_messages }, status: 422
     end
   end
 
@@ -57,6 +51,7 @@ class ContactAssessmentController < ApplicationController
 
   private
   def contact_params
-    params.require(:contact).permit(:name, :email, :phone, :out_of_area)
+    # params.require(:contact).permit(:name, :email, :phone, :out_of_area)
+    params.permit(:name, :email, :phone, :out_of_area)
   end
 end

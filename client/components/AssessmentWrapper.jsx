@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import HomeAssessment from './homes/HomeAssessment.jsx';
 import DependentAssessment from './dependents/DependentAssessment.jsx';
+import ContactAssessment from './contacts/ContactAssessment.jsx';
 
 class AssessmentWrapper extends React.Component {
   componentDidMount() {
@@ -14,6 +15,7 @@ class AssessmentWrapper extends React.Component {
       <div>
         <HomeAssessment {...this.props} />
         <DependentAssessment {...this.props} />
+        <ContactAssessment {...this.props} />
       </div>
     );
   }

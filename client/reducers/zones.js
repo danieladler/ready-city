@@ -20,7 +20,8 @@ const createZoneSuccess = (state, action) => {
         city: newZone.city,
         state: newZone.state,
         zip: newZone.zip,
-        zone_type: newZone.zone_type
+        zone_type: newZone.zone_type,
+        dependent_id: newZone.dependent_id
       }
     ]
   }

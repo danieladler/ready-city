@@ -3,6 +3,15 @@ import { Field, reduxForm } from 'redux-form'
 
 class CreateZoneForm extends React.Component {
   render() {
+    const renderDependents = (dependents) => {
+      const dependentsAsOptions = dependents.all.map(function(dependent, index) {
+        return(
+          <option key={index} value={dependent.id}>{dependent.name}</option>
+        )
+      });
+      return(dependentsAsOptions);
+    }
+
     const renderErrors = (errors) => {
       const mapped = errors.map(function(error, index) {
         return(<p key={index}><strong>{error}</strong></p>);
@@ -10,7 +19,7 @@ class CreateZoneForm extends React.Component {
       return(mapped);
     }
 
-    const { handleSubmit, zones } = this.props;
+    const { handleSubmit, zones, dependents } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
 
     return (
@@ -46,6 +55,13 @@ class CreateZoneForm extends React.Component {
               <option value="">[select]</option>
               <option value="zone_home">Home</option>
               <option value="zone_work">Work</option>
+            </Field>
+          </div>
+          <div>
+            <label>Who spends time here?</label>
+            <Field ref="DependentId" name="dependent_id" component="select">
+              <option value="">[select]</option>
+              { dependents? renderDependents(dependents) : null }
             </Field>
           </div>
           <div className='message-container' data-zone-id='create-zone-error'>

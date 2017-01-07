@@ -10,7 +10,6 @@ import {
 // functions for more complicated state updates, and to work around Webpack
 // compile error when doing duplicate declarations of const index, model, etc.
 const createContactSuccess = (state, action) => {
-  debugger
   const all = state.all
   const newContact = action.payload.data.contact;
   return { all: [

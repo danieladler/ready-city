@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import HomeAssessment from './homes/HomeAssessment.jsx';
 import DependentAssessment from './dependents/DependentAssessment.jsx';
 import ContactAssessment from './contacts/ContactAssessment.jsx';
+import ZoneAssessment from './zones/ZoneAssessment.jsx';
 
 class AssessmentWrapper extends React.Component {
   componentDidMount() {
     this.props.loadHomes();
     this.props.loadDependents();
     this.props.loadContacts();
+    this.props.loadZones();
   }
 
   render() {
@@ -17,6 +19,7 @@ class AssessmentWrapper extends React.Component {
         <HomeAssessment {...this.props} />
         <DependentAssessment {...this.props} />
         <ContactAssessment {...this.props} />
+        <ZoneAssessment {...this.props} />
       </div>
     );
   }
@@ -25,7 +28,8 @@ class AssessmentWrapper extends React.Component {
 const mapStateToProps = (state) => ({
   homes: state.homes,
   dependents: state.dependents,
-  contacts: state.contacts
+  contacts: state.contacts,
+  zones: state.zones
 });
 
 export default connect(mapStateToProps, null)(AssessmentWrapper);

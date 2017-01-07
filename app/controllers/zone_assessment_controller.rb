@@ -24,7 +24,7 @@ class ZoneAssessmentController < ApplicationController
     @zone = Zone.new(zone_params)
     @zone.user_id = current_user.id
     if @zone.save
-      # generate_zone_preps(current_user)
+      generate_zone_preps(current_user)
       render json: { zone: @zone, success: "Zone Added" }
     elsif @zone.errors
       render json: { zone: @zone, errors: @zone.errors.full_messages }, status: 422

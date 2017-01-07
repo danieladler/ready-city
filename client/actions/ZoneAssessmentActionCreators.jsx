@@ -1,5 +1,7 @@
 import {
   LOAD_ZONES,
+  CREATE_ZONE_SUCCESS,
+  CREATE_ZONE_ERROR,
   UPDATE_ZONE_SUCCESS,
   UPDATE_ZONE_ERROR
 } from '../constants/ZoneConstants.jsx';
@@ -15,6 +17,33 @@ export function loadZones() {
     payload: request
   }
 };
+
+export function createZone(params) {
+  const createZoneSuccess = (response) => {
+    return {
+      type: CREATE_ZONE_SUCCESS,
+      payload: response
+    }
+  }
+
+  const createZoneError = (err) => {
+    return {
+      type: CREATE_ZONE_ERROR,
+      payload: err
+    }
+  }
+
+  return function(dispatch) {
+    axios.post(`${API_URL}/zones/create`, params)
+    .then((response) => {
+      dispatch(reset('CreateZoneForm'));
+      dispatch(createZoneSuccess(response));
+    })
+    .catch((err) => {
+      dispatch(createZoneError(err));
+    })
+  }
+}
 
 export function updateZone(id, params, index) {
   const updateZoneSuccess = (response) => {

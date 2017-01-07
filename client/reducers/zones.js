@@ -1,11 +1,35 @@
 import {
   LOAD_ZONES,
+  CREATE_ZONE_SUCCESS,
+  CREATE_ZONE_ERROR,
   UPDATE_ZONE_SUCCESS,
   UPDATE_ZONE_ERROR
 } from '../constants/ZoneConstants.jsx';
 
 // functions for more complicated state updates, and to work around Webpack
 // compile error when doing duplicate declarations of const index, model, etc.
+const createZoneSuccess = (state, action) => {
+  const all = state.all
+  const newZone = action.payload.data.zone;
+  return { all: [
+      ...state.all, {
+        id: newZone.id,
+        name: newZone.name,
+        address: newZone.address,
+        city: newZone.city,
+        state: newZone.state,
+        zip: newZone.zip,
+        zone_type: newZone.zone_type
+      }
+    ]
+  }
+}
+
+const createZoneError = (state, action) => {
+  const errors = action.payload.data.errors;
+  return { ...state, errors: errors }
+}
+
 const updateZoneSuccess = (state, action) => {
   const zone = action.payload.data.zone;
   const index = action.index;
@@ -39,6 +63,10 @@ const zones = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOAD_ZONES:
       return { ...state, all: action.payload.data };
+    case CREATE_ZONE_SUCCESS:
+      return createZoneSuccess(state, action);
+    case CREATE_ZONE_ERROR:
+      return createZoneError(state, action);
     case UPDATE_ZONE_SUCCESS:
       return updateZoneSuccess(state, action);
     case UPDATE_ZONE_ERROR:

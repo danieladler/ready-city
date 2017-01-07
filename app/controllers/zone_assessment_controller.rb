@@ -25,15 +25,9 @@ class ZoneAssessmentController < ApplicationController
     @zone.user_id = current_user.id
     if @zone.save
       # generate_zone_preps(current_user)
-      flash[:success] = "Zone Added"
-      render json: @zone
+      render json: { zone: @zone, success: "Zone Added" }
     elsif @zone.errors
-      @errors = []
-      @zone.errors.each do |column, message|
-        @errors << column.to_s + ": " + message.to_s
-      end
-      flash[:error] = @errors
-      render "users/show"
+      render json: { zone: @zone, errors: @zone.errors.full_messages }, status: 422
     end
   end
 

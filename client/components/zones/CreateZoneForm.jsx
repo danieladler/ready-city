@@ -60,7 +60,7 @@ class CreateZoneForm extends React.Component {
           <div>
             <label>Who spends time here?</label>
             <Field ref="DependentId" name="dependent_id" component="select">
-              <option value="">[select]</option>
+              <option value="0">Me</option>
               { dependents? renderDependents(dependents) : null }
             </Field>
           </div>

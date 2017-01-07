@@ -19,6 +19,7 @@ class ZoneForm extends React.Component {
     const state = this.refs.State.value;
     const zip = this.refs.Zip.value;
     const zone_type = this.refs.ZoneType.value;
+    const dependent_id = this.refs.DependentId.value;
     const {zone, index} = this.props;
     const id = zone.id;
     const params = {
@@ -27,7 +28,8 @@ class ZoneForm extends React.Component {
       city,
       state,
       zip,
-      zone_type
+      zone_type,
+      dependent_id
     }
     this.props.updateZone(id, params, index);
   }
@@ -60,7 +62,16 @@ class ZoneForm extends React.Component {
       console.log("Zone success messages to be implemented in a future branch");
     }
 
-    const { zone, handleSubmit } = this.props;
+    const renderDependents = (dependents) => {
+      const dependentsAsOptions = dependents.all.map(function(dependent, index) {
+        return(
+          <option key={index} value={dependent.id}>{dependent.name}</option>
+        )
+      });
+      return(dependentsAsOptions);
+    }
+
+    const { zone, handleSubmit, dependents } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
       <div>
@@ -96,6 +107,13 @@ class ZoneForm extends React.Component {
               <option value="zone_work">Work</option>
             </Field>
           </div>
+          <div>
+            <label>Who spends time here?</label>
+            <Field ref="DependentId" name="dependent_id" component="select">
+              <option value="">[select]</option>
+              { dependents? renderDependents(dependents) : null }
+            </Field>
+          </div>
           <div className='message-container' data-zone-id={zone.id}>
             { zone.errors ? renderErrors(zone.errors) : null }
             { zone.success ? renderSuccess(zone.success, zone.id) : null }
@@ -117,7 +135,8 @@ const ConnectedZoneInstance = connect((state, props) => {
     initialValues: props.zone,
     index: props.index,
     form: `zone-${props.index}`,
-    enableReinitialize: true
+    enableReinitialize: true,
+    dependents: state.dependents
   };
 })(ZoneReduxForm);
 

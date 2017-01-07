@@ -3,7 +3,10 @@ import React, { PropTypes } from 'react';
 class ZoneInstance extends React.Component {
   render() {
     return(
-      <h1> ZoneInstance visible </h1>
+      <div>
+        <h1> ZoneInstance visible </h1>
+        <h2> { this.props.zone.name } </h2>
+      </div>
     )
   }
 }

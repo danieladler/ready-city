@@ -10,6 +10,7 @@ class AssessmentWrapper extends React.Component {
     this.props.loadHomes();
     this.props.loadDependents();
     this.props.loadContacts();
+    this.props.loadZones();
   }
 
   render() {
@@ -27,7 +28,8 @@ class AssessmentWrapper extends React.Component {
 const mapStateToProps = (state) => ({
   homes: state.homes,
   dependents: state.dependents,
-  contacts: state.contacts
+  contacts: state.contacts,
+  zones: state.zones
 });
 
 export default connect(mapStateToProps, null)(AssessmentWrapper);

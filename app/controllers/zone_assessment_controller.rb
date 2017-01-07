@@ -1,16 +1,23 @@
 class ZoneAssessmentController < ApplicationController
   def api
-    @dependents = current_user.dependents.where(human: true).map do |d|
-      ["name", "#{d.name}","id", d.id]
-    end
-    @dependents.unshift(["name", "Me","id", nil])
-    @dependents = @dependents.map {|d| Hash[d.each_slice(2).to_a]}
-    # NB: the above is some ugly stuff to create a special hash of dependents
-    # and their ids, for display in a select menu in ZoneForm, so that
-    # when new Zones are created they can be given a dependent_id and thus
-    # associated with a specific dependent
+    # @dependents = current_user.dependents.where(human: true).map do |d|
+    #   ["name", "#{d.name}","id", d.id]
+    # end
+    # @dependents.unshift(["name", "Me","id", nil])
+    # @dependents = @dependents.map {|d| Hash[d.each_slice(2).to_a]}
+    # # NB: the above is some ugly stuff to create a special hash of dependents
+    # # and their ids, for display in a select menu in ZoneForm, so that
+    # # when new Zones are created they can be given a dependent_id and thus
+    # # associated with a specific dependent
+    # @zones = current_user.zones
+    # render :json => {:zones => @zones, :dependents => @dependents}
+
+    # TODO: as 034-zone-assessment-redux-pattern evolves, consider whether we
+    # still need the above code. It might not be needed once we have access to
+    # various parts of state via redux.
+
     @zones = current_user.zones
-    render :json => {:zones => @zones, :dependents => @dependents}
+    render :json => @zones
   end
 
   def create

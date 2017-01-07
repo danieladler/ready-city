@@ -41,10 +41,9 @@ class ZoneAssessmentController < ApplicationController
     @zone = Zone.find(params[:id])
     @zone.assign_attributes(zone_params)
     if @zone.save
-      # generate_zone_preps(current_user)
+      generate_zone_preps(current_user)
       render json: { zone: @zone, success: "Zone Updated" }
     elsif @zone.errors
-      raise
       render json: { zone: @zone, errors: @zone.errors.full_messages }, status: 422
     end
   end

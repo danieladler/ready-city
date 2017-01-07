@@ -3,7 +3,8 @@ import {
   CREATE_ZONE_SUCCESS,
   CREATE_ZONE_ERROR,
   UPDATE_ZONE_SUCCESS,
-  UPDATE_ZONE_ERROR
+  UPDATE_ZONE_ERROR,
+  DESTROY_ZONE
 } from '../constants/ZoneConstants.jsx';
 
 // functions for more complicated state updates, and to work around Webpack
@@ -57,6 +58,14 @@ const updateZoneError = (state, action) => {
   }
 }
 
+const destroyZoneSuccess = (state, action) => {
+  return { all: [
+      ...state.all.slice(0, action.index),
+      ...state.all.slice(action.index + 1)
+    ]
+  }
+}
+
 const INITIAL_STATE = { all: [], errors: [] };
 
 const zones = (state = INITIAL_STATE, action) => {
@@ -71,6 +80,8 @@ const zones = (state = INITIAL_STATE, action) => {
       return updateZoneSuccess(state, action);
     case UPDATE_ZONE_ERROR:
       return updateZoneError(state, action);
+    case DESTROY_ZONE:
+      return destroyZoneSuccess(state, action);
     default:
       return state;
   }

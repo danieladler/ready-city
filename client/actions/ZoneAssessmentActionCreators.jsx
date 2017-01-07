@@ -3,7 +3,8 @@ import {
   CREATE_ZONE_SUCCESS,
   CREATE_ZONE_ERROR,
   UPDATE_ZONE_SUCCESS,
-  UPDATE_ZONE_ERROR
+  UPDATE_ZONE_ERROR,
+  DESTROY_ZONE
 } from '../constants/ZoneConstants.jsx';
 import axios from 'axios';
 import {reset} from 'redux-form';
@@ -73,5 +74,21 @@ export function updateZone(id, params, index) {
       // of a validation error.
       dispatch(updateZoneError(err))
     })
+  }
+};
+
+export function destroyZone(id, index) {
+  const destroyZoneSuccess = (index) => {
+    return {
+      type: DESTROY_ZONE,
+      index
+    }
+  }
+
+  return function(dispatch) {
+    axios.delete(`${API_URL}/zones/destroy/${id}`)
+    .then(() => {
+      dispatch(destroyZoneSuccess(index));
+    });
   }
 };

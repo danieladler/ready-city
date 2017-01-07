@@ -8,6 +8,7 @@ class ZoneForm extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleDestroyZone = this.handleDestroyZone.bind(this);
   }
 
   handleFormSubmit(event) {
@@ -29,6 +30,13 @@ class ZoneForm extends React.Component {
       zone_type
     }
     this.props.updateZone(id, params, index);
+  }
+
+  handleDestroyZone(event) {
+    event.preventDefault();
+    const {zone, index} = this.props;
+    const id = zone.id
+    this.props.destroyZone(id, index);
   }
 
   render() {

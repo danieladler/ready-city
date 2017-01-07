@@ -28,7 +28,7 @@ class ZoneForm extends React.Component {
       zip,
       zone_type
     }
-    // this.props.updateZone(id, params, index);
+    this.props.updateZone(id, params, index);
   }
 
   render() {

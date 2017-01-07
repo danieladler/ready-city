@@ -39,18 +39,13 @@ class ZoneAssessmentController < ApplicationController
 
   def update
     @zone = Zone.find(params[:id])
-    @zone.update_db_values(params)
+    @zone.assign_attributes(zone_params)
     if @zone.save
-      generate_zone_preps(current_user)
-      flash[:success] = "Zone Updated"
-      render json: @zone
+      # generate_zone_preps(current_user)
+      render json: { zone: @zone, success: "Zone Updated" }
     elsif @zone.errors
-      @errors = []
-      @zone.errors.each do |column, message|
-        @errors << column.to_s + ": " + message.to_s
-      end
-      flash[:error] = @errors
-      render "users/show"
+      raise
+      render json: { zone: @zone, errors: @zone.errors.full_messages }, status: 422
     end
   end
 
@@ -83,7 +78,8 @@ class ZoneAssessmentController < ApplicationController
 
   private
   def zone_params
-    params.require(:zone).permit(
+    # params.require(:zone).permit(
+    params.permit(
       :dependent_id,
       :name,
       :zone_type,

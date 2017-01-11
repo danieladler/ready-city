@@ -2,6 +2,28 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 class CreateContactForm extends React.Component {
+  constructor(props, context) {
+    super(props, context)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+    const authenticity_token = this.refs.Token.value;
+    const name = this.refs.Name.value;
+    const email = this.refs.Email.value;
+    const phone = this.refs.Phone.value;
+    const out_of_area = this.refs.OutOfArea.value;
+    const params = {
+      authenticity_token,
+      name,
+      email,
+      phone,
+      out_of_area
+    }
+    this.props.createContact(params);
+  }
+
   render() {
     const renderErrors = (errors) => {
       const mapped = errors.map(function(error, index) {
@@ -15,21 +37,21 @@ class CreateContactForm extends React.Component {
 
     return (
       <div>
-        <form onSubmit={handleSubmit}>
-          <input type="hidden" name="authenticity_token" value={token} readOnly={true} />
+        <form onSubmit={this.handleFormSubmit}>
+          <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <label>Add a new contact</label>
             <div>
               <label>Name</label>
-              <Field name="name" component="input" type="text" placeholder="name" />
+              <Field ref="Name" name="name" component="input" type="text" placeholder="name" />
             </div>
             <div>
               <label>e-mail</label>
-              <Field name="email" component="input" type="text" placeholder="e-mail"/>
+              <Field ref="Email" name="email" component="input" type="text" placeholder="e-mail"/>
             </div>
             <div>
               <label>Phone number</label>
-              <Field name="phone" component="input" type="text" placeholder="phone"/>
+              <Field ref="Phone" name="phone" component="input" type="text" placeholder="phone"/>
             </div>
           </div>
           <div>

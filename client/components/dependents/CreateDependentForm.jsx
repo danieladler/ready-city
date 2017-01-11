@@ -2,6 +2,24 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 class CreateDependentForm extends React.Component {
+  constructor(props, context) {
+    super(props, context)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+    const authenticity_token = this.refs.Token.value;
+    const name = this.refs.Name.value;
+    const human = this.refs.Human.value;
+    const params = {
+      authenticity_token,
+      name,
+      human
+    }
+    this.props.createDependent(params);
+  }
+
   render() {
     const renderErrors = (errors) => {
       const mapped = errors.map(function(error, index) {
@@ -15,12 +33,12 @@ class CreateDependentForm extends React.Component {
 
     return (
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleFormSubmit}>
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <label>Add a new dependent</label>
             <div>
-              <Field name="name" component="input" type="text" placeholder="name"/>
+              <Field ref="Name" name="name" component="input" type="text" placeholder="name"/>
             </div>
           </div>
           <div>

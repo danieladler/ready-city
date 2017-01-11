@@ -11,10 +11,12 @@ class CreateDependentForm extends React.Component {
     }
 
     const { handleSubmit, dependents } = this.props;
+    const token = $('meta[name="csrf-token"]').attr('content');
 
     return (
       <div>
         <form onSubmit={handleSubmit}>
+          <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <label>Add a new dependent</label>
             <div>
@@ -32,7 +34,7 @@ class CreateDependentForm extends React.Component {
           <div className='message-container' data-dependent-id='create-dependent-error'>
             { dependents.errors ? renderErrors(dependents.errors) : null }
           </div>
-          <div> 
+          <div>
             <button type="submit">Submit</button>
           </div>
         </form>

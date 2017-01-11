@@ -12,6 +12,7 @@ class HomeForm extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
+    const authenticity_token = this.refs.Token.value;
     const address = this.refs.Address.value;
     const city = this.refs.City.value;
     const state = this.refs.State.value;
@@ -22,6 +23,7 @@ class HomeForm extends React.Component {
     const {home, index} = this.props;
     const id = home.id;
     const params = {
+      authenticity_token,
       address,
       city,
       state,
@@ -69,7 +71,7 @@ class HomeForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
-          <input type="hidden" name="authenticity_token" value={token} readOnly={true} />
+          <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <Field ref="Address" name="address" type="text" component={renderField} label="Address"/>
             {home.address}

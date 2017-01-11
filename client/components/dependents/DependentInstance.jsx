@@ -13,11 +13,13 @@ class DependentForm extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
+    const authenticity_token = this.refs.Token.value;
     const name = this.refs.Name.value;
     const human = this.refs.Human.value;
     const {dependent, index} = this.props;
     const id = dependent.id;
     const params = {
+      authenticity_token,
       name,
       human
     }
@@ -68,7 +70,7 @@ class DependentForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
-          <input type="hidden" name="authenticity_token" value={token} readOnly={true} />
+          <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>
             {dependent.name}

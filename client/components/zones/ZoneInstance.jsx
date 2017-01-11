@@ -13,6 +13,7 @@ class ZoneForm extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
+    const authenticity_token = this.refs.Token.value;
     const name = this.refs.Name.value;
     const address = this.refs.Address.value;
     const city = this.refs.City.value;
@@ -23,6 +24,7 @@ class ZoneForm extends React.Component {
     const {zone, index} = this.props;
     const id = zone.id;
     const params = {
+      authenticity_token,
       name,
       address,
       city,
@@ -76,7 +78,7 @@ class ZoneForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
-          <input type="hidden" name="authenticity_token" value={token} readOnly={true} />
+          <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>
             {zone.name}

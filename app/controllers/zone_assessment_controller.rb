@@ -1,49 +1,28 @@
 class ZoneAssessmentController < ApplicationController
   def api
-    @dependents = current_user.dependents.where(human: true).map do |d|
-      ["name", "#{d.name}","id", d.id]
-    end
-    @dependents.unshift(["name", "Me","id", nil])
-    @dependents = @dependents.map {|d| Hash[d.each_slice(2).to_a]}
-    # NB: the above is some ugly stuff to create a special hash of dependents
-    # and their ids, for display in a select menu in ZoneForm, so that
-    # when new Zones are created they can be given a dependent_id and thus
-    # associated with a specific dependent
     @zones = current_user.zones
-    render :json => {:zones => @zones, :dependents => @dependents}
+    render :json => @zones
   end
 
   def create
     @zone = Zone.new(zone_params)
     @zone.user_id = current_user.id
     if @zone.save
-      # generate_zone_preps(current_user)
-      flash[:success] = "Zone Added"
-      render json: @zone
+      generate_zone_preps(current_user)
+      render json: { zone: @zone, success: "Zone Added" }
     elsif @zone.errors
-      @errors = []
-      @zone.errors.each do |column, message|
-        @errors << column.to_s + ": " + message.to_s
-      end
-      flash[:error] = @errors
-      render "users/show"
+      render json: { zone: @zone, errors: @zone.errors.full_messages }, status: 422
     end
   end
 
   def update
     @zone = Zone.find(params[:id])
-    @zone.update_db_values(params)
+    @zone.assign_attributes(zone_params)
     if @zone.save
       generate_zone_preps(current_user)
-      flash[:success] = "Zone Updated"
-      render json: @zone
+      render json: { zone: @zone, success: "Zone Updated" }
     elsif @zone.errors
-      @errors = []
-      @zone.errors.each do |column, message|
-        @errors << column.to_s + ": " + message.to_s
-      end
-      flash[:error] = @errors
-      render "users/show"
+      render json: { zone: @zone, errors: @zone.errors.full_messages }, status: 422
     end
   end
 
@@ -52,8 +31,6 @@ class ZoneAssessmentController < ApplicationController
     @zone.destroy
     destroy_zone_userpreps if !current_user.has_zones?
     # generate_zone_preps(current_user) # NB: commented out for now because currently no plan_zone UserPreps vary based on # of zones.
-    flash[:notice] = "Zone Deleted"
-    head :ok
   end
 
   def generate_zone_preps(user)
@@ -76,7 +53,8 @@ class ZoneAssessmentController < ApplicationController
 
   private
   def zone_params
-    params.require(:zone).permit(
+    # params.require(:zone).permit(
+    params.permit(
       :dependent_id,
       :name,
       :zone_type,

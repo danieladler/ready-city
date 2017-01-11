@@ -9,32 +9,20 @@ class DependentAssessmentController < ApplicationController
     @dependent.user_id = current_user.id
     if @dependent.save
       generate_dependent_preps(current_user)
-      flash[:success] = "Dependent Added"
-      render json: @dependent
+      render json: { dependent: @dependent, success: "Dependent Added" }
     elsif @dependent.errors
-      @errors = []
-      @dependent.errors.each do |column, message|
-        @errors << column.to_s + ": " + message.to_s
-      end
-      flash[:error] = @errors
-      render "users/show", locals: {home: current_user.home}
+      render json: { dependent: @dependent, errors: @dependent.errors.full_messages }, status: 422
     end
   end
 
   def update
     @dependent = Dependent.find(params[:id])
-    @dependent.update_db_values(params)
+    @dependent.assign_attributes(dependent_params)
     if @dependent.save
-      flash[:success] = "Dependent Updated"
       generate_dependent_preps(current_user)
-      render json: @dependent
+      render json: { dependent: @dependent, success: "Dependent Updated" }
     elsif @dependent.errors
-      @errors = []
-      @dependent.errors.each do |column, message|
-        @errors << column.to_s + ": " + message.to_s
-      end
-      flash[:error] = @errors
-      render "users/show"
+      render json: { dependent: @dependent, errors: @dependent.errors.full_messages }, status: 422
     end
   end
 
@@ -72,6 +60,11 @@ class DependentAssessmentController < ApplicationController
 
   private
   def dependent_params
-    params.require(:dependent).permit(:id, :human, :name)
+    # TODO: troubleshoot strong params interaction w/ Redux – why does the
+    # reducer apply the ENTIRE @dependent to the returned new state, instead
+    # of just the attributes permitted in params?
+    # params.require(:dependent).permit(:id, :human, :name)
+    # ~*~*~*~*~*~*~*~*~
+    params.permit(:id, :human, :name)
   end
 end

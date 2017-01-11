@@ -28,9 +28,10 @@ class DependentForm extends React.Component {
 
   handleDestroyDependent(event) {
     event.preventDefault();
+    const authenticity_token = this.refs.Token.value;
     const {dependent, index} = this.props;
     const id = dependent.id
-    this.props.destroyDependent(id, index);
+    this.props.destroyDependent(authenticity_token, id, index);
   }
 
   render() {

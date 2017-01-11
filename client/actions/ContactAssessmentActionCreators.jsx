@@ -77,7 +77,7 @@ export function updateContact(id, params, index) {
   }
 };
 
-export function destroyContact(id, index) {
+export function destroyContact(authenticity_token, id, index) {
   const destroyContactSuccess = (index) => {
     return {
       type: DESTROY_CONTACT,
@@ -86,7 +86,11 @@ export function destroyContact(id, index) {
   }
 
   return function(dispatch) {
-    axios.delete(`${API_URL}/contacts/destroy/${id}`)
+    axios({
+      method: 'delete',
+      url: `${API_URL}/contacts/destroy/${id}`,
+      data: {authenticity_token}
+    })
     .then(() => {
       dispatch(destroyContactSuccess(index));
     });

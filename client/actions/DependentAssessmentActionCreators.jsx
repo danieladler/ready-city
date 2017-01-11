@@ -77,7 +77,7 @@ export function updateDependent(id, params, index) {
   }
 };
 
-export function destroyDependent(id, index) {
+export function destroyDependent(authenticity_token, id, index) {
   const destroyDependentSuccess = (index) => {
     return {
       type: DESTROY_DEPENDENT,
@@ -86,7 +86,11 @@ export function destroyDependent(id, index) {
   }
 
   return function(dispatch) {
-    axios.delete(`${API_URL}/dependents/destroy/${id}`)
+    axios({
+      method: 'delete',
+      url: `${API_URL}/dependents/destroy/${id}`,
+      data: {authenticity_token}
+    })
     .then(() => {
       dispatch(destroyDependentSuccess(index));
     });

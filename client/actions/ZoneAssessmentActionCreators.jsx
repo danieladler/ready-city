@@ -77,7 +77,7 @@ export function updateZone(id, params, index) {
   }
 };
 
-export function destroyZone(id, index) {
+export function destroyZone(authenticity_token, id, index) {
   const destroyZoneSuccess = (index) => {
     return {
       type: DESTROY_ZONE,
@@ -86,7 +86,11 @@ export function destroyZone(id, index) {
   }
 
   return function(dispatch) {
-    axios.delete(`${API_URL}/zones/destroy/${id}`)
+    axios({
+      method: 'delete',
+      url: `${API_URL}/zones/destroy/${id}`,
+      data: {authenticity_token}
+    })
     .then(() => {
       dispatch(destroyZoneSuccess(index));
     });

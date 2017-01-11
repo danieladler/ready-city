@@ -38,9 +38,10 @@ class ZoneForm extends React.Component {
 
   handleDestroyZone(event) {
     event.preventDefault();
+    const authenticity_token = this.refs.Token.value;
     const {zone, index} = this.props;
     const id = zone.id
-    this.props.destroyZone(id, index);
+    this.props.destroyZone(authenticity_token, id, index);
   }
 
   render() {

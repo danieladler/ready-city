@@ -32,9 +32,10 @@ class ContactForm extends React.Component {
 
   handleDestroyContact(event) {
     event.preventDefault();
+    const authenticity_token = this.refs.Token.value;
     const {contact, index} = this.props;
     const id = contact.id
-    this.props.destroyContact(id, index);
+    this.props.destroyContact(authenticity_token, id, index);
   }
 
   render() {

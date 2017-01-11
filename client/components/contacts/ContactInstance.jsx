@@ -49,7 +49,7 @@ class ContactForm extends React.Component {
     )
 
     const renderErrors = (errors) => {
-      const mapped = errors.map(function(error, index) {
+      const mapped = errors.map((error, index) => {
         return(<p key={index}><strong>{error}</strong></p>);
       });
       return(mapped);
@@ -59,7 +59,7 @@ class ContactForm extends React.Component {
       console.log("Contact success messages to be implemented in a future branch");
     }
 
-    const { contact, handleSubmit } = this.props;
+    const { contact } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
       <div>

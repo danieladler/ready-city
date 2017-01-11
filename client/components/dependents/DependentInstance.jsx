@@ -45,7 +45,7 @@ class DependentForm extends React.Component {
     )
 
     const renderErrors = (errors) => {
-      const mapped = errors.map(function(error, index) {
+      const mapped = errors.map((error, index) => {
         return(<p key={index}><strong>{error}</strong></p>);
       });
       return(mapped);
@@ -53,20 +53,9 @@ class DependentForm extends React.Component {
 
     const renderSuccess = (success, id) => {
       console.log("Dependent success messages to be implemented in a future branch");
-      // var successMessage = (
-      //   '<p class="success-message"><strong> ' + success + '</strong></p>'
-      // );
-      //
-      // var renderTarget = "div[data-dependent-id=" + id +"]"
-      // $(renderTarget).append(successMessage);
-      //
-      // setTimeout(function(){
-      //   $('.success-message').remove()
-      // }, 2000);
-
     }
 
-    const { dependent, handleSubmit } = this.props;
+    const { dependent } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
       <div>

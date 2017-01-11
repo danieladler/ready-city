@@ -4,7 +4,7 @@ import CreateContactForm from './CreateContactForm.jsx';
 
 class ContactAssessment extends React.Component {
   render() {
-    var contacts = this.props.contacts.all.map(function(contact, index) {
+    var contacts = this.props.contacts.all.map((contact, index) => {
       return (
         <div key={index}>
           <ContactInstance

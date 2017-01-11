@@ -34,7 +34,7 @@ export function createZone(params) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios.post(`${API_URL}/zones/create`, params)
     .then((response) => {
       dispatch(reset('CreateZoneForm'));
@@ -63,7 +63,7 @@ export function updateZone(id, params, index) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios.patch(`${API_URL}/zones/update/${id}`, params)
     .then((response) => {
       dispatch(updateZoneSuccess(response))
@@ -85,7 +85,7 @@ export function destroyZone(authenticity_token, id, index) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios({
       method: 'delete',
       url: `${API_URL}/zones/destroy/${id}`,

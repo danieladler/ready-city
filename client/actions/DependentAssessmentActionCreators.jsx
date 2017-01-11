@@ -34,7 +34,7 @@ export function createDependent(params) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios.post(`${API_URL}/dependents/create`, params)
     .then((response) => {
       dispatch(reset('CreateDependentForm'));
@@ -63,7 +63,7 @@ export function updateDependent(id, params, index) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios.patch(`${API_URL}/dependents/update/${id}`, params)
     .then((response) => {
       dispatch(updateDependentSuccess(response))
@@ -85,7 +85,7 @@ export function destroyDependent(authenticity_token, id, index) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios({
       method: 'delete',
       url: `${API_URL}/dependents/destroy/${id}`,

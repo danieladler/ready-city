@@ -55,7 +55,7 @@ class ZoneForm extends React.Component {
     )
 
     const renderErrors = (errors) => {
-      const mapped = errors.map(function(error, index) {
+      const mapped = errors.map((error, index) => {
         return(<p key={index}><strong>{error}</strong></p>);
       });
       return(mapped);
@@ -66,7 +66,7 @@ class ZoneForm extends React.Component {
     }
 
     const renderDependents = (dependents) => {
-      const dependentsAsOptions = dependents.all.map(function(dependent, index) {
+      const dependentsAsOptions = dependents.all.map((dependent, index) => {
         return(
           <option key={index} value={dependent.id}>{dependent.name}</option>
         )
@@ -74,7 +74,7 @@ class ZoneForm extends React.Component {
       return(dependentsAsOptions);
     }
 
-    const { zone, handleSubmit, dependents } = this.props;
+    const { zone, dependents } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
       <div>

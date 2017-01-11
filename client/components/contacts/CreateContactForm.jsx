@@ -26,13 +26,13 @@ class CreateContactForm extends React.Component {
 
   render() {
     const renderErrors = (errors) => {
-      const mapped = errors.map(function(error, index) {
+      const mapped = errors.map((error, index) => {
         return(<p key={index}><strong>{error}</strong></p>);
       });
       return(mapped);
     }
 
-    const { handleSubmit, contacts } = this.props;
+    const { contacts } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
 
     return (

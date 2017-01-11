@@ -22,13 +22,13 @@ class CreateDependentForm extends React.Component {
 
   render() {
     const renderErrors = (errors) => {
-      const mapped = errors.map(function(error, index) {
+      const mapped = errors.map((error, index) => {
         return(<p key={index}><strong>{error}</strong></p>);
       });
       return(mapped);
     }
 
-    const { handleSubmit, dependents } = this.props;
+    const { dependents } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
 
     return (

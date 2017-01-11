@@ -46,27 +46,27 @@ class HomeForm extends React.Component {
     )
 
     const renderErrors = (errors) => {
-      const mapped = errors.map(function(error, index) {
+      const mapped = errors.map((error, index) => {
         return(<p key={index}><strong>{error}</strong></p>);
       });
       return(mapped);
     }
 
     const renderSuccess = (success, id) => {
-      var successMessage = (
+      const successMessage = (
         '<p class="success-message"><strong> ' + success + '</strong></p>'
       );
 
-      var renderTarget = "div[data-home-id=" + id +"]"
+      const renderTarget = "div[data-home-id=" + id +"]"
       $(renderTarget).append(successMessage);
 
-      setTimeout(function(){
+      setTimeout(() => {
         $('.success-message').remove()
       }, 2000);
 
     }
 
-    const { home, handleSubmit } = this.props;
+    const { home } = this.props;
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
       <div>

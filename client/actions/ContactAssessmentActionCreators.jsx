@@ -34,7 +34,7 @@ export function createContact(params) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios.post(`${API_URL}/contacts/create`, params)
     .then((response) => {
       dispatch(reset('CreateContactForm'));
@@ -63,7 +63,7 @@ export function updateContact(id, params, index) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios.patch(`${API_URL}/contacts/update/${id}`, params)
     .then((response) => {
       dispatch(updateContactSuccess(response))
@@ -85,7 +85,7 @@ export function destroyContact(authenticity_token, id, index) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios({
       method: 'delete',
       url: `${API_URL}/contacts/destroy/${id}`,

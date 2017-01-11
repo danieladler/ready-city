@@ -4,7 +4,7 @@ import CreateDependentForm from './CreateDependentForm.jsx';
 
 class DependentAssessment extends React.Component {
   render() {
-    var dependents = this.props.dependents.all.map(function(dependent, index) {
+    var dependents = this.props.dependents.all.map((dependent, index) => {
       return (
         <div key={index}>
           <DependentInstance

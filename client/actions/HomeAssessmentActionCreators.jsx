@@ -28,7 +28,7 @@ export function updateHome(id, params, index) {
     }
   }
 
-  return function(dispatch) {
+  return (dispatch) => {
     axios.patch(`${API_URL}/homes/update/${id}`, params)
     .then((response) => {
       dispatch(updateHomeSuccess(response))

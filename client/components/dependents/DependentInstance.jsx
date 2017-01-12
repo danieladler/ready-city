@@ -59,7 +59,7 @@ class DependentForm extends React.Component {
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} className="form form-update-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>

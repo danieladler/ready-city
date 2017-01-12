@@ -15,7 +15,7 @@ class DependentAssessment extends React.Component {
     })
 
     return (
-      <div id="dependent-assessment-wrapper">
+      <div className="wrapper wrapper-assessment">
         <h2> Dependents: </h2>
         { dependents }
         <CreateDependentForm {...this.props} />

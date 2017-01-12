@@ -52,7 +52,7 @@ class CreateZoneForm extends React.Component {
 
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit} className="form form-create-instance">
+        <form onSubmit={this.handleFormSubmit} >
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <label>Add a new zone</label>

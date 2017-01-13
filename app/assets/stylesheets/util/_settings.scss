@@ -1,0 +1,13 @@
+// typography
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$base-font-weight: 400;
+
+// color scheme
+$grey-color:       hsl(0, 0%, 50%);
+$grey-color-light: lighten($grey-color, 30%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+$orange-color: hsl(35, 100%, 50%);
+$orange-color-light: lighten($orange-color, 30%);
+$orange-color-dark: darken($orange-color, 25%);

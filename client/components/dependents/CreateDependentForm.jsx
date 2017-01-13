@@ -32,7 +32,7 @@ class CreateDependentForm extends React.Component {
     const token = $('meta[name="csrf-token"]').attr('content');
 
     return (
-      <div>
+      <div className="wrapper-create-form">
         <form onSubmit={this.handleFormSubmit} >
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>

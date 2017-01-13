@@ -6,7 +6,7 @@ class DependentAssessment extends React.Component {
   render() {
     var dependents = this.props.dependents.all.map((dependent, index) => {
       return (
-        <div key={index}>
+        <div key={index} className="wrapper-instance">
           <DependentInstance
             index={index}
             dependent={dependent} />
@@ -15,7 +15,7 @@ class DependentAssessment extends React.Component {
     })
 
     return (
-      <div >
+      <div className="wrapper-assessment">
         <h2> Dependents: </h2>
         { dependents }
         <CreateDependentForm {...this.props} />

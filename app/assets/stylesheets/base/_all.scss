@@ -1,7 +1,16 @@
 body {
-  font-family: $test;
+  font-family: helvetica;
+  margin: 0;
+}
 
-  @include media($mobile) {
-    color: red;
-  }
+.main-content {
+  @include outer-container;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: $link-color;
 }

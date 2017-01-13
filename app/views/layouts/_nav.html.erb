@@ -1,23 +1,25 @@
-<header id="navigation">
-  <div class="nav-content-wrapper">
+<header id="header">
+  <div class="nav-primary">
     <a href="/">
       <div class="logo">
          RC
       </div>
     </a>
     <% if logged_in? %>
-      <ul class="nav-right">
-        <li class='nav-right-child'> Hello, <%= current_user.username %></li>
-        <% if current_user.admin %>
-          <li class='nav-right-child'> <%= link_to "Admin Dashboard", admin_preparations_path %> </li>
-        <% else %>
-          <li class='nav-right-child'> <%= link_to "Profile", user_path(current_user.id) %></li>
-          <li class='nav-right-child'> <%= link_to "Prepare", preparations_overview_path(current_user.id) %></li>
-        <% end %>
-        <li class='nav-right-child'>
-          <a href="/sign-out"> Sign Out </a>
-        </li>
-      </ul>
+      <div class='nav-right'>
+        <ul class="nav-list">
+          <li class='nav-list-item'> Hello, <%= current_user.username %></li>
+          <% if current_user.admin %>
+            <li class='nav-list-item'> <%= link_to "Admin Dashboard", admin_preparations_path %> </li>
+          <% else %>
+            <li class='nav-list-item'> <%= link_to "Profile", user_path(current_user.id) %></li>
+            <li class='nav-list-item'> <%= link_to "Prepare", preparations_overview_path(current_user.id) %></li>
+          <% end %>
+          <li class='nav-list-item'>
+            <a href="/sign-out"> Sign Out </a>
+          </li>
+        </ul>
+      </div>
     <% else %>
       <div class="nav-right">
         <%= form_tag sign_in_path, class: 'nav-right-child' do %>

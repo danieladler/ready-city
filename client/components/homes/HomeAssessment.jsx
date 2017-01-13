@@ -14,7 +14,7 @@ class HomeAssessment extends React.Component {
     })
 
     return (
-      <div>
+      <div >
         <h2> Home: </h2>
         { homes }
       </div>

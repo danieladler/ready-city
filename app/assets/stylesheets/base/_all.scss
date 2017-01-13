@@ -1,0 +1,16 @@
+body {
+  font-family: helvetica;
+  margin: 0;
+}
+
+.main-content {
+  @include outer-container;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: $link-color;
+}

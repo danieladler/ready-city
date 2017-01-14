@@ -50,7 +50,8 @@ class ContactForm extends React.Component {
 
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
-        return(<p key={index}><strong>{error}</strong></p>);
+        return(<p key={index} className="alert alert-error">{error}</p>);
+;
       });
       return(mapped);
     }
@@ -84,7 +85,7 @@ class ContactForm extends React.Component {
               <option value="true">Out of area</option>
             </Field>
           </div>
-          <div className='message-container' data-contact-id={contact.id}>
+          <div className='alert-container' data-contact-id={contact.id}>
             { contact.errors ? renderErrors(contact.errors) : null }
             { contact.success ? renderSuccess(contact.success, contact.id) : null }
           </div>

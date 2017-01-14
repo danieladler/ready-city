@@ -46,7 +46,8 @@ class DependentForm extends React.Component {
 
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
-        return(<p key={index}><strong>{error}</strong></p>);
+        return(<p key={index} className="alert alert-error">{error}</p>);
+;
       });
       return(mapped);
     }
@@ -72,7 +73,7 @@ class DependentForm extends React.Component {
               <option value="false">Pet</option>
             </Field>
           </div>
-          <div className='message-container' data-dependent-id={dependent.id}>
+          <div className='alert-container' data-dependent-id={dependent.id}>
             { dependent.errors ? renderErrors(dependent.errors) : null }
             { dependent.success ? renderSuccess(dependent.success, dependent.id) : null }
           </div>

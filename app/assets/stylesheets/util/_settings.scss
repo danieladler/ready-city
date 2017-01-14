@@ -12,5 +12,8 @@ $orange-color: hsl(35, 100%, 50%);
 $orange-color-light: lighten($orange-color, 30%);
 $orange-color-dark: darken($orange-color, 25%);
 
+$error-color: red;
+$success-color: green;
+
 // spatial relationships
 $header-height: 60px;

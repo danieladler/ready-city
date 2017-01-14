@@ -42,7 +42,8 @@ class CreateZoneForm extends React.Component {
 
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
-        return(<p key={index}><strong>{error}</strong></p>);
+        return(<p key={index} className="alert alert-error">{error}</p>);
+;
       });
       return(mapped);
     }
@@ -92,7 +93,7 @@ class CreateZoneForm extends React.Component {
               { dependents? renderDependents(dependents) : null }
             </Field>
           </div>
-          <div className='message-container' data-zone-id='create-zone-error'>
+          <div className='alert-container' data-zone-id='create-zone-error'>
             { zones.errors ? renderErrors(zones.errors) : null }
           </div>
           <div>

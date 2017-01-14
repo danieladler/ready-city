@@ -6,9 +6,9 @@
     .logo {
       height: $header-height;
       float: left;
-      padding: 16px;
+      padding: rem(16);
       text-align: center;
-      font-size: 24px;
+      font-size: rem(24);
       font-weight: bold;
       background-color: $orange-color;
       color: white;
@@ -24,7 +24,7 @@
     }
 
     .nav-list {
-      margin: 2px 4px 2px 0;
+      margin: rem(2) rem(4) rem(2) 0;
       text-align: right;
     }
 
@@ -35,8 +35,8 @@
 
   @include media($medium-up) {
     .nav-right {
-      margin: 10px 0;
-      padding: 5px 0;
+      margin: rem(10) 0;
+      padding: rem(4) 0;
     }
 
     .nav-greeting {
@@ -44,12 +44,12 @@
     }
 
     .nav-list {
-      margin: 4px 0;
+      margin: rem(4) 0;
     }
 
     .nav-list-item, .nav-right-child {
       display: inline;
-      padding: 10px;
+      padding: rem(10);
     }
   }
 }

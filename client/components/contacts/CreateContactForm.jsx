@@ -27,7 +27,8 @@ class CreateContactForm extends React.Component {
   render() {
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
-        return(<p key={index}><strong>{error}</strong></p>);
+        return(<p key={index} className="alert alert-error">{error}</p>);
+;
       });
       return(mapped);
     }
@@ -36,8 +37,8 @@ class CreateContactForm extends React.Component {
     const token = $('meta[name="csrf-token"]').attr('content');
 
     return (
-      <div>
-        <form onSubmit={this.handleFormSubmit} >
+      <div className="wrapper-create-form">
+        <form onSubmit={this.handleFormSubmit} className="form form-assessment form-create-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <label>Add a new contact</label>
@@ -62,7 +63,7 @@ class CreateContactForm extends React.Component {
               <option value="false">Out of area</option>
             </Field>
           </div>
-          <div className='message-container' data-contact-id='create-contact-error'>
+          <div className='alert-container' data-contact-id='create-contact-error'>
             { contacts.errors ? renderErrors(contacts.errors) : null }
           </div>
           <div>

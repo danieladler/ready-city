@@ -42,7 +42,8 @@ class CreateZoneForm extends React.Component {
 
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
-        return(<p key={index}><strong>{error}</strong></p>);
+        return(<p key={index} className="alert alert-error">{error}</p>);
+;
       });
       return(mapped);
     }
@@ -51,8 +52,8 @@ class CreateZoneForm extends React.Component {
     const token = $('meta[name="csrf-token"]').attr('content');
 
     return (
-      <div>
-        <form onSubmit={this.handleFormSubmit} >
+      <div className="wrapper-create-form">
+        <form onSubmit={this.handleFormSubmit} className="form form-assessment form-create-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <label>Add a new zone</label>
@@ -92,7 +93,7 @@ class CreateZoneForm extends React.Component {
               { dependents? renderDependents(dependents) : null }
             </Field>
           </div>
-          <div className='message-container' data-zone-id='create-zone-error'>
+          <div className='alert-container' data-zone-id='create-zone-error'>
             { zones.errors ? renderErrors(zones.errors) : null }
           </div>
           <div>

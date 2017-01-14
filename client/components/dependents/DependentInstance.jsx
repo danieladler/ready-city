@@ -46,7 +46,8 @@ class DependentForm extends React.Component {
 
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
-        return(<p key={index}><strong>{error}</strong></p>);
+        return(<p key={index} className="alert alert-error">{error}</p>);
+;
       });
       return(mapped);
     }
@@ -59,7 +60,7 @@ class DependentForm extends React.Component {
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit} >
+        <form onSubmit={this.handleFormSubmit} className="form form-assessment form-update-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>
@@ -72,7 +73,7 @@ class DependentForm extends React.Component {
               <option value="false">Pet</option>
             </Field>
           </div>
-          <div className='message-container' data-dependent-id={dependent.id}>
+          <div className='alert-container' data-dependent-id={dependent.id}>
             { dependent.errors ? renderErrors(dependent.errors) : null }
             { dependent.success ? renderSuccess(dependent.success, dependent.id) : null }
           </div>

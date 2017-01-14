@@ -47,21 +47,22 @@ class HomeForm extends React.Component {
 
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
-        return(<p key={index}><strong>{error}</strong></p>);
+        return(<p key={index} className="alert alert-error">{error}</p>);
+;
       });
       return(mapped);
     }
 
     const renderSuccess = (success, id) => {
-      const successMessage = (
-        '<p class="success-message"><strong> ' + success + '</strong></p>'
+      const alertSuccess = (
+        '<p class="alert alert-success">' + success + '</p>'
       );
 
       const renderTarget = "div[data-home-id=" + id +"]"
-      $(renderTarget).append(successMessage);
+      $(renderTarget).append(alertSuccess);
 
       setTimeout(() => {
-        $('.success-message').remove()
+        $('.alert-success').remove()
       }, 2000);
 
     }
@@ -70,7 +71,7 @@ class HomeForm extends React.Component {
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit} >
+        <form onSubmit={this.handleFormSubmit} className="form form-assessment form-update-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <Field ref="Address" name="address" type="text" component={renderField} label="Address"/>
@@ -111,7 +112,7 @@ class HomeForm extends React.Component {
               <option value="false">Apartment</option>
             </Field>
           </div>
-          <div className="message-container" data-home-id={home.id}>
+          <div className="alert-container" data-home-id={home.id}>
             { home.errors ? renderErrors(home.errors) : null }
             { home.success ? renderSuccess(home.success, home.id) : null }
           </div>

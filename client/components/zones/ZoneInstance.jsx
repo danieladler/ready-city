@@ -56,7 +56,8 @@ class ZoneForm extends React.Component {
 
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
-        return(<p key={index}><strong>{error}</strong></p>);
+        return(<p key={index} className="alert alert-error">{error}</p>);
+;
       });
       return(mapped);
     }
@@ -78,7 +79,7 @@ class ZoneForm extends React.Component {
     const token = $('meta[name="csrf-token"]').attr('content');
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit} >
+        <form onSubmit={this.handleFormSubmit} className="form form-assessment form-update-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
           <div>
             <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>
@@ -117,7 +118,7 @@ class ZoneForm extends React.Component {
               { dependents? renderDependents(dependents) : null }
             </Field>
           </div>
-          <div className='message-container' data-zone-id={zone.id}>
+          <div className='alert-container' data-zone-id={zone.id}>
             { zone.errors ? renderErrors(zone.errors) : null }
             { zone.success ? renderSuccess(zone.success, zone.id) : null }
           </div>

@@ -6,7 +6,7 @@ class ZoneAssessment extends React.Component {
   render() {
     var zones = this.props.zones.all.map((zone, index) => {
       return (
-        <div key={index}>
+        <div key={index} className="wrapper-instance">
           <ZoneInstance
             index={index}
             zone={zone} />
@@ -15,8 +15,8 @@ class ZoneAssessment extends React.Component {
     })
 
     return (
-      <div id="zone-assessment-wrapper">
-        <h2> Zones: </h2>
+      <div className="wrapper-assessment">
+        <h2 className="title title-assessment"> Zones: </h2>
         { zones }
         <CreateZoneForm {...this.props} />
       </div>

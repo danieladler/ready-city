@@ -1,32 +1,55 @@
 .nav-primary {
-  @include outer-container;
-  height: $header-height;
-}
+  @include media($small-up) {
+    @include outer-container;
+    height: $header-height;
 
-.logo {
-  height: $header-height;
-  float: left;
-  padding: 16px;
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  background-color: $orange-color;
-  color: white;
-}
+    .logo {
+      height: $header-height;
+      float: left;
+      padding: 16px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      background-color: $orange-color;
+      color: white;
+    }
 
-.nav-right {
-  height: $header-height;
-  float: right;
-  margin: 10px 0;
-  padding: 5px 0;
-}
+    .nav-right {
+      height: $header-height;
+      float: right;
+    }
 
-.nav-list {
-  margin: 4px 0;
-}
+    .nav-greeting {
+      display: none;
+    }
 
-.nav-list-item, .nav-right-child {
-  list-style-type: none;
-  display: inline;
-  padding: 10px;
+    .nav-list {
+      margin: 2px 4px 2px 0;
+      text-align: right;
+    }
+
+    .nav-list-item {
+      list-style-type: none;
+    }
+  }
+
+  @include media($medium-up) {
+    .nav-right {
+      margin: 10px 0;
+      padding: 5px 0;
+    }
+
+    .nav-greeting {
+      display: inline;
+    }
+
+    .nav-list {
+      margin: 4px 0;
+    }
+
+    .nav-list-item, .nav-right-child {
+      display: inline;
+      padding: 10px;
+    }
+  }
 }

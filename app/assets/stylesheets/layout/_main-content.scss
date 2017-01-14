@@ -1,3 +1,11 @@
 #main-content {
-  @include outer-container;
+
+  @include media($small-up) {
+    @include outer-container;
+    padding: 0 16px;
+  }
+
+  @include media($x-large-up) {
+    padding: 0;
+  }
 }

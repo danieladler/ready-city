@@ -3,13 +3,26 @@
 }
 
 .wrapper-assessment {
-  // TBD
+  border: 1px solid black;
+  background-color: white;
+  margin-bottom: rem(32);
+
+  @include media($small-up) {
+    @include span-columns(12);
+  }
+
+  @include media($medium-up) {
+    @include shift(2);
+    @include span-columns(8);
+  }
 }
 
 .wrapper-instance {
-  // TBD
+  padding: rem(16);
 }
 
 .wrapper-create-form {
-  // TBD
+    @include span-columns(12);
+    padding: 0 rem(16) rem(16) rem(16);
+    border-top: 1px solid $grey-color-light;
 }

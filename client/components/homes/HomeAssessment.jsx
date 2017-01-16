@@ -15,7 +15,7 @@ class HomeAssessment extends React.Component {
 
     return (
       <div className="wrapper-assessment">
-        <h2 className="title title-assessment"> Home: </h2>
+        <h2 className="title title-assessment"> Home </h2>
         { homes }
       </div>
     )

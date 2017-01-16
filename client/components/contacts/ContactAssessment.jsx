@@ -16,7 +16,7 @@ class ContactAssessment extends React.Component {
 
     return (
       <div className="wrapper-assessment">
-        <h2 className="title title-assessment"> Contacts: </h2>
+        <h2 className="title title-assessment"> Contacts </h2>
         { contacts }
         <CreateContactForm {...this.props} />
       </div>

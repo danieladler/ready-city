@@ -3,7 +3,7 @@ a {
   text-decoration: none;
 }
 
-a:visited {
+a, a:visited {
   color: $grey-color;
 }
 
@@ -76,4 +76,13 @@ a:hover {
   margin: 0 rem(8);
   text-align: center;
   font-size: rem(16);
+}
+
+/////// copy ///////
+.copy-block {
+
+}
+
+.copy-about {
+
 }

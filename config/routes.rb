@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: "home#index"
 
+  # ASSORTED
+  get "/about",       to: "home#about",       as: :about
+
   # SESSIONS
   get  "/sign-in",    to: "sessions#new",     as: :sign_in
   post "/sign-in",    to: "sessions#create"

@@ -36,3 +36,13 @@
     padding: 0 rem(16) rem(16) rem(16);
     border-top: 1px solid $grey-color-light;
 }
+
+.wrapper-hero-content {
+  @include outer-container;
+  padding-top: $header-height;
+  height: 100%;
+}
+
+.wrapper-hero-button {
+  text-align: center;
+}

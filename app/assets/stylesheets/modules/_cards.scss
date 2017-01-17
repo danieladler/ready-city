@@ -1,0 +1,33 @@
+.card-home {
+  background-color: $blue-color-light;
+  height: $card-home-height;
+  border-radius: rem(2);
+
+  @include media($small-up) {
+    @include span-columns(12);
+    margin: rem(16) 0;
+  }
+
+  @include media($medium-up) {
+    @include span-columns(4);
+  }
+}
+
+.image-card-home {
+  height: ($card-home-height * .6);
+  background-size: cover;
+  border-top-left-radius: rem(2);
+  border-top-right-radius: rem(2);
+}
+
+.image-card-home-assess {
+  background-image: image-url('dev-images/assess_sm.jpg');
+}
+
+.image-card-home-prepare {
+  background-image: image-url('dev-images/prepare_sm.jpg');
+}
+
+.image-card-home-react {
+  background-image: image-url('dev-images/react_sm.jpg');
+}

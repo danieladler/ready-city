@@ -24,3 +24,23 @@
     background: $red-color-light;
   }
 }
+
+.button-hero {
+  padding: rem(8) rem(16);
+  border-radius: rem(2);
+}
+
+.button-cta {
+  font-size: rem(20);
+  font-weight: normal;
+  background-color: $green-color;
+  border: 0;
+
+  a {
+    color: white;
+  }
+
+  &:hover {
+    background-color: lighten(blue, 15%);
+  }
+}

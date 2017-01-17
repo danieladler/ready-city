@@ -21,3 +21,6 @@ npm-debug.log*
 # Added by webpack-rails
 /node_modules
 /public/webpack
+
+/app/assets/images/dev-images
+.DS_Store

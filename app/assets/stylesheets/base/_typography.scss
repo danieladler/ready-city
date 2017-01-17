@@ -20,6 +20,12 @@ a:hover {
   // TBD
 }
 
+.title-logo-text {
+  font-size: rem(20);
+  float: right;
+  padding-left: rem(2);
+}
+
 .title-assessment {
   padding: rem(12) rem(16);
   margin: 0;
@@ -30,4 +36,44 @@ a:hover {
 
 }
 
+.title-hero {
+  text-align: center;
+  color: white;
+
+  @include media($small-up) {
+    font-size: rem(24)
+  }
+
+  @include media($medium-up) {
+    font-size: rem(32);
+  }
+}
+
+.title-card-home {
+  text-align: center;
+  border-top-color: 1px solid $grey-color-light;
+  margin: 0;
+
+  @include media($small-up) {
+    padding: rem(8) 0;
+    font-size: rem(18);
+  }
+
+  @include media($medium-up) {
+    font-size: rem(20);
+  }
+}
+
 /////// descriptions ///////
+.description-detailed-home {
+  text-align: center;
+  font-weight: normal;
+  font-size: rem(20);
+}
+
+.description-card-home {
+  height: ($card-home-height * .4);
+  margin: 0 rem(8);
+  text-align: center;
+  font-size: rem(16);
+}

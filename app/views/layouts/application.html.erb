@@ -9,7 +9,7 @@
     <script src='http://localhost:3808/webpack-dev-server.js'></script>
   </head>
 
-  <body>
+  <body class="<%= @page_name == 'home' ? 'home' : nil %>">
     <%= render 'layouts/nav' %>
     <%= render 'layouts/flash' %>
     <div id='main-content'>

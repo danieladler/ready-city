@@ -36,14 +36,13 @@ class CreateDependentForm extends React.Component {
       <div className="wrapper-create-form">
         <form onSubmit={this.handleFormSubmit} className="form form-assessment form-create-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-          <div>
-            <h3 className="title title-form">Add a new dependent</h3>
-            <div>
-              <Field ref="Name" name="name" component="input" type="text" placeholder="name"/>
-            </div>
+          <h3 className="title title-form">Add a new dependent</h3>
+          <div className="form-group">
+            <label className="label-assessment-form"> Name </label>
+            <Field ref="Name" name="name" component="input" type="text" className="input-assessment-form"/>
           </div>
-          <div>
-            <label>Human or Pet?</label>
+          <div className="form-group">
+            <label className="label-assessment-form">Human or Pet?</label>
             <Field ref="Human" name="human" component="select">
               <option value="">[Select]</option>
               <option value="true">Human</option>

@@ -36,11 +36,9 @@ class DependentForm extends React.Component {
 
   render() {
     const renderField = ({ input, label, type }) => (
-      <div>
-        <label>{label}</label>
-        <div>
-          <input {...input} placeholder={label} type={type}/>
-        </div>
+      <div className="form-group">
+        <label className="label-assessment-form">{label}</label>
+        <input className="input-assessment-form" {...input} placeholder={label} type={type}/>
       </div>
     )
 
@@ -62,12 +60,9 @@ class DependentForm extends React.Component {
       <div>
         <form onSubmit={this.handleFormSubmit} className="form form-assessment form-update-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-          <div>
-            <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>
-            {dependent.name}
-          </div>
-          <div>
-            <label>Human or Pet?</label>
+          <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>
+          <div className="form-group">
+            <label className="label-assessment-form">Human or Pet?</label>
             <Field ref="Human" name="human" component="select">
               <option value="true">Human</option>
               <option value="false">Pet</option>

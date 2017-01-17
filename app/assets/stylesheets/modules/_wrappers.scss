@@ -2,6 +2,13 @@
   // TBD
 }
 
+.wrapper-about {
+  @include span-columns(12);
+
+  background: white;
+  padding: 0 rem(16);
+}
+
 .wrapper-assessment {
   border: 1px solid black;
   background-color: white;

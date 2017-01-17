@@ -40,5 +40,8 @@
     "babel-preset-stage-0": "^6.5.0",
     "react-transform-hmr": "^1.0.4",
     "babel-preset-stage-1": "^6.1.18"
+  },
+  "scripts": {
+    "start": "foreman start -f Procfile.dev"
   }
 }

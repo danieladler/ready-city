@@ -4,7 +4,7 @@ $base-font-size: 16px;
 $base-font-weight: 400;
 
 // color scheme
-$grey-color:       hsl(0, 0%, 50%);
+$grey-color: hsl(0, 0%, 50%);
 $grey-color-light: lighten($grey-color, 30%);
 $grey-color-light-plus: lighten($grey-color, 45%);
 $grey-color-dark:  darken($grey-color, 25%);

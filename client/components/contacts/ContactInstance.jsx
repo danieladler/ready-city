@@ -40,18 +40,15 @@ class ContactForm extends React.Component {
 
   render() {
     const renderField = ({ input, label, type }) => (
-      <div>
-        <label>{label}</label>
-        <div>
-          <input {...input} placeholder={label} type={type}/>
-        </div>
+      <div className="form-group">
+        <label className="label-assessment-form">{label}</label>
+        <input className="input-assessment-form" {...input} placeholder={label} type={type}/>
       </div>
     )
 
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
         return(<p key={index} className="alert alert-error">{error}</p>);
-;
       });
       return(mapped);
     }
@@ -66,20 +63,11 @@ class ContactForm extends React.Component {
       <div>
         <form onSubmit={this.handleFormSubmit} className="form form-assessment form-update-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-          <div>
-            <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>
-            {contact.name}
-          </div>
-          <div>
-            <Field ref="Email" name="email" type="text" component={renderField} label="Email"/>
-            {contact.email}
-          </div>
-          <div>
-            <Field ref="Phone" name="phone" type="text" component={renderField} label="Phone"/>
-            {contact.phone}
-          </div>
-          <div>
-            <label>In your local area or out of area?</label>
+          <Field ref="Name" name="name" type="text"   component={renderField} label="Name"/>
+          <Field ref="Email" name="email" type="text" component={renderField} label="Email"/>
+          <Field ref="Phone" name="phone" type="text" component={renderField} label="Phone"/>
+          <div className="form-group">
+            <label className="label-assessment-form">In your local area or out of area?</label>
             <Field ref="OutOfArea" name="out_of_area" component="select">
               <option value="false">Local</option>
               <option value="true">Out of area</option>
@@ -89,9 +77,9 @@ class ContactForm extends React.Component {
             { contact.errors ? renderErrors(contact.errors) : null }
             { contact.success ? renderSuccess(contact.success, contact.id) : null }
           </div>
-          <button action="submit">Save changes</button>
+          <button action="submit" className="button button-form button-submit">Save changes</button>
         </form>
-        <button onClick={this.handleDestroyContact}> Delete </button>
+        <button onClick={this.handleDestroyContact} className="button button-form button-delete"> Delete </button>
         <br/>
         <br/>
     </div>

@@ -6,6 +6,7 @@ $base-font-weight: 400;
 // color scheme
 $grey-color:       hsl(0, 0%, 50%);
 $grey-color-light: lighten($grey-color, 30%);
+$grey-color-light-plus: lighten($grey-color, 45%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 $orange-color: hsl(35, 100%, 50%);
@@ -14,6 +15,12 @@ $orange-color-dark: darken($orange-color, 25%);
 
 $error-color: red;
 $success-color: green;
+
+$green-color: hsl(150, 65%, 45%);
+$green-color-light: lighten($green-color, 30%);
+
+$red-color: hsl(310, 100%, 40%);
+$red-color-light: lighten($red-color, 30%);
 
 // spatial relationships
 $header-height: 60px;

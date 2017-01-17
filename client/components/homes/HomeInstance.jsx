@@ -37,11 +37,9 @@ class HomeForm extends React.Component {
 
   render() {
     const renderField = ({ input, label, type }) => (
-      <div>
-        <label>{label}</label>
-        <div>
-          <input {...input} placeholder={label} type={type}/>
-        </div>
+      <div className="form-group">
+        <label className="label-assessment-form">{label}</label>
+        <input className="input-assessment-form" {...input} placeholder={label} type={type}/>
       </div>
     )
 
@@ -73,40 +71,22 @@ class HomeForm extends React.Component {
       <div>
         <form onSubmit={this.handleFormSubmit} className="form form-assessment form-update-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-          <div>
-            <Field ref="Address" name="address" type="text" component={renderField} label="Address"/>
-            {home.address}
-          </div>
-          <div>
-            <label> City: </label>
-            <Field ref="City" name="city" type="text" component="input"/>
-            {home.city}
-          </div>
-          <div>
-            <label> State: </label>
-            <Field ref="State" name="state" type="text" component="input"/>
-            {home.state}
-          </div>
-          <div>
-            <Field ref="Zip" name="zip" type="text" component={renderField} label="Zip"/>
-            {home.zip}
-          </div>
-          <div>
-            <label> Year Built: </label>
-            <Field ref="YearBuilt" name="year_built" type="text" component="input"/>
-            {home.year_built}
-          </div>
-          <div>
-            <label>Floor Count</label>
-            <Field ref="Floor_count" name="floor_count" component="select">
+          <Field ref="Address" name="address" type="text" component={renderField} label="Address"/>
+          <Field ref="City" name="city" type="text" component={renderField} label="City"/>
+          <Field ref="State" name="state" type="text" component={renderField} label="State"/>
+          <Field ref="Zip" name="zip" type="text" component={renderField} label="Zip"/>
+          <Field ref="YearBuilt" name="year_built" type="text" component={renderField} label="Year Built"/>
+          <div className="form-group">
+            <label className="label-assessment-form">Floor Count</label>
+            <Field ref="Floor_count" name="floor_count" component="select" label="Floor">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
             </Field>
           </div>
-          <div>
-            <label>House or Apartment?</label>
+          <div className="form-group">
+            <label className="label-assessment-form">House or Apartment?</label>
             <Field ref="Is_house" name="is_house" component="select">
               <option value="true">House</option>
               <option value="false">Apartment</option>
@@ -116,7 +96,7 @@ class HomeForm extends React.Component {
             { home.errors ? renderErrors(home.errors) : null }
             { home.success ? renderSuccess(home.success, home.id) : null }
           </div>
-          <button action="submit">Save changes</button>
+          <button action="submit" className="button button-form button-submit">Save changes</button>
         </form>
       </div>
     )

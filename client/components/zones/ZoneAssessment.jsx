@@ -16,7 +16,7 @@ class ZoneAssessment extends React.Component {
 
     return (
       <div className="wrapper-assessment">
-        <h2 className="title title-assessment"> Zones: </h2>
+        <h2 className="title title-assessment"> Zones </h2>
         { zones }
         <CreateZoneForm {...this.props} />
       </div>

@@ -55,39 +55,37 @@ class CreateZoneForm extends React.Component {
       <div className="wrapper-create-form">
         <form onSubmit={this.handleFormSubmit} className="form form-assessment form-create-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-          <div>
-            <label>Add a new zone</label>
-            <div>
-              <label>Name</label>
-              <Field ref="Name" name="name" component="input" type="text" placeholder="name"/>
-            </div>
-            <div>
-              <label>Address</label>
-              <Field ref="Address" name="address" component="input" type="text" placeholder="address"/>
-            </div>
-            <div>
-              <label>City</label>
-              <Field ref="City" name="city" component="input" type="text" placeholder="city"/>
-            </div>
-            <div>
-              <label>State</label>
-              <Field ref="State" name="state" component="input" type="text" placeholder="state"/>
-            </div>
-            <div>
-              <label>Zip</label>
-              <Field ref="Zip" name="zip" component="input" type="text" placeholder="zip"/>
-            </div>
+          <h3 className="title title-form">Add a new zone</h3>
+          <div className="form-group">
+            <label className="label-assessment-form">Name</label>
+            <Field ref="Name" name="name" component="input" type="text" className="input-assessment-form"/>
           </div>
-          <div>
-            <label>What type of zone is this?</label>
+          <div className="form-group">
+            <label className="label-assessment-form">Address</label>
+            <Field ref="Address" name="address" component="input" type="text" className="input-assessment-form" />
+          </div>
+          <div className="form-group">
+            <label className="label-assessment-form">City</label>
+            <Field ref="City" name="city" component="input" type="text" className="input-assessment-form"/>
+          </div>
+          <div className="form-group">
+            <label className="label-assessment-form">State</label>
+            <Field ref="State" name="state" component="input" type="text" className="input-assessment-form"/>
+          </div>
+          <div className="form-group">
+            <label className="label-assessment-form">Zip</label>
+            <Field ref="Zip" name="zip" component="input" type="text" className="input-assessment-form"/>
+          </div>
+          <div className="form-group">
+            <label className="label-assessment-form">What type of zone is this?</label>
             <Field ref="ZoneType" name="zone_type" component="select">
               <option value="">[select]</option>
               <option value="zone_home">Home</option>
               <option value="zone_work">Work</option>
             </Field>
           </div>
-          <div>
-            <label>Who spends time here?</label>
+          <div className="form-group">
+            <label className="label-assessment-form">Who spends time here?</label>
             <Field ref="DependentId" name="dependent_id" component="select">
               <option value="0">Me</option>
               { dependents? renderDependents(dependents) : null }
@@ -97,7 +95,7 @@ class CreateZoneForm extends React.Component {
             { zones.errors ? renderErrors(zones.errors) : null }
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="button button-form button-submit">Submit</button>
           </div>
         </form>
       </div>

@@ -46,18 +46,15 @@ class ZoneForm extends React.Component {
 
   render() {
     const renderField = ({ input, label, type }) => (
-      <div>
-        <label>{label}</label>
-        <div>
-          <input {...input} placeholder={label} type={type}/>
-        </div>
+      <div className="form-group">
+        <label className="label-assessment-form">{label}</label>
+        <input className="input-assessment-form" {...input} placeholder={label} type={type}/>
       </div>
     )
 
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
         return(<p key={index} className="alert alert-error">{error}</p>);
-;
       });
       return(mapped);
     }
@@ -81,38 +78,21 @@ class ZoneForm extends React.Component {
       <div>
         <form onSubmit={this.handleFormSubmit} className="form form-assessment form-update-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-          <div>
-            <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>
-            {zone.name}
-          </div>
-          <div>
-            <Field ref="Address" name="address" type="text" component={renderField} label="Address"/>
-            {zone.address}
-          </div>
-          <div>
-            <label> City: </label>
-            <Field ref="City" name="city" type="text" component="input"/>
-            {zone.city}
-          </div>
-          <div>
-            <label> State: </label>
-            <Field ref="State" name="state" type="text" component="input"/>
-            {zone.state}
-          </div>
-          <div>
-            <Field ref="Zip" name="zip" type="text" component={renderField} label="Zip"/>
-            {zone.zip}
-          </div>
-          <div>
-            <label>What type of zone is this?</label>
+          <Field ref="Name" name="name" type="text" component={renderField} label="Name"/>
+          <Field ref="Address" name="address" type="text" component={renderField} label="Address"/>
+          <Field ref="City" name="city" type="text" component={renderField} label="City"/>
+          <Field ref="State" name="state" type="text" component={renderField} label="State"/>
+          <Field ref="Zip" name="zip" type="text" component={renderField} label="Zip"/>
+          <div className="form-group">
+            <label className="label-assessment-form">What type of zone is this?</label>
             <Field ref="ZoneType" name="zone_type" component="select">
               <option value="">[select]</option>
               <option value="zone_home">Home</option>
               <option value="zone_work">Work</option>
             </Field>
           </div>
-          <div>
-            <label>Who spends time here?</label>
+          <div className="form-group">
+            <label className="label-assessment-form">Who spends time here?</label>
             <Field ref="DependentId" name="dependent_id" component="select">
               <option value="0">Me</option>
               { dependents? renderDependents(dependents) : null }
@@ -122,9 +102,9 @@ class ZoneForm extends React.Component {
             { zone.errors ? renderErrors(zone.errors) : null }
             { zone.success ? renderSuccess(zone.success, zone.id) : null }
           </div>
-          <button action="submit">Save changes</button>
+          <button action="submit" className="button button-form button-submit">Save changes</button>
         </form>
-        <button onClick={this.handleDestroyZone}> Delete </button>
+        <button onClick={this.handleDestroyZone} className="button button-form button-delete"> Delete </button>
         <br/>
         <br/>
     </div>

@@ -1,0 +1,7 @@
+<% if flash %>
+  <div class="flash-wrapper">
+    <% flash.each do |key, value| %>
+      <div class="flash-message flash-<%= key %>"><%= safe_join(Array(value), '<br/>'.html_safe) %></div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,46 @@
+<% if @dependent %>
+  <h2 class="title"> Dependents </h2>
+  <p class="description description-form">
+    Add a record for each member of your household for whom you will be
+    responsible during an emergency (including spouse/partner). Pets are
+    also considered dependents and can be added with the 'Add Pet' button.
+  </p>
+  <% if current_user.has_dependents? %>
+    <ul>
+      <% current_user.dependents.order(human: :desc).each do |d| %>
+        <%= form_for d, url: update_dependent_path(d) do |f| %>
+          <div class="form-group">
+            <%= f.label :name, "Name" %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="form-group">
+            <%= f.label :human, 'Human' %>
+            <%= f.radio_button :human, true %>
+            <%= f.label :human, 'Pet' %>
+            <%= f.radio_button :human, false %>
+          </div>
+          <%= f.submit %>
+        <% end %>
+        <a href= "<%= destroy_dependent_path(d.id)%>"> x </a>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <h3 class="title"> Add a Dependent </h3>
+  <div class="create-dependent-form">
+    <%= form_for @dependent, url: create_dependent_path do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="form-group">
+        <div class="title title-form-group"> Human or Pet? </div>
+        <%= f.label :human, 'Human' %>
+        <%= f.radio_button :human, true %>
+        <%= f.label :human, 'Pet' %>
+        <%= f.radio_button :human, false %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+  </div>
+<% end %>

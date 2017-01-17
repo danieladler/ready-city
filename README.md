@@ -2,22 +2,9 @@
 
 Welcome to Ready City!
 
-As the application develops the following will be fleshed out:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...and more!
+This application unites Rails with modern Javascript using the `webpack-rails`
+gem. To get up and running, do the following:
+- clone this repo then `cd` inside
+- `bundle && npm i` to get all Rails & Javascript dependencies
+- `foreman start` to get the webpack-dev-server started
+- visit localhost:5000 to view the app

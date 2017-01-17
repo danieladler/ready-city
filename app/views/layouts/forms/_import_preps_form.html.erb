@@ -1,0 +1,5 @@
+<h2> Import Preparations from CSV </h2>
+<%= form_tag admin_import_preps_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>

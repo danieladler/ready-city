@@ -1,0 +1,65 @@
+.wrapper {
+  // TBD
+}
+
+.wrapper-about {
+  @include span-columns(12);
+
+  background: white;
+  padding: 0 rem(16);
+}
+
+.wrapper-assessment {
+  border: 1px solid black;
+  background-color: white;
+  margin-bottom: rem(32);
+
+  @include media($small-up) {
+    @include span-columns(12);
+  }
+
+  @include media($medium-up) {
+    @include shift(2);
+    @include span-columns(8);
+  }
+}
+
+.wrapper-instance {
+  padding: rem(16) 0 rem(16) rem(16);
+  // @include span-columns(4);
+
+  @include media($small-up) {
+    @include span-columns(12);
+  }
+
+  @include media($medium-up) {
+    @include span-columns(4);
+    @include omega();
+  }
+}
+
+.wrapper-create-form {
+    @include span-columns(12);
+    padding: 0 rem(16) rem(16) rem(16);
+    border-top: 1px solid $grey-color-light;
+}
+
+.wrapper-hero-content {
+  @include outer-container;
+  padding-top: $header-height;
+  height: 100%;
+}
+
+.wrapper-hero-button {
+  text-align: center;
+}
+
+.wrapper-cards-home {
+  margin-top: ($hero-height - $header-height);
+  padding-top: rem(16);
+
+  @include media($medium-up) {
+    margin-left: rem(64);
+    margin-right: rem(64);
+  }
+}

@@ -1,0 +1,55 @@
+.nav-primary {
+  @include media($small-up) {
+    @include outer-container;
+    height: $header-height;
+
+    .logo {
+      height: $header-height;
+      float: left;
+      padding: rem(4) rem(8);
+      text-align: center;
+      font-size: rem(24);
+      font-weight: bold;
+      background-color: $green-color;
+      color: white;
+    }
+
+    .nav-right {
+      height: $header-height;
+      float: right;
+    }
+
+    .nav-greeting {
+      display: none;
+    }
+
+    .nav-list {
+      margin: rem(2) rem(4) rem(2) 0;
+      text-align: right;
+    }
+
+    .nav-list-item {
+      list-style-type: none;
+    }
+  }
+
+  @include media($medium-up) {
+    .nav-right {
+      margin: rem(10) 0;
+      padding: rem(4) 0;
+    }
+
+    .nav-greeting {
+      display: inline;
+    }
+
+    .nav-list {
+      margin: rem(4) 0;
+    }
+
+    .nav-list-item, .nav-right-child {
+      display: inline;
+      padding: rem(10);
+    }
+  }
+}

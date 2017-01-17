@@ -1,0 +1,7 @@
+<h1 class="title title-page"> Preparations Overview </h1>
+<h2> Home Preparations </h2>
+<ul>
+  <% @home_user_preps.each do |up| %>
+    <li> <%= up.keyword %>: <%= up.instructions %></li>
+  <% end %>
+</ul>

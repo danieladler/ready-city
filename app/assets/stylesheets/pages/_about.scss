@@ -1,0 +1,19 @@
+.list-about-faq {
+  list-style-type: none;
+
+  li:first-child {
+    padding-top: 0;
+  }
+
+  li {
+    padding: rem(8) 0;
+  }
+
+  .faq-question {
+    font-weight: bold;
+  }
+
+  .faq-answer {
+    // TBD
+  }
+}

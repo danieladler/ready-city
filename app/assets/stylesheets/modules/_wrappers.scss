@@ -49,9 +49,10 @@
 
 .wrapper-cards-home {
   margin-top: ($hero-height - $header-height);
-  padding-top: rem(24);
+  padding-top: rem(16);
 
   @include media($medium-up) {
-    @include shift(2);
+    margin-left: rem(64);
+    margin-right: rem(64);
   }
 }

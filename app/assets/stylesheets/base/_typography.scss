@@ -49,14 +49,25 @@ a:hover {
   margin: 0;
 
   @include media($small-up) {
-    padding: rem(4) 0;
-    font-size: rem(16);
+    padding: rem(8) 0;
+    font-size: rem(18);
   }
 
   @include media($medium-up) {
-    padding: rem(8) 0;
     font-size: rem(20);
   }
 }
 
 /////// descriptions ///////
+.description-detailed-home {
+  text-align: center;
+  font-weight: normal;
+  font-size: rem(20);
+}
+
+.description-card-home {
+  height: ($card-home-height * .4);
+  margin: 0 rem(8);
+  text-align: center;
+  font-size: rem(16);
+}

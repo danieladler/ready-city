@@ -1,5 +1,5 @@
 .card-home {
-  background-color: $grey-color-light;
+  background-color: $blue-color-light;
   height: $card-home-height;
   border-radius: rem(2);
 
@@ -15,7 +15,6 @@
 
 .image-card-home {
   height: ($card-home-height * .6);
-  background-color: $grey-color-light;
   background-size: cover;
   border-top-left-radius: rem(2);
   border-top-right-radius: rem(2);

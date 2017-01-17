@@ -22,6 +22,9 @@ $green-color-light: lighten($green-color, 30%);
 $red-color: hsl(310, 100%, 40%);
 $red-color-light: lighten($red-color, 30%);
 
+$blue-color: hsl(210, 55%, 55%);
+$blue-color-light: lighten($blue-color, 35%);
+
 // spatial relationships
 $header-height: rem(60);
 $hero-height: rem(480);

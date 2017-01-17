@@ -46,3 +46,12 @@
 .wrapper-hero-button {
   text-align: center;
 }
+
+.wrapper-cards-home {
+  margin-top: ($hero-height - $header-height);
+  padding-top: rem(24);
+
+  @include media($medium-up) {
+    @include shift(2);
+  }
+}

@@ -23,4 +23,6 @@ $red-color: hsl(310, 100%, 40%);
 $red-color-light: lighten($red-color, 30%);
 
 // spatial relationships
-$header-height: 60px;
+$header-height: rem(60);
+$hero-height: rem(480);
+$card-home-height: rem(352);

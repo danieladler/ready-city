@@ -1,0 +1,28 @@
+.card-home {
+  background-color: $grey-color;
+  height: $card-home-height;
+  border-radius: rem(2);
+
+  @include media($small-up) {
+    @include span-columns(12);
+    margin: rem(16) 0;
+  }
+
+  @include media($medium-up) {
+    @include span-columns(3);
+    @include omega();
+    margin: rem(16);
+  }
+}
+
+.image-card-home {
+  height: ($card-home-height * .6);
+  background-color: $grey-color-light;
+}
+
+.description-card-home {
+  height: ($card-home-height * .4);
+  margin: 0 rem(8);
+  text-align: center;
+  font-size: rem(16);
+}

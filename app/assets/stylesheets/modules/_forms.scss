@@ -4,6 +4,7 @@
 
 .form-assessment {
   // TBD
+  // NOTE: replace the two below with just this selector?
 }
 
 .form-create-instance {
@@ -13,3 +14,33 @@
 .form-update-instance {
   // TBD
 }
+
+.form-group {
+  padding-bottom: rem(12);
+
+  .label-assessment-form {
+    display: block;
+    font-size: rem(10);
+    color: $grey-color;
+  }
+
+  .input-assessment-form {
+    font-size: rem(12);
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid $grey-color-light;
+  }
+}
+//
+// .form-group-city {
+//   @include span-columns(3);
+// }
+//
+// .form-group-state {
+//   @include span-columns(1)  ;
+// }
+//
+// .form-group-zip {
+//   @include span-columns(2);
+// }

@@ -65,7 +65,7 @@ class CreateContactForm extends React.Component {
             { contacts.errors ? renderErrors(contacts.errors) : null }
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="button button-form button-submit">Submit</button>
           </div>
         </form>
       </div>

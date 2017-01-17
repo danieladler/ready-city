@@ -77,9 +77,9 @@ class ContactForm extends React.Component {
             { contact.errors ? renderErrors(contact.errors) : null }
             { contact.success ? renderSuccess(contact.success, contact.id) : null }
           </div>
-          <button action="submit">Save changes</button>
+          <button action="submit" className="button button-form button-submit">Save changes</button>
         </form>
-        <button onClick={this.handleDestroyContact}> Delete </button>
+        <button onClick={this.handleDestroyContact} className="button button-form button-delete"> Delete </button>
         <br/>
         <br/>
     </div>

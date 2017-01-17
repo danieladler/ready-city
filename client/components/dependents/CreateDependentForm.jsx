@@ -53,7 +53,7 @@ class CreateDependentForm extends React.Component {
             { dependents.errors ? renderErrors(dependents.errors) : null }
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="button button-form button-submit">Submit</button>
           </div>
         </form>
       </div>

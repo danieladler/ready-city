@@ -1,0 +1,26 @@
+.button {
+  font-weight: bold;
+}
+
+.button-form {
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  color: $grey-color-light-plus;
+}
+
+.button-submit {
+  color: $green-color;
+
+  &:hover {
+    background: $green-color-light;
+  }
+}
+
+.button-delete {
+  color: $red-color;
+
+  &:hover {
+    background: $red-color-light;
+  }
+}

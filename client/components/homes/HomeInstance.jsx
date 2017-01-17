@@ -96,7 +96,7 @@ class HomeForm extends React.Component {
             { home.errors ? renderErrors(home.errors) : null }
             { home.success ? renderSuccess(home.success, home.id) : null }
           </div>
-          <button action="submit">Save changes</button>
+          <button action="submit" className="button button-form button-submit">Save changes</button>
         </form>
       </div>
     )

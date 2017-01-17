@@ -18,7 +18,17 @@
 }
 
 .wrapper-instance {
-  padding: rem(16);
+  padding: rem(16) 0 rem(16) rem(16);
+  // @include span-columns(4);
+
+  @include media($small-up) {
+    @include span-columns(12);
+  }
+
+  @include media($medium-up) {
+    @include span-columns(4);
+    @include omega();
+  }
 }
 
 .wrapper-create-form {

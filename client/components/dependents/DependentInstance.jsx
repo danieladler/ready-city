@@ -72,9 +72,9 @@ class DependentForm extends React.Component {
             { dependent.errors ? renderErrors(dependent.errors) : null }
             { dependent.success ? renderSuccess(dependent.success, dependent.id) : null }
           </div>
-          <button action="submit">Save changes</button>
+          <button action="submit" className="button button-form button-submit">Save changes</button>
         </form>
-        <button onClick={this.handleDestroyDependent}> Delete </button>
+        <button onClick={this.handleDestroyDependent} className="button button-form button-delete"> Delete </button>
         <br/>
         <br/>
     </div>

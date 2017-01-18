@@ -9,7 +9,13 @@ import {
 import axios from 'axios';
 import {reset} from 'redux-form';
 
-const API_URL = "http://localhost:5000";
+var railsEnv = $('body').data('env');
+
+if (railsEnv === 'development') {
+  var API_URL = "http://localhost:5000";
+} else if (railsEnv === 'production') {
+  var API_URL = "https://ready-city-stage.herokuapp.com";
+}
 
 export function loadContacts() {
   const request = axios.get(`${API_URL}/contacts`);

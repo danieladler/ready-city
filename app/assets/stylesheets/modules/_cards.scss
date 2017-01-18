@@ -21,13 +21,13 @@
 }
 
 .image-card-home-assess {
-  background-image: image-url('dev-images/assess_sm.jpg');
+  background-image: url("https://s3-us-west-2.amazonaws.com/ready-city/assess_sm.jpg");
 }
 
 .image-card-home-prepare {
-  background-image: image-url('dev-images/prepare_sm.jpg');
+  background-image: url("https://s3-us-west-2.amazonaws.com/ready-city/prepare_sm.jpg");
 }
 
 .image-card-home-react {
-  background-image: image-url('dev-images/react_sm.jpg');
+  background-image: url("https://s3-us-west-2.amazonaws.com/ready-city/ready_sm.jpg");
 }

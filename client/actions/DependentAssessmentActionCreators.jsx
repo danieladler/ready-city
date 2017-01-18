@@ -6,10 +6,9 @@ import {
   UPDATE_DEPENDENT_ERROR,
   DESTROY_DEPENDENT,
 } from '../constants/DependentConstants.jsx';
+import { API_URL } from '../constants/ApiConstants.jsx';
 import axios from 'axios';
 import {reset} from 'redux-form';
-
-const API_URL = "http://localhost:5000";
 
 export function loadDependents() {
   const request = axios.get(`${API_URL}/dependents`);

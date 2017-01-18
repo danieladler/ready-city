@@ -6,10 +6,9 @@ import {
   UPDATE_ZONE_ERROR,
   DESTROY_ZONE
 } from '../constants/ZoneConstants.jsx';
+import { API_URL } from '../constants/ApiConstants.jsx';
 import axios from 'axios';
 import {reset} from 'redux-form';
-
-const API_URL = "http://localhost:5000";
 
 export function loadZones() {
   const request = axios.get(`${API_URL}/zones`);

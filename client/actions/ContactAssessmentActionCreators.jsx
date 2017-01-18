@@ -6,16 +6,9 @@ import {
   UPDATE_CONTACT_ERROR,
   DESTROY_CONTACT
 } from '../constants/ContactConstants.jsx';
+import { API_URL } from '../constants/ApiConstants.jsx';
 import axios from 'axios';
 import {reset} from 'redux-form';
-
-var railsEnv = $('body').data('env');
-
-if (railsEnv === 'development') {
-  var API_URL = "http://localhost:5000";
-} else if (railsEnv === 'production') {
-  var API_URL = "https://ready-city-stage.herokuapp.com";
-}
 
 export function loadContacts() {
   const request = axios.get(`${API_URL}/contacts`);

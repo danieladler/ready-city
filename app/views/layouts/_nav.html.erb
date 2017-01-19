@@ -21,16 +21,14 @@
           </li>
         </ul>
       </div>
-    <% else %>
+    <% elsif !logged_in? %>
       <div class="nav-right">
         <a href="./about" class="nav-right-child">
           About
         </a>
-        <%= form_tag sign_in_path, class: 'nav-right-child' do %>
-          <input type="email", name="email", placeholder="email">
-          <input type="password", name="password", placeholder="password">
-          <input type="submit", value="Sign In">
-        <% end %>
+        <a href="./sign-in" class="nav-right-child">
+          Log In
+        </a>
         <a href="./sign-up" class="nav-right-child">
           Sign Up
         </a>

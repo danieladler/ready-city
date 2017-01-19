@@ -1,0 +1,13 @@
+<div class="wrapper wrapper-sign-in">
+  <%= form_tag create_session_path, class: 'form form-sign-in' do %>
+    <div class="form-group form-group-stretch">
+      <input class="input-clear input-stretch input-sign-in" type="email", name="email", placeholder="email">
+    </div>
+    <div class="form-group form-group-stretch">
+      <input class="input-clear input-stretch input-sign-in" type="password", name="password", placeholder="password">
+    </div>
+    <div class="form-group form-group-stretch form-group-submit">
+      <button class="button button-sign-in" type="submit"> Sign In </button>
+    </div>
+  <% end %>
+</div>

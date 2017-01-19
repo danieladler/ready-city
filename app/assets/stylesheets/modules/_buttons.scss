@@ -9,6 +9,17 @@
   color: $grey-color-light-plus;
 }
 
+.button-sign-in {
+  font-size: $sign-in-form-font-size;
+  font-weight: 400;
+  border: none;
+  text-transform: uppercase;
+  padding: 0 rem(8);
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+}
+
 .button-submit {
   color: $green-color;
 

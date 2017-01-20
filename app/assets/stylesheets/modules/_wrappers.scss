@@ -9,7 +9,8 @@
   padding: 0 rem(16);
 }
 
-.wrapper-sign-in {
+.wrapper-sign-in,
+.wrapper-sign-up {
   @include media($small-up) {
     @include span-columns(12);
   }

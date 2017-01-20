@@ -24,7 +24,7 @@
   color: $green-color;
 
   &:hover {
-    background: $green-color-light;
+    background: $green-color-dark;
   }
 }
 
@@ -52,6 +52,6 @@
   }
 
   &:hover {
-    background-color: lighten(blue, 15%);
+    background-color: $green-color-dark;
   }
 }

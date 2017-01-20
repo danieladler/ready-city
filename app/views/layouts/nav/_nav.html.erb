@@ -1,0 +1,27 @@
+<header id="header">
+  <div class="nav-primary">
+    <a href="/">
+      <div class="logo">
+        <i class="fa fa-life-ring fa-2x"></i>
+        <span class="title title-logo-text">R<br />C</span>
+      </div>
+    </a>
+    <div class='nav-right nav-desktop'>
+      <% if logged_in? %>
+        <%= render 'layouts/nav/nav_logged_in' %>
+      <% elsif !logged_in? %>
+        <%= render 'layouts/nav/nav_logged_out' %>
+      <% end %>
+    </div>
+    <div class="nav-right nav-mobile">
+      <div class="toggle-mobile"> Menu </div>
+    </div>
+  </div>
+  <div class="menu-nav-mobile inactive">
+    <% if logged_in? %>
+      <%= render 'layouts/nav/nav_logged_in' %>
+    <% elsif !logged_in? %>
+      <%= render 'layouts/nav/nav_logged_out' %>
+    <% end %>
+  </div>
+</header>

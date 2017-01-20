@@ -12,10 +12,11 @@
   </head>
 
   <body class="<%= @page_name == 'home' ? 'home' : nil %>" data-env="<%= Rails.env %>">
-    <%= render 'layouts/nav' %>
+    <%= render 'layouts/nav/nav' %>
     <%= render 'layouts/flash' %>
     <div id='main-content'>
       <%= yield %>
     </div>
+    <div class="dark-background-filter inactive"> &nbsp; </div>
   </body>
 </html>

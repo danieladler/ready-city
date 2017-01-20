@@ -2,6 +2,21 @@ body {
   font-family: $base-font-family;
   margin: 0;
   background-color: $grey-color-light-plus;
+
+}
+
+.dark-background-filter {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: black;
+  opacity: 0.85;
+
+  &.inactive {
+    display: none;
+  }
 }
 
 .hero {

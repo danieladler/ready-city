@@ -9,11 +9,22 @@
   color: $grey-color-light-plus;
 }
 
+.button-sign-in {
+  font-size: $sign-in-form-font-size;
+  font-weight: 400;
+  border: none;
+  text-transform: uppercase;
+  padding: 0 rem(8);
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+}
+
 .button-submit {
   color: $green-color;
 
   &:hover {
-    background: $green-color-light;
+    background: $green-color-dark;
   }
 }
 
@@ -41,6 +52,6 @@
   }
 
   &:hover {
-    background-color: lighten(blue, 15%);
+    background-color: $green-color-dark;
   }
 }

@@ -1,22 +1,20 @@
-<h1> Create Account </h1>
-<div class="create-user-form">
-  <%= form_for @user do |f|  %>
-    <div class="form-group">
-      <%= f.label :username %>
-      <%= f.text_area :username %>
+<h1 class="title"> Create Account </h1>
+<div class="wrapper wrapper-sign-up">
+  <%= form_for @user, class: 'form form-sign-up' do |f|  %>
+    <div class="form-group form-group-stretch">
+      <%= f.text_field :username, class: "input-clear input-stretch input-sign-in", placeholder: 'username' %>
     </div>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.text_area :email %>
+    <div class="form-group form-group-stretch">
+      <%= f.text_field :email, class: "input-clear input-stretch input-sign-in", placeholder: 'email' %>
     </div>
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+    <div class="form-group form-group-stretch">
+      <%= f.password_field :password, class: "input-clear input-stretch input-sign-in", placeholder: 'password' %>
     </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
+    <div class="form-group form-group-stretch">
+      <%= f.password_field :password_confirmation, class: "input-clear input-stretch input-sign-in", placeholder: 'password confirmation' %>
     </div>
-    <%= f.submit %>
+    <div class="form-group form-group-stretch form-group-submit">
+      <button class="button button-sign-in" type="submit"> Sign Up </button>
+    </div>
   <% end %>
 </div>

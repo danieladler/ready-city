@@ -2,6 +2,7 @@
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-size: 16px;
 $base-font-weight: 400;
+$sign-in-form-font-size: rem(18);
 
 // color scheme
 $grey-color: hsl(0, 0%, 50%);
@@ -16,8 +17,9 @@ $orange-color-dark: darken($orange-color, 25%);
 $error-color: red;
 $success-color: green;
 
-$green-color: hsl(150, 65%, 45%);
+$green-color: hsl(150, 85%, 35%);
 $green-color-light: lighten($green-color, 30%);
+$green-color-dark: darken($green-color, 10%);
 
 $red-color: hsl(310, 100%, 40%);
 $red-color-light: lighten($red-color, 30%);

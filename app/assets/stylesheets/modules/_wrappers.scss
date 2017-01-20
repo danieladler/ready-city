@@ -10,10 +10,17 @@
 }
 
 .wrapper-sign-in {
-  @include shift(3);
-  @include span-columns(6);
+  @include media($small-up) {
+    @include span-columns(12);
+  }
+
+  @include media($medium-up) {
+    @include shift(3);
+    @include span-columns(6);
+  }
 
   background: white;
+  margin-top: rem(48);
 }
 
 .wrapper-assessment {

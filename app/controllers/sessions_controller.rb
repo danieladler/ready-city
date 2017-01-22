@@ -1,10 +1,13 @@
 class SessionsController < ApplicationController
 
+  def sign_in
+  end
+
   def create
     @user = User.find_by(email: params[:email])
     if @user == nil
-      redirect_to root_path
       flash[:error] = 'Account does not exist'
+      render :sign_in
     elsif @user.authenticate(params[:password])
       session[:user_id] = @user.id
       if @user.admin == true
@@ -14,8 +17,8 @@ class SessionsController < ApplicationController
         redirect_to root_path
       end
     else
-      redirect_to root_path
       flash[:error] = "Wrong username or password"
+      render :sign_in
     end
   end
 

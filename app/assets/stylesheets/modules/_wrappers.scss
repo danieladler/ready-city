@@ -2,6 +2,15 @@
   // TBD
 }
 
+.wrapper-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  margin-top: $header-height;
+}
+
 .wrapper-about {
   @include span-columns(12);
 

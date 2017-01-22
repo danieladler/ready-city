@@ -3,6 +3,10 @@ $(document).ready(function() {
     $('.menu-nav-mobile').toggleClass('inactive');
     $('.dark-background-filter').toggleClass('inactive');
   })
+
+  setTimeout(function(){
+    $('.flash-message').toggle();
+  }, 2000);
 });
 
 $(window).resize(function() {

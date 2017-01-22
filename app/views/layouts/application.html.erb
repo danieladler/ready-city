@@ -9,6 +9,7 @@
     <% if Rails.env == 'development' %>
       <script src='http://localhost:3808/webpack-dev-server.js'></script>
     <% end %>
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,600,700" rel="stylesheet">
   </head>
 
   <body class="<%= @page_name == 'home' ? 'home' : nil %>" data-env="<%= Rails.env %>">

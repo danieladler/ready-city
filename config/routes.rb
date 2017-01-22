@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   get "/about",       to: "home#about",       as: :about
 
   # SESSIONS
-  post  "/sign-in",    to: "sessions#create", as: :create_session
+  get "/sign-in",     to: "sessions#sign_in",    as: :sign_in
+  post  "/sign-in",   to: "sessions#create",  as: :create_session
   get  "/sign-out",   to: "sessions#destroy", as: :sign_out
 
   # USERS
-  get "/sign-in",            to: "users#sign_in", as: :sign_in
   get "/sign-up",            to: "users#sign_up", as: :sign_up
   post "users",              to: "users#create",  as: :users
   get "/user",               to: "users#api",     as: :user_api

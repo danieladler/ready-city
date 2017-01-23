@@ -4,7 +4,7 @@
     <li class='nav-list-item'> <%= link_to "Admin Dashboard", admin_preparations_path %> </li>
   <% else %>
     <li class='nav-list-item'> <%= link_to "Profile", user_path(current_user.id) %></li>
-    <li class='nav-list-item'> <%= link_to "Prepare", preparations_overview_path(current_user.id) %></li>
+    <li class='nav-list-item'> <%= link_to "Prepare", preparation_path(current_user.id) %></li>
   <% end %>
   <li class='nav-list-item'>
     <a href="/sign-out"> Sign Out </a>

@@ -33,9 +33,9 @@ Rails.application.routes.draw do
   delete "/contacts/destroy/:id",  to: "contact_assessment#destroy",   as: :destroy_contact
 
   # PREPARATIONS - VIEW AS USER
-  get "/preparations/:id", to: "preparations#overview", as: :preparations_overview
+  resources :preparations, only: [:show]
 
-  # PREPARATIONS - MANAGE AS ASMIND
+  # PREPARATIONS - MANAGE AS ADMIN
   namespace :admin do
     get "/preparations", to: "preparations#preparations",  as: :preparations # AKA Admin Dashboard
     post "new_prep",     to: "preparations#create",        as: :new_prep

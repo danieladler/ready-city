@@ -2,6 +2,6 @@
   background-color: none;
   margin: 0;
   height: $header-height;
-  z-index: 999;
+  z-index: $z-index-header;
   position: relative;
 }

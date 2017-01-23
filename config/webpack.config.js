@@ -52,7 +52,13 @@ var config = {
       chunks: false,
       modules: false,
       assets: true
-    })]
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development')
+      }
+    })
+  ],
 };
 
 if (production) {

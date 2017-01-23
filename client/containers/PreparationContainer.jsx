@@ -1,7 +1,14 @@
 import { connect } from 'react-redux';
 import PreparationWrapper from '../components/PreparationWrapper.jsx';
+import { bindActionCreators } from 'redux'
+import * as PreparationActions from '../actions/PreparationActionCreators.jsx';
 
-// NB: later, may add mapDispatchToPrps as second argument, as in AssessmentContainer
-const AssessmentContainer = connect(null, null)(PreparationWrapper);
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    ...PreparationActions
+  }, dispatch)
+);
 
-export default AssessmentContainer;
+const PreparationContainer = connect(null, mapDispatchToProps)(PreparationWrapper);
+
+export default PreparationContainer;

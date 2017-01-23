@@ -10,17 +10,17 @@ import PreparationContainer from './containers/PreparationContainer.jsx';
 import store from './store/AssessmentStore.jsx';
 
 const MainApp = ({params, children}) => {
-   const {userId} = params;
-   return (
-     <div>
-       I am the main app.
-       <a href="/">Home</a>
-       <Link to={`/users/${userId}`} activeClassName="active">Profile</Link>
-       <Link to={`/preparations/${userId}`} activeClassName="active">Prepare</Link>
-       {children}
-     </div>
-   );
- }
+  const {userId} = params;
+  return (
+    <div>
+      I am the main app.
+      <a href="/">Home</a>
+      <Link to={`/users/${userId}`} activeClassName="active">Profile</Link>
+      <Link to={`/preparations/${userId}`} activeClassName="active">Prepare</Link>
+      {children}
+    </div>
+  );
+}
 
 render (
   <Provider store={store}>

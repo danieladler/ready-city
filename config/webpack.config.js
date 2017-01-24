@@ -69,6 +69,11 @@ if (production) {
     new webpack.optimize.OccurenceOrderPlugin()
   );
 } else {
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': { NODE_ENV: JSON.stringify('development') }
+    })
+  ),
   config.devServer = {
     port: devServerPort,
     headers: { 'Access-Control-Allow-Origin': '*' }

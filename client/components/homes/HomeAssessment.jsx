@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'; 
+import React, { PropTypes } from 'react';
 import HomeInstance from './HomeInstance.jsx';
 
 class HomeAssessment extends React.Component {

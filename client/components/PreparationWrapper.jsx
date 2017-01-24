@@ -3,12 +3,6 @@ import { connect } from 'react-redux';
 import UserPrepList from './preparations/UserPrepList.jsx'
 
 class PreparationWrapper extends React.Component {
-
-  componentDidMount() {
-    const {userId} = this.props.params;
-    this.props.loadUserPreps(userId);
-  }
-
   render() {
     return (
       <div>

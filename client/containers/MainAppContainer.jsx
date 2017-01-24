@@ -1,19 +1,14 @@
-import React from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import MainAppWrapper from '../components/MainAppWrapper.jsx';
+import { bindActionCreators } from 'redux'
+import * as PreparationActions from '../actions/PreparationActionCreators.jsx';
 
-class MainAppContainer extends React.Component {
-  render(){
-    const {userId} = this.props.params;
-    return (
-      <div>
-        I am the main app.
-        <a href="/">Home</a>
-        <Link to={`/users/${userId}`} activeClassName="active">Profile</Link>
-        <Link to={`/preparations/${userId}`} activeClassName="active">Prepare</Link>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    ...PreparationActions
+  }, dispatch)
+);
+
+const MainAppContainer = connect(null, mapDispatchToProps)(MainAppWrapper);
 
 export default MainAppContainer;

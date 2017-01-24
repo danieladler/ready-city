@@ -1,14 +1,22 @@
 import React, { PropTypes } from 'react';
+import UserPrepInstance from './UserPrepInstance.jsx';
 
 class UserPrepList extends React.Component {
   render() {
-    const homePreps = this.props.preparations.all.home_user_preps;
-    console.log("!!!");
-    console.log(homePreps);
+    const userPreps = this.props.preparations.all.map((userprep, index) => {
+      return (
+        <div key={index} className="wrapper-instance">
+          <UserPrepInstance
+            index={index}
+            userprep={userprep} />
+        </div>
+      )
+    })
 
     return (
       <div>
         <h1> UserPrep List </h1>
+        {userPreps}
       </div>
     )
   }

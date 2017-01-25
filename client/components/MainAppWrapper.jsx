@@ -18,10 +18,13 @@ class MainAppWrapper extends React.Component {
     const {userId} = this.props.params;
     return (
       <div>
-        <a href="/">Home</a>
-        <Link to={`/users/${userId}`} activeClassName="active">Profile</Link>
-        <Link to={`/userpreps/${userId}`} activeClassName="active">Prepare</Link>
-        {this.props.children}
+        <div className="nav-secondary">
+          <Link to={`/users/${userId}`} className="nav-secondary-link" activeClassName="active">Profile</Link>
+          <Link to={`/userpreps/${userId}`} className="nav-secondary-link" activeClassName="active">Prepare</Link>
+        </div>
+        <div className="wrapper wrapper-prepare">
+          {this.props.children}
+        </div>
       </div>
     );
   }

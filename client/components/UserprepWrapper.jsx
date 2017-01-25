@@ -5,8 +5,7 @@ import UserprepList from './userpreps/UserprepList.jsx'
 class UserprepWrapper extends React.Component {
   render() {
     return (
-      <div>
-        <h1 className="title title-page"> My Preparations </h1>
+      <div className="wrapper wrapper-userpreps">
         <UserprepList {...this.props} />
       </div>
     );

@@ -8,8 +8,7 @@ import ZoneAssessment from './zones/ZoneAssessment.jsx';
 class AssessmentWrapper extends React.Component {
   render() {
     return (
-      <div>
-        <h1 className="title title-page"> My Profile </h1>
+      <div className="wrapper wrapper-profile">
         <HomeAssessment {...this.props} />
         <DependentAssessment {...this.props} />
         <ContactAssessment {...this.props} />

@@ -1,0 +1,11 @@
+.nav-secondary {
+  width: 100%;
+  height: $header-height;
+  background-color: $grey-color;
+  margin-bottom: rem(16);
+}
+
+.nav-secondary-link,
+.nav-secondary-link:visited, {
+  color: red;
+}

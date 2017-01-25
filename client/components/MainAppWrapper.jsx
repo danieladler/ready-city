@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 class MainAppWrapper extends React.Component {
-  // componentDidMount() {
-  //   this.props.loadHomes();
-  //   this.props.loadDependents();
-  //   this.props.loadContacts();
-  //   this.props.loadZones();
-  //
   componentDidMount() {
+    // load assessment data for 'Profile' view
+    this.props.loadHomes();
+    this.props.loadDependents();
+    this.props.loadContacts();
+    this.props.loadZones();
+    // load userPreps for 'Prepare' view
     const {userId} = this.props.params;
     this.props.loadUserPreps(userId);
   }
@@ -17,7 +18,6 @@ class MainAppWrapper extends React.Component {
     const {userId} = this.props.params;
     return (
       <div>
-        I am the main app.
         <a href="/">Home</a>
         <Link to={`/users/${userId}`} activeClassName="active">Profile</Link>
         <Link to={`/preparations/${userId}`} activeClassName="active">Prepare</Link>
@@ -27,4 +27,12 @@ class MainAppWrapper extends React.Component {
   }
 }
 
-export default MainAppWrapper;
+const mapStateToProps = (state) => ({
+  homes: state.homes,
+  dependents: state.dependents,
+  contacts: state.contacts,
+  zones: state.zones,
+  preparations: state.preparations
+});
+
+export default connect(mapStateToProps, null)(MainAppWrapper);

@@ -15,7 +15,6 @@ class UserPrepList extends React.Component {
 
     return (
       <div>
-        <h1> UserPrep List </h1>
         {userPreps}
       </div>
     )

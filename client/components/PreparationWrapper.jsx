@@ -6,6 +6,7 @@ class PreparationWrapper extends React.Component {
   render() {
     return (
       <div>
+        <h1 className="title title-page"> My Preparations </h1>
         <UserPrepList {...this.props} />
       </div>
     );

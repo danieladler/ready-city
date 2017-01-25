@@ -1,15 +1,44 @@
-@include media($small-up) {
-  .nav-secondary {
-    width: 100%;
-    height: $header-height - rem(16);
-    background-color: $green-color;
-    margin-bottom: rem(16);
+.nav-secondary {
+  @include media($small-up) {
+  width: 100%;
+  height: $header-height - rem(16);
+  background-color: $green-color;
+  margin-bottom: rem(16);
 
     .nav-list-item {
       display: inline;
+      float: left;
+      padding: rem(16) rem(8);
+      font-size: rem(12);
+    }
+
+    .nav-secondary-link.active {
+      border-bottom: rem(8) solid white;
+      padding-bottom: rem(8);
+    }
+  }
+
+  @include media($large-mobile-up) {
+    .nav-list-item {
+      padding: rem(16);
+      font-size: rem(12);
+    }
+
+    .nav-secondary-link.active {
+      border-bottom: rem(8) solid white;
+      padding-bottom: rem(8);
+    }
+  }
+
+  @include media($medium-up) {
+    .nav-list-item {
       padding: rem(10);
       font-size: rem(18);
-      float: left;
+    }
+
+    .nav-secondary-link.active {
+      border-bottom: rem(4) solid white;
+      padding-bottom: rem(8);
     }
   }
 }
@@ -25,9 +54,4 @@
 
 .nav-secondary-link:hover {
   background-color: $green-color-dark;
-}
-
-.nav-secondary-link.active {
-  border-bottom: rem(4) solid white;
-  padding-bottom: rem(8);
 }

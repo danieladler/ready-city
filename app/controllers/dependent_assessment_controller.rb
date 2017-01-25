@@ -30,11 +30,7 @@ class DependentAssessmentController < ApplicationController
     @dependent = Dependent.find(params[:id])
     destroy_dependent_zones(@dependent.id)
     @dependent.destroy
-    if current_user.has_obsolete_pet_user_preps?
-      UserPrep.where(user_id: current_user.id, prep_subtype: 'gear_pet').destroy_all # delete UserPreps for pets if the user no longer has pets
-      UserPrep.where(user_id: current_user.id, prep_subtype: 'plan_dependent_pet').destroy_all # delete UserPreps for pets if the user no longer has pets
-      # TODO: make sure this captures all user_preps for pets (not just gear_pet)
-    end
+    destroy_obsolete_pet_user_preps if current_user.has_obsolete_pet_user_preps?
     generate_dependent_preps(current_user)
       # re-run this method so that user_preps with prep_subtype gear_pet and
       # gear_human are updated with the new quantity of dependents. This has
@@ -51,7 +47,15 @@ class DependentAssessmentController < ApplicationController
     if user.has_pets?
       @pb.generate_preps("gear_pet", options = {consumer_multiplier: user.pets_in_household})
       @pb.generate_preps("plan_dependent_pet")
+    else
+      destroy_obsolete_pet_user_preps
     end
+  end
+
+  def destroy_obsolete_pet_user_preps
+    UserPrep.where(user_id: current_user.id, prep_subtype: 'gear_pet').destroy_all # delete UserPreps for pets if the user no longer has pets
+    UserPrep.where(user_id: current_user.id, prep_subtype: 'plan_dependent_pet').destroy_all # delete UserPreps for pets if the user no longer has pets
+    # TODO: make sure this captures all user_preps for pets (not just gear_pet)
   end
 
   def destroy_dependent_zones(dependent_id)

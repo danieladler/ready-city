@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def has_pets?
-    true if self.pets_in_household > 0
+    self.pets_in_household > 0 ? true : false
   end
 
   def has_obsolete_pet_user_preps?

@@ -2,4 +2,16 @@ body.home {
   .hero {
     display: block;
   }
+
+  .nav-primary {
+    background-color: transparent;
+
+    a, a:visited {
+      color: $grey-color-light-plus;
+    }
+
+    a:hover {
+      color: $green-color;
+    }
+  }
 }

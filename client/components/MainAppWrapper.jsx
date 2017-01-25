@@ -19,8 +19,10 @@ class MainAppWrapper extends React.Component {
     return (
       <div>
         <div className="nav-secondary">
-          <Link to={`/users/${userId}`} className="nav-secondary-link" activeClassName="active">Profile</Link>
-          <Link to={`/userpreps/${userId}`} className="nav-secondary-link" activeClassName="active">Prepare</Link>
+          <Link to={`/users/${userId}`} className="nav-secondary-link nav-list-item" activeClassName="active">Profile</Link>
+          <Link to={`/userpreps/${userId}`} className="nav-secondary-link nav-list-item" activeClassName="active">Prepare</Link>
+          <a href="#" className="nav-secondary-link nav-list-item"> Practice - TBD! </a>
+          <a href="#" className="nav-secondary-link nav-list-item"> Recover - TBD! </a>
         </div>
         <div className="wrapper wrapper-prepare">
           {this.props.children}

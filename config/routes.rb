@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/about",       to: "home#about",       as: :about
 
   # SESSIONS
-  get "/sign-in",     to: "sessions#sign_in",    as: :sign_in
+  get "/sign-in",     to: "sessions#sign_in", as: :sign_in
   post  "/sign-in",   to: "sessions#create",  as: :create_session
   get  "/sign-out",   to: "sessions#destroy", as: :sign_out
 
@@ -17,25 +17,24 @@ Rails.application.routes.draw do
   patch "/users/:id/update", to: "users#update",  as: :update_user
 
   # PROFILE - ASSESSMENTS
-  get   "/home",                   to: "home_assessment#api", as: :home_api
-  patch  "/homes/update/:id",      to: "home_assessment#update_home",  as: :update_home
+  get   "/home",                   to: "home_assessment#api",             as: :home_api
+  patch  "/homes/update/:id",      to: "home_assessment#update_home",     as: :update_home
   get   "/dependents",             to: "dependent_assessment#dependents", as: :dependents
-  patch "/dependents/update/:id",  to: "dependent_assessment#update",  as: :update_dependent
-  post  "/dependents/create",      to: "dependent_assessment#create",  as: :create_dependent
+  patch "/dependents/update/:id",  to: "dependent_assessment#update",     as: :update_dependent
+  post  "/dependents/create",      to: "dependent_assessment#create",     as: :create_dependent
   delete  "/dependents/destroy/:id",  to: "dependent_assessment#destroy", as: :destroy_dependent
-  get "/zones",                    to: "zone_assessment#api",          as: :zone_api
-  post "/zones/create",            to: "zone_assessment#create",       as: :create_zone
-  patch "/zones/update/:id",       to: "zone_assessment#update",       as: :update_zone
-  delete "/zones/destroy/:id",     to: "zone_assessment#destroy",      as: :destroy_zone
-  get   "/contacts",               to: "contact_assessment#api",       as: :contact_api
-  post "/contacts/create",         to: "contact_assessment#create",    as: :create_contact
-  patch "/contacts/update/:id",    to: "contact_assessment#update",    as: :update_contact
-  delete "/contacts/destroy/:id",  to: "contact_assessment#destroy",   as: :destroy_contact
+  get "/zones",                    to: "zone_assessment#api",             as: :zone_api
+  post "/zones/create",            to: "zone_assessment#create",          as: :create_zone
+  patch "/zones/update/:id",       to: "zone_assessment#update",          as: :update_zone
+  delete "/zones/destroy/:id",     to: "zone_assessment#destroy",         as: :destroy_zone
+  get   "/contacts",               to: "contact_assessment#api",          as: :contact_api
+  post "/contacts/create",         to: "contact_assessment#create",       as: :create_contact
+  patch "/contacts/update/:id",    to: "contact_assessment#update",       as: :update_contact
+  delete "/contacts/destroy/:id",  to: "contact_assessment#destroy",      as: :destroy_contact
 
   # PREPARATIONS - VIEW AS USER
-  # resources :preparations, only: [:show]
-  get "/preparations/:id", to: "preparations#show", as: :preparations
-  get "/preparations/api/:id", to: "preparations#api"
+  get "/userpreps/:id",         to: "userpreps#show", as: :userpreps
+  get "/userpreps/api/:id",     to: "userpreps#api",  as: :userpreps_api
 
   # PREPARATIONS - MANAGE AS ADMIN
   namespace :admin do

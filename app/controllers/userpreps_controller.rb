@@ -1,4 +1,4 @@
-class PreparationsController < ApplicationController
+class UserprepsController < ApplicationController
   def show
   end
 

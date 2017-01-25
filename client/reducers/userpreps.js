@@ -1,6 +1,6 @@
 import {
   LOAD_USERPREPS
-} from '../constants/PreparationConstants.jsx';
+} from '../constants/UserprepConstants.jsx';
 
 const INITIAL_STATE = { all: [] };
 

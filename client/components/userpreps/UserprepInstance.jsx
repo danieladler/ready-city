@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-class UserPrepInstance extends React.Component {
+class UserprepInstance extends React.Component {
   render() {
     const { userprep } = this.props;
     return (
@@ -11,4 +11,4 @@ class UserPrepInstance extends React.Component {
   }
 }
 
-export default UserPrepInstance;
+export default UserprepInstance;

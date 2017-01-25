@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import MainAppWrapper from '../components/MainAppWrapper.jsx';
 import { bindActionCreators } from 'redux'
-import * as PreparationActions from '../actions/PreparationActionCreators.jsx';
+import * as UserprepActions from '../actions/UserprepActionCreators.jsx';
 import * as HomeActions from '../actions/HomeAssessmentActionCreators.jsx';
 import * as DependentActions from '../actions/DependentAssessmentActionCreators.jsx';
 import * as ContactActions from '../actions/ContactAssessmentActionCreators.jsx';
@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => (
     ...DependentActions,
     ...ContactActions,
     ...ZoneActions,
-    ...PreparationActions
+    ...UserprepActions
   }, dispatch)
 );
 

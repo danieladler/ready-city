@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UserPrepList from './preparations/UserPrepList.jsx'
+import UserprepList from './userpreps/UserprepList.jsx'
 
-class PreparationWrapper extends React.Component {
+class UserprepWrapper extends React.Component {
   render() {
     return (
       <div>
         <h1 className="title title-page"> My Preparations </h1>
-        <UserPrepList {...this.props} />
+        <UserprepList {...this.props} />
       </div>
     );
   }
@@ -18,7 +18,7 @@ const mapStateToProps = (state) => ({
   dependents: state.dependents,
   contacts: state.contacts,
   zones: state.zones,
-  preparations: state.preparations
+  userpreps: state.userpreps
 });
 
-export default connect(mapStateToProps, null)(PreparationWrapper);
+export default connect(mapStateToProps, null)(UserprepWrapper);

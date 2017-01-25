@@ -9,9 +9,9 @@ class MainAppWrapper extends React.Component {
     this.props.loadDependents();
     this.props.loadContacts();
     this.props.loadZones();
-    // load userPreps for 'Prepare' view
+    // load userpreps for 'Prepare' view
     const {userId} = this.props.params;
-    this.props.loadUserPreps(userId);
+    this.props.loadUserpreps(userId);
   }
 
   render(){
@@ -20,7 +20,7 @@ class MainAppWrapper extends React.Component {
       <div>
         <a href="/">Home</a>
         <Link to={`/users/${userId}`} activeClassName="active">Profile</Link>
-        <Link to={`/preparations/${userId}`} activeClassName="active">Prepare</Link>
+        <Link to={`/userpreps/${userId}`} activeClassName="active">Prepare</Link>
         {this.props.children}
       </div>
     );
@@ -32,7 +32,7 @@ const mapStateToProps = (state) => ({
   dependents: state.dependents,
   contacts: state.contacts,
   zones: state.zones,
-  preparations: state.preparations
+  userpreps: state.userpreps
 });
 
 export default connect(mapStateToProps, null)(MainAppWrapper);

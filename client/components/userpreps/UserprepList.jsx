@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
-import UserPrepInstance from './UserPrepInstance.jsx';
+import UserprepInstance from './UserprepInstance.jsx';
 
-class UserPrepList extends React.Component {
+class UserprepList extends React.Component {
   render() {
-    const userPreps = this.props.preparations.all.map((userprep, index) => {
+    const userpreps = this.props.userpreps.all.map((userprep, index) => {
       return (
         <div key={index} className="wrapper-instance">
-          <UserPrepInstance
+          <UserprepInstance
             index={index}
             userprep={userprep} />
         </div>
@@ -15,10 +15,10 @@ class UserPrepList extends React.Component {
 
     return (
       <div>
-        {userPreps}
+        {userpreps}
       </div>
     )
   }
 }
 
-export default UserPrepList;
+export default UserprepList;

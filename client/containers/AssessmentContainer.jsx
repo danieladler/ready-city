@@ -5,7 +5,6 @@ import * as HomeActions from '../actions/HomeAssessmentActionCreators.jsx';
 import * as DependentActions from '../actions/DependentAssessmentActionCreators.jsx';
 import * as ContactActions from '../actions/ContactAssessmentActionCreators.jsx';
 import * as ZoneActions from '../actions/ZoneAssessmentActionCreators.jsx';
-import * as PreparationActions from '../actions/PreparationActionCreators.jsx';
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({

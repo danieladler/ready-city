@@ -20,7 +20,7 @@ export function loadDependents() {
   }
 };
 
-export function createDependent(params) {
+export function createDependent(params, userId) {
   const createDependentSuccess = (response) => {
     return {
       type: CREATE_DEPENDENT_SUCCESS,
@@ -40,6 +40,7 @@ export function createDependent(params) {
     .then((response) => {
       dispatch(reset('CreateDependentForm'));
       dispatch(createDependentSuccess(response));
+      loadUserpreps(userId);
     })
     .catch((err) => {
       dispatch(createDependentError(err));
@@ -79,7 +80,7 @@ export function updateDependent(id, params, index, userId) {
   }
 };
 
-export function destroyDependent(authenticity_token, id, index) {
+export function destroyDependent(authenticity_token, id, index, userId) {
   const destroyDependentSuccess = (index) => {
     return {
       type: DESTROY_DEPENDENT,
@@ -95,6 +96,7 @@ export function destroyDependent(authenticity_token, id, index) {
     })
     .then(() => {
       dispatch(destroyDependentSuccess(index));
+      loadUserpreps(userId);
     });
   }
 };

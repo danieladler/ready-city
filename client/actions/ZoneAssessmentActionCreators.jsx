@@ -9,6 +9,7 @@ import {
 import { API_URL } from '../constants/ApiConstants.jsx';
 import axios from 'axios';
 import {reset} from 'redux-form';
+import { loadUserpreps } from './UserprepActionCreators.jsx';
 
 export function loadZones() {
   const request = axios.get(`${API_URL}/zones`);
@@ -18,7 +19,7 @@ export function loadZones() {
   }
 };
 
-export function createZone(params) {
+export function createZone(params, userId) {
   const createZoneSuccess = (response) => {
     return {
       type: CREATE_ZONE_SUCCESS,
@@ -38,6 +39,7 @@ export function createZone(params) {
     .then((response) => {
       dispatch(reset('CreateZoneForm'));
       dispatch(createZoneSuccess(response));
+      loadUserpreps(userId);
     })
     .catch((err) => {
       dispatch(createZoneError(err));
@@ -45,7 +47,7 @@ export function createZone(params) {
   }
 }
 
-export function updateZone(id, params, index) {
+export function updateZone(id, params, index, userId) {
   const updateZoneSuccess = (response) => {
     return {
       type: UPDATE_ZONE_SUCCESS,
@@ -65,7 +67,8 @@ export function updateZone(id, params, index) {
   return (dispatch) => {
     axios.patch(`${API_URL}/zones/update/${id}`, params)
     .then((response) => {
-      dispatch(updateZoneSuccess(response))
+      dispatch(updateZoneSuccess(response));
+      loadUserpreps(userId);
     })
     .catch((err) => {
       // TODO: refactor error handling to work as-is but not return a
@@ -76,7 +79,7 @@ export function updateZone(id, params, index) {
   }
 };
 
-export function destroyZone(authenticity_token, id, index) {
+export function destroyZone(authenticity_token, id, index, userId) {
   const destroyZoneSuccess = (index) => {
     return {
       type: DESTROY_ZONE,
@@ -92,6 +95,7 @@ export function destroyZone(authenticity_token, id, index) {
     })
     .then(() => {
       dispatch(destroyZoneSuccess(index));
+      loadUserpreps(userId);
     });
   }
 };

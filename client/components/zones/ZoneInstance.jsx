@@ -23,6 +23,7 @@ class ZoneForm extends React.Component {
     const dependent_id = this.refs.DependentId.value;
     const {zone, index} = this.props;
     const id = zone.id;
+    const userId = zone.user_id;
     const params = {
       authenticity_token,
       name,
@@ -33,7 +34,7 @@ class ZoneForm extends React.Component {
       zone_type,
       dependent_id
     }
-    this.props.updateZone(id, params, index);
+    this.props.updateZone(id, params, index, userId);
   }
 
   handleDestroyZone(event) {
@@ -41,7 +42,8 @@ class ZoneForm extends React.Component {
     const authenticity_token = this.refs.Token.value;
     const {zone, index} = this.props;
     const id = zone.id
-    this.props.destroyZone(authenticity_token, id, index);
+    const userId = zone.user_id;
+    this.props.destroyZone(authenticity_token, id, index, userId);
   }
 
   render() {

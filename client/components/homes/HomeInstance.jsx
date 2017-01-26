@@ -33,7 +33,6 @@ class HomeForm extends React.Component {
       floor_count,
       is_house
     }
-    debugger
     this.props.updateHome(id, params, index, userId);
   }
 
@@ -48,7 +47,6 @@ class HomeForm extends React.Component {
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
         return(<p key={index} className="alert alert-error">{error}</p>);
-;
       });
       return(mapped);
     }

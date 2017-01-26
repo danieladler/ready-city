@@ -9,7 +9,8 @@ import {
 import { LOAD_USERPREPS } from '../constants/UserprepConstants.jsx';
 import { API_URL } from '../constants/ApiConstants.jsx';
 import axios from 'axios';
-import {reset} from 'redux-form';
+import { reset } from 'redux-form';
+import { loadUserpreps } from './UserprepActionCreators.jsx';
 
 export function loadDependents() {
   const request = axios.get(`${API_URL}/dependents`);
@@ -47,7 +48,6 @@ export function createDependent(params) {
 }
 
 export function updateDependent(id, params, index, userId) {
-  // debugger
   const updateDependentSuccess = (response) => {
     return {
       type: UPDATE_DEPENDENT_SUCCESS,
@@ -64,21 +64,11 @@ export function updateDependent(id, params, index, userId) {
     }
   }
 
-  const loadUserpreps = (userId) => {
-    // debugger
-    const request = axios.get(`${API_URL}/userpreps/api/${userId}`);
-    return {
-      type: LOAD_USERPREPS,
-      payload: request
-    }
-  }
-
   return (dispatch) => {
-    // debugger
     axios.patch(`${API_URL}/dependents/update/${id}`, params)
-    .then((response, userId) => {
-      dispatch(updateDependentSuccess(response))
-      dispatch(loadUserpreps(userId))
+    .then((response) => {
+      dispatch(updateDependentSuccess(response));
+      loadUserpreps(userId);
     })
     .catch((err) => {
       // TODO: refactor error handling to work as-is but not return a

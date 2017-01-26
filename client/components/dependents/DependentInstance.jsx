@@ -25,7 +25,6 @@ class DependentForm extends React.Component {
       human
     }
     this.props.updateDependent(id, params, index, userId);
-    debugger 
   }
 
   handleDestroyDependent(event) {

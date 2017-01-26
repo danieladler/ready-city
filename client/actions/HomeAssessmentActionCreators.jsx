@@ -3,7 +3,10 @@ import {
   UPDATE_HOME_SUCCESS,
   UPDATE_HOME_ERROR
 } from '../constants/HomeConstants.jsx';
+import { LOAD_USERPREPS } from '../constants/UserprepConstants.jsx';
 import { API_URL } from '../constants/ApiConstants.jsx';
+// import loadUserpreps from './UserprepActionCreators.jsx';
+// import {batchActions} from 'redux-batched-actions';
 
 import axios from 'axios';
 
@@ -15,7 +18,8 @@ export function loadHomes() {
   }
 };
 
-export function updateHome(id, params, index) {
+export function updateHome(id, params, index, userId) {
+  // debugger
   const updateHomeSuccess = (response) => {
     return {
       type: UPDATE_HOME_SUCCESS,
@@ -32,10 +36,24 @@ export function updateHome(id, params, index) {
     }
   }
 
+  const user_id = userId;
+
+  const loadUserpreps = (userId) => {
+    // debugger
+    const request = axios.get(`${API_URL}/userpreps/api/${userId}`);
+    return {
+      type: LOAD_USERPREPS,
+      payload: request
+    }
+  }
+
   return (dispatch) => {
+    // debugger
     axios.patch(`${API_URL}/homes/update/${id}`, params)
-    .then((response) => {
-      dispatch(updateHomeSuccess(response))
+    .then((response, userId) => {
+      dispatch(updateHomeSuccess(response)) //.then(id) =>
+      // debugger
+      // dispatch(loadUserpreps(userId))
     })
     .catch((err) => {
       // TODO: refactor error handling to work as-is but not return a

@@ -22,6 +22,7 @@ class HomeForm extends React.Component {
     const is_house = this.refs.Is_house.value;
     const {home, index} = this.props;
     const id = home.id;
+    const userId = home.user_id;
     const params = {
       authenticity_token,
       address,
@@ -32,7 +33,8 @@ class HomeForm extends React.Component {
       floor_count,
       is_house
     }
-    this.props.updateHome(id, params, index);
+    debugger
+    this.props.updateHome(id, params, index, userId);
   }
 
   render() {

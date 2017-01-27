@@ -2,7 +2,13 @@
   <div class="wrapper-hero-content">
     <h1 class="title title-hero"> Ready City: Natural disaster preparation on your terms. </h1>
     <div class="wrapper-hero-button">
-      <button class="button button-hero button-cta"> <a href="./sign-up">Get Started</a></button>
+      <button class="button button-hero button-cta">
+        <% if logged_in? %>
+          <%= link_to "Continue Preparing", user_path(current_user.id) %>
+        <% elsif !logged_in? %>
+          <%= link_to "Get Started", sign_up_path %>
+        <% end %>
+      </button>
     </div>
   </div>
 </div>

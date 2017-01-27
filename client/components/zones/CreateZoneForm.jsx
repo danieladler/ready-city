@@ -17,6 +17,7 @@ class CreateZoneForm extends React.Component {
     const zip = this.refs.Zip.value;
     const zone_type = this.refs.ZoneType.value;
     const dependent_id = this.refs.DependentId.value;
+    const userId = this.props.params.userId;
     const params = {
       authenticity_token,
       name,
@@ -27,7 +28,7 @@ class CreateZoneForm extends React.Component {
       zone_type,
       dependent_id
     }
-    this.props.createZone(params);
+    this.props.createZone(params, userId);
   }
 
   render() {

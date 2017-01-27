@@ -6,16 +6,9 @@ import ContactAssessment from './contacts/ContactAssessment.jsx';
 import ZoneAssessment from './zones/ZoneAssessment.jsx';
 
 class AssessmentWrapper extends React.Component {
-  componentDidMount() {
-    this.props.loadHomes();
-    this.props.loadDependents();
-    this.props.loadContacts();
-    this.props.loadZones();
-  }
-
   render() {
     return (
-      <div>
+      <div className="wrapper wrapper-profile">
         <HomeAssessment {...this.props} />
         <DependentAssessment {...this.props} />
         <ContactAssessment {...this.props} />

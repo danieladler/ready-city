@@ -1,8 +1,6 @@
 #main-content {
-
   @include media($small-up) {
-    @include outer-container;
-    padding: 0 rem(16);
+    // TBD
   }
 
   @include media($x-large-up) {

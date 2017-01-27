@@ -1,5 +1,9 @@
 .wrapper {
-  // TBD
+  @include outer-container;
+
+  @include media($small-up) {
+    padding: 0 rem(16);
+  }
 }
 
 .wrapper-flash {
@@ -12,7 +16,14 @@
 }
 
 .wrapper-about {
-  @include span-columns(12);
+  @include media($small-up) {
+    @include span-columns(12);
+  }
+
+  @include media($medium-up) {
+    @include shift(2);
+    @include span-columns(8);
+  }
 
   background: white;
   padding: 0 rem(16);
@@ -68,6 +79,18 @@
     border-top: 1px solid $grey-color-light;
 }
 
+.wrapper-prepare {
+  // TBD
+}
+
+.wrapper-profile {
+  // TBD
+}
+
+.wrapper-userpreps {
+  // TBD
+}
+
 .wrapper-hero-content {
   @include outer-container;
   padding-top: $header-height;
@@ -82,8 +105,12 @@
   margin-top: ($hero-height - $header-height);
   padding-top: rem(16);
 
+  @include media($small-up) {
+    @include span-columns(12);
+  }
+
   @include media($medium-up) {
-    margin-left: rem(64);
-    margin-right: rem(64);
+    @include shift(2);
+    @include span-columns(8);
   }
 }

@@ -1,6 +1,7 @@
 @include media($small-up) {
   .nav-primary {
     height: $header-height;
+    background-color: $green-color;
 
     .nav-right {
       float: right;

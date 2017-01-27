@@ -9,6 +9,7 @@ import {
 import { API_URL } from '../constants/ApiConstants.jsx';
 import axios from 'axios';
 import {reset} from 'redux-form';
+import { loadUserpreps } from './UserprepActionCreators.jsx';
 
 export function loadContacts() {
   const request = axios.get(`${API_URL}/contacts`);
@@ -18,7 +19,7 @@ export function loadContacts() {
   }
 };
 
-export function createContact(params) {
+export function createContact(params, userId) {
   const createContactSuccess = (response) => {
     return {
       type: CREATE_CONTACT_SUCCESS,
@@ -38,6 +39,7 @@ export function createContact(params) {
     .then((response) => {
       dispatch(reset('CreateContactForm'));
       dispatch(createContactSuccess(response));
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       dispatch(createContactError(err));
@@ -45,7 +47,7 @@ export function createContact(params) {
   }
 }
 
-export function updateContact(id, params, index) {
+export function updateContact(id, params, index, userId) {
   const updateContactSuccess = (response) => {
     return {
       type: UPDATE_CONTACT_SUCCESS,
@@ -66,6 +68,7 @@ export function updateContact(id, params, index) {
     axios.patch(`${API_URL}/contacts/update/${id}`, params)
     .then((response) => {
       dispatch(updateContactSuccess(response))
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       // TODO: refactor error handling to work as-is but not return a
@@ -76,7 +79,7 @@ export function updateContact(id, params, index) {
   }
 };
 
-export function destroyContact(authenticity_token, id, index) {
+export function destroyContact(authenticity_token, id, index, userId) {
   const destroyContactSuccess = (index) => {
     return {
       type: DESTROY_CONTACT,
@@ -92,6 +95,7 @@ export function destroyContact(authenticity_token, id, index) {
     })
     .then(() => {
       dispatch(destroyContactSuccess(index));
+      dispatch(loadUserpreps(userId));
     });
   }
 };

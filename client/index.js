@@ -1,14 +1,23 @@
 // dependencies
 import React from 'react';
-import ReactDOM from "react-dom";
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-// components & modules’
+import { Router, Route, Link, browserHistory } from 'react-router'
+
+// components & modules
+import MainAppContainer from './containers/MainAppContainer.jsx';
 import AssessmentContainer from './containers/AssessmentContainer.jsx';
+import UserprepContainer from './containers/UserprepContainer.jsx';
 import store from './store/AssessmentStore.jsx';
 
-ReactDOM.render(
+render (
   <Provider store={store}>
-    <AssessmentContainer />
+    <Router history={browserHistory}>
+      <Route path="/" component={(props) => (<MainAppContainer {...props} />)}>
+        <Route path="userpreps/:userId" component={UserprepContainer}/>
+        <Route path="users/:userId" component={AssessmentContainer} />
+      </Route>
+    </Router>
   </Provider>,
-  document.getElementById('root-assessment')
+  document.getElementById('app')
 );

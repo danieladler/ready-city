@@ -20,6 +20,7 @@ class ContactForm extends React.Component {
     const out_of_area = this.refs.OutOfArea.value;
     const {contact, index} = this.props;
     const id = contact.id;
+    const userId = contact.user_id;
     const params = {
       authenticity_token,
       name,
@@ -27,7 +28,7 @@ class ContactForm extends React.Component {
       phone,
       out_of_area
     }
-    this.props.updateContact(id, params, index);
+    this.props.updateContact(id, params, index, userId);
   }
 
   handleDestroyContact(event) {
@@ -35,7 +36,8 @@ class ContactForm extends React.Component {
     const authenticity_token = this.refs.Token.value;
     const {contact, index} = this.props;
     const id = contact.id
-    this.props.destroyContact(authenticity_token, id, index);
+    const userId = contact.userId;
+    this.props.destroyContact(authenticity_token, id, index, userId);
   }
 
   render() {

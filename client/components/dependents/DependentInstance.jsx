@@ -18,12 +18,13 @@ class DependentForm extends React.Component {
     const human = this.refs.Human.value;
     const {dependent, index} = this.props;
     const id = dependent.id;
+    const userId = dependent.user_id;
     const params = {
       authenticity_token,
       name,
       human
     }
-    this.props.updateDependent(id, params, index);
+    this.props.updateDependent(id, params, index, userId);
   }
 
   handleDestroyDependent(event) {
@@ -31,7 +32,8 @@ class DependentForm extends React.Component {
     const authenticity_token = this.refs.Token.value;
     const {dependent, index} = this.props;
     const id = dependent.id
-    this.props.destroyDependent(authenticity_token, id, index);
+    const userId = dependent.user_id;
+    this.props.destroyDependent(authenticity_token, id, index, userId);
   }
 
   render() {

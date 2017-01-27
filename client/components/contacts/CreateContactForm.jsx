@@ -14,6 +14,7 @@ class CreateContactForm extends React.Component {
     const email = this.refs.Email.value;
     const phone = this.refs.Phone.value;
     const out_of_area = this.refs.OutOfArea.value;
+    const userId = this.props.params.userId;
     const params = {
       authenticity_token,
       name,
@@ -21,14 +22,13 @@ class CreateContactForm extends React.Component {
       phone,
       out_of_area
     }
-    this.props.createContact(params);
+    this.props.createContact(params, userId);
   }
 
   render() {
     const renderErrors = (errors) => {
       const mapped = errors.map((error, index) => {
         return(<p key={index} className="alert alert-error">{error}</p>);
-;
       });
       return(mapped);
     }

@@ -12,12 +12,13 @@ class CreateDependentForm extends React.Component {
     const authenticity_token = this.refs.Token.value;
     const name = this.refs.Name.value;
     const human = this.refs.Human.value;
+    const userId = this.props.params.userId
     const params = {
       authenticity_token,
       name,
       human
     }
-    this.props.createDependent(params);
+    this.props.createDependent(params, userId);
   }
 
   render() {

@@ -8,7 +8,8 @@ import {
 } from '../constants/DependentConstants.jsx';
 import { API_URL } from '../constants/ApiConstants.jsx';
 import axios from 'axios';
-import {reset} from 'redux-form';
+import { reset } from 'redux-form';
+import { loadUserpreps } from './UserprepActionCreators.jsx';
 
 export function loadDependents() {
   const request = axios.get(`${API_URL}/dependents`);
@@ -18,7 +19,7 @@ export function loadDependents() {
   }
 };
 
-export function createDependent(params) {
+export function createDependent(params, userId) {
   const createDependentSuccess = (response) => {
     return {
       type: CREATE_DEPENDENT_SUCCESS,
@@ -38,6 +39,7 @@ export function createDependent(params) {
     .then((response) => {
       dispatch(reset('CreateDependentForm'));
       dispatch(createDependentSuccess(response));
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       dispatch(createDependentError(err));
@@ -45,7 +47,7 @@ export function createDependent(params) {
   }
 }
 
-export function updateDependent(id, params, index) {
+export function updateDependent(id, params, index, userId) {
   const updateDependentSuccess = (response) => {
     return {
       type: UPDATE_DEPENDENT_SUCCESS,
@@ -65,7 +67,8 @@ export function updateDependent(id, params, index) {
   return (dispatch) => {
     axios.patch(`${API_URL}/dependents/update/${id}`, params)
     .then((response) => {
-      dispatch(updateDependentSuccess(response))
+      dispatch(updateDependentSuccess(response));
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       // TODO: refactor error handling to work as-is but not return a
@@ -76,7 +79,7 @@ export function updateDependent(id, params, index) {
   }
 };
 
-export function destroyDependent(authenticity_token, id, index) {
+export function destroyDependent(authenticity_token, id, index, userId) {
   const destroyDependentSuccess = (index) => {
     return {
       type: DESTROY_DEPENDENT,
@@ -92,6 +95,7 @@ export function destroyDependent(authenticity_token, id, index) {
     })
     .then(() => {
       dispatch(destroyDependentSuccess(index));
+      dispatch(loadUserpreps(userId));
     });
   }
 };

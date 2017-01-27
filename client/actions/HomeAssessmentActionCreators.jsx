@@ -38,7 +38,7 @@ export function updateHome(id, params, index, userId) {
     axios.patch(`${API_URL}/homes/update/${id}`, params)
     .then((response) => {
       dispatch(updateHomeSuccess(response))
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       // TODO: refactor error handling to work as-is but not return a

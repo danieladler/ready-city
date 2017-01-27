@@ -39,7 +39,7 @@ export function createContact(params, userId) {
     .then((response) => {
       dispatch(reset('CreateContactForm'));
       dispatch(createContactSuccess(response));
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       dispatch(createContactError(err));
@@ -68,7 +68,7 @@ export function updateContact(id, params, index, userId) {
     axios.patch(`${API_URL}/contacts/update/${id}`, params)
     .then((response) => {
       dispatch(updateContactSuccess(response))
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       // TODO: refactor error handling to work as-is but not return a
@@ -95,7 +95,7 @@ export function destroyContact(authenticity_token, id, index, userId) {
     })
     .then(() => {
       dispatch(destroyContactSuccess(index));
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     });
   }
 };

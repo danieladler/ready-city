@@ -39,7 +39,7 @@ export function createZone(params, userId) {
     .then((response) => {
       dispatch(reset('CreateZoneForm'));
       dispatch(createZoneSuccess(response));
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       dispatch(createZoneError(err));
@@ -68,7 +68,7 @@ export function updateZone(id, params, index, userId) {
     axios.patch(`${API_URL}/zones/update/${id}`, params)
     .then((response) => {
       dispatch(updateZoneSuccess(response));
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       // TODO: refactor error handling to work as-is but not return a
@@ -95,7 +95,7 @@ export function destroyZone(authenticity_token, id, index, userId) {
     })
     .then(() => {
       dispatch(destroyZoneSuccess(index));
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     });
   }
 };

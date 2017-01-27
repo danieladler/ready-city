@@ -6,7 +6,6 @@ import {
   UPDATE_DEPENDENT_ERROR,
   DESTROY_DEPENDENT,
 } from '../constants/DependentConstants.jsx';
-import { LOAD_USERPREPS } from '../constants/UserprepConstants.jsx';
 import { API_URL } from '../constants/ApiConstants.jsx';
 import axios from 'axios';
 import { reset } from 'redux-form';
@@ -40,7 +39,7 @@ export function createDependent(params, userId) {
     .then((response) => {
       dispatch(reset('CreateDependentForm'));
       dispatch(createDependentSuccess(response));
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       dispatch(createDependentError(err));
@@ -69,7 +68,7 @@ export function updateDependent(id, params, index, userId) {
     axios.patch(`${API_URL}/dependents/update/${id}`, params)
     .then((response) => {
       dispatch(updateDependentSuccess(response));
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     })
     .catch((err) => {
       // TODO: refactor error handling to work as-is but not return a
@@ -96,7 +95,7 @@ export function destroyDependent(authenticity_token, id, index, userId) {
     })
     .then(() => {
       dispatch(destroyDependentSuccess(index));
-      loadUserpreps(userId);
+      dispatch(loadUserpreps(userId));
     });
   }
 };

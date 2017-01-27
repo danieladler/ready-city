@@ -112,8 +112,8 @@
   @include media($small-up) {
     @include span-columns(12);
   }
-
-  @include media($medium-up) {
+  
+  @include media($large-up) {
     @include shift(2);
     @include span-columns(8);
   }

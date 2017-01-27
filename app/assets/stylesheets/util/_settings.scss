@@ -30,6 +30,6 @@ $blue-color-light: lighten($blue-color, 35%);
 // spatial relationships
 $header-height: rem(60);
 $hero-height: rem(480);
-$card-home-height: rem(384);
+$card-home-min-height: rem(336);
 $z-index-header: 999;
 $z-index-wrapper-flash: 999;

@@ -22,8 +22,9 @@ a:hover {
 
 .title-logo-text {
   font-size: rem(20);
-  float: right;
   padding-left: rem(2);
+  display: inline;
+  float: right;
 }
 
 .title-assessment {
@@ -33,7 +34,9 @@ a:hover {
 }
 
 .title-form {
-  // TBD
+  text-align: center;
+  // background-color: $green-color-light;
+  display: inline;
 }
 
 .title-hero {

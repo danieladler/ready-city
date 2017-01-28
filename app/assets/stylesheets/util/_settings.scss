@@ -24,12 +24,16 @@ $green-color-dark: darken($green-color, 10%);
 $red-color: hsl(0, 100%, 50%);
 $red-color-light: lighten($red-color, 30%);
 
-$blue-color: hsl(210, 55%, 55%);
+$blue-color: hsl(210, 45%, 45%);
 $blue-color-light: lighten($blue-color, 35%);
+
+$gold-color: hsl(50, 95%, 60%);
+
+$default-link-color: $blue-color;
 
 // spatial relationships
 $header-height: rem(60);
 $hero-height: rem(480);
-$card-home-height: rem(384);
+$card-home-min-height: rem(336);
 $z-index-header: 999;
 $z-index-wrapper-flash: 999;

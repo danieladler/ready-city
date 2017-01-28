@@ -4,4 +4,12 @@
   height: $header-height;
   z-index: $z-index-header;
   position: relative;
+
+  a, a:visited {
+    color: white;
+  }
+
+  a:hover {
+    color: $gold-color;
+  }
 }

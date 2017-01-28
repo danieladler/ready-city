@@ -1,5 +1,8 @@
-<div class="wrapper wrapper-sign-up">
-  <h1 class="title title-page"> Create Account </h1>
+<div class="wrapper wrapper-sign-up wrapper-stretch">
+  <div class="logo logo-sign-in">
+    <i class="fa fa-life-ring fa-2x"></i>
+    <h1 class="title title-form"> Create Account </h1>
+  </div>
   <%= form_for @user, class: 'form form-sign-up' do |f|  %>
     <div class="form-group form-group-stretch">
       <%= f.text_field :username, class: "input-clear input-stretch input-sign-in", placeholder: 'username' %>

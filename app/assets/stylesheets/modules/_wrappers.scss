@@ -44,6 +44,10 @@
   margin-top: rem(48);
 }
 
+.wrapper-stretch {
+  padding: 0;
+}
+
 .wrapper-assessment {
   border: 1px solid black;
   background-color: white;
@@ -109,7 +113,7 @@
     @include span-columns(12);
   }
 
-  @include media($medium-up) {
+  @include media($large-up) {
     @include shift(2);
     @include span-columns(8);
   }

@@ -1,14 +1,7 @@
 /////// links ///////
 a {
   text-decoration: none;
-}
-
-a, a:visited {
-  color: $grey-color-light;
-}
-
-a:hover {
-  color: white;
+  color: $default-link-color;
 }
 
 /////// titles ///////

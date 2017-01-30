@@ -56,7 +56,7 @@ class CreateZoneForm extends React.Component {
       <div className="wrapper-create-form">
         <form onSubmit={this.handleFormSubmit} className="form form-assessment form-create-instance">
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-          <h3 className="title title-form">Add a new zone</h3>
+          <h3 className="title title-form title-form-section">Add a new zone</h3>
           <div className="form-group">
             <label className="label-assessment-form">Name</label>
             <Field ref="Name" name="name" component="input" type="text" className="input-assessment-form"/>

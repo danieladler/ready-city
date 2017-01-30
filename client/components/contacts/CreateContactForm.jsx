@@ -39,27 +39,29 @@ class CreateContactForm extends React.Component {
     return (
       <div className="wrapper-create-form">
         <form onSubmit={this.handleFormSubmit} className="form form-assessment form-create-instance">
+          <h3 className="title title-form title-form-section">Add a new contact</h3>
           <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-          <h3 className="title title-form">Add a new contact</h3>
-            <div className="form-group">
-              <label className="label-assessment-form">Name</label>
-              <Field ref="Name" name="name" component="input" type="text" className="input-assessment-form"/>
-            </div>
-            <div className="form-group">
-              <label className="label-assessment-form">e-mail</label>
-              <Field ref="Email" name="email" component="input" type="text" className="input-assessment-form"/>
-            </div>
-            <div className="form-group">
-              <label className="label-assessment-form">Phone number</label>
-              <Field ref="Phone" name="phone" component="input" type="text" className="input-assessment-form"/>
-            </div>
-            <div className="form-group">
-              <label className="label-assessment-form">In your local area or out of area?</label>
-              <Field ref="OutOfArea" name="out_of_area" component="select">
-                <option value="">[Select]</option>
-                <option value="true">Local</option>
-                <option value="false">Out of area</option>
-              </Field>
+            <div className="wrapper wrapper-form-groups">
+              <div className="form-group">
+                <label className="label-assessment-form">Name</label>
+                <Field ref="Name" name="name" component="input" type="text" className="input-assessment-form"/>
+              </div>
+              <div className="form-group">
+                <label className="label-assessment-form">e-mail</label>
+                <Field ref="Email" name="email" component="input" type="text" className="input-assessment-form"/>
+              </div>
+              <div className="form-group">
+                <label className="label-assessment-form">Phone number</label>
+                <Field ref="Phone" name="phone" component="input" type="text" className="input-assessment-form"/>
+              </div>
+              <div className="form-group">
+                <label className="label-assessment-form">In your local area or out of area?</label>
+                <Field ref="OutOfArea" name="out_of_area" component="select">
+                  <option value="">[Select]</option>
+                  <option value="true">Local</option>
+                  <option value="false">Out of area</option>
+                </Field>
+              </div>
             </div>
           <div className='alert-container' data-contact-id='create-contact-error'>
             { contacts.errors ? renderErrors(contacts.errors) : null }

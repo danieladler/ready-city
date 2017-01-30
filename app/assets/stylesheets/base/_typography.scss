@@ -27,8 +27,18 @@ a {
 }
 
 .title-form {
+  // margin: rem(8) 0;
+}
+
+.title-form-header {
   text-align: center;
   display: inline;
+}
+
+.title-form-section {
+  margin: rem(8) 0;
+  display: inline-block;
+  color: black;
 }
 
 .title-hero {

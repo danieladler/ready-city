@@ -69,3 +69,21 @@
 .input-sign-in {
   font-size: $sign-in-form-font-size;
 }
+
+// expander for Create[Instance]Forms
+
+.expander-trigger {
+  &:before {
+    content: "\25BA";
+    padding-right: rem(4);
+  }
+
+  &.expander-showing:before {
+    content: "\25BC";
+    padding-right: rem(4);
+  }
+}
+
+.expander-hidden + .expander-content {
+  display: none;
+}

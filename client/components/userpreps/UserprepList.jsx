@@ -14,7 +14,7 @@ class UserprepList extends React.Component {
     })
 
     return (
-      <div>
+      <div className="userprep-main">
         <h1 className="alert-temp alert-error"> Hello!! </h1>
         <h2 className="alert-temp">
           This page is a work in progress. It's not very pretty right now but it

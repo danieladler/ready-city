@@ -31,6 +31,9 @@ $gold-color: hsl(50, 95%, 60%);
 
 $default-link-color: $blue-color;
 
+// decorating modules & components
+$box-shadow-default: 0px 1px 1.5px 0.5px rgba(133,133,133,1);
+
 // spatial relationships
 $header-height: rem(60);
 $hero-height: rem(480);

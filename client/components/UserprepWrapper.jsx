@@ -14,12 +14,23 @@ class UserprepWrapper extends React.Component {
   }
 }
 
+const getVisibleUserpreps = (userpreps, filter) => {
+  switch (filter) {
+    case 'SHOW_ALL':
+      return userpreps
+    case 'SHOW_HOME_USERPREPS':
+      return userpreps.all.filter(u => u.prep_maintype === 'home');
+    default:
+      throw new Error('Unknown filter: ' + filter)
+  }
+}
+
 const mapStateToProps = (state) => ({
   homes: state.homes,
   dependents: state.dependents,
   contacts: state.contacts,
   zones: state.zones,
-  userpreps: state.userpreps
+  userpreps: getVisibleUserpreps(state.userpreps, state.visibilityFilter)
 });
 
 export default connect(mapStateToProps, null)(UserprepWrapper);

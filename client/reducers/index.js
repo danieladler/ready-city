@@ -4,6 +4,7 @@ import dependentsReducer from "./dependents";
 import contactsReducer from "./contacts";
 import zonesReducer from "./zones";
 import UserprepsReducer from "./userpreps";
+import visibilityFilter from "./visibilityFilter";
 import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   dependents: dependentsReducer,
   contacts: contactsReducer,
   zones: zonesReducer,
-  userpreps: UserprepsReducer,  
+  userpreps: UserprepsReducer,
+  visibilityFilter: visibilityFilter,
   form: formReducer
 });
 

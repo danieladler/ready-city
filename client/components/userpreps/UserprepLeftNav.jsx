@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import FilterLink from './FilterLink.jsx';
 
 class UserprepLeftNav extends React.Component {
   constructor(props, context) {
@@ -6,9 +7,11 @@ class UserprepLeftNav extends React.Component {
     this.filterUserpreps = this.filterUserpreps.bind(this);
   }
 
+  // TODO: DELETE THIS AND THE UNNECESSARY <LI>S BELOW, REPLACING W/ FilterLink
   filterUserpreps(event) {
     event.preventDefault();
-    console.log('yep');
+    console.log(this.filter);
+    // console.log('yep');
   }
 
   render() {
@@ -22,7 +25,10 @@ class UserprepLeftNav extends React.Component {
         </div>
         <ul className="list-userprep-maintypes">
           <li className="item-userprep item-userprep-maintype">
-            <a href="javascript:void(0)" onClick={this.filterUserpreps}>Home</a>
+            <FilterLink filter="SHOW_HOME_USERPREPS"/>
+          </li>
+          <li className="item-userprep item-userprep-maintype">
+            <a href="javascript:void(0)" onClick={this.filterUserpreps} filter="home">Home</a>
           </li>
             <ul className="list-userprep-subtypes">
               <li className="item-userprep item-userprep-subtype">Structure</li>

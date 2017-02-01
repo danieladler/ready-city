@@ -25,10 +25,10 @@ class UserprepLeftNav extends React.Component {
         </div>
         <ul className="list-userprep-maintypes">
           <li className="item-userprep item-userprep-maintype">
-            <FilterLink filter="SHOW_HOME_USERPREPS"/>
+            <FilterLink filter="SHOW_ALL" name="All"/>
           </li>
           <li className="item-userprep item-userprep-maintype">
-            <a href="javascript:void(0)" onClick={this.filterUserpreps} filter="home">Home</a>
+            <FilterLink filter="SHOW_HOME_USERPREPS" name="Home"/>
           </li>
             <ul className="list-userprep-subtypes">
               <li className="item-userprep item-userprep-subtype">Structure</li>

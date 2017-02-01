@@ -20,10 +20,28 @@ const getVisibleUserpreps = (userpreps, filter) => {
       return userpreps
     case 'SHOW_HOME_USERPREPS':
       return userpreps.all.filter(u => u.prep_maintype === 'home');
+    case 'SHOW_HOME_INTERIOR_USERPREPS':
+      return userpreps.all.filter(u => u.prep_subtype === 'home_interior');
+    case 'SHOW_HOME_STRUCTURE_USERPREPS':
+      return userpreps.all.filter(u => u.prep_subtype === 'home_structure');
     case 'SHOW_GEAR_USERPREPS':
       return userpreps.all.filter(u => u.prep_maintype === 'gear');
+    case 'SHOW_GEAR_HUMAN_USERPREPS':
+      return userpreps.all.filter(u => u.prep_subtype === 'gear_human');
+    case 'SHOW_GEAR_PET_USERPREPS':
+      return userpreps.all.filter(u => u.prep_subtype === 'gear_pet');
     case 'SHOW_PLAN_USERPREPS':
       return userpreps.all.filter(u => u.prep_maintype === 'plan');
+    case 'SHOW_PLAN_CHECK_USERPREPS':
+      return userpreps.all.filter(u => u.prep_subtype === 'plan_check');
+    case 'SHOW_PLAN_CONTACT_USERPREPS':
+      return userpreps.all.filter(u => u.prep_subtype === 'plan_contact');
+    case 'SHOW_PLAN_DEPENDENT_HUMAN_USERPREPS':
+      return userpreps.all.filter(u => u.prep_subtype === 'plan_dependent_human');
+    case 'SHOW_PLAN_DEPENDENT_PET_USERPREPS':
+      return userpreps.all.filter(u => u.prep_subtype === 'plan_dependent_pet');
+    case 'SHOW_PLAN_ZONE_USERPREPS':
+      return userpreps.all.filter(u => u.prep_subtype === 'plan_zone');
     default:
       throw new Error('Unknown filter: ' + filter)
   }

@@ -15,6 +15,10 @@
   margin-top: $header-height;
 }
 
+.wrapper-alert {
+  margin: 0 auto;
+}
+
 .wrapper-about {
   @include media($small-up) {
     @include span-columns(12);

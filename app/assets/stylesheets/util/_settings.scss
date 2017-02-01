@@ -15,6 +15,7 @@ $orange-color-light: lighten($orange-color, 30%);
 $orange-color-dark: darken($orange-color, 25%);
 
 $error-color: red;
+$warning-color: $orange-color;
 $success-color: green;
 
 $green-color: hsl(150, 85%, 35%);

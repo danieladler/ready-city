@@ -16,8 +16,10 @@ class UserprepList extends React.Component {
         )
       })
     } else {
-      return(
-        <h3> Loading... </h3>
+      return (
+        <div className="wrapper wrapper-alert">
+          <h3 className="alert alert-warning"> You don't have any preparations of this type. </h3>
+        </div>
       )
     }
 

@@ -2,18 +2,6 @@ import React, { PropTypes } from 'react';
 import FilterLink from './FilterLink.jsx';
 
 class UserprepLeftNav extends React.Component {
-  constructor(props, context) {
-    super(props, context)
-    this.filterUserpreps = this.filterUserpreps.bind(this);
-  }
-
-  // TODO: DELETE THIS AND THE UNNECESSARY <LI>S BELOW, REPLACING W/ FilterLink
-  filterUserpreps(event) {
-    event.preventDefault();
-    console.log(this.filter);
-    // console.log('yep');
-  }
-
   render() {
     return (
       <nav className="nav-left-userpreps">
@@ -34,12 +22,16 @@ class UserprepLeftNav extends React.Component {
               <li className="item-userprep item-userprep-subtype">Structure</li>
               <li className="item-userprep item-userprep-subtype">Interior</li>
             </ul>
-          <li className="item-userprep item-userprep-maintype">Gear</li>
+            <li className="item-userprep item-userprep-maintype">
+              <FilterLink filter="SHOW_GEAR_USERPREPS" name="Gear"/>
+            </li>
             <ul className="list-userprep-subtypes">
               <li className="item-userprep item-userprep-subtype">Human</li>
               <li className="item-userprep item-userprep-subtype">Pet</li>
             </ul>
-          <li className="item-userprep item-userprep-maintype">Plan</li>
+            <li className="item-userprep item-userprep-maintype">
+              <FilterLink filter="SHOW_PLAN_USERPREPS" name="Plan"/>
+            </li>
             <ul className="list-userprep-subtypes">
               <li className="item-userprep item-userprep-subtype">TBD</li>
               <li className="item-userprep item-userprep-subtype">TBD</li>

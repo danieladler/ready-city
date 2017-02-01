@@ -20,6 +20,10 @@ const getVisibleUserpreps = (userpreps, filter) => {
       return userpreps
     case 'SHOW_HOME_USERPREPS':
       return userpreps.all.filter(u => u.prep_maintype === 'home');
+    case 'SHOW_GEAR_USERPREPS':
+      return userpreps.all.filter(u => u.prep_maintype === 'gear');
+    case 'SHOW_PLAN_USERPREPS':
+      return userpreps.all.filter(u => u.prep_maintype === 'plan');
     default:
       throw new Error('Unknown filter: ' + filter)
   }

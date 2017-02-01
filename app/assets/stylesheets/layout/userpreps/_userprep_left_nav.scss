@@ -1,8 +1,9 @@
-.userprep-left-nav {
+.nav-left-userpreps {
   float: left;
   width: 20%;
   border-right: 1px solid $grey-color-light;
   padding: 0 rem(16);
+  margin: rem(16) 0;
 
     .breadcrumbs {
       width: 100%;
@@ -73,5 +74,27 @@
         border-left-color: $breadcrumb-background;
       }
     }
+  }
+
+  .list-userprep-maintypes,
+  .list-userprep-subtypes {
+    list-style-type: none;
+  }
+
+  .list-userprep-maintypes {
+    padding-left: 0;
+  }
+
+  .list-userprep-subtypes {
+    padding-left: rem(20);
+  }
+
+  .item-userprep-maintype {
+    margin-top: rem(8);
+    font-size: rem(20);
+  }
+
+  .item-userprep-subtype {
+    font-size: rem(16);
   }
 }

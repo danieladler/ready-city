@@ -96,10 +96,18 @@
 }
 
 .wrapper-userpreps {
-  display: flex;
   background: white;
-  box-shadow: $box-shadow-default;
-  padding: 0;
+  min-width: $small-screen;
+
+  @include media($small-up) {
+    
+  }
+
+  @include media($medium-up) {
+    display: flex;
+    box-shadow: $box-shadow-default;
+    padding: 0;
+  }
 }
 
 .wrapper-hero-content {

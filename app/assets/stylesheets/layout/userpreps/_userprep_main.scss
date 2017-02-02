@@ -1,6 +1,12 @@
 .userprep-main {
-  float: left;
-  display: inline-block;
-  width: 80%;
-  padding: 0 rem(16);
+  @include media($small-up) {
+    
+  }
+
+  @include media($medium-up) {
+    float: left;
+    display: inline-block;
+    width: 80%;
+    padding: 0 rem(16);
+  }
 }

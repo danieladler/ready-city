@@ -18,6 +18,7 @@ class UserPrep < ApplicationRecord
       instructions:  preparation_attributes["instructions"],
       prep_maintype: preparation_attributes["prep_maintype"],
       prep_subtype:  preparation_attributes["prep_subtype"],
+      priority:      preparation_attributes["priority"],
       stage:         preparation_attributes["stage"]
     )
   end

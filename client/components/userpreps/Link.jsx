@@ -13,9 +13,9 @@ class Link extends React.Component {
   }
 
   render() {
-    const { name } = this.props
+    const { name, linkName } = this.props
     return(
-      <a href="#" onClick={this.triggerFilter}> {name} </a>
+      <a href={linkName} onClick={this.triggerFilter}> {name} </a>
     )
   }
 }

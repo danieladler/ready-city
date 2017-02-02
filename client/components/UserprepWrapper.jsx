@@ -18,6 +18,12 @@ const getVisibleUserpreps = (userpreps, filter) => {
   switch (filter) {
     case 'SHOW_ALL':
       return userpreps
+    case 'SHOW_PRIORITY_1':
+      return userpreps.all.filter(u => u.priority === 1)
+    case 'SHOW_PRIORITY_2':
+      return userpreps.all.filter(u => u.priority === 2)
+    case 'SHOW_PRIORITY_3':
+      return userpreps.all.filter(u => u.priority === 3)
     case 'SHOW_HOME_USERPREPS':
       return userpreps.all.filter(u => u.prep_maintype === 'home');
     case 'SHOW_HOME_INTERIOR_USERPREPS':

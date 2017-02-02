@@ -1,6 +1,6 @@
 .userprep-main {
   @include media($small-up) {
-    
+    // TBD
   }
 
   @include media($medium-up) {
@@ -8,5 +8,20 @@
     display: inline-block;
     width: 80%;
     padding: 0 rem(16);
+  }
+
+  .userprep-instance {
+    @include media($small-up) {
+      padding: rem(8) 0;
+    }
+
+    @include media($medium-up) {
+      // TBD
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $grey-color-light;
+    }
   }
 }

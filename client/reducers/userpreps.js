@@ -8,6 +8,9 @@ const userpreps = (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case LOAD_USERPREPS:
       return { ...state, all: action.payload.data };
+    // case 'TOGGLE_USERPREP_COMPLETE':
+    //   // ?
+    //   return { ...state, all: action.payload.data };
     default:
       return state;
   }

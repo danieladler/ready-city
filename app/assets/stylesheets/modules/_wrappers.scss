@@ -67,7 +67,7 @@
   }
 }
 
-.wrapper-instance {
+.wrapper-assessment-instance {
   padding: rem(16) 0 rem(16) rem(16);
   // @include span-columns(4);
 
@@ -78,6 +78,12 @@
   @include media($medium-up) {
     @include span-columns(4);
     @include omega();
+  }
+}
+
+.wrapper-userprep-instance {
+  @include media($small-up) {
+    @include span-columns(12);
   }
 }
 
@@ -100,7 +106,7 @@
   min-width: $small-screen;
 
   @include media($small-up) {
-    
+
   }
 
   @include media($medium-up) {

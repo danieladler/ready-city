@@ -19,3 +19,13 @@ export function setVisibilityFilter(filter) {
     filter
   }
 }
+
+// Later, this could become part of a general updateUserprep function
+export function toggleUserprepComplete(id, params) {
+  axios.patch(`${API_URL}/userpreps/update/${id}`, params);
+  return {
+    type: 'TOGGLE_USERPREP_COMPLETE',
+    id
+    // payload: response
+  }
+}

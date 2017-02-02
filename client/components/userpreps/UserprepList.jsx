@@ -8,10 +8,11 @@ class UserprepList extends React.Component {
     if (userpreps.length > 0) {
       userprepsToRender = userpreps.map((userprep, index) => {
         return (
-          <div key={index} className="wrapper-instance">
+          <div key={index} className="wrapper-userprep-instance">
             <UserprepInstance
               index={index}
-              userprep={userprep} />
+              userprep={userprep}
+              {...this.props} />
           </div>
         )
       })

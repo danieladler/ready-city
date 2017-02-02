@@ -75,6 +75,7 @@ class UserPrepBuilder
         prep_maintype: p.prep_maintype,
         prep_subtype: p.prep_subtype,
         instructions: p.instructions,
+        priority: p.priority,
         stage: p.stage
       )
 

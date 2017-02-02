@@ -8,6 +8,7 @@ $sign-in-form-font-size: rem(18);
 $grey-color: hsl(0, 0%, 50%);
 $grey-color-light: lighten($grey-color, 30%);
 $grey-color-light-plus: lighten($grey-color, 45%);
+$grey-color-light-plus-plus: lighten($grey-color, 47%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 $orange-color: hsl(35, 100%, 50%);
@@ -15,6 +16,7 @@ $orange-color-light: lighten($orange-color, 30%);
 $orange-color-dark: darken($orange-color, 25%);
 
 $error-color: red;
+$warning-color: $orange-color;
 $success-color: green;
 
 $green-color: hsl(150, 85%, 35%);
@@ -30,6 +32,9 @@ $blue-color-light: lighten($blue-color, 35%);
 $gold-color: hsl(50, 95%, 60%);
 
 $default-link-color: $blue-color;
+
+// decorating modules & components
+$box-shadow-default: 0px 1px 1.5px 0.5px rgba(133,133,133,1);
 
 // spatial relationships
 $header-height: rem(60);

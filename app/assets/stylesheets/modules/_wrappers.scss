@@ -15,6 +15,10 @@
   margin-top: $header-height;
 }
 
+.wrapper-alert {
+  margin: 0 auto;
+}
+
 .wrapper-about {
   @include media($small-up) {
     @include span-columns(12);
@@ -49,7 +53,7 @@
 }
 
 .wrapper-assessment {
-  box-shadow: 0px 1px 1.5px 0.5px rgba(133,133,133,1);
+  box-shadow: $box-shadow-default;
   background-color: white;
   margin-bottom: rem(32);
 
@@ -84,7 +88,7 @@
 }
 
 .wrapper-prepare {
-  // TBD
+  padding-bottom: rem(32);
 }
 
 .wrapper-profile {
@@ -92,7 +96,18 @@
 }
 
 .wrapper-userpreps {
-  // TBD
+  background: white;
+  min-width: $small-screen;
+
+  @include media($small-up) {
+    
+  }
+
+  @include media($medium-up) {
+    display: flex;
+    box-shadow: $box-shadow-default;
+    padding: 0;
+  }
 }
 
 .wrapper-hero-content {

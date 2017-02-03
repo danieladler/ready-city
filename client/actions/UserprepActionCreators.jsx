@@ -21,40 +21,51 @@ export function setVisibilityFilter(filter) {
 }
 
 // Later, this could become part of a general updateUserprep function
-export function toggleUserprepComplete(id, params) {
-  axios.patch(`${API_URL}/userpreps/update/${id}`, params);
-  return {
-    type: 'TOGGLE_USERPREP_COMPLETE',
-    id
-    // payload: response
-  }
-}
-
-export function updateUserprep(id, params, index) {
-  const updateUserprepSuccess = (response) => {
+export function toggleUserprepComplete(id, params, visibilityFilter, index, userId) {
+  const toggleUserprepCompletedSuccess = (response) => {
     return {
-      type: 'UPDATE_USERPREP_SUCCESS',
+      type: 'TOGGLE_USERPREP_COMPLETED',
       payload: response,
-      index
+      visibilityFilter,
+      index,
+      id
     }
   }
 
-  const updateUserprepError = (err) => {
-    return {
-      type: 'UPDATE_USERPREP_ERROR',
-      payload: err,
-      index
-    }
-  }
-
-  return (dispatch) => {
+  return(dispatch) => {
     axios.patch(`${API_URL}/userpreps/update/${id}`, params)
     .then((response) => {
-      dispatch(updateUserprepSuccess(response));
-      debugger
-    })
-    .catch((err) => {
-      dispatch(updateUserprepError(err))
+      dispatch(loadUserpreps(userId))
+      dispatch(setVisibilityFilter(visibilityFilter))
+      // dispatch(toggleUserprepCompletedSuccess(response))
     })
   }
 }
+
+// export function updateUserprep(id, params, index) {
+//   const updateUserprepSuccess = (response) => {
+//     return {
+//       type: 'UPDATE_USERPREP_SUCCESS',
+//       payload: response,
+//       index
+//     }
+//   }
+//
+//   const updateUserprepError = (err) => {
+//     return {
+//       type: 'UPDATE_USERPREP_ERROR',
+//       payload: err,
+//       index
+//     }
+//   }
+//
+//   return (dispatch) => {
+//     axios.patch(`${API_URL}/userpreps/update/${id}`, params)
+//     .then((response) => {
+//       dispatch(updateUserprepSuccess(response));
+//     })
+//     .catch((err) => {
+//       dispatch(updateUserprepError(err))
+//     })
+//   }
+// }

@@ -9,7 +9,14 @@ class UserprepsController < ApplicationController
 
   def update
     @userprep = UserPrep.find(params[:id])
-    @userprep.update(completed: params[:completed])
-    puts @userprep.inspect
+    if params[:updateTypeFlag] == 'toggleCompleted'
+      @userprep.update(completed: params[:completed])
+      render json: { userprep: @userprep }
+    else
+      puts "!!! ELSE !!!"
+      # TODO: put logic for updating anything that isn't @userprep.completed
+      # assign_attributes for all values of @userprep
+      # render JSON
+    end
   end
 end

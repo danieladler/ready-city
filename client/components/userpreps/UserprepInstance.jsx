@@ -7,6 +7,7 @@ import * as actions from '../../actions/UserprepActionCreators.jsx';
 class UserPrepForm extends React.Component {
   constructor(props, context) {
     super(props, context)
+    this.handleToggleComplete = this.handleToggleComplete.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.toggleExpander = this.toggleExpander.bind(this)
     this.state = {expanderHidden: "expander-hidden"};
@@ -28,16 +29,18 @@ class UserPrepForm extends React.Component {
 
   handleToggleComplete(event) {
     event.preventDefault();
-
-    // TBD
-
-    // const authenticity_token = this.refs.Token.value;
-    // const { userprep, index } = this.props
-    // const id = userprep.id;
-    // const params = {
-    //   authenticity_token,
-    // }
-    // this.props.toggleUserprepComplete()
+    const authenticity_token = this.refs.Token.value;
+    const { userprep, index, visibilityFilter } = this.props
+    const id = userprep.id;
+    const userId = userprep.user_id;
+    const completed = !userprep.completed;
+    const updateTypeFlag = 'toggleCompleted'
+    const params = {
+      authenticity_token,
+      completed,
+      updateTypeFlag
+    }
+    this.props.toggleUserprepComplete(id, params, visibilityFilter, index, userId)
   }
 
   toggleExpander(event) {
@@ -48,21 +51,6 @@ class UserPrepForm extends React.Component {
       this.setState({expanderHidden: "expander-hidden"})
     }
   }
-
-  // handleCheckboxChange(event) {
-  //   event.preventDefault();
-  //   const authenticity_token = this.refs.Token.value;
-  //   const { userprep } = this.props
-  //   const id = userprep.id;
-  //   const completed = !userprep.completed;
-  //   const params = {
-  //     authenticity_token,
-  //     id,
-  //     completed
-  //   }
-  //   // console.log(params);
-  //   this.props.toggleUserprepComplete(id, params);
-  // }
 
   render() {
     const renderField = ({ input, label, type }) => (
@@ -85,7 +73,7 @@ class UserPrepForm extends React.Component {
             <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
             <div> Todo: {userprep.instructions} </div>
             <div> Cost: {cost} </div>
-            <button action="submit" className="button button-form button-submit">Update</button>
+            <div> Completed: {String(userprep.completed)} </div>
             <button onClick={this.handleToggleComplete} className="button button-form button-submit">Done</button>
           </form>
         </div>

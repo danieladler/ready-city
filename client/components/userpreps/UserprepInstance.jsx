@@ -69,13 +69,13 @@ class UserPrepForm extends React.Component {
     return (
       <div>
         <a href="#" className={"expander-trigger " + this.state.expanderHidden} onClick={this.toggleExpander}>
-          <span className={`title title-form title-form-section title-userprep completed-${this.props.userprep.completed}`}>{userprep.keyword}</span>
+          <span className={`title title-form title-form-section title-userprep completed-${this.props.userprep.completed}`}>{userprep.keyword.replace(/_/g, " ")}</span>
         </a>
         <div className="expander-content">
           <form className="form form-userprep form-userprep-instance" onSubmit={this.handleFormSubmit} >
             <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-            <div> Todo: {userprep.instructions} </div>
-            <div> Completed: {String(userprep.completed)} </div>
+            <div className="form-element-userprep"> <strong>Instructions:</strong> {userprep.instructions} </div>
+            <div className="form-element-userprep"> <strong>Completed:</strong> {String(userprep.completed)} </div>
             <button onClick={this.handleToggleComplete} className="button button-form button-submit">Done</button>
           </form>
         </div>

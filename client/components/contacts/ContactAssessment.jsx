@@ -6,7 +6,7 @@ class ContactAssessment extends React.Component {
   render() {
     var contacts = this.props.contacts.all.map((contact, index) => {
       return (
-        <div key={index} className="wrapper-instance">
+        <div key={index} className="wrapper-assessment-instance">
           <ContactInstance
             index={index}
             contact={contact} />

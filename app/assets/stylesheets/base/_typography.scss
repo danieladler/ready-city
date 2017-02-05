@@ -27,7 +27,7 @@ a {
 }
 
 .title-form {
-  // margin: rem(8) 0;
+  // TBD
 }
 
 .title-form-header {
@@ -68,6 +68,13 @@ a {
 .title-userprep-breadcrumbs {
   font-size: rem(12);
   margin: 0;
+}
+
+.title-userprep {
+  &.completed-true {
+    text-decoration: line-through;
+    color: $grey-color;
+  }
 }
 
 /////// descriptions ///////

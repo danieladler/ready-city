@@ -6,7 +6,7 @@ class ZoneAssessment extends React.Component {
   render() {
     var zones = this.props.zones.all.map((zone, index) => {
       return (
-        <div key={index} className="wrapper-instance">
+        <div key={index} className="wrapper-assessment-instance">
           <ZoneInstance
             index={index}
             zone={zone} />

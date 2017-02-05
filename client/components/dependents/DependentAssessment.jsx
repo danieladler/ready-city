@@ -6,7 +6,7 @@ class DependentAssessment extends React.Component {
   render() {
     var dependents = this.props.dependents.all.map((dependent, index) => {
       return (
-        <div key={index} className="wrapper-instance">
+        <div key={index} className="wrapper-assessment-instance">
           <DependentInstance
             index={index}
             dependent={dependent} />

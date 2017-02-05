@@ -5,7 +5,7 @@ class HomeAssessment extends React.Component {
   render() {
     const homes = this.props.homes.all.map((home, index) => {
       return (
-        <div key={index} className="wrapper-instance">
+        <div key={index} className="wrapper-assessment-instance">
           <HomeInstance
             index={index}
             home={home} />

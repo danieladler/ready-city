@@ -20,6 +20,26 @@
   // TBD
 }
 
+.form-userprep-instance {
+  @include media($small-up) {
+    padding: rem(8) 0;
+  }
+
+  @include media($medium-up) {
+    // TBD
+    padding: 0 rem(16);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $grey-color-light;
+  }
+
+  .form-element-userprep {
+    margin-bottom: rem(4);
+  }
+}
+
 .form-group {
   padding-bottom: rem(12);
 

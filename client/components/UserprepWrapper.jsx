@@ -58,7 +58,8 @@ const mapStateToProps = (state) => ({
   dependents: state.dependents,
   contacts: state.contacts,
   zones: state.zones,
-  userpreps: getVisibleUserpreps(state.userpreps, state.visibilityFilter)
+  userpreps: getVisibleUserpreps(state.userpreps, state.visibilityFilter),
+  visibilityFilter: state.visibilityFilter
 });
 
 export default connect(mapStateToProps, null)(UserprepWrapper);

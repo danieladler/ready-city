@@ -34,8 +34,9 @@ Rails.application.routes.draw do
   delete "/contacts/destroy/:id",  to: "contact_assessment#destroy",      as: :destroy_contact
 
   # PREPARATIONS - VIEW AS USER
-  get "/userpreps/:id",         to: "userpreps#show", as: :userpreps
-  get "/userpreps/api/:id",     to: "userpreps#api",  as: :userpreps_api
+  get "/userpreps/:id",         to: "userpreps#show",   as: :userpreps
+  get "/userpreps/api/:id",     to: "userpreps#api",    as: :userpreps_api
+  patch "/userpreps/update/:id", to: "userpreps#update", as: :update_userprep
 
   # PREPARATIONS - MANAGE AS ADMIN
   namespace :admin do

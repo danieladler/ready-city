@@ -1,5 +1,6 @@
 import {
-  LOAD_USERPREPS
+  LOAD_USERPREPS,
+  TOGGLE_USERPREP_COMPLETED
 } from '../constants/UserprepConstants.jsx';
 
 const INITIAL_STATE = { all: [] };
@@ -20,8 +21,8 @@ const userpreps = (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case LOAD_USERPREPS:
       return { ...state, all: action.payload.data };
-    case 'TOGGLE_USERPREP_COMPLETED':
-      return toggleUserprepCompleted(state, action)
+    // case TOGGLE_USERPREP_COMPLETED:
+    //   return toggleUserprepCompleted(state, action)
     default:
       return state;
   }

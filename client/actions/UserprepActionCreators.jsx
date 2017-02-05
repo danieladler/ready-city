@@ -1,5 +1,7 @@
 import {
-  LOAD_USERPREPS
+  LOAD_USERPREPS,
+  TOGGLE_USERPREP_COMPLETED,
+  SET_VISIBILITY_FILTER
 } from '../constants/UserprepConstants.jsx';
 import { API_URL } from '../constants/ApiConstants.jsx';
 
@@ -15,22 +17,22 @@ export function loadUserpreps(userId) {
 
 export function setVisibilityFilter(filter) {
   return {
-    type: 'SET_VISIBILITY_FILTER',
+    type: SET_VISIBILITY_FILTER,
     filter
   }
 }
 
 // Later, this could become part of a general updateUserprep function
 export function toggleUserprepComplete(id, params, visibilityFilter, index, userId) {
-  const toggleUserprepCompletedSuccess = (response) => {
-    return {
-      type: 'TOGGLE_USERPREP_COMPLETED',
-      payload: response,
-      visibilityFilter,
-      index,
-      id
-    }
-  }
+  // const toggleUserprepCompletedSuccess = (response) => {
+  //   return {
+  //     type: TOGGLE_USERPREP_COMPLETED,
+  //     payload: response,
+  //     visibilityFilter,
+  //     index,
+  //     id
+  //   }
+  // }
 
   return(dispatch) => {
     axios.patch(`${API_URL}/userpreps/update/${id}`, params)

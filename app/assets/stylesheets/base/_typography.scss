@@ -70,6 +70,13 @@ a {
   margin: 0;
 }
 
+.title-userprep {
+  &.completed-true {
+    text-decoration: line-through;
+    color: $grey-color;
+  }
+}
+
 /////// descriptions ///////
 .description-detailed-home {
   text-align: center;

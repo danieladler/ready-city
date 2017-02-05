@@ -10,7 +10,10 @@ class UserPrepForm extends React.Component {
     this.handleToggleComplete = this.handleToggleComplete.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.toggleExpander = this.toggleExpander.bind(this)
-    this.state = {expanderHidden: "expander-hidden"};
+    this.state = {
+      expanderHidden: "expander-hidden",
+      completed: `completed-${this.props.userprep.completed}`
+    };
   }
 
   handleFormSubmit(event) {
@@ -66,13 +69,12 @@ class UserPrepForm extends React.Component {
     return (
       <div>
         <a href="#" className={"expander-trigger " + this.state.expanderHidden} onClick={this.toggleExpander}>
-          <span className="title title-form title-form-section">{userprep.keyword}</span>
+          <span className={`title title-form title-form-section title-userprep completed-${this.props.userprep.completed}`}>{userprep.keyword}</span>
         </a>
         <div className="expander-content">
           <form className="form form-userprep form-userprep-instance" onSubmit={this.handleFormSubmit} >
             <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
             <div> Todo: {userprep.instructions} </div>
-            <div> Cost: {cost} </div>
             <div> Completed: {String(userprep.completed)} </div>
             <button onClick={this.handleToggleComplete} className="button button-form button-submit">Done</button>
           </form>

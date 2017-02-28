@@ -179,6 +179,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    rb-readline (0.5.4)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -276,6 +277,7 @@ DEPENDENCIES
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-controller-testing
   rb-fsevent
+  rb-readline
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers (~> 3.1)
@@ -292,4 +294,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.13.6
+   1.14.4

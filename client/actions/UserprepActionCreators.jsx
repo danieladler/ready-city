@@ -24,22 +24,18 @@ export function setVisibilityFilter(filter) {
 
 // Later, this could become part of a general updateUserprep function
 export function toggleUserprepComplete(id, params, visibilityFilter, index, userId) {
-  // const toggleUserprepCompletedSuccess = (response) => {
-  //   return {
-  //     type: TOGGLE_USERPREP_COMPLETED,
-  //     payload: response,
-  //     visibilityFilter,
-  //     index,
-  //     id
-  //   }
-  // }
+  const toggleUserprepCompletedSuccess = (response) => {
+    return {
+      type: TOGGLE_USERPREP_COMPLETED,
+      payload: response
+    }
+  }
 
   return(dispatch) => {
     axios.patch(`${API_URL}/userpreps/update/${id}`, params)
     .then((response) => {
-      dispatch(loadUserpreps(userId))
+      dispatch(toggleUserprepCompletedSuccess(response))
       dispatch(setVisibilityFilter(visibilityFilter))
-      // dispatch(toggleUserprepCompletedSuccess(response))
     })
   }
 }

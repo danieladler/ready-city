@@ -72,6 +72,10 @@
   }
 }
 
+.form-instructions-userprep {
+  display: inline;
+}
+
 // inputs
 .input-clear {
   border: 0;
@@ -88,6 +92,10 @@
 
 .input-sign-in {
   font-size: $sign-in-form-font-size;
+}
+
+.input-checkbox {
+  display: inline;
 }
 
 // expander for Create[Instance]Forms

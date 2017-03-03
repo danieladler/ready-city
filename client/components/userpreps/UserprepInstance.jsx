@@ -44,6 +44,7 @@ class UserPrepForm extends React.Component {
       updateTypeFlag
     }
     this.props.toggleUserprepComplete(id, params, visibilityFilter, index, userId)
+    this.toggleExpander(event);
   }
 
   toggleExpander(event) {
@@ -74,9 +75,8 @@ class UserPrepForm extends React.Component {
         <div className="expander-content">
           <form className="form form-userprep form-userprep-instance" onSubmit={this.handleFormSubmit} >
             <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-            <div className="form-element-userprep"> <strong>Instructions:</strong> {userprep.instructions} </div>
-            <div className="form-element-userprep"> <strong>Completed:</strong> {String(userprep.completed)} </div>
-            <button onClick={this.handleToggleComplete} className="button button-form button-submit">Done</button>
+            <input type="checkbox" className="input-checkbox" checked={userprep.completed} onChange={this.handleToggleComplete} />
+            <div className="form-element-userprep form-instructions-userprep"> <strong>Instructions:</strong> {userprep.instructions} </div>
           </form>
         </div>
       </div>

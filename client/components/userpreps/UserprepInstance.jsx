@@ -18,6 +18,7 @@ class UserPrepForm extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
+    debugger
 
     // TBD
 
@@ -57,13 +58,6 @@ class UserPrepForm extends React.Component {
   }
 
   render() {
-    const renderField = ({ input, label, type }) => (
-      <div>
-        <label>{label}</label>
-        <input {...input} placeholder={label} type={type}/>
-      </div>
-    )
-
     const { userprep } = this.props;
     const cost = (userprep.total_cost_in_cents/100)
     const token = $('meta[name="csrf-token"]').attr('content');
@@ -75,8 +69,15 @@ class UserPrepForm extends React.Component {
         <div className="expander-content">
           <form className="form form-userprep form-userprep-instance" onSubmit={this.handleFormSubmit} >
             <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-            <input type="checkbox" className="input-checkbox" checked={userprep.completed} onChange={this.handleToggleComplete} />
-            <div className="form-element-userprep form-instructions-userprep"> <strong>Instructions:</strong> {userprep.instructions} </div>
+            <div className="form-group">
+              <input type="checkbox" className="input-checkbox" checked={userprep.completed} onChange={this.handleToggleComplete} />
+              <div className="form-element-userprep form-userprep-instructions"> <strong>Instructions:</strong> {userprep.instructions} </div>
+            </div>
+            <div className="form-group form-userprep-notes">
+              <label className="form-label-userprep-notes">Notes:</label>
+              <Field ref="Notes" name="notes" component="textarea" label="Notes" className="form-element-userprep"/>
+            </div>
+            <button action="submit" className="button button-form button-form-userprep button-submit">Update</button>
           </form>
         </div>
       </div>

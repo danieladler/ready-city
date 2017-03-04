@@ -1,6 +1,8 @@
 import {
   LOAD_USERPREPS,
-  TOGGLE_USERPREP_COMPLETED
+  TOGGLE_USERPREP_COMPLETED,
+  UPDATE_USERPREP_SUCCESS,
+  UPDATE_USERPREP_ERROR
 } from '../constants/UserprepConstants.jsx';
 
 const INITIAL_STATE = { all: [] };

@@ -18,17 +18,15 @@ class UserPrepForm extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-    debugger
-
-    // TBD
-
-    // const authenticity_token = this.refs.Token.value;
-    // const { userprep, index } = this.props
-    // const id = userprep.id;
-    // const params = {
-    //   authenticity_token,
-    // }
-    // this.props.updateUserprep(id, params, index)
+    const authenticity_token = this.refs.Token.value;
+    const { userprep, index } = this.props
+    const note = this.refs.Note.value;
+    const id = userprep.id;
+    const params = {
+      authenticity_token,
+      note
+    }
+    this.props.updateUserprep(id, params, index)
   }
 
   handleToggleComplete(event) {
@@ -73,9 +71,9 @@ class UserPrepForm extends React.Component {
               <input type="checkbox" className="input-checkbox" checked={userprep.completed} onChange={this.handleToggleComplete} />
               <div className="form-element-userprep form-userprep-instructions"> <strong>Instructions:</strong> {userprep.instructions} </div>
             </div>
-            <div className="form-group form-userprep-notes">
-              <label className="form-label-userprep-notes">Notes:</label>
-              <Field ref="Notes" name="notes" component="textarea" label="Notes" className="form-element-userprep"/>
+            <div className="form-group form-userprep-note">
+              <label className="form-label-userprep-note">Note:</label>
+              <Field ref="Note" name="note" component="textarea" label="Note" className="form-element-userprep"/>
             </div>
             <button action="submit" className="button button-form button-form-userprep button-submit">Update</button>
           </form>

@@ -1,6 +1,8 @@
 import {
   LOAD_USERPREPS,
   TOGGLE_USERPREP_COMPLETED,
+  UPDATE_USERPREP_SUCCESS,
+  UPDATE_USERPREP_ERROR,
   SET_VISIBILITY_FILTER
 } from '../constants/UserprepConstants.jsx';
 import { API_URL } from '../constants/ApiConstants.jsx';
@@ -40,30 +42,30 @@ export function toggleUserprepComplete(id, params, visibilityFilter, index, user
   }
 }
 
-// export function updateUserprep(id, params, index) {
-//   const updateUserprepSuccess = (response) => {
-//     return {
-//       type: 'UPDATE_USERPREP_SUCCESS',
-//       payload: response,
-//       index
-//     }
-//   }
-//
-//   const updateUserprepError = (err) => {
-//     return {
-//       type: 'UPDATE_USERPREP_ERROR',
-//       payload: err,
-//       index
-//     }
-//   }
-//
-//   return (dispatch) => {
-//     axios.patch(`${API_URL}/userpreps/update/${id}`, params)
-//     .then((response) => {
-//       dispatch(updateUserprepSuccess(response));
-//     })
-//     .catch((err) => {
-//       dispatch(updateUserprepError(err))
-//     })
-//   }
-// }
+export function updateUserprep(id, params, index) {
+  const updateUserprepSuccess = (response) => {
+    return {
+      type: UPDATE_USERPREP_SUCCESS,
+      payload: response,
+      index
+    }
+  }
+
+  const updateUserprepError = (err) => {
+    return {
+      type: UPDATE_USERPREP_ERROR,
+      payload: err,
+      index
+    }
+  }
+
+  return (dispatch) => {
+    axios.patch(`${API_URL}/userpreps/update/${id}`, params)
+    .then((response) => {
+      dispatch(updateUserprepSuccess(response));
+    })
+    .catch((err) => {
+      dispatch(updateUserprepError(err))
+    })
+  }
+}

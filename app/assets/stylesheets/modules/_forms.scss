@@ -21,13 +21,15 @@
 }
 
 .form-userprep-instance {
+  border: 1px solid grey;
+  border-radius: rem(4);
+
   @include media($small-up) {
-    padding: rem(8) 0;
+    padding: rem(8);
   }
 
   @include media($medium-up) {
-    // TBD
-    padding: 0 rem(16);
+    padding: rem(8) rem(16);
   }
 
   &:hover,
@@ -72,6 +74,25 @@
   }
 }
 
+.form-userprep-instructions {
+  display: inline;
+}
+
+.form-label-userprep-note {
+  display: block;
+  font-weight: bold;
+}
+
+.form-userprep-notes {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+
+  @include media($medium-up) {
+    margin-left: rem(20);
+  }
+}
+
 // inputs
 .input-clear {
   border: 0;
@@ -88,6 +109,10 @@
 
 .input-sign-in {
   font-size: $sign-in-form-font-size;
+}
+
+.input-checkbox {
+  display: inline;
 }
 
 // expander for Create[Instance]Forms

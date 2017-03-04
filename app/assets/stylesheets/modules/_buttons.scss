@@ -9,6 +9,12 @@
   color: $grey-color-light-plus;
 }
 
+.button-form-userprep {
+  @include media($medium-up) {
+    margin-left: rem(20);
+  }
+}
+
 .button-sign-in {
   font-size: $sign-in-form-font-size;
   font-weight: 400;

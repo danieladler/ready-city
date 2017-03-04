@@ -18,16 +18,15 @@ class UserPrepForm extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-
-    // TBD
-
-    // const authenticity_token = this.refs.Token.value;
-    // const { userprep, index } = this.props
-    // const id = userprep.id;
-    // const params = {
-    //   authenticity_token,
-    // }
-    // this.props.updateUserprep(id, params, index)
+    const authenticity_token = this.refs.Token.value;
+    const { userprep, index } = this.props
+    const note = this.refs.Note.value;
+    const id = userprep.id;
+    const params = {
+      authenticity_token,
+      note
+    }
+    this.props.updateUserprep(id, params, index)
   }
 
   handleToggleComplete(event) {
@@ -44,6 +43,7 @@ class UserPrepForm extends React.Component {
       updateTypeFlag
     }
     this.props.toggleUserprepComplete(id, params, visibilityFilter, index, userId)
+    this.toggleExpander(event);
   }
 
   toggleExpander(event) {
@@ -56,13 +56,6 @@ class UserPrepForm extends React.Component {
   }
 
   render() {
-    const renderField = ({ input, label, type }) => (
-      <div>
-        <label>{label}</label>
-        <input {...input} placeholder={label} type={type}/>
-      </div>
-    )
-
     const { userprep } = this.props;
     const cost = (userprep.total_cost_in_cents/100)
     const token = $('meta[name="csrf-token"]').attr('content');
@@ -74,9 +67,15 @@ class UserPrepForm extends React.Component {
         <div className="expander-content">
           <form className="form form-userprep form-userprep-instance" onSubmit={this.handleFormSubmit} >
             <input type="hidden" ref="Token" name="authenticity_token" value={token} readOnly={true} />
-            <div className="form-element-userprep"> <strong>Instructions:</strong> {userprep.instructions} </div>
-            <div className="form-element-userprep"> <strong>Completed:</strong> {String(userprep.completed)} </div>
-            <button onClick={this.handleToggleComplete} className="button button-form button-submit">Done</button>
+            <div className="form-group">
+              <input type="checkbox" className="input-checkbox" checked={userprep.completed} onChange={this.handleToggleComplete} />
+              <div className="form-element-userprep form-userprep-instructions"> <strong>Instructions:</strong> {userprep.instructions} </div>
+            </div>
+            <div className="form-group form-userprep-note">
+              <label className="form-label-userprep-note">Note:</label>
+              <Field ref="Note" name="note" component="textarea" label="Note" className="form-element-userprep"/>
+            </div>
+            <button action="submit" className="button button-form button-form-userprep button-submit">Update</button>
           </form>
         </div>
       </div>

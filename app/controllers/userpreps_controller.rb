@@ -3,7 +3,7 @@ class UserprepsController < ApplicationController
   end
 
   def api
-    @all_user_preps ||= UserPrep.where(user_id: current_user.id).order(completed: :asc)
+    @all_user_preps ||= UserPrep.where(user_id: current_user.id).where.not(priority:0).order(completed: :asc)
     render :json => @all_user_preps
   end
 
